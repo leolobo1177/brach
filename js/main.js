@@ -13,15 +13,74 @@ const overlay = document.getElementById('overlay');
 
     const menuTl = gsap.timeline({
       paused: true,
-      defaults: { ease: "power3.out" }
+      defaults: { ease: "expo.out" }
     });
 
+    // Animação mais "fluida" (menos degraus, mais overlap)
     menuTl
-      .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.22, ease: "power2.out" }, 0)
-      .fromTo(overlayPanel, { y: -8, scale: 1.01, filter: "blur(2px)" }, { y: 0, scale: 1, filter: "blur(0px)", duration: 0.5 }, 0)
-      .fromTo(overlayRight, { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45 }, 0.06)
-      .fromTo(navLinks, { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, stagger: 0.05 }, 0.1)
-      .fromTo(contactBlocks, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, stagger: 0.06 }, 0.18);
+      .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.28, ease: "power2.out" }, 0)
+      .fromTo(
+        overlayPanel,
+        { y: -10, scale: 1.02, filter: "blur(3px)" },
+        { y: 0, scale: 1, filter: "blur(0px)", duration: 0.62 },
+        0
+      )
+      .fromTo(overlayRight, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.52 }, 0.08)
+      .fromTo(navLinks, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.52, stagger: 0.055 }, 0.10)
+      .fromTo(contactBlocks, { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.48, stagger: 0.07 }, 0.16);
+
+    // Mantém a scrollbar visível (não usa overflow:hidden) e ainda trava o scroll
+    // enquanto o menu estiver aberto.
+    const _scrollLock = {
+      y: 0,
+      onWheel: null,
+      onTouch: null,
+      onKey: null,
+      onScroll: null,
+      locked: false,
+    };
+
+    function lockScroll(){
+      if(_scrollLock.locked) return;
+      _scrollLock.locked = true;
+      _scrollLock.y = window.scrollY || window.pageYOffset || 0;
+
+      const prevent = (e) => { e.preventDefault(); };
+      _scrollLock.onWheel = prevent;
+      _scrollLock.onTouch = prevent;
+
+      _scrollLock.onKey = (e) => {
+        const keys = ["ArrowUp","ArrowDown","ArrowLeft","ArrowRight","PageUp","PageDown","Home","End"," "];
+        if(keys.includes(e.key)) e.preventDefault();
+      };
+
+      // Trava o scroll via prevenção de eventos (scrollbar continua lá)
+      window.addEventListener('wheel', _scrollLock.onWheel, { passive: false });
+      window.addEventListener('touchmove', _scrollLock.onTouch, { passive: false });
+      window.addEventListener('keydown', _scrollLock.onKey, { passive: false });
+
+      // Se o usuário tentar arrastar a scrollbar, volta para a posição original
+      _scrollLock.onScroll = () => {
+        if(!_scrollLock.locked) return;
+        if(Math.abs((window.scrollY || 0) - _scrollLock.y) > 1) {
+          window.scrollTo(0, _scrollLock.y);
+        }
+      };
+      window.addEventListener('scroll', _scrollLock.onScroll, { passive: true });
+    }
+
+    function unlockScroll(){
+      if(!_scrollLock.locked) return;
+      _scrollLock.locked = false;
+      window.removeEventListener('wheel', _scrollLock.onWheel, { passive: false });
+      window.removeEventListener('touchmove', _scrollLock.onTouch, { passive: false });
+      window.removeEventListener('keydown', _scrollLock.onKey, { passive: false });
+      window.removeEventListener('scroll', _scrollLock.onScroll, { passive: true });
+      _scrollLock.onWheel = null;
+      _scrollLock.onTouch = null;
+      _scrollLock.onKey = null;
+      _scrollLock.onScroll = null;
+    }
 
     function openOverlay(){
       if(overlay.classList.contains('is-open')) return;
@@ -29,12 +88,12 @@ const overlay = document.getElementById('overlay');
       overlay.setAttribute('aria-hidden','false');
 
       document.body.classList.add('menu-opened');
-      document.body.style.overflow = 'hidden';
+      lockScroll();
 
       menuTl.play(0);
     }
 
-    function closeOverlayMenu(){
+    function closeOverlayMenu(afterClose){
       if(!overlay.classList.contains('is-open')) return;
 
       document.body.classList.remove('menu-opened');
@@ -44,13 +103,39 @@ const overlay = document.getElementById('overlay');
       menuTl.eventCallback("onReverseComplete", () => {
         overlay.classList.remove('is-open');
         overlay.setAttribute('aria-hidden','true');
-        document.body.style.overflow = '';
+        unlockScroll();
         gsap.set(overlay, { clearProps: "opacity,visibility" });
+        if(typeof afterClose === 'function') afterClose();
       });
     }
 
     openMenu.addEventListener('click', openOverlay);
     closeMenu.addEventListener('click', closeOverlayMenu);
+
+    // Links do menu: fecha o overlay e navega para a seção (sem quebrar por causa do scroll lock)
+    document.querySelectorAll('.overlay__nav .navlink').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href') || '';
+        if(!href.startsWith('#')) return;
+        e.preventDefault();
+        const id = href;
+
+        const go = () => {
+          const el = document.querySelector(id);
+          if(!el) return;
+          const topbarOffset = 90; // espaço para header fixo
+          const y = el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0) - topbarOffset;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+        };
+
+        // Se o menu estiver aberto, fecha primeiro (isso também libera o scroll)
+        if(overlay.classList.contains('is-open')){
+          closeOverlayMenu(go);
+        }else{
+          go();
+        }
+      });
+    });
 
     window.addEventListener('keydown', (e) => {
       if(e.key === 'Escape' && overlay.classList.contains('is-open')) closeOverlayMenu();

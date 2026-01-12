@@ -33,6 +33,26 @@
     }
 
     *{ box-sizing: border-box; }
+
+    /* Acessibilidade (texto só para leitores de tela) */
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    /* Mantém o espaço da scrollbar estável e evita "pulo" quando abre o menu */
+    html{
+      scrollbar-gutter: stable;
+      overflow-y: scroll;
+    }
+
     body{
       margin: 0;
       background: #0b0f23;
@@ -149,7 +169,9 @@
       z-index: 100;
       opacity: 0;
       pointer-events: none;
-      transition: opacity .25s var(--ease);
+
+      /* A animação fica por conta do GSAP (mais suave / consistente) */
+      transition: none;
     }
     .overlay.is-open{
       opacity: 1;
@@ -165,11 +187,58 @@
       /* mantém suas animações (transform) */
       transform: translateY(-6px) scale(1.01);
       filter: blur(2px);
-      transition: transform .45s var(--ease), filter .45s var(--ease);
+
+      /* GSAP controla a transição */
+      transition: none;
+      will-change: transform, filter;
     }
     .overlay.is-open .overlay__panel{
       transform: translateY(0) scale(1);
       filter: blur(0);
+    }
+
+    /* ================= DESKTOP: SCRIM PRETO (FUNDO) + PAINEL CREME 50vw ================= */
+    @media (min-width: 1201px){
+      /* Fundo do overlay cobre o viewport inteiro (preto transparente) */
+      .overlay{
+        background: rgba(0,0,0,.45);
+      }
+
+      /* O painel do menu vira uma “gaveta” na direita */
+      .overlay__panel{
+        inset: 0 0 0 auto;
+        width: 50vw;
+        background: var(--cream);
+        overflow: hidden;
+
+        /* Centraliza o miolo do menu sem mexer na largura do painel */
+        display: flex;
+        justify-content: center;
+      }
+
+      /* Conteúdo do painel em uma coluna (sem coluna esquerda interna) */
+      .overlay__inner{
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        width: 100%;
+        max-width: 680px;
+        padding-left: clamp(48px, 6vw, 120px);
+        padding-right: clamp(32px, 4vw, 96px);
+        padding-top: clamp(56px, 6vw, 110px);
+        padding-bottom: 48px;
+      }
+
+      /* Mantém no HTML mas remove visualmente para não criar “box” */
+      .overlay__art{ display:none !important; }
+
+      /* Remove ícones das redes no desktop (mantém só texto) */
+      .social-ico{ display:none !important; }
+      .social-icons{ display:none !important; }
+
+      /* Mantém e-mail e ícone lado a lado no desktop */
+      .email-row{ flex-wrap: nowrap; }
     }
 
     .overlay__inner{
@@ -274,6 +343,11 @@
       flex-wrap: wrap;
     }
 
+    /* Desktop: evita quebrar e mantém o botão colado ao e-mail */
+    @media (min-width: 1025px){
+      .email-row{ flex-wrap: nowrap; }
+    }
+
     .u{
       position: relative;
       display: inline-block;
@@ -311,17 +385,16 @@
       background: rgba(7,16,79,.06);
       color: var(--blue);
       border-radius: 999px;
-      padding: 10px 12px;
+      padding: 10px;
       cursor:pointer;
 
       display:inline-flex;
       align-items:center;
-      gap: 8px;
+      justify-content:center;
+      gap: 0;
 
-      font-family: var(--font-kicker);
-      text-transform: uppercase;
-      letter-spacing: 1.1px;
-      font-size: 12px;
+      /* Ícone-only */
+      line-height: 0;
 
       transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease);
       -webkit-tap-highlight-color: transparent;
@@ -333,6 +406,12 @@
     }
     .copy-btn:focus-visible{ outline: none; }
     .copy-ico{ width: 16px; height: 16px; }
+
+    /* Um pouco maior no desktop para ficar "alinhado" com o texto grande do e-mail */
+    @media (min-width: 1025px){
+      .copy-btn{ padding: 12px; }
+      .copy-ico{ width: 18px; height: 18px; }
+    }
 
     .copy-toast{
       font-family: var(--font-kicker);
@@ -364,10 +443,11 @@
       gap:10px;
       width: fit-content;
     }
+    /* Desktop: remove ícones do lado do nome (mantém “as-is” no iPad/mobile) */
     .social-ico{
       width: 14px;
       height: 14px;
-      display: inline-block;
+      display: none;
     }
 
     @keyframes wiggle{
@@ -422,6 +502,9 @@
         align-items: center;
       }
       .social-grid{ justify-items: center; margin: 0 auto; }
+
+      /* iPad/tablet: volta os ícones ao lado do nome */
+      .social-ico{ display: inline-block; }
     }
 
     @media (max-width: 920px){
