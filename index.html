@@ -1,139 +1,238 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Overlay Menu - FKScreamer Local + GSAP Weight</title>
-
-  <!-- GSAP -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-
-  <!-- Anton (kickers pequenos) -->
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-  <!-- Archivo (variable, wght 100..900) -->
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/style.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Overlay Menu - FKScreamer Local + GSAP Weight</title>
+<!-- GSAP -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<!-- Anton (kickers pequenos) -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap" rel="stylesheet"/>
+<!-- Archivo (variable, wght 100..900) -->
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="./css/style.css" rel="stylesheet"/>
 </head>
 <body>
+<a class="skip-link" href="#topo">Pular para o conteúdo</a>
 <header class="topbar">
-    <div class="topbar__inner">
-      <a class="brand" href="#topo" aria-label="Início">
-        <div class="brand__mark" aria-hidden="true">
-          <img class="brand__logo" src="./assets/logo.svg" alt="" />
-        </div>
-      </a>
+<div class="topbar__inner">
+<a aria-label="Início" class="brand" href="#topo">
+<div aria-hidden="true" class="brand__mark">
+<img alt="" class="brand__logo" src="./assets/brand.png"/>
+</div>
+</a>
+<!-- BOTÃO MENU (slot único) -->
+<button aria-controls="menuPanel" aria-expanded="false" aria-label="Abrir menu" class="menu-slot menu-open" id="openMenu" type="button">
+<span class="hover-gsap" id="menuLabel">MENU</span>
+</button>
+</div>
+</header>
+<div aria-hidden="true" class="overlay" id="overlay">
+<!-- ✅ FECHAR AGORA É FILHO DIRETO DO OVERLAY (fora do painel transformado) -->
+<button aria-label="Fechar menu" class="menu-slot menu-close" id="closeMenu" type="button">
+<span class="hover-gsap" id="closeLabel">FECHAR</span>
+</button>
+<div aria-labelledby="menuTitle" aria-modal="true" class="overlay__panel" id="menuPanel" role="dialog">
+<h2 class="sr-only" id="menuTitle">Menu principal</h2>
+<div class="overlay__inner">
+<div aria-hidden="true" class="overlay__art">
+<img alt="" class="svg-mark" src="./assets/logo.svg"/>
+</div>
+<div class="overlay__right">
+<nav aria-label="Menu" class="overlay__nav">
+<a class="navlink" data-text="SOBRE" href="#sobre">
+<span class="navtext hover-gsap">SOBRE</span>
+</a>
+<a class="navlink" data-text="SERVIÇOS" href="#servicos">
+<span class="navtext hover-gsap">SERVIÇOS</span>
+</a>
+<a class="navlink" data-text="CASOS" href="#trabalhos">
+<span class="navtext hover-gsap">CASOS</span>
+</a>
+<a class="navlink" data-text="CONTATO" href="#contato">
+<span class="navtext hover-gsap">CONTATO</span>
+</a>
+</nav>
+<div class="overlay__contact">
+<div>
+<div class="kicker">(E-MAIL)</div>
+<div class="email-row">
+<a class="email underline" href="mailto:hello@seudominio.com" id="emailLink">
+<span class="u">hello@seudominio.com</span>
+</a>
+<button aria-label="Copiar e-mail" class="copy-btn" id="copyEmailBtn" type="button">
+<svg aria-hidden="true" class="copy-ico" fill="none" viewbox="0 0 24 24">
+<path d="M9 9h10v12H9V9Z" stroke="currentColor" stroke-width="2"></path>
+<path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="2"></path>
+</svg>
+<span class="sr-only">Copiar</span>
+</button>
+<span aria-atomic="true" aria-live="polite" class="copy-toast" id="copyToast" role="status">Copiado!</span>
+</div>
+</div>
+<div>
+<div class="kicker">(REDES SOCIAIS)</div>
+<div class="social-grid">
+<a class="social underline" href="https://instagram.com" rel="noopener" target="_blank">
+<span class="u">Instagram</span>
+<img alt="" aria-hidden="true" class="social-ico" src="./assets/instagram.svg"/>
+</a>
+<a class="social underline" href="https://linkedin.com" rel="noopener" target="_blank">
+<span class="u">LinkedIn</span>
+<img alt="" aria-hidden="true" class="social-ico" src="./assets/linkedin.svg"/>
+</a>
+<a class="social underline" href="https://behance.net" rel="noopener" target="_blank">
+<span class="u">Behance</span>
+<img alt="" aria-hidden="true" class="social-ico" src="./assets/behance.svg"/>
+</a>
+<a class="social underline" href="https://x.com" rel="noopener" target="_blank">
+<span class="u">X/Twitter</span>
+<img alt="" aria-hidden="true" class="social-ico" src="./assets/twitter.svg"/>
+</a>
+</div>
+<div aria-label="Redes sociais (ícones)" class="social-icons">
+<a aria-label="Instagram" class="icon-link" href="https://instagram.com" rel="noopener" target="_blank">
+<img alt="" aria-hidden="true" src="./assets/instagram.svg"/>
+</a>
+<a aria-label="LinkedIn" class="icon-link" href="https://linkedin.com" rel="noopener" target="_blank">
+<img alt="" aria-hidden="true" src="./assets/linkedin.svg"/>
+</a>
+<a aria-label="Behance" class="icon-link" href="https://behance.net" rel="noopener" target="_blank">
+<img alt="" aria-hidden="true" src="./assets/behance.svg"/>
+</a>
+<a aria-label="X/Twitter" class="icon-link" href="https://x.com" rel="noopener" target="_blank">
+<img alt="" aria-hidden="true" src="./assets/twitter.svg"/>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<main id="topo">
+<section class="parallax-section" id="sobre"><h2>Sobre</h2><p>Abra o menu e teste hover.</p></section>
+<section class="parallax-section" id="servicos"><h2>Serviços</h2><p>“Serviços” não empurra outros itens.</p></section>
+<section aria-labelledby="trabalhosTitle" class="cases-section" id="trabalhos">
+<div class="cases-wrap">
+<h2 class="cases-title" id="trabalhosTitle">Casos de sucesso</h2>
+<ul class="cases-list" role="list">
+<li class="case-row">
+<a aria-describedby="caseHint" class="case-link" data-preview="./assets/cases/graciane.svg" data-title="Graciane" href="#">
+<span class="case-thumb" aria-hidden="true">
+  <img class="case-thumb__img" alt="" />
+</span>
+<span class="case-text">
+  <span class="case-name">Graciane</span>
+  <span class="case-meta">Branding • Social</span>
+</span>
+</a>
+</li>
+<li class="case-row">
+<a aria-describedby="caseHint" class="case-link" data-preview="./assets/cases/giovana.svg" data-title="Studio de Beleza Giovana Fortunato" href="#">
+<span class="case-thumb" aria-hidden="true">
+  <img class="case-thumb__img" alt="" />
+</span>
+<span class="case-text">
+  <span class="case-name case-name--nowrap">Studio de Beleza Giovana Fortunato</span>
+  <span class="case-meta">Identidade • Conteúdo</span>
+</span>
+</a>
+</li>
+<li class="case-row">
+<a aria-describedby="caseHint" class="case-link" data-preview="./assets/cases/milami.svg" data-title="MiláMi musicalização infantil" href="#">
+<span class="case-thumb" aria-hidden="true">
+  <img class="case-thumb__img" alt="" />
+</span>
+<span class="case-text">
+  <span class="case-name">MiláMi musicalização infantil</span>
+  <span class="case-meta">Brand • Web</span>
+</span>
+</a>
+</li>
+</ul>
+<p class="sr-only" id="caseHint">
+          Passe o mouse ou use Tab para ver uma prévia do projeto. Pressione Enter para abrir quando a página do trabalho estiver disponível.
+        </p>
+<div aria-hidden="true" class="case-preview">
+<div class="case-preview__frame"><div aria-hidden="true" class="case-preview__viewport">
+<img alt="" class="case-preview__img case-preview__img--a" src=""/>
+<img alt="" class="case-preview__img case-preview__img--b" src=""/>
+</div></div>
+</div>
+<div aria-atomic="true" aria-live="polite" class="sr-only" id="caseLive" role="status"></div>
+</div>
+</section>
+<section class="parallax-section" id="contato"><h2>Contato</h2><p>Conteúdo exemplo.</p></section>
+</main>
+<footer class="site-footer" aria-labelledby="footerTitle">
+  <h2 id="footerTitle" class="sr-only">Rodapé</h2>
 
-      <!-- BOTÃO MENU (slot único) -->
-      <button class="menu-slot menu-open" id="openMenu" type="button" aria-label="Abrir menu">
-        <span class="hover-gsap" id="menuLabel">MENU</span>
-      </button>
-    </div>
-  </header>
-
-  <div class="overlay" id="overlay" aria-hidden="true">
-    <!-- ✅ FECHAR AGORA É FILHO DIRETO DO OVERLAY (fora do painel transformado) -->
-    <button class="menu-slot menu-close" id="closeMenu" type="button" aria-label="Fechar menu">
-      <span class="hover-gsap" id="closeLabel">FECHAR</span>
-    </button>
-
-    <div class="overlay__panel" role="dialog" aria-modal="true" aria-label="Menu">
-      <div class="overlay__inner">
-
-        <div class="overlay__art" aria-hidden="true">
-          <img class="svg-mark" src="./assets/logo.svg" alt="" />
-        </div>
-
-        <div class="overlay__right">
-          <nav class="overlay__nav" aria-label="Menu">
-            <a class="navlink" href="#sobre" data-text="SOBRE">
-              <span class="navtext hover-gsap">SOBRE</span>
-            </a>
-            <a class="navlink" href="#servicos" data-text="SERVIÇOS">
-              <span class="navtext hover-gsap">SERVIÇOS</span>
-            </a>
-            <a class="navlink" href="#cases" data-text="CASES">
-              <span class="navtext hover-gsap">CASES</span>
-            </a>
-            <a class="navlink" href="#contato" data-text="CONTATO">
-              <span class="navtext hover-gsap">CONTATO</span>
-            </a>
-          </nav>
-
-          <div class="overlay__contact">
-            <div>
-              <div class="kicker">(E-MAIL)</div>
-              <div class="email-row">
-                <a class="email underline" id="emailLink" href="mailto:hello@seudominio.com">
-                  <span class="u">hello@seudominio.com</span>
-                </a>
-
-                <button class="copy-btn" id="copyEmailBtn" type="button" aria-label="Copiar e-mail">
-                  <svg class="copy-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M9 9h10v12H9V9Z" stroke="currentColor" stroke-width="2" />
-                    <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="2" />
-                  </svg>
-                  <span class="sr-only">Copiar</span>
-                </button>
-
-                <span class="copy-toast" id="copyToast">Copiado!</span>
-              </div>
-            </div>
-
-            <div>
-              <div class="kicker">(REDES SOCIAIS)</div>
-
-              <div class="social-grid">
-                <a class="social underline" href="https://instagram.com" target="_blank" rel="noopener">
-                  <span class="u">Instagram</span>
-                  <img class="social-ico" src="./assets/instagram.svg" alt="" aria-hidden="true" />
-                </a>
-
-                <a class="social underline" href="https://linkedin.com" target="_blank" rel="noopener">
-                  <span class="u">LinkedIn</span>
-                  <img class="social-ico" src="./assets/linkedin.svg" alt="" aria-hidden="true" />
-                </a>
-
-                <a class="social underline" href="https://behance.net" target="_blank" rel="noopener">
-                  <span class="u">Behance</span>
-                  <img class="social-ico" src="./assets/behance.svg" alt="" aria-hidden="true" />
-                </a>
-
-                <a class="social underline" href="https://x.com" target="_blank" rel="noopener">
-                  <span class="u">X/Twitter</span>
-                  <img class="social-ico" src="./assets/twitter.svg" alt="" aria-hidden="true" />
-                </a>
-              </div>
-
-              <div class="social-icons" aria-label="Redes sociais (ícones)">
-                <a class="icon-link" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-                  <img src="./assets/instagram.svg" alt="" aria-hidden="true" />
-                </a>
-                <a class="icon-link" href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
-                  <img src="./assets/linkedin.svg" alt="" aria-hidden="true" />
-                </a>
-                <a class="icon-link" href="https://behance.net" target="_blank" rel="noopener" aria-label="Behance">
-                  <img src="./assets/behance.svg" alt="" aria-hidden="true" />
-                </a>
-                <a class="icon-link" href="https://x.com" target="_blank" rel="noopener" aria-label="X/Twitter">
-                  <img src="./assets/twitter.svg" alt="" aria-hidden="true" />
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
+  <!-- Faixa animada -->
+  <div class="footer-ticker" aria-label="Web designer, branding, marketing, design">
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span class="ticker__text">WEB DESIGNER • BRANDING • MARKETING • DESIGN • WEB DESIGNER • BRANDING • MARKETING • DESIGN •</span>
+        <span class="ticker__text" aria-hidden="true">WEB DESIGNER • BRANDING • MARKETING • DESIGN • WEB DESIGNER • BRANDING • MARKETING • DESIGN •</span>
       </div>
     </div>
   </div>
 
-  <main id="topo">
-    <section id="sobre"><h2>Sobre</h2><p>Abra o menu e teste hover.</p></section>
-    <section id="servicos"><h2>Serviços</h2><p>“Serviços” não empurra outros itens.</p></section>
-    <section id="cases"><h2>Cases</h2><p>Conteúdo exemplo.</p></section>
-    <section id="contato"><h2>Contato</h2><p>Conteúdo exemplo.</p></section>
-  </main>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="./assets/brand-mark.png" alt="Brach" />
+      <p class="footer-tagline">Dando visibilidade<br/>ao seu sonho no digital</p>
+    </div>
 
-  <script src="./js/main.js"></script>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col__title">Navegação</div>
+        <nav class="footer-nav" aria-label="Navegação do rodapé">
+          <a class="footer-link underline" href="#topo"><span class="u hover-gsap">Home</span></a>
+          <a class="footer-link underline" href="#sobre"><span class="u hover-gsap">Sobre</span></a>
+          <a class="footer-link underline" href="#servicos"><span class="u hover-gsap">Serviços</span></a>
+          <!-- "Casos" direciona para a seção de trabalhos -->
+          <a class="footer-link underline" href="#trabalhos"><span class="u hover-gsap">Casos</span></a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col__title">Redes Sociais</div>
+        <div class="footer-social">
+          <a class="footer-link underline" href="https://instagram.com" target="_blank" rel="noopener"><span class="u hover-gsap">Instagram</span></a>
+          <a class="footer-link underline" href="https://linkedin.com" target="_blank" rel="noopener"><span class="u hover-gsap">LinkedIn</span></a>
+          <a class="footer-link underline" href="https://x.com" target="_blank" rel="noopener"><span class="u hover-gsap">X (Falecido Twitter)</span></a>
+          <a class="footer-link underline" href="https://behance.net" target="_blank" rel="noopener"><span class="u hover-gsap">Behance</span></a>
+        </div>
+
+        <div class="footer-social-icons" aria-label="Redes sociais (ícones)">
+          <a class="icon-link" aria-label="Instagram" href="https://instagram.com" target="_blank" rel="noopener"><img alt="" aria-hidden="true" src="./assets/instagram.svg"></a>
+          <a class="icon-link" aria-label="LinkedIn" href="https://linkedin.com" target="_blank" rel="noopener"><img alt="" aria-hidden="true" src="./assets/linkedin.svg"></a>
+          <a class="icon-link" aria-label="X" href="https://x.com" target="_blank" rel="noopener"><img alt="" aria-hidden="true" src="./assets/twitter.svg"></a>
+          <a class="icon-link" aria-label="Behance" href="https://behance.net" target="_blank" rel="noopener"><img alt="" aria-hidden="true" src="./assets/behance.svg"></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col__title">Fale conosco</div>
+        <div class="footer-contactlist" aria-label="Contato">
+          <a class="footer-link underline" href="https://wa.me/" target="_blank" rel="noopener">
+            <span class="u hover-gsap">WhatsApp</span>
+          </a>
+          <a class="footer-link underline footer-email" href="mailto:agenciabrach@gmail.com" data-copy-email>
+            <span class="u hover-gsap">agenciabrach@gmail.com</span>
+          </a>
+          <span class="sr-only" id="footerEmailToast" role="status" aria-live="polite" aria-atomic="true"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="./js/main.js"></script>
 </body>
 </html>
