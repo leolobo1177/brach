@@ -1207,7 +1207,8 @@
 
     try{
       const formData = new FormData(form);
-      const response = await fetch(window.location.pathname || '/', {
+      const endpoint = form.getAttribute('action') || '/';
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString()
