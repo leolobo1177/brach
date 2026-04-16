@@ -1,0 +1,474 @@
+﻿<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Overlay Menu - FKScreamer Local + GSAP Weight</title>
+<!-- GSAP -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<!-- Anton (kickers pequenos) -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap" rel="stylesheet"/>
+<!-- Archivo (variable, wght 100..900) -->
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="./css/style.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#topo">Pular para o conteúdo</a>
+<header class="topbar">
+<div class="topbar__inner">
+<a aria-label="Início" class="brand" href="#topo">
+<div aria-hidden="true" class="brand__mark">
+<img alt="" class="brand__logo" src="./assets/brand.png"/>
+</div>
+</a>
+<!-- BOTÃO MENU (slot único) -->
+<button aria-controls="menuPanel" aria-expanded="false" aria-label="Abrir menu" class="menu-slot menu-open" id="openMenu" type="button">
+<span class="hover-gsap" id="menuLabel">MENU</span>
+</button>
+</div>
+</header>
+<div aria-hidden="true" class="overlay" id="overlay">
+<!-- ✅ FECHAR AGORA É FILHO DIRETO DO OVERLAY (fora do painel transformado) -->
+<button aria-label="Fechar menu" class="menu-slot menu-close" id="closeMenu" type="button">
+<span class="hover-gsap" id="closeLabel">FECHAR</span>
+</button>
+<div aria-labelledby="menuTitle" aria-modal="true" class="overlay__panel" id="menuPanel" role="dialog">
+<h2 class="sr-only" id="menuTitle">Menu principal</h2>
+<div class="overlay__inner">
+<div aria-hidden="true" class="overlay__art">
+<img alt="" class="svg-mark" src="./assets/logo.svg"/>
+</div>
+<div class="overlay__right">
+<nav aria-label="Menu" class="overlay__nav">
+<a class="navlink" data-text="SOBRE" href="#sobre">
+<span class="navtext hover-gsap">SOBRE</span>
+</a>
+<a class="navlink" data-text="SERVIÇOS" href="#servicos">
+<span class="navtext hover-gsap">SERVIÇOS</span>
+</a>
+<a class="navlink" data-text="CASOS" href="#trabalhos">
+<span class="navtext hover-gsap">CASOS</span>
+</a>
+<a class="navlink" data-text="CONTATO" href="#contato">
+<span class="navtext hover-gsap">CONTATO</span>
+</a>
+</nav>
+<div class="overlay__contact">
+<div>
+<div class="kicker">(E-MAIL)</div>
+<div class="email-row">
+<a class="email underline" href="mailto:agenciabrach@gmail.com" id="emailLink">
+<span class="u">agenciabrach@gmail.com</span>
+</a>
+<button aria-label="Copiar e-mail" class="copy-btn" id="copyEmailBtn" type="button">
+<svg aria-hidden="true" class="copy-ico" fill="none" viewbox="0 0 24 24">
+<path d="M9 9h10v12H9V9Z" stroke="currentColor" stroke-width="2"></path>
+<path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="2"></path>
+</svg>
+<span class="sr-only">Copiar</span>
+</button>
+<span aria-atomic="true" aria-live="polite" class="copy-toast" id="copyToast" role="status">Copiado!</span>
+</div>
+</div>
+<div>
+<div class="kicker">(REDES SOCIAIS)</div>
+<div class="social-grid">
+<a class="social underline" href="https://instagram.com" rel="noopener" target="_blank">
+<span class="u">Instagram</span>
+<img alt="" aria-hidden="true" class="social-ico" src="./assets/instagram.svg"/>
+</a>
+<a class="social underline" href="https://linkedin.com" rel="noopener" target="_blank">
+<span class="u">LinkedIn</span>
+<img alt="" aria-hidden="true" class="social-ico" src="./assets/linkedin.svg"/>
+</a>
+<a class="social underline" href="https://behance.net" rel="noopener" target="_blank">
+<span class="u">Behance</span>
+<img alt="" aria-hidden="true" class="social-ico" src="./assets/behance.svg"/>
+</a>
+<a class="social underline" href="https://x.com" rel="noopener" target="_blank">
+<span class="u">X/Twitter</span>
+<img alt="" aria-hidden="true" class="social-ico" src="./assets/twitter.svg"/>
+</a>
+</div>
+<div aria-label="Redes sociais (ícones)" class="social-icons">
+<a aria-label="Instagram" class="icon-link" href="https://instagram.com" rel="noopener" target="_blank">
+<img alt="" aria-hidden="true" src="./assets/instagram.svg"/>
+</a>
+<a aria-label="LinkedIn" class="icon-link" href="https://linkedin.com" rel="noopener" target="_blank">
+<img alt="" aria-hidden="true" src="./assets/linkedin.svg"/>
+</a>
+<a aria-label="Behance" class="icon-link" href="https://behance.net" rel="noopener" target="_blank">
+<img alt="" aria-hidden="true" src="./assets/behance.svg"/>
+</a>
+<a aria-label="X/Twitter" class="icon-link" href="https://x.com" rel="noopener" target="_blank">
+<img alt="" aria-hidden="true" src="./assets/twitter.svg"/>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<main id="topo">
+
+<section aria-describedby="heroIntro" aria-labelledby="heroTitle" class="hero-banner">
+  <div class="hero-banner__inner">
+    <div aria-label="Brach" class="hero-banner__brand">
+      <span class="hero-banner__brand-tag hero-reveal">agência</span>
+      <span class="hero-banner__brand-letter">B</span>
+      <span class="hero-banner__brand-letter">R</span>
+      <span class="hero-banner__brand-letter">A</span>
+      <span class="hero-banner__brand-letter">C</span>
+      <span class="hero-banner__brand-letter">H</span>
+    </div>
+
+    <div class="hero-banner__top">
+      <div class="hero-banner__headline-wrap">
+        <h1 class="hero-banner__title" id="heroTitle">
+          <span class="hero-banner__line hero-banner__line--accent hero-reveal">SUA MARCA MERECE MAIS QUE UM LOGO BONITO.</span>
+        </h1>
+      </div>
+    </div>
+
+    <p class="hero-banner__intro sr-only" id="heroIntro">
+      Criamos presença digital para marcas que precisam ser vistas, lembradas e escolhidas. Menos excesso. Mais direção, clareza e força visual para crescer.
+    </p>
+
+    <div class="hero-banner__info">
+      <a aria-label="Quero falar com a Brach" class="hero-banner__cta hero-reveal letter-swap" data-text="QUERO FALAR COM A BRACH" href="#contato"></a>
+
+      <div aria-label="Marcas atendidas pela Brach" class="hero-banner__logos hero-reveal">
+        <div class="hero-banner__logos-track">
+          <div class="hero-banner__logos-group">
+            <img alt="MiláMi Musicalização Infantil" class="hero-banner__logo" src="./assets/hero-logos/frente.png"/>
+            <img alt="Studio de Beleza Giovana Fortunato" class="hero-banner__logo" src="./assets/hero-logos/gi.png"/>
+            <img alt="Ensinarte" class="hero-banner__logo" src="./assets/hero-logos/ensi.png"/>
+          </div>
+          <div aria-hidden="true" class="hero-banner__logos-group">
+            <img alt="" class="hero-banner__logo" src="./assets/hero-logos/frente.png"/>
+            <img alt="" class="hero-banner__logo" src="./assets/hero-logos/gi.png"/>
+            <img alt="" class="hero-banner__logo" src="./assets/hero-logos/ensi.png"/>
+          </div>
+        </div>
+      </div>
+
+      <a aria-label="Descer para a próxima seção" class="hero-banner__scroll hero-reveal" href="#sobre">
+        <span class="hero-banner__scroll-chevron"></span>
+        <span class="hero-banner__scroll-chevron"></span>
+        <span class="hero-banner__scroll-chevron"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="teamTitle" class="parallax-section about-team" id="sobre">
+  <div class="about-team__inner">
+    <header class="about-team__intro about-reveal">
+      <p aria-hidden="true" class="about-team__kicker">SOBRE NÓS</p>
+      <h2 class="about-team__title" id="teamTitle"><span>QUEM ESTÁ POR</span><span>TRÁS DA BRACH</span></h2>
+      <div class="about-team__copy">
+        <p>A Brach existe para dar visibilidade a marcas que querem crescer no digital com mais clareza, presença e direção. Unimos <strong>branding</strong>, <strong>design</strong> e <strong>performance</strong> para transformar ideias em marcas mais percebidas, mais lembradas e mais preparadas para vender.</p>
+      </div>
+    </header>
+
+    <div class="about-team__people" role="list" aria-label="Membros da equipe">
+      <article class="about-person about-reveal" role="listitem">
+        <div class="about-person__media">
+          <img src="assets/leo.png" alt="Leonardo Lobo, fundador e designer" loading="lazy" decoding="async">
+        </div>
+        <div class="about-person__content">
+          <h3 class="about-person__name">LEONARDO LOBO</h3>
+          <p class="about-person__role">Fundador | Designer</p>
+          <p class="about-person__bio">Designer com olhar estratégico e repertório técnico para transformar ideias em experiências visuais consistentes, funcionais e relevantes para o crescimento da marca.</p>
+          <a class="about-person__link footer-link underline" href="https://www.linkedin.com/in/leonardolobo117/" target="_blank" rel="noopener noreferrer"><span class="u hover-gsap" data-text="Linkedin">Linkedin</span></a>
+        </div>
+      </article>
+
+      <article class="about-person about-reveal" role="listitem">
+        <div class="about-person__media">
+          <img src="assets/amanda.png" alt="Amanda Fortunato, fundadora e responsável por marketing" loading="lazy" decoding="async">
+        </div>
+        <div class="about-person__content">
+          <h3 class="about-person__name">AMANDA FORTUNATO</h3>
+          <p class="about-person__role">Fundadora | Marketing</p>
+          <p class="about-person__bio">Profissional voltada para posicionamento, estratégia e comunicação, conectando análise e sensibilidade criativa para gerar presença digital com propósito e resultado.</p>
+          <a class="about-person__link footer-link underline" href="https://www.linkedin.com/in/amanda-fortunato/" target="_blank" rel="noopener noreferrer"><span class="u hover-gsap" data-text="Linkedin">Linkedin</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="parallax-section" id="servicos"><h2>Serviços</h2><p>“Serviços” não empurra outros itens.</p></section>
+<section aria-labelledby="servicesTitle" class="services-section">
+  <div class="services-shell">
+    <div class="services-head service-reveal">
+      <p class="services-kicker">O QUE ENTREGAMOS</p>
+      <div class="services-heading">
+        <h2 class="services-title" id="servicesTitle">SERVI&Ccedil;OS</h2>
+        <div class="services-copyblock">
+          <p class="services-subtitle">Marcas com presenca,<br>consistencia e conversao.</p>
+          <p class="services-copy">
+            Escolha a categoria e veja duas formas de entrega: um pacote Basico para estruturar a marca e um pacote Full para escalar com mais profundidade criativa e comercial.
+          </p>
+        </div>
+      </div>
+      <div aria-label="Categorias de servico" class="services-tabs" role="tablist">
+        <button aria-controls="servicesPanel" aria-selected="true" class="services-tab is-active" data-service-tab="branding" id="serviceTab-branding" role="tab" type="button">Branding Marca</button>
+        <button aria-controls="servicesPanel" aria-selected="false" class="services-tab" data-service-tab="social" id="serviceTab-social" role="tab" type="button">Social Midia</button>
+        <button aria-controls="servicesPanel" aria-selected="false" class="services-tab" data-service-tab="web" id="serviceTab-web" role="tab" type="button">Web</button>
+      </div>
+    </div>
+
+    <div aria-labelledby="servicesTitle" class="services-stage" id="servicesPanel" role="tabpanel">
+      <div class="services-stage__glow" aria-hidden="true"></div>
+      <div class="services-packages" data-services-packages>
+        <article class="service-package service-package--basic service-reveal" data-service-card="basic">
+          <div class="service-package__meta">
+            <span class="service-package__index" data-service-order>01</span>
+            <span class="service-package__tier">Servico Basico</span>
+          </div>
+          <span class="service-package__category" data-service-category-label>Branding Marca</span>
+          <h3 class="service-package__title" data-service-title>Essencial</h3>
+          <p class="service-package__copy" data-service-copy>Base visual para organizar a presenca da marca com clareza e unidade.</p>
+          <ul class="service-package__list" data-service-list></ul>
+          <p class="service-package__foot" data-service-foot></p>
+        </article>
+
+        <article class="service-package service-package--full service-reveal" data-service-card="full">
+          <div class="service-package__meta">
+            <span class="service-package__index" data-service-order>02</span>
+            <span class="service-package__tier">Servico Full</span>
+          </div>
+          <span class="service-package__category" data-service-category-label>Branding Marca</span>
+          <h3 class="service-package__title" data-service-title>Completo</h3>
+          <p class="service-package__copy" data-service-copy>Sistema visual mais robusto para crescer com consistencia em todos os pontos de contato.</p>
+          <ul class="service-package__list" data-service-list></ul>
+          <p class="service-package__foot" data-service-foot></p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+<section aria-labelledby="bridgeTitle" class="brand-bridge">
+  <div class="brand-bridge__inner">
+    <div class="brand-bridge__sticky">
+      <p class="brand-bridge__kicker">ENTRE PRESENCA E RESULTADO</p>
+      <h2 class="brand-bridge__title" id="bridgeTitle">
+        <span class="brand-bridge__line brand-bridge__line--cream">DO CORRE A CONQUISTA</span>
+        <span class="brand-bridge__line brand-bridge__line--light">FAZEMOS SUA MARCA CRESCER ONLINE</span>
+      </h2>
+      <p class="brand-bridge__copy">
+        Acreditamos que branding vai muito alem do visual: e construir relevancia duradoura, criar conexao real e transformar presenca em crescimento consistente.
+      </p>
+    </div>
+  </div>
+</section>
+<section aria-labelledby="trabalhosTitle" class="cases-section" id="trabalhos">
+<div class="cases-wrap">
+<h2 class="cases-title" id="trabalhosTitle">Cases de sucesso</h2>
+<ul class="cases-list" role="list">
+<li class="case-row">
+<a aria-describedby="caseHint" class="case-link" data-preview="./assets/cases/giovana.png" data-title="Studio de Beleza Giovana Fortunato" href="https://www.behance.net/gallery/241321265/Studio-Giovana-Fortunato" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true" class="case-thumb">
+<img alt="" class="case-thumb__img">
+</img></span>
+<span class="case-text">
+<span class="case-name case-name--nowrap">Studio de Beleza Giovana Fortunato</span>
+<span class="case-meta">Identidade • Conteúdo</span>
+</span>
+</a>
+</li>
+<li class="case-row">
+<a aria-describedby="caseHint" class="case-link" data-preview="./assets/cases/milami.png" data-title="MiláMi musicalização infantil" href="#">
+<span aria-hidden="true" class="case-thumb">
+<img alt="" class="case-thumb__img"/>
+</span>
+<span class="case-text">
+<span class="case-name">MiláMi musicalização infantil</span>
+<span class="case-meta">Brand Marca • Educação</span>
+</span>
+</a>
+</li>
+<li class="case-row">
+<a aria-describedby="caseHint" class="case-link" data-preview="./assets/cases/ensinarte.png" data-title="Ensinarte" href="#">
+<span aria-hidden="true" class="case-thumb">
+<img alt="" class="case-thumb__img"/>
+</span>
+<span class="case-text">
+<span class="case-name">Ensinarte</span>
+<span class="case-meta">Brand Marca • Educação</span>
+</span>
+</a>
+</li>
+<li class="case-row">
+<a aria-describedby="caseHint" class="case-link" data-preview="./assets/cases/milami.png" data-title="Landing Page Musicalização infantil" href="#">
+<span aria-hidden="true" class="case-thumb">
+<img alt="" class="case-thumb__img"/>
+</span>
+<span class="case-text">
+<span class="case-name">Landing Page Musicalização infantil</span>
+<span class="case-meta">Web • Educação</span>
+</span>
+</a>
+</li>
+</ul>
+<p class="sr-only" id="caseHint">
+          Passe o mouse ou use Tab para ver uma prévia do projeto. Pressione Enter para abrir quando a página do trabalho estiver disponível.
+        </p>
+<div aria-hidden="true" class="case-preview">
+<div class="case-preview__frame"><div aria-hidden="true" class="case-preview__viewport">
+<img alt="" class="case-preview__img case-preview__img--a" src=""/>
+<img alt="" class="case-preview__img case-preview__img--b" src=""/>
+</div></div>
+</div>
+<div aria-atomic="true" aria-live="polite" class="sr-only" id="caseLive" role="status"></div>
+</div>
+</section>
+
+<section aria-labelledby="postCasesTitle" class="brand-bridge brand-bridge--postcases">
+  <div class="brand-bridge__inner">
+    <div class="brand-bridge__sticky">
+      <h2 class="brand-bridge__title" id="postCasesTitle">
+        <span class="brand-bridge__line brand-bridge__line--light">CADA PROJETO QUE REALIZAMOS</span>
+        <span class="brand-bridge__line brand-bridge__line--cream">&Eacute; UMA OPORTUNIDADE &Uacute;NICA</span>
+      </h2>
+      <p class="brand-bridge__copy">
+        Pronto para dar o proximo passo? Junte-se a nos agora e comece a transformar sua visao em realidade com suporte especializado.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contato" aria-labelledby="contactTitle">
+  <div class="contact-wrap">
+    <div class="contact-copy">
+      <p class="contact-kicker">Fale conosco</p>
+      <h2 class="contact-title" id="contactTitle"><span>BORA CRIAR</span><span>SUA MARCA</span></h2>
+      <p class="contact-lead">
+        Conte sua ideia no formulario ou envie um e-mail para
+        <a class="contact-email-link" href="mailto:agenciabrach@gmail.com">agenciabrach@gmail.com</a>.
+      </p>
+    </div>
+
+    <div class="contact-card">
+      <p class="contact-feedback contact-feedback--success" id="contato-enviado" tabindex="-1">
+        Mensagem enviada. Em breve retornamos.
+      </p>
+      <p class="contact-feedback contact-feedback--error" id="contato-erro" tabindex="-1">
+        Nao foi possivel enviar agora. Tente novamente em alguns instantes ou use o e-mail acima.
+      </p>
+      <p class="contact-feedback contact-feedback--error" id="contato-invalido" tabindex="-1">
+        Revise nome, e-mail e mensagem antes de enviar.
+      </p>
+
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="website">
+        <input type="hidden" name="form-name" value="contact">
+        <div class="contact-hp" aria-hidden="true">
+          <label for="contato-website">Website</label>
+          <input id="contato-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="contact-row">
+          <label class="sr-only" for="contato-nome">Nome</label>
+          <input id="contato-nome" name="nome" type="text" placeholder="Deixe seu nome" autocomplete="name" minlength="2" maxlength="120" required>
+
+          <label class="sr-only" for="contato-email">E-mail</label>
+          <input id="contato-email" name="email" type="email" placeholder="Deixe seu e-mail" autocomplete="email" maxlength="160" required>
+        </div>
+
+        <label class="sr-only" for="contato-mensagem">Mensagem</label>
+        <textarea id="contato-mensagem" name="mensagem" placeholder="Deixe sua mensagem" minlength="10" maxlength="3000" required></textarea>
+
+        <div class="contact-meta">
+          <p class="contact-terms">
+            Ao enviar, você concorda com nossos
+            <button type="button" class="policy-link" data-modal="terms">Termos de uso</button>
+            e
+            <button type="button" class="policy-link" data-modal="privacy">Políticas de Privacidade</button>
+          </p>
+
+          <button class="contact-submit" type="submit">
+            <span class="contact-submit__label">Enviar Mensagem</span>
+            <span class="contact-submit__arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="policy-modal" id="policyModal" aria-hidden="true">
+  <div class="policy-modal__backdrop" data-close-modal></div>
+  <div class="policy-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="policyModalTitle">
+    <button type="button" class="policy-modal__close" aria-label="Fechar" data-close-modal>×</button>
+    <h3 class="policy-modal__title" id="policyModalTitle">Termos</h3>
+    <div class="policy-modal__body" id="policyModalBody"></div>
+  </div>
+</div>
+
+</main>
+<footer aria-labelledby="footerTitle" class="site-footer">
+<h2 class="sr-only" id="footerTitle">Rodapé</h2>
+<!-- Faixa animada -->
+<div aria-label="Web designer, branding, marketing, design" class="footer-ticker">
+<div aria-hidden="true" class="ticker">
+<div class="ticker__track">
+<span class="ticker__text">WEB DESIGNER • BRANDING • MARKETING • DESIGN • WEB DESIGNER • BRANDING • MARKETING • DESIGN •</span>
+<span aria-hidden="true" class="ticker__text">WEB DESIGNER • BRANDING • MARKETING • DESIGN • WEB DESIGNER • BRANDING • MARKETING • DESIGN •</span>
+</div>
+</div>
+</div>
+<div class="footer-inner">
+<div class="footer-brand">
+<img alt="Brach" class="footer-logo" src="./assets/brand-mark.png"/>
+<p class="footer-tagline">Dando visibilidade<br/>ao seu sonho no digital</p>
+</div>
+<div class="footer-cols">
+<div class="footer-col">
+<div class="footer-col__title">Navegação</div>
+<nav aria-label="Navegação do rodapé" class="footer-nav">
+<a class="footer-link underline" href="#topo"><span class="u hover-gsap" data-text="Home">Home</span></a>
+<a class="footer-link underline" href="#sobre"><span class="u hover-gsap" data-text="Sobre">Sobre</span></a>
+<a class="footer-link underline" href="#servicos"><span class="u hover-gsap" data-text="Serviços">Serviços</span></a>
+<!-- "Casos" direciona para a seção de trabalhos -->
+<a class="footer-link underline" href="#trabalhos"><span class="u hover-gsap" data-text="Casos">Casos</span></a>
+</nav>
+</div>
+<div class="footer-col">
+<div class="footer-col__title">Redes Sociais</div>
+<div class="footer-social">
+<a class="footer-link underline" href="https://instagram.com" rel="noopener" target="_blank"><span class="u hover-gsap" data-text="Instagram">Instagram</span></a>
+<a class="footer-link underline" href="https://linkedin.com" rel="noopener" target="_blank"><span class="u hover-gsap" data-text="LinkedIn">LinkedIn</span></a>
+<a class="footer-link underline" href="https://x.com" rel="noopener" target="_blank"><span class="u hover-gsap" data-text="X (Falecido Twitter)">X (Falecido Twitter)</span></a>
+<a class="footer-link underline" href="https://behance.net" rel="noopener" target="_blank"><span class="u hover-gsap" data-text="Behance">Behance</span></a>
+</div>
+<div aria-label="Redes sociais (ícones)" class="footer-social-icons">
+<a aria-label="Instagram" class="icon-link" href="https://instagram.com" rel="noopener" target="_blank"><img alt="" aria-hidden="true" src="./assets/instagram.svg"/></a>
+<a aria-label="LinkedIn" class="icon-link" href="https://linkedin.com" rel="noopener" target="_blank"><img alt="" aria-hidden="true" src="./assets/linkedin.svg"/></a>
+<a aria-label="X" class="icon-link" href="https://x.com" rel="noopener" target="_blank"><img alt="" aria-hidden="true" src="./assets/twitter.svg"/></a>
+<a aria-label="Behance" class="icon-link" href="https://behance.net" rel="noopener" target="_blank"><img alt="" aria-hidden="true" src="./assets/behance.svg"/></a>
+</div>
+</div>
+<div class="footer-col">
+<div class="footer-col__title">Fale conosco</div>
+<div aria-label="Contato" class="footer-contactlist">
+<a class="footer-link underline" href="#contato">
+<span class="u hover-gsap" data-text="Formulario">Formulario</span>
+</a>
+<a class="footer-link underline footer-email" data-copy-email="" href="mailto:agenciabrach@gmail.com">
+<span class="u hover-gsap" data-text="agenciabrach@gmail.com">agenciabrach@gmail.com</span>
+</a>
+<span aria-atomic="true" aria-live="polite" class="sr-only" id="footerEmailToast" role="status"></span>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="./js/main.js"></script>
+</body>
+</html>
+

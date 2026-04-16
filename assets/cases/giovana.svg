@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#FFF6D6"/>
+  <rect x="24" y="24" width="752" height="452" fill="none" stroke="#07104F" stroke-width="8"/>
+  <text x="60" y="150" font-family="Archivo, Arial, sans-serif" font-size="54" fill="#07104F" font-weight="700">Studio de Beleza Giovana Fortunato</text>
+  <text x="60" y="220" font-family="Archivo, Arial, sans-serif" font-size="22" fill="#07104F" opacity="0.75">Prévia (placeholder)</text>
+</svg>
