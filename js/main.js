@@ -343,7 +343,7 @@
       const emailText = (emailLink?.innerText || "").trim();
       if(!emailText) return;
       const copied = await writeToClipboard(emailText);
-      showCopyToast(copied ? "Copiado!" : "Nao foi possivel copiar.");
+      showCopyToast(copied ? "Copiado!" : "Não foi possível copiar.");
       return;
 
       try{
@@ -377,7 +377,7 @@
         e.preventDefault();
         const copied = await writeToClipboard(email);
         if(footerEmailToast){
-          footerEmailToast.textContent = copied ? 'Email copiado!' : 'Nao foi possivel copiar.';
+          footerEmailToast.textContent = copied ? 'E-mail copiado!' : 'Não foi possível copiar.';
           window.clearTimeout(footerToastTimer);
           footerToastTimer = window.setTimeout(() => {
             footerEmailToast.textContent = '';
@@ -756,12 +756,12 @@
         order: '01',
         category: 'Branding Marca',
         title: 'Essencial',
-        copy: 'Base visual para organizar a marca, alinhar a presenca e transmitir mais profissionalismo desde o primeiro contato.',
+        copy: 'Base visual para organizar a marca, alinhar a presença e transmitir mais profissionalismo desde o primeiro contato.',
         items: [
-          'Logo principal e variacoes para diferentes usos',
-          'Paleta, tipografia base e direcao visual inicial',
+          'Logo principal e variações para diferentes usos',
+          'Paleta, tipografia base e direção visual inicial',
           'Elementos de apoio para redes e materiais digitais',
-          'Arquivos organizados para aplicacao do dia a dia'
+          'Arquivos organizados para aplicação do dia a dia'
         ],
         foot: 'Uma estrutura enxuta para tirar a marca do improviso.'
       },
@@ -769,42 +769,42 @@
         order: '02',
         category: 'Branding Marca',
         title: 'Completo',
-        copy: 'Sistema visual mais robusto para marcas que precisam crescer com unidade, memorabilidade e consistencia em todos os pontos.',
+        copy: 'Sistema visual mais robusto para marcas que precisam crescer com unidade, memorabilidade e consistência em todos os pontos.',
         items: [
-          'Logo, simbolo e assinaturas complementares',
-          'Paleta, tipografia e sistema grafico mais profundo',
-          'Manual base com orientacoes de aplicacao da marca',
-          'Templates iniciais para social media e pecas de apoio'
+          'Logo, símbolo e assinaturas complementares',
+          'Paleta, tipografia e sistema gráfico mais profundo',
+          'Manual base com orientações de aplicação da marca',
+          'Templates iniciais para social media e peças de apoio'
         ],
-        foot: 'Pensado para consolidar presenca e sustentar expansao.'
+        foot: 'Pensado para consolidar presença e sustentar expansão.'
       }
     },
     social: {
       basic: {
         order: '01',
-        category: 'Social Midia',
+        category: 'Social Mídia',
         title: 'Essencial',
-        copy: 'Pacote base para manter a marca ativa com frequencia, identidade visual alinhada e uma comunicacao mais clara no dia a dia.',
+        copy: 'Pacote base para manter a marca ativa com frequência, identidade visual alinhada e uma comunicação mais clara no dia a dia.',
         items: [
-          'Calendario editorial base para organizar os temas',
-          'Direcao visual para feed, stories e pecas recorrentes',
-          'Conteudos pensados para constancia e reconhecimento',
-          'Linha de publicacao mais coerente com o posicionamento'
+          'Calendário editorial base para organizar os temas',
+          'Direção visual para feed, stories e peças recorrentes',
+          'Conteúdos pensados para constância e reconhecimento',
+          'Linha de publicação mais coerente com o posicionamento'
         ],
-        foot: 'Ideal para fortalecer a rotina de conteudo com clareza.'
+        foot: 'Ideal para fortalecer a rotina de conteúdo com clareza.'
       },
       full: {
         order: '02',
-        category: 'Social Midia',
+        category: 'Social Mídia',
         title: 'Completo',
-        copy: 'Entrega mais completa para marcas que querem unir frequencia, criacao estrategica e conteudo com foco mais forte em relacionamento e conversao.',
+        copy: 'Entrega mais completa para marcas que querem unir frequência, criação estratégica e conteúdo com foco mais forte em relacionamento e conversão.',
         items: [
-          'Planejamento estrategico de conteudo e campanhas',
-          'Direcao criativa para formatos, quadros e lancamentos',
-          'Calendario aprofundado com narrativa mais inteligente',
-          'Pecas voltadas para alcance, autoridade e vendas'
+          'Planejamento estratégico de conteúdo e campanhas',
+          'Direção criativa para formatos, quadros e lançamentos',
+          'Calendário aprofundado com narrativa mais inteligente',
+          'Peças voltadas para alcance, autoridade e vendas'
         ],
-        foot: 'Para ganhar intensidade, consistencia e mais impacto comercial.'
+        foot: 'Para ganhar intensidade, consistência e mais impacto comercial.'
       }
     },
     web: {
@@ -814,25 +814,25 @@
         title: 'Essencial',
         copy: 'Landing page objetiva para apresentar a oferta com clareza, leitura fluida e base pronta para campanhas mais diretas.',
         items: [
-          'Estrutura estrategica e objetiva da pagina',
+          'Estrutura estratégica e objetiva da página',
           'Design responsivo com hierarquia clara de leitura',
           'Blocos essenciais para oferta, prova e CTA',
           'Base pronta para validar campanhas com rapidez'
         ],
-        foot: 'Boa para lancar ofertas e testar conversao com agilidade.'
+        foot: 'Boa para lançar ofertas e testar conversão com agilidade.'
       },
       full: {
         order: '02',
         category: 'Web',
         title: 'Completo',
-        copy: 'Pagina mais completa, com ritmo visual, narrativa de venda e construcao pensada para sustentar campanhas com mais ambicao.',
+        copy: 'Página mais completa, com ritmo visual, narrativa de venda e construção pensada para sustentar campanhas com mais ambição.',
         items: [
           'Arquitetura completa da oferta com argumentos de venda',
-          'Blocos de prova, objecoes, CTA e apoio comercial',
-          'Direcao visual polida para fortalecer percepcao de valor',
-          'Experiencia desenhada para campanha, captura e vendas'
+          'Blocos de prova, objeções, CTA e apoio comercial',
+          'Direção visual polida para fortalecer a percepção de valor',
+          'Experiência desenhada para campanha, captura e vendas'
         ],
-        foot: 'Feita para campanhas mais fortes e uma percepcao mais premium.'
+        foot: 'Feita para campanhas mais fortes e uma percepção mais premium.'
       }
     }
   };

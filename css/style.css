@@ -2209,6 +2209,7 @@ main > section > h2:not(.cases-title){
   color: #fff;
   opacity: 1;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .footer-nav,
@@ -2260,10 +2261,7 @@ main > section > h2:not(.cases-title){
   /* Logo e texto alinhados e centralizados na largura do logo */
   .footer-logo{ width: min(240px, 62vw); }
   .footer-tagline{
-    width: min(240px, 62vw);
-    max-width: none;
-    text-align: center;
-    margin-top: 10px;
+    display: none;
   }
   /* sem CTA abaixo do logo */
 
@@ -2278,6 +2276,11 @@ main > section > h2:not(.cases-title){
     font-size: 22px;
     opacity: 1;
     margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .footer-col{
+    text-align: center;
   }
 
   /* Links aparecem (maiores) */
