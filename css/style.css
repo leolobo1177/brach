@@ -958,19 +958,21 @@
 
 @media (max-width: 760px){
   .hero-banner{
-    min-height:auto;
-    padding:8px 0 18px;
+    min-height:100svh;
+    padding:18px 0 18px;
   }
   .hero-banner__inner{
-    width:min(100%, calc(100% - 28px));
-    gap:14px;
-    min-height:auto;
+    width:100%;
+    gap:18px;
+    min-height:calc(100svh - 36px);
+    justify-content:space-between;
+    padding-inline:10px;
   }
   .hero-banner__top{
     gap:0;
   }
   .hero-banner__headline-wrap{
-    width:min(100%, 420px);
+    width:100%;
     display:flex;
     justify-content:center;
     padding-inline:12px;
@@ -979,43 +981,59 @@
     align-items:center;
   }
   .hero-banner__line{
-    font-size:clamp(17px, 4.45vw, 21px);
+    font-size:clamp(17px, 4.9vw, 22px);
     line-height:.92;
     letter-spacing:-.02em;
   }
   .hero-banner__info{
-    width:min(100%, 392px);
+    width:100%;
+    max-width:100%;
     align-items:center;
-    gap:16px;
+    gap:18px;
   }
   .hero-banner__intro{
     display:none;
   }
   .hero-banner__logos{
-    width:min(100%, 372px);
+    width:100%;
     padding-bottom:0;
-    margin-top:6px;
+    margin-top:8px;
+    overflow:visible;
+    -webkit-mask-image:none;
+    mask-image:none;
+  }
+  .hero-banner__logos-track{
+    width:100%;
+    justify-content:space-between;
+    animation:none;
   }
   .hero-banner__logos-group{
-    gap:22px;
-    padding-right:22px;
+    width:100%;
+    justify-content:space-between;
+    gap:14px;
+    padding-right:0;
+  }
+  .hero-banner__logos-group[aria-hidden="true"]{
+    display:none;
   }
   .hero-banner__logo{
-    height:clamp(40px, 11vw, 58px);
+    height:clamp(48px, 12vw, 72px);
+    max-width:31%;
   }
   .hero-banner__brand{
-    width:min(100%, 392px);
-    column-gap:clamp(2px, .4vw, 8px);
-    row-gap:6px;
-    padding-inline:12px;
+    width:100%;
+    column-gap:clamp(2px, .35vw, 7px);
+    row-gap:8px;
+    padding-inline:0;
   }
   .hero-banner__brand-tag{
-    margin-left:2px;
-    font-size:10px;
-    letter-spacing:.16em;
+    justify-self:center;
+    margin-left:0;
+    font-size:11px;
+    letter-spacing:.14em;
   }
   .hero-banner__brand-letter{
-    font-size:clamp(98px, 25.5vw, 168px);
+    font-size:clamp(112px, 28.5vw, 182px);
     line-height:.9;
   }
   .hero-banner__cta{
@@ -1025,6 +1043,9 @@
   }
   .letter-swap__glyph{
     font-size:clamp(15px, 3.8vw, 17px);
+  }
+  .hero-banner__scroll{
+    margin-top:auto;
   }
 }
 
