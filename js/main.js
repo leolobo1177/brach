@@ -742,6 +742,7 @@
   const cards = Array.from(section.querySelectorAll('.service-package[data-service-card]'));
   const tabs = Array.from(section.querySelectorAll('.services-tab[data-service-tab]'));
   const revealItems = Array.from(section.querySelectorAll('.service-reveal'));
+  const mobileCardsQuery = window.matchMedia ? window.matchMedia('(max-width: 900px)') : { matches: false };
   const glow = section.querySelector('.services-stage__glow');
   const head = section.querySelector('.services-head');
   if(!cards.length || !tabs.length) return;
@@ -837,6 +838,93 @@
     }
   };
 
+  const normalizedServicesData = {
+    branding: {
+      basic: {
+        order: '01',
+        category: 'Branding Marca',
+        title: 'Essencial',
+        copy: 'Base visual para organizar a marca, alinhar a presença e transmitir mais profissionalismo desde o primeiro contato.',
+        items: [
+          'Logo principal e variações para diferentes usos',
+          'Paleta, tipografia base e direção visual inicial',
+          'Elementos de apoio para redes e materiais digitais',
+          'Arquivos organizados para aplicação do dia a dia'
+        ],
+        foot: 'Uma estrutura enxuta para tirar a marca do improviso.'
+      },
+      full: {
+        order: '02',
+        category: 'Branding Marca',
+        title: 'Completo',
+        copy: 'Sistema visual mais robusto para marcas que precisam crescer com unidade, memorabilidade e consistência em todos os pontos.',
+        items: [
+          'Logo, símbolo e assinaturas complementares',
+          'Paleta, tipografia e sistema gráfico mais profundo',
+          'Manual base com orientações de aplicação da marca',
+          'Templates iniciais para social media e peças de apoio'
+        ],
+        foot: 'Pensado para consolidar presença e sustentar expansão.'
+      }
+    },
+    social: {
+      basic: {
+        order: '01',
+        category: 'Social Mídia',
+        title: 'Essencial',
+        copy: 'Pacote base para manter a marca ativa com frequência, identidade visual alinhada e uma comunicação mais clara no dia a dia.',
+        items: [
+          'Calendário editorial base para organizar os temas',
+          'Direção visual para feed, stories e peças recorrentes',
+          'Conteúdos pensados para constância e reconhecimento',
+          'Linha de publicação mais coerente com o posicionamento'
+        ],
+        foot: 'Ideal para fortalecer a rotina de conteúdo com clareza.'
+      },
+      full: {
+        order: '02',
+        category: 'Social Mídia',
+        title: 'Completo',
+        copy: 'Entrega mais completa para marcas que querem unir frequência, criação estratégica e conteúdo com foco mais forte em relacionamento e conversão.',
+        items: [
+          'Planejamento estratégico de conteúdo e campanhas',
+          'Direção criativa para formatos, quadros e lançamentos',
+          'Calendário aprofundado com narrativa mais inteligente',
+          'Peças voltadas para alcance, autoridade e vendas'
+        ],
+        foot: 'Para ganhar intensidade, consistência e mais impacto comercial.'
+      }
+    },
+    web: {
+      basic: {
+        order: '01',
+        category: 'Web',
+        title: 'Essencial',
+        copy: 'Landing page objetiva para apresentar a oferta com clareza, leitura fluida e base pronta para campanhas mais diretas.',
+        items: [
+          'Estrutura estratégica e objetiva da página',
+          'Design responsivo com hierarquia clara de leitura',
+          'Blocos essenciais para oferta, prova e CTA',
+          'Base pronta para validar campanhas com rapidez'
+        ],
+        foot: 'Boa para lançar ofertas e testar conversão com agilidade.'
+      },
+      full: {
+        order: '02',
+        category: 'Web',
+        title: 'Completo',
+        copy: 'Página mais completa, com ritmo visual, narrativa de venda e estrutura pensada para sustentar campanhas com mais ambição.',
+        items: [
+          'Arquitetura completa da oferta com argumentos de venda',
+          'Blocos de prova, objeções, CTA e apoio comercial',
+          'Direção visual polida para fortalecer a percepção de valor',
+          'Experiência desenhada para campanha, captura e vendas'
+        ],
+        foot: 'Feita para campanhas mais fortes e com uma percepção mais premium.'
+      }
+    }
+  };
+
   function createListItems(list, items){
     list.innerHTML = '';
     const fragment = document.createDocumentFragment();
@@ -874,7 +962,7 @@
   }
 
   function fillCards(key){
-    const current = servicesData[key];
+    const current = normalizedServicesData[key];
     if(!current) return;
 
     cards.forEach((card) => {
@@ -884,10 +972,30 @@
     });
   }
 
+  function syncCardExpansion(){
+    const isMobile = mobileCardsQuery.matches;
+
+    cards.forEach((card) => {
+      const toggle = card.querySelector('.service-package__toggle');
+      if(!toggle) return;
+
+      if(!isMobile){
+        card.dataset.expanded = 'true';
+        card.classList.add('is-expanded');
+        toggle.setAttribute('aria-expanded', 'true');
+        return;
+      }
+
+      const expanded = card.dataset.expanded === 'true';
+      card.classList.toggle('is-expanded', expanded);
+      toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    });
+  }
+
   function getCardMotionTargets(){
     return cards.flatMap((card) => {
       const targets = [
-        card.querySelector('.service-package__meta'),
+        card.querySelector('.service-package__toggle'),
         card.querySelector('[data-service-category-label]'),
         card.querySelector('[data-service-title]'),
         card.querySelector('[data-service-copy]'),
@@ -919,13 +1027,17 @@
   let swapTimeline = null;
 
   function applyCategory(key, immediate = false){
-    if(!servicesData[key]) return;
+    if(!normalizedServicesData[key]) return;
     activeKey = key;
     setActiveTab(key);
     const headTopBeforeSwap = head ? head.getBoundingClientRect().top : null;
 
     if(immediate){
       fillCards(key);
+      cards.forEach((card) => {
+        card.dataset.expanded = mobileCardsQuery.matches ? 'false' : 'true';
+      });
+      syncCardExpansion();
       if(reduceMotion || !hasGsap || !hasScrollTrigger){
         cards.forEach((card) => card.classList.add('is-visible'));
       }
@@ -934,6 +1046,10 @@
 
     if(reduceMotion || !hasGsap){
       fillCards(key);
+      cards.forEach((card) => {
+        card.dataset.expanded = mobileCardsQuery.matches ? 'false' : 'true';
+      });
+      syncCardExpansion();
       cards.forEach((card) => card.classList.add('is-visible'));
       return;
     }
@@ -977,6 +1093,10 @@
 
     swapTimeline.add(() => {
       fillCards(key);
+      cards.forEach((card) => {
+        card.dataset.expanded = mobileCardsQuery.matches ? 'false' : 'true';
+      });
+      syncCardExpansion();
       gsap.set(cards, {
         autoAlpha: 0.22,
         y: 20,
@@ -1036,6 +1156,26 @@
       applyCategory(tabs[nextIndex].dataset.serviceTab);
     });
   });
+
+  cards.forEach((card) => {
+    const toggle = card.querySelector('.service-package__toggle');
+    if(!toggle) return;
+
+    card.dataset.expanded = mobileCardsQuery.matches ? 'false' : 'true';
+
+    toggle.addEventListener('click', () => {
+      if(!mobileCardsQuery.matches) return;
+      const expanded = card.dataset.expanded === 'true';
+      card.dataset.expanded = expanded ? 'false' : 'true';
+      syncCardExpansion();
+    });
+  });
+
+  if(typeof mobileCardsQuery.addEventListener === 'function'){
+    mobileCardsQuery.addEventListener('change', syncCardExpansion);
+  }else if(typeof mobileCardsQuery.addListener === 'function'){
+    mobileCardsQuery.addListener(syncCardExpansion);
+  }
 
   if(reduceMotion){
     revealItems.forEach((el) => el.classList.add('is-visible'));

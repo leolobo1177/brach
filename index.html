@@ -227,27 +227,37 @@
       <div class="services-stage__glow" aria-hidden="true"></div>
       <div class="services-packages" data-services-packages>
         <article class="service-package service-package--basic service-reveal" data-service-card="basic">
-          <div class="service-package__meta">
-            <span class="service-package__index" data-service-order>01</span>
-            <span class="service-package__tier">Serviço Básico</span>
+          <button class="service-package__toggle" type="button" aria-expanded="true" aria-controls="service-package-basic-body">
+            <div class="service-package__meta">
+              <span class="service-package__index" data-service-order>01</span>
+              <span class="service-package__tier">Serviço Básico</span>
+            </div>
+            <span class="service-package__toggle-icon" aria-hidden="true"></span>
+          </button>
+          <div class="service-package__body" id="service-package-basic-body">
+            <span class="service-package__category" data-service-category-label>Branding Marca</span>
+            <h3 class="service-package__title" data-service-title>Essencial</h3>
+            <p class="service-package__copy" data-service-copy>Base visual para organizar a marca, alinhar a presença e transmitir mais profissionalismo desde o primeiro contato.</p>
+            <ul class="service-package__list" data-service-list></ul>
+            <p class="service-package__foot" data-service-foot></p>
           </div>
-          <span class="service-package__category" data-service-category-label>Branding Marca</span>
-          <h3 class="service-package__title" data-service-title>Essencial</h3>
-          <p class="service-package__copy" data-service-copy>Base visual para organizar a presença da marca com clareza e unidade.</p>
-          <ul class="service-package__list" data-service-list></ul>
-          <p class="service-package__foot" data-service-foot></p>
         </article>
 
         <article class="service-package service-package--full service-reveal" data-service-card="full">
-          <div class="service-package__meta">
-            <span class="service-package__index" data-service-order>02</span>
-            <span class="service-package__tier">Serviço Full</span>
+          <button class="service-package__toggle" type="button" aria-expanded="true" aria-controls="service-package-full-body">
+            <div class="service-package__meta">
+              <span class="service-package__index" data-service-order>02</span>
+              <span class="service-package__tier">Serviço Full</span>
+            </div>
+            <span class="service-package__toggle-icon" aria-hidden="true"></span>
+          </button>
+          <div class="service-package__body" id="service-package-full-body">
+            <span class="service-package__category" data-service-category-label>Branding Marca</span>
+            <h3 class="service-package__title" data-service-title>Completo</h3>
+            <p class="service-package__copy" data-service-copy>Sistema visual mais robusto para marcas que precisam crescer com unidade, memorabilidade e consistência em todos os pontos.</p>
+            <ul class="service-package__list" data-service-list></ul>
+            <p class="service-package__foot" data-service-foot></p>
           </div>
-          <span class="service-package__category" data-service-category-label>Branding Marca</span>
-          <h3 class="service-package__title" data-service-title>Completo</h3>
-          <p class="service-package__copy" data-service-copy>Sistema visual mais robusto para crescer com consistencia em todos os pontos de contato.</p>
-          <ul class="service-package__list" data-service-list></ul>
-          <p class="service-package__foot" data-service-foot></p>
         </article>
       </div>
     </div>
