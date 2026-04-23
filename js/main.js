@@ -1062,24 +1062,14 @@
     if(outgoingTargets.length){
       swapTimeline.to(outgoingTargets, {
         autoAlpha: 0,
-        scale: 0.97,
-        filter: 'blur(6px)',
+        y: 16,
+        filter: 'blur(8px)',
         duration: 0.24,
-        stagger: 0.016,
+        stagger: 0.014,
         ease: 'power2.out',
         overwrite: 'auto'
-      }, 0.04);
+      }, 0);
     }
-
-    swapTimeline.to(cards, {
-      autoAlpha: 0.86,
-      y: 0,
-      scale: 0.944,
-      duration: 0.46,
-      stagger: 0.07,
-      ease: 'power2.inOut',
-      overwrite: 'auto'
-    }, 0);
 
     if(glow){
       swapTimeline.to(glow, {
@@ -1097,38 +1087,22 @@
         card.dataset.expanded = mobileCardsQuery.matches ? 'false' : 'true';
       });
       syncCardExpansion();
-      gsap.set(cards, {
-        autoAlpha: 1,
-        y: 0,
-        scale: 0.944
-      });
       gsap.set(getCardMotionTargets(), {
         autoAlpha: 0,
-        y: 0,
-        scale: 0.97,
-        filter: 'blur(6px)'
+        y: -16,
+        filter: 'blur(8px)'
       });
       animateHeadShift(headTopBeforeSwap);
-    });
-
-    swapTimeline.to(cards, {
-      autoAlpha: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.88,
-      stagger: 0.08,
-      ease: 'power3.out'
     });
 
     swapTimeline.to(getCardMotionTargets(), {
       autoAlpha: 1,
       y: 0,
-      scale: 1,
       filter: 'blur(0px)',
-      duration: 0.54,
-      stagger: 0.018,
+      duration: 0.58,
+      stagger: 0.016,
       ease: 'power3.out'
-    }, '<+0.14');
+    }, '+=0.02');
 
     if(glow){
       swapTimeline.to(glow, {
