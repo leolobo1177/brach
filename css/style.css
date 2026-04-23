@@ -2307,6 +2307,10 @@ main > section > h2:not(.cases-title){
 .footer-link:hover{ transform: translateX(0); }
 
 .footer-social-icons{ display: none; }
+.footer-social-icons img[src$="pinterest.png"]{
+  filter: brightness(0) saturate(100%) invert(96%) sepia(19%) saturate(242%) hue-rotate(339deg) brightness(103%) contrast(95%);
+  opacity: .96;
+}
 
 /* Mobile: centraliza, logo no topo, oculta Contato e mantém navegação visível */
 @media (max-width: 860px){
