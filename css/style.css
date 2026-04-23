@@ -1193,11 +1193,12 @@ section.parallax-section#servicos > p{
 
 .services-stage{
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   min-width: 0;
   width: 100%;
   margin-top: 0;
-  padding-top: clamp(18px, 1.4vw, 24px);
+  padding-top: clamp(26px, 2vw, 34px);
+  padding-bottom: clamp(18px, 1.4vw, 28px);
 }
 .services-stage__glow{
   display: none;
@@ -1214,17 +1215,17 @@ section.parallax-section#servicos > p{
 .service-package{
   --package-accent: rgba(255,246,214,.9);
   --package-border: rgba(255,255,255,.16);
-  --package-bg-start: rgba(255,255,255,.06);
-  --package-bg-end: rgba(255,255,255,.025);
+  --package-bg-start: transparent;
+  --package-bg-end: transparent;
   position: relative;
   min-height: clamp(560px, 32vw, 700px);
   padding: 30px clamp(24px, 1.8vw, 34px) 28px;
   border: 1px solid rgba(255,255,255,.11);
   border-radius: 26px;
   background: linear-gradient(180deg, var(--package-bg-start), var(--package-bg-end));
-  backdrop-filter: blur(12px);
-  overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0,0,0,.16);
+  backdrop-filter: none;
+  overflow: visible;
+  box-shadow: 0 14px 32px rgba(0,0,0,.08);
   transition: transform .38s cubic-bezier(.22,1,.36,1), border-color .32s ease, box-shadow .32s ease;
 }
 .service-package__toggle{
@@ -1259,27 +1260,27 @@ section.parallax-section#servicos > p{
   width: 190px;
   height: 190px;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(255,255,255,.1) 0%, rgba(255,255,255,0) 72%);
+  background: radial-gradient(circle, rgba(255,255,255,.05) 0%, rgba(255,255,255,0) 72%);
   pointer-events: none;
 }
 .service-package:hover,
 .service-package:focus-within{
   transform: translateY(-10px);
   border-color: rgba(255,255,255,.22);
-  box-shadow: 0 26px 60px rgba(0,0,0,.22);
+  box-shadow: 0 22px 50px rgba(0,0,0,.12);
 }
 .service-package--basic{
   --package-accent: rgba(255,246,214,.92);
   --package-border: rgba(255,246,214,.28);
-  --package-bg-start: rgba(255,255,255,.04);
-  --package-bg-end: rgba(255,255,255,.02);
+  --package-bg-start: transparent;
+  --package-bg-end: transparent;
   border-color: rgba(255,246,214,.16);
 }
 .service-package--full{
   --package-accent: rgba(110,145,255,.94);
   --package-border: rgba(110,145,255,.32);
-  --package-bg-start: rgba(31,48,118,.46);
-  --package-bg-end: rgba(14,28,86,.88);
+  --package-bg-start: transparent;
+  --package-bg-end: transparent;
   border-color: rgba(110,145,255,.22);
 }
 .service-package__meta{
@@ -1301,7 +1302,7 @@ section.parallax-section#servicos > p{
   min-height: 36px;
   padding: 0 14px;
   border-radius: 999px;
-  background: rgba(6,10,30,.3);
+  background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.08);
   font-family: var(--font-ui);
   font-size: 12px;
@@ -1493,6 +1494,7 @@ section.parallax-section#servicos > p{
   }
   .services-stage{
     padding-top: 0;
+    padding-bottom: 0;
   }
   .services-stage__glow{
     display: none;
@@ -1504,6 +1506,7 @@ section.parallax-section#servicos > p{
     min-height: 0;
     padding: 0;
     border-radius: 22px;
+    overflow: hidden;
   }
   .service-package:hover,
   .service-package:focus-within{
