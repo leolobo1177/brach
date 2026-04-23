@@ -1062,22 +1062,22 @@
     if(outgoingTargets.length){
       swapTimeline.to(outgoingTargets, {
         autoAlpha: 0,
-        y: 18,
-        filter: 'blur(10px)',
-        duration: 0.22,
-        stagger: 0.012,
-        ease: 'power2.inOut',
+        y: 24,
+        filter: 'blur(12px)',
+        duration: 0.32,
+        stagger: 0.018,
+        ease: 'power2.out',
         overwrite: 'auto'
       }, 0);
     }
 
     swapTimeline.to(cards, {
-      autoAlpha: 0.16,
-      y: 18,
-      scale: 0.988,
-      duration: 0.28,
-      stagger: 0.05,
-      ease: 'power2.inOut',
+      autoAlpha: 0.08,
+      y: 24,
+      scale: 0.982,
+      duration: 0.38,
+      stagger: 0.06,
+      ease: 'power2.out',
       overwrite: 'auto'
     }, 0);
 
@@ -1098,14 +1098,14 @@
       });
       syncCardExpansion();
       gsap.set(cards, {
-        autoAlpha: 0.22,
-        y: 20,
-        scale: 0.99
+        autoAlpha: 0.12,
+        y: 28,
+        scale: 0.986
       });
       gsap.set(getCardMotionTargets(), {
         autoAlpha: 0,
-        y: 20,
-        filter: 'blur(10px)'
+        y: 28,
+        filter: 'blur(12px)'
       });
       animateHeadShift(headTopBeforeSwap);
     });
@@ -1114,8 +1114,8 @@
       autoAlpha: 1,
       y: 0,
       scale: 1,
-      duration: 0.62,
-      stagger: 0.08,
+      duration: 0.82,
+      stagger: 0.09,
       ease: 'power3.out'
     });
 
@@ -1123,10 +1123,10 @@
       autoAlpha: 1,
       y: 0,
       filter: 'blur(0px)',
-      duration: 0.52,
-      stagger: 0.014,
+      duration: 0.68,
+      stagger: 0.02,
       ease: 'power3.out'
-    }, '<+0.04');
+    }, '<+0.06');
 
     if(glow){
       swapTimeline.to(glow, {
