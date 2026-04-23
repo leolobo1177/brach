@@ -1314,20 +1314,90 @@
   }
 })();
 
-/* ===== Netlify contact form ===== */
+/* ===== Static contact form via FormSubmit ===== */
 (() => {
-  const form = document.querySelector('.contact-form[data-netlify="true"]');
+  const form = document.querySelector('.contact-form[data-form-provider="formsubmit"]');
   if(!form) return;
 
   const submit = form.querySelector('.contact-submit');
   const label = submit?.querySelector('.contact-submit__label');
   const defaultLabel = label?.textContent || '';
+  const loadedAt = Date.now();
+  const cooldownKey = 'brach:lastContactSubmit';
+  const cooldownMs = 45000;
+
+  const suspiciousTerms = [
+    'crypto',
+    'casino',
+    'cassino',
+    'betting',
+    'viagra',
+    'backlink',
+    'seo package',
+    'forex',
+    'porn',
+    'adult',
+    'malware',
+    'hack',
+    'telegram',
+    'emprestimo',
+    'aposta',
+    'ganhe dinheiro',
+    'free money'
+  ];
+
+  function normalizeText(value){
+    return String(value || '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
+  }
 
   function showFormFeedback(id){
     const target = document.getElementById(id);
     if(!target) return;
     window.location.hash = id;
     target.focus({ preventScroll: true });
+  }
+
+  function getFieldValue(formData, name){
+    return String(formData.get(name) || '').trim();
+  }
+
+  function hasRecentlySubmitted(){
+    try{
+      const lastSubmit = Number(window.localStorage.getItem(cooldownKey) || 0);
+      return lastSubmit > 0 && Date.now() - lastSubmit < cooldownMs;
+    }catch{
+      return false;
+    }
+  }
+
+  function markSubmitted(){
+    try{
+      window.localStorage.setItem(cooldownKey, String(Date.now()));
+    }catch{
+      // Storage can be blocked in private modes. The server-side checks still apply.
+    }
+  }
+
+  function isSuspiciousSubmission(formData){
+    const elapsed = Date.now() - loadedAt;
+    const honeypot = getFieldValue(formData, 'website') || getFieldValue(formData, '_honey');
+    const nome = getFieldValue(formData, 'nome');
+    const email = getFieldValue(formData, 'email');
+    const mensagem = getFieldValue(formData, 'mensagem');
+    const combined = normalizeText(`${nome} ${email} ${mensagem}`);
+    const urlMatches = mensagem.match(/https?:\/\/|www\.|bit\.ly|t\.me|wa\.me|\.ru|\.cn|\.xyz|\.top/gi) || [];
+
+    if(honeypot) return true;
+    if(elapsed < 2500) return true;
+    if(hasRecentlySubmitted()) return true;
+    if(urlMatches.length > 2) return true;
+    if(/(.)\1{8,}/.test(mensagem)) return true;
+    if(suspiciousTerms.some((term) => combined.includes(term))) return true;
+
+    return false;
   }
 
   form.addEventListener('submit', async (e) => {
@@ -1347,16 +1417,30 @@
 
     try{
       const formData = new FormData(form);
-      const endpoint = form.getAttribute('action') || '/';
+      const currentUrl = formData.get('_url');
+      if(!currentUrl || String(currentUrl).includes('github.com/leolobo1177/brach')){
+        formData.set('_url', window.location.href || 'https://github.com/leolobo1177/brach');
+      }
+
+      if(isSuspiciousSubmission(formData)){
+        showFormFeedback('contato-invalido');
+        return;
+      }
+
+      const endpoint = form.dataset.ajaxAction || form.getAttribute('action');
       const response = await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        },
         body: new URLSearchParams(formData).toString()
       });
 
-      if(!response.ok) throw new Error('Netlify form submission failed');
+      if(!response.ok) throw new Error('Form submission failed');
 
       form.reset();
+      markSubmitted();
       showFormFeedback('contato-enviado');
     }catch{
       showFormFeedback('contato-erro');
