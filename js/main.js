@@ -1595,9 +1595,10 @@
 // ===============================
 (() => {
   const hero = document.querySelector('.hero-banner');
-  if(!hero) return;
+  const grid = hero?.querySelector('.hero-banner__grid');
+  if(!hero || !grid) return;
+
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hasGsap = Boolean(window.gsap);
   const finePointer = window.matchMedia('(hover:hover) and (pointer:fine)');
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const gridSize = 95;
@@ -1605,84 +1606,49 @@
   const topExtend = parseFloat(heroStyles.getPropertyValue('--heroGridTopExtend')) || 112;
   const bottomExtend = parseFloat(heroStyles.getPropertyValue('--heroGridBottomExtend')) || 56;
 
-  const writeVars = (state) => {
-    hero.style.setProperty('--heroCellAX', `${state.cellAX.toFixed(2)}px`);
-    hero.style.setProperty('--heroCellAY', `${state.cellAY.toFixed(2)}px`);
-    hero.style.setProperty('--heroCellAAlpha', state.cellAAlpha.toFixed(3));
-    hero.style.setProperty('--heroCellBX', `${state.cellBX.toFixed(2)}px`);
-    hero.style.setProperty('--heroCellBY', `${state.cellBY.toFixed(2)}px`);
-    hero.style.setProperty('--heroCellBAlpha', state.cellBAlpha.toFixed(3));
+  let cols = 0;
+  let rows = 0;
+  let cells = [];
+  let activeCell = null;
+
+  const buildGrid = () => {
+    const width = window.innerWidth;
+    const height = hero.offsetHeight + topExtend + bottomExtend;
+    cols = Math.ceil(width / gridSize);
+    rows = Math.ceil(height / gridSize);
+
+    grid.style.gridTemplateColumns = `repeat(${cols}, ${gridSize}px)`;
+    grid.style.gridTemplateRows = `repeat(${rows}, ${gridSize}px)`;
+    grid.style.width = `${cols * gridSize}px`;
+    grid.style.height = `${rows * gridSize}px`;
+    grid.replaceChildren();
+
+    const fragment = document.createDocumentFragment();
+    cells = [];
+
+    for(let index = 0; index < cols * rows; index += 1){
+      const cell = document.createElement('span');
+      cell.className = 'hero-banner__grid-cell';
+      fragment.appendChild(cell);
+      cells.push(cell);
+    }
+
+    grid.appendChild(fragment);
+    activeCell = null;
   };
 
-  if(reduceMotion || !hasGsap){
-    writeVars({
-      cellAX: -999,
-      cellAY: -999,
-      cellAAlpha: 0,
-      cellBX: -999,
-      cellBY: -999,
-      cellBAlpha: 0
-    });
-    return;
-  }
-
-  const state = {
-    cellAX: -999,
-    cellAY: -999,
-    cellAAlpha: 0,
-    cellBX: -999,
-    cellBY: -999,
-    cellBAlpha: 0
+  const setActiveCell = (cell) => {
+    if(activeCell === cell) return;
+    if(activeCell) activeCell.classList.remove('is-hot');
+    activeCell = cell;
+    if(activeCell) activeCell.classList.add('is-hot');
   };
 
-  let activeCellX = -999;
-  let activeCellY = -999;
-  let activeSlot = 'A';
-  let hoverActive = false;
-  let fadeTimeline = null;
-
-  const getSlotProps = (slot) => slot === 'A'
-    ? { x: 'cellAX', y: 'cellAY', alpha: 'cellAAlpha' }
-    : { x: 'cellBX', y: 'cellBY', alpha: 'cellBAlpha' };
-
-  const animateToCell = (nextX, nextY) => {
-    const nextSlot = activeSlot === 'A' ? 'B' : 'A';
-    const currentProps = getSlotProps(activeSlot);
-    const nextProps = getSlotProps(nextSlot);
-
-    fadeTimeline?.kill();
-
-    state[nextProps.x] = nextX;
-    state[nextProps.y] = nextY;
-    state[nextProps.alpha] = 0;
-
-    fadeTimeline = gsap.timeline({ defaults: { overwrite: 'auto' } });
-    fadeTimeline
-      .to(state, {
-        [currentProps.alpha]: 0,
-        duration: 0.28,
-        ease: 'power2.out'
-      }, 0)
-      .to(state, {
-        [nextProps.alpha]: 1,
-        duration: 0.34,
-        ease: 'power2.out'
-      }, 0.04)
-      .add(() => {
-        activeSlot = nextSlot;
-        activeCellX = nextX;
-        activeCellY = nextY;
-      });
-  };
-
-  const fadeInCurrent = () => {
-    const currentProps = getSlotProps(activeSlot);
-    gsap.to(state, {
-      [currentProps.alpha]: 1,
-      duration: 0.28,
-      ease: 'power2.out',
-      overwrite: 'auto'
-    });
+  const clearActiveCell = () => {
+    if(activeCell){
+      activeCell.classList.remove('is-hot');
+      activeCell = null;
+    }
   };
 
   const onPointerMove = (event) => {
@@ -1694,62 +1660,32 @@
     const insideY = event.clientY >= boundsTop && event.clientY <= boundsBottom;
 
     if(!insideX || !insideY){
-      if(hoverActive) resetPointer();
+      clearActiveCell();
       return;
     }
 
-    hoverActive = true;
-
-    const localX = clamp(event.clientX - rect.left, 0, rect.width);
-    const localY = clamp(event.clientY - boundsTop, 0, (boundsBottom - boundsTop));
-    const snappedX = Math.round(localX / gridSize) * gridSize;
-    const snappedY = Math.round(localY / gridSize) * gridSize;
-
-    if(snappedX === activeCellX && snappedY === activeCellY){
-      fadeInCurrent();
-      return;
-    }
-
-    if(activeCellX === -999 || activeCellY === -999){
-      const currentProps = getSlotProps(activeSlot);
-      state[currentProps.x] = snappedX;
-      state[currentProps.y] = snappedY;
-      activeCellX = snappedX;
-      activeCellY = snappedY;
-      fadeInCurrent();
-      return;
-    }
-
-    animateToCell(snappedX, snappedY);
+    const localX = clamp(event.clientX - rect.left, 0, cols * gridSize - 1);
+    const localY = clamp(event.clientY - boundsTop, 0, rows * gridSize - 1);
+    const col = Math.floor(localX / gridSize);
+    const row = Math.floor(localY / gridSize);
+    const nextCell = cells[(row * cols) + col] || null;
+    setActiveCell(nextCell);
   };
 
-  const resetPointer = () => {
-    hoverActive = false;
-    fadeTimeline?.kill();
-    fadeTimeline = gsap.timeline({ defaults: { overwrite: 'auto' } });
-    fadeTimeline
-      .to(state, {
-        cellAAlpha: 0,
-        cellBAlpha: 0,
-        duration: 0.34,
-        ease: 'power2.out'
-      })
-      .add(() => {
-        state.cellAX = -999;
-        state.cellAY = -999;
-        state.cellBX = -999;
-        state.cellBY = -999;
-        activeCellX = -999;
-        activeCellY = -999;
-      });
+  const onResize = () => {
+    buildGrid();
   };
 
-  gsap.ticker.add(() => writeVars(state));
+  buildGrid();
+
+  if(reduceMotion){
+    return;
+  }
+
   window.addEventListener('pointermove', onPointerMove, { passive: true });
-  window.addEventListener('pointerleave', resetPointer, { passive: true });
-  hero.addEventListener('pointercancel', resetPointer, { passive: true });
-
-  resetPointer();
+  window.addEventListener('pointerleave', clearActiveCell, { passive: true });
+  window.addEventListener('resize', onResize, { passive: true });
+  hero.addEventListener('pointercancel', clearActiveCell, { passive: true });
 })();
 
 
