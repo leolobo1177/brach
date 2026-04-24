@@ -1591,21 +1591,30 @@
 
 
 // ===============================
-// BACKGROUND PARALLAX (blobs)
+// HERO GRID HOVER
 // ===============================
 (() => {
-  const root = document.documentElement;
+  const hero = document.querySelector('.hero-banner');
+  if(!hero) return;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hasGsap = Boolean(window.gsap);
   const finePointer = window.matchMedia('(hover:hover) and (pointer:fine)');
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const gridSize = 95;
 
-  const setGridCells = (nx, ny) => {
-    const vw = window.innerWidth || gridSize;
-    const vh = window.innerHeight || gridSize;
-    const baseX = Math.round((nx * vw) / gridSize) * gridSize;
-    const baseY = Math.round((ny * vh) / gridSize) * gridSize;
+  const writeVars = (state) => {
+    hero.style.setProperty('--heroGridX', `${state.gridX.toFixed(2)}px`);
+    hero.style.setProperty('--heroGridY', `${state.gridY.toFixed(2)}px`);
+    hero.style.setProperty('--heroGridHotAlpha', state.hotAlpha.toFixed(3));
+    for(let index = 1; index <= 6; index += 1){
+      hero.style.setProperty(`--heroCell${index}X`, `${state[`cell${index}X`].toFixed(2)}px`);
+      hero.style.setProperty(`--heroCell${index}Y`, `${state[`cell${index}Y`].toFixed(2)}px`);
+    }
+  };
+
+  const setGridCells = (localX, localY) => {
+    const baseX = Math.round(localX / gridSize) * gridSize;
+    const baseY = Math.round(localY / gridSize) * gridSize;
     const offsets = [
       [0, 0],
       [gridSize, 0],
@@ -1616,94 +1625,81 @@
     ];
 
     offsets.forEach(([offsetX, offsetY], index) => {
-      root.style.setProperty(`--bgCell${index + 1}X`, `${baseX + offsetX}px`);
-      root.style.setProperty(`--bgCell${index + 1}Y`, `${baseY + offsetY}px`);
+      setters[`cell${index + 1}X`](baseX + offsetX);
+      setters[`cell${index + 1}Y`](baseY + offsetY);
     });
   };
 
+  const hideGridCells = () => {
+    for(let index = 1; index <= 6; index += 1){
+      setters[`cell${index}X`](-999);
+      setters[`cell${index}Y`](-999);
+    }
+  };
+
   if(reduceMotion || !hasGsap){
-    root.style.setProperty('--bgParX', '0px');
-    root.style.setProperty('--bgParY', '0px');
-    root.style.setProperty('--bgGlowX', '56%');
-    root.style.setProperty('--bgGlowY', '22%');
-    root.style.setProperty('--bgScale', '1.06');
-    root.style.setProperty('--bgGridX', '0px');
-    root.style.setProperty('--bgGridY', '0px');
-    setGridCells(0.56, 0.22);
+    writeVars({
+      gridX: 0,
+      gridY: 0,
+      hotAlpha: 0,
+      cell1X: -999, cell1Y: -999,
+      cell2X: -999, cell2Y: -999,
+      cell3X: -999, cell3Y: -999,
+      cell4X: -999, cell4Y: -999,
+      cell5X: -999, cell5Y: -999,
+      cell6X: -999, cell6Y: -999
+    });
     return;
   }
 
   const state = {
-    x: 0,
-    y: 0,
-    glowX: 56,
-    glowY: 22,
-    scale: 1.06
+    gridX: 0,
+    gridY: 0,
+    hotAlpha: 0,
+    cell1X: -999, cell1Y: -999,
+    cell2X: -999, cell2Y: -999,
+    cell3X: -999, cell3Y: -999,
+    cell4X: -999, cell4Y: -999,
+    cell5X: -999, cell5Y: -999,
+    cell6X: -999, cell6Y: -999
   };
 
-  const setX = gsap.quickTo(state, 'x', { duration: 1.55, ease: 'power3.out' });
-  const setY = gsap.quickTo(state, 'y', { duration: 1.7, ease: 'power3.out' });
-  const setGlowX = gsap.quickTo(state, 'glowX', { duration: 1.05, ease: 'power2.out' });
-  const setGlowY = gsap.quickTo(state, 'glowY', { duration: 1.2, ease: 'power2.out' });
-  const setScale = gsap.quickTo(state, 'scale', { duration: 1.2, ease: 'power2.out' });
-
-  let pointerOffsetX = 0;
-  let pointerOffsetY = 0;
-  let scrollOffsetY = 0;
-
-  const render = () => {
-    root.style.setProperty('--bgParX', `${state.x.toFixed(2)}px`);
-    root.style.setProperty('--bgParY', `${state.y.toFixed(2)}px`);
-    root.style.setProperty('--bgGlowX', `${state.glowX.toFixed(2)}%`);
-    root.style.setProperty('--bgGlowY', `${state.glowY.toFixed(2)}%`);
-    root.style.setProperty('--bgScale', state.scale.toFixed(3));
-    root.style.setProperty('--bgGridX', `${(state.x * 0.18).toFixed(2)}px`);
-    root.style.setProperty('--bgGridY', `${(state.y * 0.14).toFixed(2)}px`);
+  const setters = {
+    gridX: gsap.quickTo(state, 'gridX', { duration: 0.9, ease: 'power3.out' }),
+    gridY: gsap.quickTo(state, 'gridY', { duration: 1.05, ease: 'power3.out' }),
+    hotAlpha: gsap.quickTo(state, 'hotAlpha', { duration: 0.45, ease: 'power2.out' })
   };
-
-  const syncBackground = () => {
-    setX(pointerOffsetX);
-    setY(pointerOffsetY + scrollOffsetY);
-  };
-
-  const onScroll = () => {
-    scrollOffsetY = clamp(-window.scrollY * 0.048, -112, 112);
-    syncBackground();
-  };
+  for(let index = 1; index <= 6; index += 1){
+    setters[`cell${index}X`] = gsap.quickTo(state, `cell${index}X`, { duration: 0.62, ease: 'power3.out' });
+    setters[`cell${index}Y`] = gsap.quickTo(state, `cell${index}Y`, { duration: 0.72, ease: 'power3.out' });
+  }
 
   const onPointerMove = (event) => {
     if(!finePointer.matches) return;
-    const vw = window.innerWidth || 1;
-    const vh = window.innerHeight || 1;
-    const nx = event.clientX / vw;
-    const ny = event.clientY / vh;
+    const rect = hero.getBoundingClientRect();
+    const localX = clamp(event.clientX - rect.left, 0, rect.width);
+    const localY = clamp(event.clientY - rect.top, 0, rect.height);
+    const nx = rect.width ? localX / rect.width : 0.5;
+    const ny = rect.height ? localY / rect.height : 0.5;
 
-    pointerOffsetX = clamp((nx - 0.5) * 68, -68, 68);
-    pointerOffsetY = clamp((ny - 0.5) * 46, -46, 46);
-
-    setGlowX(nx * 100);
-    setGlowY(ny * 100);
-    setScale(1.22);
-    setGridCells(nx, ny);
-    syncBackground();
+    setters.gridX((nx - 0.5) * 14);
+    setters.gridY((ny - 0.5) * 10);
+    setters.hotAlpha(1);
+    setGridCells(localX, localY);
   };
 
   const resetPointer = () => {
-    pointerOffsetX = 0;
-    pointerOffsetY = 0;
-    setGlowX(56);
-    setGlowY(22);
-    setScale(1.06);
-    setGridCells(0.56, 0.22);
-    syncBackground();
+    setters.gridX(0);
+    setters.gridY(0);
+    setters.hotAlpha(0);
+    hideGridCells();
   };
 
-  gsap.ticker.add(render);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('pointermove', onPointerMove, { passive: true });
-  document.documentElement.addEventListener('pointerleave', resetPointer, { passive: true });
+  gsap.ticker.add(() => writeVars(state));
+  hero.addEventListener('pointermove', onPointerMove, { passive: true });
+  hero.addEventListener('pointerleave', resetPointer, { passive: true });
+  hero.addEventListener('pointercancel', resetPointer, { passive: true });
 
-  onScroll();
   resetPointer();
 })();
 
