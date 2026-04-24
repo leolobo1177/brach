@@ -15,6 +15,7 @@
   const startTime = performance.now();
   let finished = false;
   let preloadTl = null;
+  let fallbackRaf = 0;
 
   const render = () => {
     const value = Math.max(0, Math.min(100, Math.round(state.value)));
@@ -23,6 +24,10 @@
   };
 
   const teardown = () => {
+    if (fallbackRaf) {
+      cancelAnimationFrame(fallbackRaf);
+      fallbackRaf = 0;
+    }
     loader.classList.add('is-done');
     body.classList.remove('is-loading');
     window.setTimeout(() => loader.remove(), 60);
@@ -37,7 +42,8 @@
       if (!hasGsap) {
         state.value = 100;
         render();
-        teardown();
+        loader.classList.add('is-exiting');
+        window.setTimeout(teardown, reduceMotion ? 220 : 760);
         return;
       }
 
@@ -75,9 +81,32 @@
 
   render();
 
+  const requestFinish = () => finishLoader();
+
   if (!hasGsap) {
-    window.addEventListener('load', finishLoader, { once: true });
-    if (document.readyState === 'complete') finishLoader();
+    const fallbackStart = performance.now();
+    const fallbackStep = (now) => {
+      if (finished) return;
+      const progress = Math.min((now - fallbackStart) / (reduceMotion ? 520 : 1800), 1);
+      const eased = progress < 0.8
+        ? (progress / 0.8) * 90
+        : 90 + ((progress - 0.8) / 0.2) * 7;
+      state.value = Math.max(state.value, eased);
+      render();
+      if (progress < 1) {
+        fallbackRaf = requestAnimationFrame(fallbackStep);
+      }
+    };
+
+    fallbackRaf = requestAnimationFrame(fallbackStep);
+
+    if (document.readyState !== 'loading') {
+      window.setTimeout(requestFinish, reduceMotion ? 180 : 320);
+    } else {
+      document.addEventListener('DOMContentLoaded', requestFinish, { once: true });
+    }
+    window.addEventListener('load', requestFinish, { once: true });
+    window.setTimeout(requestFinish, reduceMotion ? 700 : 2200);
     return;
   }
 
@@ -102,11 +131,13 @@
       onUpdate: render
     });
 
-  if (document.readyState === 'complete') {
-    finishLoader();
+  if (document.readyState !== 'loading') {
+    window.setTimeout(requestFinish, 180);
   } else {
-    window.addEventListener('load', finishLoader, { once: true });
+    document.addEventListener('DOMContentLoaded', requestFinish, { once: true });
   }
+  window.addEventListener('load', requestFinish, { once: true });
+  window.setTimeout(requestFinish, reduceMotion ? 900 : 2600);
 })();
 
 (() => {
