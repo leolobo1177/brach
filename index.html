@@ -14,8 +14,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,100..900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="./css/style.css" rel="stylesheet"/>
+<noscript><style>.page-loader{display:none !important;} body{overflow:auto !important;}</style></noscript>
 </head>
-<body>
+<body class="is-loading">
+<div aria-hidden="false" aria-label="Tela de carregamento" class="page-loader" id="pageLoader" role="status">
+<div aria-hidden="true" class="page-loader__curtain">
+<span class="page-loader__bar"></span>
+<span class="page-loader__bar"></span>
+<span class="page-loader__bar"></span>
+<span class="page-loader__bar"></span>
+<span class="page-loader__bar"></span>
+<span class="page-loader__bar"></span>
+</div>
+<div class="page-loader__content">
+<div class="page-loader__top">
+<div class="page-loader__clip">
+<p class="page-loader__eyebrow page-loader__text">CARREGANDO</p>
+</div>
+<div class="page-loader__clip">
+<p class="page-loader__wait page-loader__text">AGUARDE</p>
+</div>
+</div>
+
+<div class="page-loader__center">
+<div class="page-loader__clip">
+<p class="page-loader__counter page-loader__text" id="pageLoaderCounter">0</p>
+</div>
+</div>
+
+<div class="page-loader__bottom">
+<div aria-hidden="true" class="page-loader__progress">
+<span class="page-loader__progress-fill" id="pageLoaderBar"></span>
+</div>
+<div class="page-loader__meta">
+<div class="page-loader__clip">
+<p class="page-loader__meta-copy page-loader__text">PREPARANDO A EXPERIÊNCIA</p>
+</div>
+<div class="page-loader__clip">
+<p class="page-loader__meta-copy page-loader__text">PRONTO</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <a class="skip-link" href="#topo">Pular para o conteúdo</a>
 <header class="topbar">
 <div class="topbar__inner">

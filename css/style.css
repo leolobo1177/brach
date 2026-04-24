@@ -631,6 +631,146 @@
       *{ transition:none !important; animation:none !important; }
     }
 
+/* ===============================
+   PAGE LOADER
+================================ */
+body.is-loading{
+  overflow:hidden;
+  height:100svh;
+}
+body.is-loading .topbar,
+body.is-loading main,
+body.is-loading footer{
+  pointer-events:none;
+}
+.page-loader{
+  position:fixed;
+  inset:0;
+  z-index:10050;
+  display:flex;
+  align-items:stretch;
+  justify-content:stretch;
+  background:var(--cream);
+  color:var(--blue);
+  overflow:hidden;
+}
+.page-loader__curtain{
+  position:absolute;
+  inset:0;
+  display:grid;
+  grid-template-columns:repeat(6, 1fr);
+  z-index:0;
+}
+.page-loader__bar{
+  display:block;
+  min-height:100%;
+  background:linear-gradient(180deg, #fff7da 0%, #fff3cb 100%);
+  border-left:1px solid rgba(7,16,79,.08);
+}
+.page-loader__bar:first-child{
+  border-left:0;
+}
+.page-loader__content{
+  position:relative;
+  z-index:1;
+  width:100%;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:clamp(24px, 2vw, 34px) clamp(24px, 1.9vw, 32px) clamp(22px, 2.2vw, 30px);
+}
+.page-loader__top,
+.page-loader__meta{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+}
+.page-loader__center{
+  flex:1;
+  display:grid;
+  place-items:center;
+}
+.page-loader__bottom{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.page-loader__progress{
+  position:relative;
+  width:100%;
+  height:2px;
+  background:rgba(7,16,79,.22);
+  overflow:hidden;
+}
+.page-loader__progress-fill{
+  position:absolute;
+  inset:0 auto 0 0;
+  width:100%;
+  transform-origin:left center;
+  transform:scaleX(0);
+  background:var(--blue);
+}
+.page-loader__clip{
+  display:block;
+  overflow:hidden;
+}
+.page-loader__text{
+  display:block;
+  will-change:transform, opacity;
+}
+.page-loader__eyebrow,
+.page-loader__wait,
+.page-loader__meta-copy{
+  margin:0;
+  font-family:var(--font-ui);
+  font-size:clamp(14px, .95vw, 18px);
+  font-weight:600;
+  line-height:1;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:rgba(7,16,79,.84);
+}
+.page-loader__counter{
+  margin:0;
+  font-family:var(--font-kicker);
+  font-size:clamp(180px, 27vw, 380px);
+  line-height:.86;
+  letter-spacing:-.03em;
+  color:var(--blue);
+  text-transform:uppercase;
+}
+.page-loader.is-done{
+  pointer-events:none;
+}
+
+@media (max-width: 760px){
+  .page-loader__content{
+    padding:24px 18px 20px;
+  }
+  .page-loader__top,
+  .page-loader__meta{
+    gap:12px;
+  }
+  .page-loader__eyebrow,
+  .page-loader__wait,
+  .page-loader__meta-copy{
+    font-size:12px;
+    letter-spacing:.06em;
+  }
+  .page-loader__counter{
+    font-size:clamp(120px, 38vw, 190px);
+    line-height:.88;
+  }
+  .page-loader__bottom{
+    gap:12px;
+  }
+  .page-loader__curtain{
+    grid-template-columns:repeat(5, 1fr);
+  }
+}
+
 
 /* ===============================
    HERO
