@@ -1599,6 +1599,27 @@
   const hasGsap = Boolean(window.gsap);
   const finePointer = window.matchMedia('(hover:hover) and (pointer:fine)');
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+  const gridSize = 95;
+
+  const setGridCells = (nx, ny) => {
+    const vw = window.innerWidth || gridSize;
+    const vh = window.innerHeight || gridSize;
+    const baseX = Math.round((nx * vw) / gridSize) * gridSize;
+    const baseY = Math.round((ny * vh) / gridSize) * gridSize;
+    const offsets = [
+      [0, 0],
+      [gridSize, 0],
+      [0, gridSize],
+      [-gridSize, 0],
+      [gridSize, gridSize],
+      [2 * gridSize, 0]
+    ];
+
+    offsets.forEach(([offsetX, offsetY], index) => {
+      root.style.setProperty(`--bgCell${index + 1}X`, `${baseX + offsetX}px`);
+      root.style.setProperty(`--bgCell${index + 1}Y`, `${baseY + offsetY}px`);
+    });
+  };
 
   if(reduceMotion || !hasGsap){
     root.style.setProperty('--bgParX', '0px');
@@ -1608,6 +1629,7 @@
     root.style.setProperty('--bgScale', '1.06');
     root.style.setProperty('--bgGridX', '0px');
     root.style.setProperty('--bgGridY', '0px');
+    setGridCells(0.56, 0.22);
     return;
   }
 
@@ -1662,6 +1684,7 @@
     setGlowX(nx * 100);
     setGlowY(ny * 100);
     setScale(1.22);
+    setGridCells(nx, ny);
     syncBackground();
   };
 
@@ -1671,6 +1694,7 @@
     setGlowX(56);
     setGlowY(22);
     setScale(1.06);
+    setGridCells(0.56, 0.22);
     syncBackground();
   };
 

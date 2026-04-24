@@ -13,6 +13,18 @@
       --bgScale: 1.06;
       --bgGridX: 0px;
       --bgGridY: 0px;
+      --bgCell1X: -999px;
+      --bgCell1Y: -999px;
+      --bgCell2X: -999px;
+      --bgCell2Y: -999px;
+      --bgCell3X: -999px;
+      --bgCell3Y: -999px;
+      --bgCell4X: -999px;
+      --bgCell4Y: -999px;
+      --bgCell5X: -999px;
+      --bgCell5Y: -999px;
+      --bgCell6X: -999px;
+      --bgCell6Y: -999px;
     }
 
     /* =========================
@@ -2416,7 +2428,7 @@ body::before{
   animation: bgBlobs 18s ease-in-out infinite alternate;
 }
 
-/* Camada de grid + ruido suave */
+/* Camada de grid com células interativas */
 body::after{
   content:"";
   position:fixed;
@@ -2427,39 +2439,49 @@ body::after{
   background-image:
     linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,.048), rgba(255,255,255,.048)),
-    linear-gradient(rgba(255,255,255,.034), rgba(255,255,255,.034)),
-    linear-gradient(rgba(255,255,255,.028), rgba(255,255,255,.028)),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    linear-gradient(rgba(24,122,255,.34), rgba(24,122,255,.34)),
+    linear-gradient(rgba(24,122,255,.24), rgba(24,122,255,.24)),
+    linear-gradient(rgba(24,122,255,.2), rgba(24,122,255,.2)),
+    linear-gradient(rgba(24,122,255,.18), rgba(24,122,255,.18)),
+    linear-gradient(rgba(24,122,255,.14), rgba(24,122,255,.14)),
+    linear-gradient(rgba(24,122,255,.12), rgba(24,122,255,.12));
   background-size:
     95px 95px,
     95px 95px,
     95px 95px,
     95px 95px,
     95px 95px,
-    220px 220px;
+    95px 95px,
+    95px 95px,
+    95px 95px;
   background-position:
     var(--bgGridX) var(--bgGridY),
     var(--bgGridX) var(--bgGridY),
-    calc(var(--bgGridX) + 95px) calc(var(--bgGridY) + 380px),
-    calc(var(--bgGridX) + 665px) calc(var(--bgGridY) + 190px),
-    calc(var(--bgGridX) + 1045px) calc(var(--bgGridY) + 380px),
-    0 0;
+    calc(var(--bgGridX) + var(--bgCell1X)) calc(var(--bgGridY) + var(--bgCell1Y)),
+    calc(var(--bgGridX) + var(--bgCell2X)) calc(var(--bgGridY) + var(--bgCell2Y)),
+    calc(var(--bgGridX) + var(--bgCell3X)) calc(var(--bgGridY) + var(--bgCell3Y)),
+    calc(var(--bgGridX) + var(--bgCell4X)) calc(var(--bgGridY) + var(--bgCell4Y)),
+    calc(var(--bgGridX) + var(--bgCell5X)) calc(var(--bgGridY) + var(--bgCell5Y)),
+    calc(var(--bgGridX) + var(--bgCell6X)) calc(var(--bgGridY) + var(--bgCell6Y));
   background-repeat:
     repeat,
     repeat,
     no-repeat,
     no-repeat,
     no-repeat,
-    repeat;
+    no-repeat,
+    no-repeat,
+    no-repeat;
   background-blend-mode:
     normal,
     normal,
     screen,
     screen,
     screen,
-    overlay;
-  filter: saturate(112%) contrast(108%);
+    screen,
+    screen,
+    screen;
+  filter: saturate(118%) contrast(110%);
 }
 
 @keyframes bgBlobs{
