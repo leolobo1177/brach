@@ -1606,6 +1606,8 @@
     root.style.setProperty('--bgGlowX', '56%');
     root.style.setProperty('--bgGlowY', '22%');
     root.style.setProperty('--bgScale', '1.06');
+    root.style.setProperty('--bgGridX', '0px');
+    root.style.setProperty('--bgGridY', '0px');
     return;
   }
 
@@ -1633,6 +1635,8 @@
     root.style.setProperty('--bgGlowX', `${state.glowX.toFixed(2)}%`);
     root.style.setProperty('--bgGlowY', `${state.glowY.toFixed(2)}%`);
     root.style.setProperty('--bgScale', state.scale.toFixed(3));
+    root.style.setProperty('--bgGridX', `${(state.x * 0.18).toFixed(2)}px`);
+    root.style.setProperty('--bgGridY', `${(state.y * 0.14).toFixed(2)}px`);
   };
 
   const syncBackground = () => {

@@ -11,6 +11,8 @@
       --bgGlowX: 56%;
       --bgGlowY: 22%;
       --bgScale: 1.06;
+      --bgGridX: 0px;
+      --bgGridY: 0px;
     }
 
     /* =========================
@@ -2414,18 +2416,50 @@ body::before{
   animation: bgBlobs 18s ease-in-out infinite alternate;
 }
 
-/* Camada de ruido suave */
+/* Camada de grid + ruido suave */
 body::after{
   content:"";
   position:fixed;
   inset:0;
   pointer-events:none;
   z-index:-1;
-  opacity:.08;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 220px 220px;
+  opacity:1;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.048), rgba(255,255,255,.048)),
+    linear-gradient(rgba(255,255,255,.034), rgba(255,255,255,.034)),
+    linear-gradient(rgba(255,255,255,.028), rgba(255,255,255,.028)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  background-size:
+    95px 95px,
+    95px 95px,
+    95px 95px,
+    95px 95px,
+    95px 95px,
+    220px 220px;
+  background-position:
+    var(--bgGridX) var(--bgGridY),
+    var(--bgGridX) var(--bgGridY),
+    calc(var(--bgGridX) + 95px) calc(var(--bgGridY) + 380px),
+    calc(var(--bgGridX) + 665px) calc(var(--bgGridY) + 190px),
+    calc(var(--bgGridX) + 1045px) calc(var(--bgGridY) + 380px),
+    0 0;
+  background-repeat:
+    repeat,
+    repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    repeat;
+  background-blend-mode:
+    normal,
+    normal,
+    screen,
+    screen,
+    screen,
+    overlay;
+  filter: saturate(112%) contrast(108%);
 }
 
 @keyframes bgBlobs{
