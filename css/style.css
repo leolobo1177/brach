@@ -615,6 +615,7 @@
 
     /* demo */
     main{ width:min(1200px,100%); margin:0 auto; padding:110px 18px 140px; }
+    main#topo{ padding-top:0; }
     section{
       border:1px dashed rgba(255,255,255,.16);
       border-radius:18px;
@@ -645,7 +646,7 @@
   margin-top:0;
   margin-bottom:0;
   min-height:calc(100svh - 116px);
-  padding:clamp(10px, 1.4vw, 22px) 0 clamp(22px, 2vw, 30px);
+  padding:clamp(96px, 9vw, 118px) 0 clamp(22px, 2vw, 30px);
   border:none;
   border-radius:0;
   background:transparent;
@@ -656,7 +657,7 @@
   position:absolute;
   left:0;
   right:0;
-  top:-76px;
+  top:-92px;
   bottom:-56px;
   pointer-events:none;
   z-index:0;

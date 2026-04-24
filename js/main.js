@@ -1623,29 +1623,57 @@
     cellY: -999
   };
 
+  let moveTimer = null;
+  let leaveTimer = null;
+  let nextCellX = -999;
+  let nextCellY = -999;
+
   const setters = {
-    hotAlpha: gsap.quickTo(state, 'hotAlpha', { duration: 0.32, ease: 'power2.out' }),
-    cellX: gsap.quickTo(state, 'cellX', { duration: 0.26, ease: 'power3.out' }),
-    cellY: gsap.quickTo(state, 'cellY', { duration: 0.3, ease: 'power3.out' })
+    hotAlpha: gsap.quickTo(state, 'hotAlpha', { duration: 0.46, ease: 'power2.out' }),
+    cellX: gsap.quickTo(state, 'cellX', { duration: 0.4, ease: 'power3.out' }),
+    cellY: gsap.quickTo(state, 'cellY', { duration: 0.46, ease: 'power3.out' })
   };
 
   const onPointerMove = (event) => {
     if(!finePointer.matches) return;
+    if(leaveTimer){
+      clearTimeout(leaveTimer);
+      leaveTimer = null;
+    }
     const rect = hero.getBoundingClientRect();
     const localX = clamp(event.clientX - rect.left, 0, rect.width);
     const localY = clamp(event.clientY - rect.top, 0, rect.height);
     const snappedX = Math.floor(localX / gridSize) * gridSize;
     const snappedY = Math.floor(localY / gridSize) * gridSize;
 
-    setters.hotAlpha(1);
-    setters.cellX(snappedX);
-    setters.cellY(snappedY);
+    if(snappedX === nextCellX && snappedY === nextCellY){
+      setters.hotAlpha(1);
+      return;
+    }
+
+    nextCellX = snappedX;
+    nextCellY = snappedY;
+
+    if(moveTimer) clearTimeout(moveTimer);
+    moveTimer = setTimeout(() => {
+      setters.hotAlpha(1);
+      setters.cellX(nextCellX);
+      setters.cellY(nextCellY);
+    }, 72);
   };
 
   const resetPointer = () => {
-    setters.hotAlpha(0);
-    setters.cellX(-999);
-    setters.cellY(-999);
+    if(moveTimer){
+      clearTimeout(moveTimer);
+      moveTimer = null;
+    }
+    leaveTimer = setTimeout(() => {
+      setters.hotAlpha(0);
+      setters.cellX(-999);
+      setters.cellY(-999);
+      nextCellX = -999;
+      nextCellY = -999;
+    }, 110);
   };
 
   gsap.ticker.add(() => writeVars(state));
