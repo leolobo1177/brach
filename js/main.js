@@ -1601,83 +1601,122 @@
   const finePointer = window.matchMedia('(hover:hover) and (pointer:fine)');
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const gridSize = 95;
+  const heroStyles = getComputedStyle(hero);
+  const topExtend = parseFloat(heroStyles.getPropertyValue('--heroGridTopExtend')) || 112;
+  const bottomExtend = parseFloat(heroStyles.getPropertyValue('--heroGridBottomExtend')) || 56;
 
   const writeVars = (state) => {
-    hero.style.setProperty('--heroGridHotAlpha', state.hotAlpha.toFixed(3));
-    hero.style.setProperty('--heroCellX', `${state.cellX.toFixed(2)}px`);
-    hero.style.setProperty('--heroCellY', `${state.cellY.toFixed(2)}px`);
+    hero.style.setProperty('--heroCellAX', `${state.cellAX.toFixed(2)}px`);
+    hero.style.setProperty('--heroCellAY', `${state.cellAY.toFixed(2)}px`);
+    hero.style.setProperty('--heroCellAAlpha', state.cellAAlpha.toFixed(3));
+    hero.style.setProperty('--heroCellBX', `${state.cellBX.toFixed(2)}px`);
+    hero.style.setProperty('--heroCellBY', `${state.cellBY.toFixed(2)}px`);
+    hero.style.setProperty('--heroCellBAlpha', state.cellBAlpha.toFixed(3));
   };
 
   if(reduceMotion || !hasGsap){
     writeVars({
-      hotAlpha: 0,
-      cellX: -999,
-      cellY: -999
+      cellAX: -999,
+      cellAY: -999,
+      cellAAlpha: 0,
+      cellBX: -999,
+      cellBY: -999,
+      cellBAlpha: 0
     });
     return;
   }
 
   const state = {
-    hotAlpha: 0,
-    cellX: -999,
-    cellY: -999
+    cellAX: -999,
+    cellAY: -999,
+    cellAAlpha: 0,
+    cellBX: -999,
+    cellBY: -999,
+    cellBAlpha: 0
   };
 
   let activeCellX = -999;
   let activeCellY = -999;
-  let cellTimeline = null;
+  let activeSlot = 'A';
+  let hoverActive = false;
+  let fadeTimeline = null;
+
+  const getSlotProps = (slot) => slot === 'A'
+    ? { x: 'cellAX', y: 'cellAY', alpha: 'cellAAlpha' }
+    : { x: 'cellBX', y: 'cellBY', alpha: 'cellBAlpha' };
 
   const animateToCell = (nextX, nextY) => {
-    cellTimeline?.kill();
+    const nextSlot = activeSlot === 'A' ? 'B' : 'A';
+    const currentProps = getSlotProps(activeSlot);
+    const nextProps = getSlotProps(nextSlot);
 
-    if(activeCellX === -999 || activeCellY === -999){
-      state.cellX = nextX;
-      state.cellY = nextY;
-      activeCellX = nextX;
-      activeCellY = nextY;
-      cellTimeline = gsap.to(state, {
-        hotAlpha: 1,
-        duration: 0.42,
+    fadeTimeline?.kill();
+
+    state[nextProps.x] = nextX;
+    state[nextProps.y] = nextY;
+    state[nextProps.alpha] = 0;
+
+    fadeTimeline = gsap.timeline({ defaults: { overwrite: 'auto' } });
+    fadeTimeline
+      .to(state, {
+        [currentProps.alpha]: 0,
+        duration: 0.28,
         ease: 'power2.out'
-      });
-      return;
-    }
-
-    cellTimeline = gsap.timeline();
-    cellTimeline
+      }, 0)
       .to(state, {
-        hotAlpha: 0.18,
-        duration: 0.16,
-        ease: 'power1.out'
-      })
-      .add(() => {
-        state.cellX = nextX;
-        state.cellY = nextY;
-        activeCellX = nextX;
-        activeCellY = nextY;
-      })
-      .to(state, {
-        hotAlpha: 1,
+        [nextProps.alpha]: 1,
         duration: 0.34,
         ease: 'power2.out'
+      }, 0.04)
+      .add(() => {
+        activeSlot = nextSlot;
+        activeCellX = nextX;
+        activeCellY = nextY;
       });
+  };
+
+  const fadeInCurrent = () => {
+    const currentProps = getSlotProps(activeSlot);
+    gsap.to(state, {
+      [currentProps.alpha]: 1,
+      duration: 0.28,
+      ease: 'power2.out',
+      overwrite: 'auto'
+    });
   };
 
   const onPointerMove = (event) => {
     if(!finePointer.matches) return;
     const rect = hero.getBoundingClientRect();
+    const boundsTop = rect.top - topExtend;
+    const boundsBottom = rect.bottom + bottomExtend;
+    const insideX = event.clientX >= rect.left && event.clientX <= rect.right;
+    const insideY = event.clientY >= boundsTop && event.clientY <= boundsBottom;
+
+    if(!insideX || !insideY){
+      if(hoverActive) resetPointer();
+      return;
+    }
+
+    hoverActive = true;
+
     const localX = clamp(event.clientX - rect.left, 0, rect.width);
-    const localY = clamp(event.clientY - rect.top, 0, rect.height);
-    const snappedX = Math.floor(localX / gridSize) * gridSize;
-    const snappedY = Math.floor(localY / gridSize) * gridSize;
+    const localY = clamp(event.clientY - boundsTop, 0, (boundsBottom - boundsTop));
+    const snappedX = Math.round(localX / gridSize) * gridSize;
+    const snappedY = Math.round(localY / gridSize) * gridSize;
 
     if(snappedX === activeCellX && snappedY === activeCellY){
-      gsap.to(state, {
-        hotAlpha: 1,
-        duration: 0.24,
-        ease: 'power2.out',
-        overwrite: 'auto'
-      });
+      fadeInCurrent();
+      return;
+    }
+
+    if(activeCellX === -999 || activeCellY === -999){
+      const currentProps = getSlotProps(activeSlot);
+      state[currentProps.x] = snappedX;
+      state[currentProps.y] = snappedY;
+      activeCellX = snappedX;
+      activeCellY = snappedY;
+      fadeInCurrent();
       return;
     }
 
@@ -1685,23 +1724,29 @@
   };
 
   const resetPointer = () => {
-    cellTimeline?.kill();
-    cellTimeline = gsap.to(state, {
-      hotAlpha: 0,
-      duration: 0.34,
-      ease: 'power2.out',
-      onComplete: () => {
-        state.cellX = -999;
-        state.cellY = -999;
+    hoverActive = false;
+    fadeTimeline?.kill();
+    fadeTimeline = gsap.timeline({ defaults: { overwrite: 'auto' } });
+    fadeTimeline
+      .to(state, {
+        cellAAlpha: 0,
+        cellBAlpha: 0,
+        duration: 0.34,
+        ease: 'power2.out'
+      })
+      .add(() => {
+        state.cellAX = -999;
+        state.cellAY = -999;
+        state.cellBX = -999;
+        state.cellBY = -999;
         activeCellX = -999;
         activeCellY = -999;
-      }
-    });
+      });
   };
 
   gsap.ticker.add(() => writeVars(state));
-  hero.addEventListener('pointermove', onPointerMove, { passive: true });
-  hero.addEventListener('pointerleave', resetPointer, { passive: true });
+  window.addEventListener('pointermove', onPointerMove, { passive: true });
+  window.addEventListener('pointerleave', resetPointer, { passive: true });
   hero.addEventListener('pointercancel', resetPointer, { passive: true });
 
   resetPointer();
