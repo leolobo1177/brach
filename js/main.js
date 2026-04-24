@@ -1623,57 +1623,80 @@
     cellY: -999
   };
 
-  let moveTimer = null;
-  let leaveTimer = null;
-  let nextCellX = -999;
-  let nextCellY = -999;
+  let activeCellX = -999;
+  let activeCellY = -999;
+  let cellTimeline = null;
 
-  const setters = {
-    hotAlpha: gsap.quickTo(state, 'hotAlpha', { duration: 0.46, ease: 'power2.out' }),
-    cellX: gsap.quickTo(state, 'cellX', { duration: 0.4, ease: 'power3.out' }),
-    cellY: gsap.quickTo(state, 'cellY', { duration: 0.46, ease: 'power3.out' })
+  const animateToCell = (nextX, nextY) => {
+    cellTimeline?.kill();
+
+    if(activeCellX === -999 || activeCellY === -999){
+      state.cellX = nextX;
+      state.cellY = nextY;
+      activeCellX = nextX;
+      activeCellY = nextY;
+      cellTimeline = gsap.to(state, {
+        hotAlpha: 1,
+        duration: 0.42,
+        ease: 'power2.out'
+      });
+      return;
+    }
+
+    cellTimeline = gsap.timeline();
+    cellTimeline
+      .to(state, {
+        hotAlpha: 0.18,
+        duration: 0.16,
+        ease: 'power1.out'
+      })
+      .add(() => {
+        state.cellX = nextX;
+        state.cellY = nextY;
+        activeCellX = nextX;
+        activeCellY = nextY;
+      })
+      .to(state, {
+        hotAlpha: 1,
+        duration: 0.34,
+        ease: 'power2.out'
+      });
   };
 
   const onPointerMove = (event) => {
     if(!finePointer.matches) return;
-    if(leaveTimer){
-      clearTimeout(leaveTimer);
-      leaveTimer = null;
-    }
     const rect = hero.getBoundingClientRect();
     const localX = clamp(event.clientX - rect.left, 0, rect.width);
     const localY = clamp(event.clientY - rect.top, 0, rect.height);
     const snappedX = Math.floor(localX / gridSize) * gridSize;
     const snappedY = Math.floor(localY / gridSize) * gridSize;
 
-    if(snappedX === nextCellX && snappedY === nextCellY){
-      setters.hotAlpha(1);
+    if(snappedX === activeCellX && snappedY === activeCellY){
+      gsap.to(state, {
+        hotAlpha: 1,
+        duration: 0.24,
+        ease: 'power2.out',
+        overwrite: 'auto'
+      });
       return;
     }
 
-    nextCellX = snappedX;
-    nextCellY = snappedY;
-
-    if(moveTimer) clearTimeout(moveTimer);
-    moveTimer = setTimeout(() => {
-      setters.hotAlpha(1);
-      setters.cellX(nextCellX);
-      setters.cellY(nextCellY);
-    }, 72);
+    animateToCell(snappedX, snappedY);
   };
 
   const resetPointer = () => {
-    if(moveTimer){
-      clearTimeout(moveTimer);
-      moveTimer = null;
-    }
-    leaveTimer = setTimeout(() => {
-      setters.hotAlpha(0);
-      setters.cellX(-999);
-      setters.cellY(-999);
-      nextCellX = -999;
-      nextCellY = -999;
-    }, 110);
+    cellTimeline?.kill();
+    cellTimeline = gsap.to(state, {
+      hotAlpha: 0,
+      duration: 0.34,
+      ease: 'power2.out',
+      onComplete: () => {
+        state.cellX = -999;
+        state.cellY = -999;
+        activeCellX = -999;
+        activeCellY = -999;
+      }
+    });
   };
 
   gsap.ticker.add(() => writeVars(state));
