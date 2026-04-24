@@ -635,21 +635,9 @@
    HERO
 ================================ */
 .hero-banner{
-  --heroGridX: 0px;
-  --heroGridY: 0px;
   --heroGridHotAlpha: 0;
-  --heroCell1X: -999px;
-  --heroCell1Y: -999px;
-  --heroCell2X: -999px;
-  --heroCell2Y: -999px;
-  --heroCell3X: -999px;
-  --heroCell3Y: -999px;
-  --heroCell4X: -999px;
-  --heroCell4Y: -999px;
-  --heroCell5X: -999px;
-  --heroCell5Y: -999px;
-  --heroCell6X: -999px;
-  --heroCell6Y: -999px;
+  --heroCellX: -999px;
+  --heroCellY: -999px;
   position:relative;
   width:100vw;
   margin-left:calc(50% - 50vw);
@@ -661,61 +649,47 @@
   border:none;
   border-radius:0;
   background:transparent;
-  overflow:clip;
+  overflow:visible;
 }
 .hero-banner::before{
   content:"";
   position:absolute;
-  inset:0;
+  left:0;
+  right:0;
+  top:-76px;
+  bottom:-56px;
   pointer-events:none;
   z-index:0;
   opacity:1;
   background-image:
     linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px),
-    linear-gradient(rgb(24 122 255 / calc(.34 * var(--heroGridHotAlpha))), rgb(24 122 255 / calc(.34 * var(--heroGridHotAlpha)))),
-    linear-gradient(rgb(24 122 255 / calc(.24 * var(--heroGridHotAlpha))), rgb(24 122 255 / calc(.24 * var(--heroGridHotAlpha)))),
-    linear-gradient(rgb(24 122 255 / calc(.2 * var(--heroGridHotAlpha))), rgb(24 122 255 / calc(.2 * var(--heroGridHotAlpha)))),
-    linear-gradient(rgb(24 122 255 / calc(.18 * var(--heroGridHotAlpha))), rgb(24 122 255 / calc(.18 * var(--heroGridHotAlpha)))),
-    linear-gradient(rgb(24 122 255 / calc(.14 * var(--heroGridHotAlpha))), rgb(24 122 255 / calc(.14 * var(--heroGridHotAlpha)))),
-    linear-gradient(rgb(24 122 255 / calc(.12 * var(--heroGridHotAlpha))), rgb(24 122 255 / calc(.12 * var(--heroGridHotAlpha))));
+    linear-gradient(rgb(24 122 255 / calc(.42 * var(--heroGridHotAlpha))), rgb(24 122 255 / calc(.42 * var(--heroGridHotAlpha)))),
+    radial-gradient(circle at center, rgb(24 122 255 / calc(.22 * var(--heroGridHotAlpha))) 0%, rgb(24 122 255 / 0) 72%);
   background-size:
     95px 95px,
     95px 95px,
     95px 95px,
-    95px 95px,
-    95px 95px,
-    95px 95px,
-    95px 95px,
-    95px 95px;
+    220px 220px;
   background-position:
-    var(--heroGridX) var(--heroGridY),
-    var(--heroGridX) var(--heroGridY),
-    calc(var(--heroGridX) + var(--heroCell1X)) calc(var(--heroGridY) + var(--heroCell1Y)),
-    calc(var(--heroGridX) + var(--heroCell2X)) calc(var(--heroGridY) + var(--heroCell2Y)),
-    calc(var(--heroGridX) + var(--heroCell3X)) calc(var(--heroGridY) + var(--heroCell3Y)),
-    calc(var(--heroGridX) + var(--heroCell4X)) calc(var(--heroGridY) + var(--heroCell4Y)),
-    calc(var(--heroGridX) + var(--heroCell5X)) calc(var(--heroGridY) + var(--heroCell5Y)),
-    calc(var(--heroGridX) + var(--heroCell6X)) calc(var(--heroGridY) + var(--heroCell6Y));
+    0 0,
+    0 0,
+    var(--heroCellX) var(--heroCellY),
+    calc(var(--heroCellX) - 62px) calc(var(--heroCellY) - 62px);
   background-repeat:
     repeat,
     repeat,
-    no-repeat,
-    no-repeat,
-    no-repeat,
-    no-repeat,
     no-repeat,
     no-repeat;
   background-blend-mode:
     normal,
     normal,
     screen,
-    screen,
-    screen,
-    screen,
-    screen,
     screen;
-  filter: saturate(118%) contrast(110%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, rgba(0,0,0,.84) 84%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 72%, rgba(0,0,0,.84) 84%, transparent 100%);
+  filter: saturate(120%) contrast(110%);
+  will-change: background-position, opacity;
 }
 .hero-banner__inner{
   position:relative;

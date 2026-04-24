@@ -1603,96 +1603,49 @@
   const gridSize = 95;
 
   const writeVars = (state) => {
-    hero.style.setProperty('--heroGridX', `${state.gridX.toFixed(2)}px`);
-    hero.style.setProperty('--heroGridY', `${state.gridY.toFixed(2)}px`);
     hero.style.setProperty('--heroGridHotAlpha', state.hotAlpha.toFixed(3));
-    for(let index = 1; index <= 6; index += 1){
-      hero.style.setProperty(`--heroCell${index}X`, `${state[`cell${index}X`].toFixed(2)}px`);
-      hero.style.setProperty(`--heroCell${index}Y`, `${state[`cell${index}Y`].toFixed(2)}px`);
-    }
-  };
-
-  const setGridCells = (localX, localY) => {
-    const baseX = Math.round(localX / gridSize) * gridSize;
-    const baseY = Math.round(localY / gridSize) * gridSize;
-    const offsets = [
-      [0, 0],
-      [gridSize, 0],
-      [0, gridSize],
-      [-gridSize, 0],
-      [gridSize, gridSize],
-      [2 * gridSize, 0]
-    ];
-
-    offsets.forEach(([offsetX, offsetY], index) => {
-      setters[`cell${index + 1}X`](baseX + offsetX);
-      setters[`cell${index + 1}Y`](baseY + offsetY);
-    });
-  };
-
-  const hideGridCells = () => {
-    for(let index = 1; index <= 6; index += 1){
-      setters[`cell${index}X`](-999);
-      setters[`cell${index}Y`](-999);
-    }
+    hero.style.setProperty('--heroCellX', `${state.cellX.toFixed(2)}px`);
+    hero.style.setProperty('--heroCellY', `${state.cellY.toFixed(2)}px`);
   };
 
   if(reduceMotion || !hasGsap){
     writeVars({
-      gridX: 0,
-      gridY: 0,
       hotAlpha: 0,
-      cell1X: -999, cell1Y: -999,
-      cell2X: -999, cell2Y: -999,
-      cell3X: -999, cell3Y: -999,
-      cell4X: -999, cell4Y: -999,
-      cell5X: -999, cell5Y: -999,
-      cell6X: -999, cell6Y: -999
+      cellX: -999,
+      cellY: -999
     });
     return;
   }
 
   const state = {
-    gridX: 0,
-    gridY: 0,
     hotAlpha: 0,
-    cell1X: -999, cell1Y: -999,
-    cell2X: -999, cell2Y: -999,
-    cell3X: -999, cell3Y: -999,
-    cell4X: -999, cell4Y: -999,
-    cell5X: -999, cell5Y: -999,
-    cell6X: -999, cell6Y: -999
+    cellX: -999,
+    cellY: -999
   };
 
   const setters = {
-    gridX: gsap.quickTo(state, 'gridX', { duration: 0.9, ease: 'power3.out' }),
-    gridY: gsap.quickTo(state, 'gridY', { duration: 1.05, ease: 'power3.out' }),
-    hotAlpha: gsap.quickTo(state, 'hotAlpha', { duration: 0.45, ease: 'power2.out' })
+    hotAlpha: gsap.quickTo(state, 'hotAlpha', { duration: 0.32, ease: 'power2.out' }),
+    cellX: gsap.quickTo(state, 'cellX', { duration: 0.26, ease: 'power3.out' }),
+    cellY: gsap.quickTo(state, 'cellY', { duration: 0.3, ease: 'power3.out' })
   };
-  for(let index = 1; index <= 6; index += 1){
-    setters[`cell${index}X`] = gsap.quickTo(state, `cell${index}X`, { duration: 0.62, ease: 'power3.out' });
-    setters[`cell${index}Y`] = gsap.quickTo(state, `cell${index}Y`, { duration: 0.72, ease: 'power3.out' });
-  }
 
   const onPointerMove = (event) => {
     if(!finePointer.matches) return;
     const rect = hero.getBoundingClientRect();
     const localX = clamp(event.clientX - rect.left, 0, rect.width);
     const localY = clamp(event.clientY - rect.top, 0, rect.height);
-    const nx = rect.width ? localX / rect.width : 0.5;
-    const ny = rect.height ? localY / rect.height : 0.5;
+    const snappedX = Math.floor(localX / gridSize) * gridSize;
+    const snappedY = Math.floor(localY / gridSize) * gridSize;
 
-    setters.gridX((nx - 0.5) * 14);
-    setters.gridY((ny - 0.5) * 10);
     setters.hotAlpha(1);
-    setGridCells(localX, localY);
+    setters.cellX(snappedX);
+    setters.cellY(snappedY);
   };
 
   const resetPointer = () => {
-    setters.gridX(0);
-    setters.gridY(0);
     setters.hotAlpha(0);
-    hideGridCells();
+    setters.cellX(-999);
+    setters.cellY(-999);
   };
 
   gsap.ticker.add(() => writeVars(state));
