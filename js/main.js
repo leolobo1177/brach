@@ -6,12 +6,13 @@
   const body = document.body;
   const counter = loader.querySelector('#pageLoaderCounter');
   const progressFill = loader.querySelector('#pageLoaderBar');
+  const content = loader.querySelector('.page-loader__content');
   const textTargets = Array.from(loader.querySelectorAll('.page-loader__text'));
   const bars = Array.from(loader.querySelectorAll('.page-loader__bar'));
   const hasGsap = typeof window.gsap !== 'undefined';
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const state = { value: 0 };
-  const minDuration = reduceMotion ? 320 : 1400;
+  const minDuration = reduceMotion ? 260 : 980;
   const startTime = performance.now();
   let finished = false;
   let preloadTl = null;
@@ -43,7 +44,7 @@
         state.value = 100;
         render();
         loader.classList.add('is-exiting');
-        window.setTimeout(teardown, reduceMotion ? 220 : 760);
+        window.setTimeout(teardown, reduceMotion ? 180 : 560);
         return;
       }
 
@@ -57,25 +58,33 @@
 
       tl.to(state, {
         value: 100,
-        duration: reduceMotion ? 0.18 : 0.42,
+        duration: reduceMotion ? 0.14 : 0.28,
         ease: 'power2.out',
         onUpdate: render
       });
 
+      if (content) {
+        tl.to(content, {
+          opacity: 0,
+          duration: reduceMotion ? 0.14 : 0.22,
+          ease: 'power2.inOut'
+        }, reduceMotion ? '-=0.04' : '-=0.08');
+      }
+
       tl.to(textTargets, {
         yPercent: -118,
         opacity: 0,
-        duration: reduceMotion ? 0.18 : 0.48,
-        stagger: reduceMotion ? 0 : 0.04,
+        duration: reduceMotion ? 0.14 : 0.3,
+        stagger: reduceMotion ? 0 : 0.03,
         ease: 'power3.in'
-      }, '-=0.04');
+      }, reduceMotion ? '-=0.1' : '-=0.16');
 
       tl.to(bars, {
         yPercent: -104,
-        duration: reduceMotion ? 0.22 : 0.86,
-        stagger: reduceMotion ? 0 : { each: 0.06, from: 'center' },
+        duration: reduceMotion ? 0.18 : 0.52,
+        stagger: reduceMotion ? 0 : { each: 0.035, from: 'center' },
         ease: 'power4.inOut'
-      }, reduceMotion ? '-=0.08' : '-=0.18');
+      }, reduceMotion ? '-=0.08' : '-=0.1');
     }, remainingDelay);
   };
 
@@ -87,7 +96,7 @@
     const fallbackStart = performance.now();
     const fallbackStep = (now) => {
       if (finished) return;
-      const progress = Math.min((now - fallbackStart) / (reduceMotion ? 520 : 1800), 1);
+      const progress = Math.min((now - fallbackStart) / (reduceMotion ? 420 : 1400), 1);
       const eased = progress < 0.8
         ? (progress / 0.8) * 90
         : 90 + ((progress - 0.8) / 0.2) * 7;
@@ -106,7 +115,7 @@
       document.addEventListener('DOMContentLoaded', requestFinish, { once: true });
     }
     window.addEventListener('load', requestFinish, { once: true });
-    window.setTimeout(requestFinish, reduceMotion ? 700 : 2200);
+    window.setTimeout(requestFinish, reduceMotion ? 560 : 1800);
     return;
   }
 
@@ -114,19 +123,19 @@
   preloadTl
     .to(state, {
       value: 76,
-      duration: reduceMotion ? 0.28 : 0.9,
+      duration: reduceMotion ? 0.22 : 0.68,
       ease: 'power2.out',
       onUpdate: render
     })
     .to(state, {
       value: 92,
-      duration: reduceMotion ? 0.18 : 0.62,
+      duration: reduceMotion ? 0.14 : 0.42,
       ease: 'power1.out',
       onUpdate: render
     })
     .to(state, {
       value: 97,
-      duration: reduceMotion ? 0.12 : 1.2,
+      duration: reduceMotion ? 0.1 : 0.72,
       ease: 'none',
       onUpdate: render
     });
@@ -137,7 +146,7 @@
     document.addEventListener('DOMContentLoaded', requestFinish, { once: true });
   }
   window.addEventListener('load', requestFinish, { once: true });
-  window.setTimeout(requestFinish, reduceMotion ? 900 : 2600);
+  window.setTimeout(requestFinish, reduceMotion ? 720 : 1900);
 })();
 
 (() => {
@@ -549,6 +558,7 @@
     // Team: o hover deve existir SOMENTE no link do LinkedIn (igual ao rodapé).
     // Então não aplicamos animação de peso/hover no card inteiro nem no nome.
 });
+})();
 
 
 // ===============================
@@ -1752,7 +1762,41 @@
   let cols = 0;
   let rows = 0;
   let cells = [];
-  let activeCell = null;
+  let activeCells = [];
+  const cellFadeTimers = new Map();
+  const cellFadeDelay = reduceMotion ? 0 : 320;
+
+  const clearCellFadeTimer = (cell) => {
+    if(!cell) return;
+    const timer = cellFadeTimers.get(cell);
+    if(typeof timer === 'number'){
+      window.clearTimeout(timer);
+      cellFadeTimers.delete(cell);
+    }
+  };
+
+  const heatCell = (cell) => {
+    if(!cell) return;
+    clearCellFadeTimer(cell);
+    cell.classList.add('is-hot');
+  };
+
+  const coolCell = (cell, immediate = false) => {
+    if(!cell) return;
+    clearCellFadeTimer(cell);
+
+    if(immediate || reduceMotion){
+      cell.classList.remove('is-hot');
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      cell.classList.remove('is-hot');
+      cellFadeTimers.delete(cell);
+    }, cellFadeDelay);
+
+    cellFadeTimers.set(cell, timer);
+  };
 
   const buildGrid = () => {
     const width = window.innerWidth;
@@ -1764,6 +1808,8 @@
     grid.style.gridTemplateRows = `repeat(${rows}, ${gridSize}px)`;
     grid.style.width = `${cols * gridSize}px`;
     grid.style.height = `${rows * gridSize}px`;
+    cellFadeTimers.forEach((timer) => window.clearTimeout(timer));
+    cellFadeTimers.clear();
     grid.replaceChildren();
 
     const fragment = document.createDocumentFragment();
@@ -1777,21 +1823,37 @@
     }
 
     grid.appendChild(fragment);
-    activeCell = null;
+    activeCells = [];
   };
 
-  const setActiveCell = (cell) => {
-    if(activeCell === cell) return;
-    if(activeCell) activeCell.classList.remove('is-hot');
-    activeCell = cell;
-    if(activeCell) activeCell.classList.add('is-hot');
-  };
+  const getHoverCells = (row, col) => {
+    const span = Math.min(3, cols);
+    const startCol = clamp(col - 1, 0, Math.max(cols - span, 0));
+    const nextCells = [];
 
-  const clearActiveCell = () => {
-    if(activeCell){
-      activeCell.classList.remove('is-hot');
-      activeCell = null;
+    for(let offset = 0; offset < span; offset += 1){
+      const cell = cells[(row * cols) + startCol + offset];
+      if(cell) nextCells.push(cell);
     }
+
+    return nextCells;
+  };
+
+  const sameCells = (current, next) => (
+    current.length === next.length && current.every((cell, index) => cell === next[index])
+  );
+
+  const setActiveCells = (nextCells) => {
+    if(sameCells(activeCells, nextCells)) return;
+    activeCells.forEach((cell) => coolCell(cell));
+    activeCells = nextCells;
+    activeCells.forEach((cell) => heatCell(cell));
+  };
+
+  const clearActiveCells = (immediate = false) => {
+    if(!activeCells.length) return;
+    activeCells.forEach((cell) => coolCell(cell, immediate));
+    activeCells = [];
   };
 
   const onPointerMove = (event) => {
@@ -1803,7 +1865,7 @@
     const insideY = event.clientY >= boundsTop && event.clientY <= boundsBottom;
 
     if(!insideX || !insideY){
-      clearActiveCell();
+      clearActiveCells();
       return;
     }
 
@@ -1811,8 +1873,8 @@
     const localY = clamp(event.clientY - boundsTop, 0, rows * gridSize - 1);
     const col = Math.floor(localX / gridSize);
     const row = Math.floor(localY / gridSize);
-    const nextCell = cells[(row * cols) + col] || null;
-    setActiveCell(nextCell);
+    const nextCells = getHoverCells(row, col);
+    setActiveCells(nextCells);
   };
 
   const onResize = () => {
@@ -1826,9 +1888,10 @@
   }
 
   window.addEventListener('pointermove', onPointerMove, { passive: true });
-  window.addEventListener('pointerleave', clearActiveCell, { passive: true });
+  window.addEventListener('pointerleave', clearActiveCells, { passive: true });
   window.addEventListener('resize', onResize, { passive: true });
-  hero.addEventListener('pointercancel', clearActiveCell, { passive: true });
+  hero.addEventListener('pointerleave', clearActiveCells, { passive: true });
+  hero.addEventListener('pointercancel', clearActiveCells, { passive: true });
 })();
 
 

@@ -49,7 +49,7 @@
     }
     .skip-link:focus{ left: 10px; }
 
-    /* Acessibilidade (texto só para leitores de tela) */
+    /* Acessibilidade (texto sÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³ para leitores de tela) */
     .sr-only{
       position:absolute;
       width:1px;
@@ -62,7 +62,7 @@
       border:0;
     }
 
-    /* Mantém o espaço da scrollbar estável e evita "pulo" quando abre o menu */
+    /* MantÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©m o espaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§o da scrollbar estÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡vel e evita "pulo" quando abre o menu */
     html{
       scrollbar-gutter: auto;
       overflow-y: auto;
@@ -144,7 +144,7 @@
     /* Quando o menu esta aberto (painel claro), nao aplica blend */
     body.menu-opened .menu-slot{ mix-blend-mode: normal; }
 
-    /* ================= SLOT ÚNICO (FORÇA POSIÇÃO IDÊNTICA) ================= */
+    /* ================= SLOT ÃƒÆ’Ã†â€™Ãƒâ€¦Ã‚Â¡NICO (FORÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¡A POSIÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢O IDÃƒÆ’Ã†â€™Ãƒâ€¦Ã‚Â NTICA) ================= */
     .menu-slot{
       appearance: none;
       border: 0;
@@ -168,7 +168,7 @@
       /* acima do overlay e acima do painel transformado */
       z-index: 9999;
     }
-    /* Foco visível (teclado) */
+    /* Foco visÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­vel (teclado) */
     .menu-slot:focus-visible,
     .navlink:focus-visible,
     .copy-btn:focus-visible,
@@ -207,7 +207,7 @@
       pointer-events:none;
     }
     body.menu-opened .menu-close{
-      opacity:.92;
+      opacity:.42;
       pointer-events:auto;
     }
 
@@ -219,7 +219,7 @@
       opacity: 0;
       pointer-events: none;
 
-      /* A animação fica por conta do GSAP (mais suave / consistente) */
+      /* A animaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o fica por conta do GSAP (mais suave / consistente) */
       transition: none;
     }
     .overlay.is-open{
@@ -233,11 +233,11 @@
       background: var(--cream);
       color: var(--blue);
 
-      /* mantém suas animações (transform) */
+      /* mantÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©m suas animaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âµes (transform) */
       transform: translateY(-6px) scale(1.01);
       filter: blur(2px);
 
-      /* GSAP controla a transição */
+      /* GSAP controla a transiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o */
       transition: none;
       will-change: transform, filter;
     }
@@ -253,7 +253,7 @@
         background: rgba(0,0,0,.45);
       }
 
-      /* O painel do menu vira uma “gaveta” na direita */
+      /* O painel do menu vira uma ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“gavetaÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â na direita */
       .overlay__panel{
         inset: 0 0 0 auto;
         width: 50vw;
@@ -265,7 +265,7 @@
         justify-content: center;
       }
 
-      /* Conteúdo do painel em uma coluna (sem coluna esquerda interna) */
+      /* ConteÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºdo do painel em uma coluna (sem coluna esquerda interna) */
       .overlay__inner{
         height: 100%;
         display: grid;
@@ -279,14 +279,14 @@
         padding-bottom: 48px;
       }
 
-      /* Mantém no HTML mas remove visualmente para não criar “box” */
+      /* MantÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©m no HTML mas remove visualmente para nÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o criar ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“boxÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â */
       .overlay__art{ display:none !important; }
 
-      /* Remove ícones das redes no desktop (mantém só texto) */
+      /* Remove ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­cones das redes no desktop (mantÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©m sÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³ texto) */
       .social-ico{ display:none !important; }
       .social-icons{ display:none !important; }
 
-      /* Mantém e-mail e ícone lado a lado no desktop */
+      /* MantÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©m e-mail e ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­cone lado a lado no desktop */
       .email-row{ flex-wrap: nowrap; }
     }
 
@@ -370,7 +370,7 @@
       display: inline-block;
     }
 
-    /* ================= CONTATO + UNDERLINE (só no texto) ================= */
+    /* ================= CONTATO + UNDERLINE (sÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³ no texto) ================= */
     .overlay__contact{
       margin-top: 18px;
       width: 100%;
@@ -392,7 +392,7 @@
       flex-wrap: wrap;
     }
 
-    /* Desktop: evita quebrar e mantém o botão colado ao e-mail */
+    /* Desktop: evita quebrar e mantÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©m o botÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o colado ao e-mail */
     @media (min-width: 1025px){
       .email-row{ flex-wrap: nowrap; }
     }
@@ -402,7 +402,7 @@
       display: inline-block;
       width: fit-content;
     }
-    /* Reserva a largura do texto em peso máximo para evitar deslocamento de coluna ao passar o mouse */
+    /* Reserva a largura do texto em peso mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ximo para evitar deslocamento de coluna ao passar o mouse */
     .u::before{
       content: attr(data-text);
       font-weight: 900;
@@ -452,7 +452,7 @@
       justify-content:center;
       gap: 0;
 
-      /* Ícone-only */
+      /* ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âcone-only */
       line-height: 0;
 
       transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease);
@@ -502,7 +502,7 @@
       gap:10px;
       width: fit-content;
     }
-    /* Desktop: remove ícones do lado do nome (mantém “as-is” no iPad/mobile) */
+    /* Desktop: remove ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­cones do lado do nome (mantÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©m ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“as-isÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â no iPad/mobile) */
     .social-ico{
       width: 14px;
       height: 14px;
@@ -562,7 +562,7 @@
       }
       .social-grid{ justify-items: center; margin: 0 auto; }
 
-      /* iPad/tablet: volta os ícones ao lado do nome */
+      /* iPad/tablet: volta os ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­cones ao lado do nome */
       .social-ico{ display: inline-block; }
     }
 
@@ -650,7 +650,7 @@ body.is-loading footer{
   display:flex;
   align-items:stretch;
   justify-content:stretch;
-  background:var(--cream);
+  background:transparent;
   color:var(--blue);
   overflow:hidden;
 }
@@ -679,6 +679,8 @@ body.is-loading footer{
   flex-direction:column;
   justify-content:space-between;
   padding:clamp(24px, 2vw, 34px) clamp(24px, 1.9vw, 32px) clamp(22px, 2.2vw, 30px);
+  transition:opacity .22s cubic-bezier(.22,.9,.2,1);
+  will-change:opacity;
 }
 .page-loader__top,
 .page-loader__meta{
@@ -709,6 +711,10 @@ body.is-loading footer{
   height:2px;
   background:rgba(7,16,79,.22);
   overflow:hidden;
+  opacity:.56;
+  transform:translateY(0) scaleX(1);
+  transform-origin:left center;
+  will-change:transform, opacity;
 }
 .page-loader__progress-fill{
   position:absolute;
@@ -752,21 +758,29 @@ body.is-loading footer{
 .page-loader.is-done{
   pointer-events:none;
 }
+.page-loader.is-exiting .page-loader__content{
+  opacity:0;
+}
+.page-loader.is-exiting .page-loader__progress{
+  transform:translateY(16px) scaleX(.92);
+  opacity:0;
+  transition:transform .22s cubic-bezier(.22,.9,.2,1), opacity .18s ease;
+}
 .page-loader.is-exiting .page-loader__text{
   transform:translateY(-118%);
   opacity:0;
-  transition:transform .46s cubic-bezier(.22,.9,.2,1), opacity .46s cubic-bezier(.22,.9,.2,1);
+  transition:transform .3s cubic-bezier(.22,.9,.2,1), opacity .3s cubic-bezier(.22,.9,.2,1);
 }
 .page-loader.is-exiting .page-loader__bar{
   transform:translateY(-104%);
-  transition:transform .78s cubic-bezier(.16,.88,.18,1);
+  transition:transform .52s cubic-bezier(.16,.88,.18,1);
 }
-.page-loader.is-exiting .page-loader__bar:nth-child(1){ transition-delay:.18s; }
-.page-loader.is-exiting .page-loader__bar:nth-child(2){ transition-delay:.12s; }
-.page-loader.is-exiting .page-loader__bar:nth-child(3){ transition-delay:.06s; }
-.page-loader.is-exiting .page-loader__bar:nth-child(4){ transition-delay:.06s; }
-.page-loader.is-exiting .page-loader__bar:nth-child(5){ transition-delay:.12s; }
-.page-loader.is-exiting .page-loader__bar:nth-child(6){ transition-delay:.18s; }
+.page-loader.is-exiting .page-loader__bar:nth-child(1){ transition-delay:.1s; }
+.page-loader.is-exiting .page-loader__bar:nth-child(2){ transition-delay:.07s; }
+.page-loader.is-exiting .page-loader__bar:nth-child(3){ transition-delay:.04s; }
+.page-loader.is-exiting .page-loader__bar:nth-child(4){ transition-delay:.04s; }
+.page-loader.is-exiting .page-loader__bar:nth-child(5){ transition-delay:.07s; }
+.page-loader.is-exiting .page-loader__bar:nth-child(6){ transition-delay:.1s; }
 
 @media (max-width: 760px){
   .page-loader__content{
@@ -825,10 +839,10 @@ body.is-loading footer{
   justify-content:start;
   pointer-events:none;
   z-index:0;
-  opacity:1;
+  opacity:.56;
   background-image:
-    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
   background-size:
     95px 95px,
     95px 95px;
@@ -847,24 +861,33 @@ body.is-loading footer{
   height:95px;
   background:rgba(24,122,255,0);
   opacity:0;
-  transform:translateZ(0);
+  transform:translateZ(0) scale(.985);
+  box-shadow:
+    inset 0 0 0 rgba(190,235,255,0),
+    0 0 0 1px rgba(122,207,255,0);
   transition:
-    opacity .82s ease,
-    background-color .82s ease,
-    filter .82s ease;
+    opacity 1.05s cubic-bezier(.22,1,.36,1),
+    filter 1.05s cubic-bezier(.22,1,.36,1),
+    box-shadow 1.05s cubic-bezier(.22,1,.36,1),
+    transform 1.05s cubic-bezier(.22,1,.36,1);
 }
 .hero-banner__grid-cell.is-hot{
-  opacity:1;
+  opacity:.42;
+  transform:translateZ(0) scale(1);
   background:
-    radial-gradient(circle at 50% 45%, rgba(150,218,255,.92) 0%, rgba(72,164,255,.72) 36%, rgba(24,122,255,.52) 74%, rgba(24,122,255,.34) 100%);
+    radial-gradient(circle at 50% 45%, rgba(106,178,248,.24) 0%, rgba(106,178,248,.14) 42%, rgba(106,178,248,.07) 76%, rgba(106,178,248,0) 100%);
   filter:
-    drop-shadow(0 0 12px rgba(122,207,255,.62))
-    drop-shadow(0 0 26px rgba(24,122,255,.42))
-    drop-shadow(0 0 42px rgba(24,122,255,.24));
+    drop-shadow(0 0 6px rgba(106,178,248,.08))
+    drop-shadow(0 0 12px rgba(106,178,248,.04));
   box-shadow:
-    inset 0 0 22px rgba(190,235,255,.22),
-    0 0 0 1px rgba(122,207,255,.18);
-  transition-duration:0s;
+    inset 0 0 10px rgba(180,220,255,.03),
+    0 0 0 1px rgba(106,178,248,.035);
+  transition-duration:.16s, .16s, .16s, .16s;
+  transition-timing-function:
+    cubic-bezier(.18,.88,.32,1),
+    cubic-bezier(.18,.88,.32,1),
+    cubic-bezier(.18,.88,.32,1),
+    cubic-bezier(.18,.88,.32,1);
 }
 .hero-banner__inner{
   position:relative;
@@ -1077,7 +1100,7 @@ body.is-loading footer{
 }
 .letter-swap__glyph--base{
   transform:translateY(0%);
-  opacity:1;
+  opacity:.56;
 }
 .letter-swap__glyph--hover{
   transform:translateY(120%);
@@ -1091,7 +1114,7 @@ body.is-loading footer{
 .letter-swap:hover .letter-swap__glyph--hover,
 .letter-swap:focus-visible .letter-swap__glyph--hover{
   transform:translateY(0%);
-  opacity:1;
+  opacity:.56;
 }
 .hero-banner__scroll{
   display:inline-flex;
@@ -1127,7 +1150,7 @@ body.is-loading footer{
     transform:translateY(0) rotate(45deg);
   }
   45%{
-    opacity:1;
+    opacity:.56;
     transform:translateY(4px) rotate(45deg);
   }
 }
@@ -1923,7 +1946,7 @@ section.parallax-section#servicos > p{
    CASES (hover preview)
 ================================ */
 section.cases-section{
-  /* Seção solta (sem box traçado do estilo genérico de <section>) */
+  /* SeÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o solta (sem box traÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ado do estilo genÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©rico de <section>) */
   border: none;
   border-radius: 0;
   background: transparent;
@@ -2043,7 +2066,7 @@ section.cases-section{
 
 
 @media (max-width: 1024px){
-  /* Preview menor em telas menores (mantém seguir o cursor quando houver mouse/trackpad) */
+  /* Preview menor em telas menores (mantÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©m seguir o cursor quando houver mouse/trackpad) */
   .case-preview{
     width: clamp(170px, 40vw, 320px);
     height: clamp(120px, 28vw, 220px);
@@ -2098,7 +2121,7 @@ section.cases-section{
     gap: 28px;
   }
 
-  /* Links devem aparecer no mobile (maiores e legíveis) */
+  /* Links devem aparecer no mobile (maiores e legÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­veis) */
   .footer-col__title{
     font-size: 22px;
     margin-bottom: 12px;
@@ -2116,7 +2139,7 @@ section.cases-section{
     font-size: 18px;
   }
 
-  /* Ícones no mobile continuam disponíveis (abaixo) */
+  /* ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âcones no mobile continuam disponÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­veis (abaixo) */
   .footer-social-icons{
     display: flex;
     justify-content: center;
@@ -2199,7 +2222,7 @@ section.cases-section{
    TRABALHOS: refinamentos (v3)
    - linhas full-bleed
    - hover opacity + motion suave
-   - preview responsivo + stack p/ animação
+   - preview responsivo + stack p/ animaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o
 ================================ */
 .cases-list{ border-top: none; position: relative; }
 .cases-list::before{
@@ -2271,7 +2294,7 @@ section.cases-section{
 }
 
 @media (hover: none), (pointer: coarse){
-  /* Touch: a prévia é acionada por toque e fica flutuante no ponto do toque */
+  /* Touch: a prÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©via ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â© acionada por toque e fica flutuante no ponto do toque */
   .case-preview{
     display:block !important;
     position: fixed !important;
@@ -2302,7 +2325,7 @@ section.cases-section{
 
 
 /* ===============================
-   TÍTULOS DAS SEÇÕES (A11Y)
+   TÃƒÆ’Ã†â€™Ãƒâ€šÃ‚ÂTULOS DAS SEÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ES (A11Y)
    Uppercase via CSS (texto original permanece no HTML)
 ================================ */
 main > section > h2:not(.cases-title){
@@ -2415,7 +2438,7 @@ main > section > h2:not(.cases-title){
 
 @keyframes tickerMove{
   from{ transform: translateX(0); }
-  /* move metade do conteúdo, porque duplicamos dentro do track */
+  /* move metade do conteÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºdo, porque duplicamos dentro do track */
   to{ transform: translateX(-50%); }
 }
 
@@ -2434,7 +2457,7 @@ main > section > h2:not(.cases-title){
 }
 
 .footer-logo{
-  /* menor que antes, mas ainda com presença */
+  /* menor que antes, mas ainda com presenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§a */
   width: clamp(190px, 18vw, 320px);
   height: auto;
   display: block;
@@ -2458,7 +2481,7 @@ main > section > h2:not(.cases-title){
 
 .footer-cols{
   display: grid;
-  /* evita que conteúdo (ex.: email) force min-content e "empurre" colunas */
+  /* evita que conteÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºdo (ex.: email) force min-content e "empurre" colunas */
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(18px, 3vw, 54px);
   align-items: start;
@@ -2466,8 +2489,8 @@ main > section > h2:not(.cases-title){
 
 .footer-col{
   /* IMPORTANTE: evitar "pulo" quando o hover muda o peso do texto (ex.: link X).
-     Com as colunas centralizadas, qualquer mudança de largura desloca tudo.
-     Mantendo alinhamento à esquerda, a largura pode variar sem mexer no layout. */
+     Com as colunas centralizadas, qualquer mudanÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§a de largura desloca tudo.
+     Mantendo alinhamento ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â  esquerda, a largura pode variar sem mexer no layout. */
   justify-self: stretch;
   min-width: 0;
   text-align: left;
@@ -2502,7 +2525,7 @@ main > section > h2:not(.cases-title){
   line-height: 1.2;
 }
 
-/* Evita "pulo" de layout quando o hover muda peso/variação */
+/* Evita "pulo" de layout quando o hover muda peso/variaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o */
 .footer-col{ min-width: 0; }
 .footer-email .u{ white-space: nowrap; }
 
@@ -2523,7 +2546,7 @@ main > section > h2:not(.cases-title){
   opacity: .96;
 }
 
-/* Mobile: centraliza, logo no topo, oculta Contato e mantém navegação visível */
+/* Mobile: centraliza, logo no topo, oculta Contato e mantÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©m navegaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o visÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­vel */
 @media (max-width: 860px){
   .footer-inner{
     grid-template-columns: 1fr;
@@ -2574,7 +2597,7 @@ main > section > h2:not(.cases-title){
     letter-spacing: .02em;
   }
 
-  /* Mobile: redes sociais em ícones (lado a lado) */
+  /* Mobile: redes sociais em ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­cones (lado a lado) */
   .footer-social{ display: none; }
   .footer-social-icons{
     display: flex;
@@ -2633,7 +2656,7 @@ body::before{
   animation: bgBlobs 18s ease-in-out infinite alternate;
 }
 
-/* Camada de ruído suave */
+/* Camada de ruÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­do suave */
 body::after{
   content:"";
   position:fixed;
@@ -2666,7 +2689,7 @@ section.team{
   border: none;
   background: transparent;
 
-  /* Full-bleed (quebra a limitação do <main>) mantendo o conteúdo centralizado no .team__grid */
+  /* Full-bleed (quebra a limitaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o do <main>) mantendo o conteÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºdo centralizado no .team__grid */
   position: relative;
   width: 100vw;
   left: 50%;
@@ -2676,13 +2699,13 @@ section.team{
   margin-top: clamp(28px, 6vw, 90px);
   margin-bottom: clamp(28px, 6vw, 90px);
 
-  /* desce um pouco a seção (pedido: +50px) sem mexer no layout geral */
+  /* desce um pouco a seÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o (pedido: +50px) sem mexer no layout geral */
   padding: calc(clamp(28px, 5vw, 72px) + 50px) 0 clamp(28px, 5vw, 72px);
   min-height: auto;
 }
 
 .team__grid{
-  /* um pouco mais compacto para o conteúdo ficar mais centralizado */
+  /* um pouco mais compacto para o conteÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºdo ficar mais centralizado */
   width: min(1400px, 100%);
   margin: 0 auto;
 
@@ -2768,7 +2791,7 @@ border: none;
   background: rgba(0,0,0,.28);
   overflow: hidden;
   border-radius: 0;
-  /* garante alinhamento e evita crop: preserva proporção original */
+  /* garante alinhamento e evita crop: preserva proporÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o original */
   height: clamp(300px, 30vw, 430px);
   display: flex;
   align-items: center;
@@ -2799,7 +2822,7 @@ border: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  pointer-events: none; /* garante que o hover não dispare no nome */
+  pointer-events: none; /* garante que o hover nÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o dispare no nome */
 }
 
 
@@ -2822,7 +2845,7 @@ border: none;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  /* mantém padrão do menu/rodapé (underline + peso) sem empurrar layout */
+  /* mantÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©m padrÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o do menu/rodapÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â© (underline + peso) sem empurrar layout */
   font-family: inherit;
   font-weight: 600;
   color: rgba(255,255,255,.92);
@@ -2917,7 +2940,7 @@ border: none;
 }
 
 .team__photo{
-  margin-bottom: 52px;      /* espaço pro nome atravessar */
+  margin-bottom: 52px;      /* espaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§o pro nome atravessar */
 }
 
 .team__imgwrap{
@@ -2957,7 +2980,7 @@ border: none;
   letter-spacing: .01em;
 }
 
-/* Linkedin: mesmo hover do menu/rodapé (peso + underline) */
+/* Linkedin: mesmo hover do menu/rodapÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â© (peso + underline) */
 .team__link{
   display: inline-block;
   text-decoration: none;
@@ -2979,10 +3002,10 @@ border: none;
 }
 
 /* =============================
-   TEAM v7 (EXATO COMO REFERÊNCIA)
+   TEAM v7 (EXATO COMO REFERÃƒÆ’Ã†â€™Ãƒâ€¦Ã‚Â NCIA)
    - hover apenas no link Linkedin
-   - títulos alinhados
-   - fotos mesma proporção
+   - tÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­tulos alinhados
+   - fotos mesma proporÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o
    ============================= */
 .team__grid{
   grid-template-columns: minmax(320px, 0.95fr) minmax(520px, 1.55fr);
@@ -3073,7 +3096,7 @@ border: none;
   margin: 0 0 14px;
 }
 
-/* link: reaproveita o mesmo underline do rodapé/menu, mas sem mexer em layout */
+/* link: reaproveita o mesmo underline do rodapÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©/menu, mas sem mexer em layout */
 .team__link{
   display: inline-block;
   width: fit-content;
@@ -3093,7 +3116,7 @@ border: none;
 /* =============================
    TEAM v12 HOTFIX
    - full-bleed do background, conteudo centralizado
-   - evita "jogar" tudo para a direita em telas intermediárias
+   - evita "jogar" tudo para a direita em telas intermediÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡rias
    ============================= */
 .parallax-section.team{ overflow: hidden; }
 .parallax-section.team .team__grid{
@@ -3111,7 +3134,7 @@ border: none;
 
 /* ==============================
    TEAM: centralizar + evitar cortes
-   (mantém o visual igual ao mock)
+   (mantÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©m o visual igual ao mock)
 ============================== */
 .parallax-section.team{ overflow: hidden; }
 .parallax-section.team .team__inner{
@@ -3129,7 +3152,7 @@ border: none;
 .parallax-section.team .team__cards,
 .parallax-section.team .team__card{ min-width: 0; }
 
-/* Imagens: manter proporção original (sem corte) e alinhadas */
+/* Imagens: manter proporÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o original (sem corte) e alinhadas */
 .parallax-section.team .team__imgwrap{
   overflow: hidden;
   background: rgba(0,0,0,.25);
@@ -3140,7 +3163,7 @@ border: none;
   display: block;
 }
 
-/* Nomes não recebem hover (hover só no link do Linkedin) */
+/* Nomes nÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o recebem hover (hover sÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³ no link do Linkedin) */
 .parallax-section.team .team__name{ transition: none; }
 .parallax-section.team .team__name:hover{ font-weight: inherit; }
 .parallax-section.team .team__name{
@@ -3151,7 +3174,7 @@ border: none;
   font-weight: 900;
 }
 
-/* Breakpoints para evitar corte em telas intermediárias */
+/* Breakpoints para evitar corte em telas intermediÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡rias */
 @media (max-width: 1180px){
   .parallax-section.team .team__grid{
     grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.55fr);
@@ -3161,13 +3184,13 @@ border: none;
 
 /* =========================================================
    AJUSTES FINAIS (v16.1)
-   - Fonte Anton nos títulos/nomes e na faixa (ticker)
+   - Fonte Anton nos tÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­tulos/nomes e na faixa (ticker)
    - "NOSSA" acima de "EQUIPE" sem deslocamentos
-   - Linkedin menor e com o MESMO hover do rodapé
-   - Garantir que nomes não recebam hover/transform
+   - Linkedin menor e com o MESMO hover do rodapÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©
+   - Garantir que nomes nÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o recebam hover/transform
    ========================================================= */
 
-/* Anton nos títulos principais e nomes */
+/* Anton nos tÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­tulos principais e nomes */
 .team__kicker,
 .team__title,
 .team__name{
@@ -3175,7 +3198,7 @@ border: none;
   letter-spacing: 0.02em;
 }
 
-/* "NOSSA" acima, alinhado e sem empurrões */
+/* "NOSSA" acima, alinhado e sem empurrÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âµes */
 .team__kicker{
   display: block;
   margin: 0 0 8px 0 !important;
@@ -3196,8 +3219,8 @@ border: none;
   opacity: 1 !important;
 }
 
-/* Link Linkedin: menor e com o mesmo "underline" + weight do rodapé.
-   Importante: o efeito está no span .u.hover-gsap (JS), então só ajustamos tamanho/spacing aqui. */
+/* Link Linkedin: menor e com o mesmo "underline" + weight do rodapÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©.
+   Importante: o efeito estÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ no span .u.hover-gsap (JS), entÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o sÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³ ajustamos tamanho/spacing aqui. */
 .team__link.footer-link{
   font-family: var(--font-ui);
   font-size: 13px !important;
@@ -3211,7 +3234,7 @@ border: none;
   text-decoration: none !important;
 }
 
-/* Faixa (ticker) também em Anton */
+/* Faixa (ticker) tambÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©m em Anton */
 .ticker{
   font-family: 'Anton', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
 }
@@ -3225,7 +3248,7 @@ border: none;
 }
 
 /* =========================
-   TEAM – stacked scroll + parallax (2026-02)
+   TEAM ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ stacked scroll + parallax (2026-02)
    Keeps layout centered, removes hover on names, hover only on Linkedin links.
    ========================= */
 
@@ -3531,7 +3554,7 @@ border: none;
 
 
 /* =====================================================
-   TEAM SECTION — CLEAN REBUILD (final)
+   TEAM SECTION ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â CLEAN REBUILD (final)
    Single source of truth for layout/animation.
    ===================================================== */
 section.team{
@@ -3890,7 +3913,7 @@ section.team .team__link::after{
   will-change:transform, opacity;
 }
 .about-reveal.is-visible{
-  opacity:1;
+  opacity:.56;
   transform:none;
   transition:opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1);
 }
@@ -4032,7 +4055,7 @@ section.team .team__link::after{
   bottom:18px;
   width:14px;
   height:2px;
-  background:var(--cream);
+  background:transparent;
   opacity:.55;
 }
 .contact-card::after{
