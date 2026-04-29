@@ -1200,73 +1200,78 @@ body.is-loading footer{
 
 @media (max-width: 760px){
   .hero-banner{
-    min-height:auto;
-    padding:8px 0 18px;
+    min-height:100svh;
+    padding:94px 0 26px;
   }
   .hero-banner__inner{
-    width:min(100%, calc(100% - 28px));
-    gap:14px;
-    min-height:auto;
+    width:min(100%, calc(100% - 24px));
+    gap:18px;
+    min-height:calc(100svh - 120px);
+    justify-content:space-between;
   }
   .hero-banner__top{
-    gap:0;
+    gap:10px;
   }
   .hero-banner__headline-wrap{
-    width:min(100%, 420px);
+    width:min(100%, 364px);
     display:flex;
     justify-content:center;
-    padding-inline:12px;
+    padding-inline:8px;
   }
   .hero-banner__title{
     align-items:center;
   }
   .hero-banner__line{
-    font-size:clamp(17px, 4.45vw, 21px);
-    line-height:.92;
-    letter-spacing:-.02em;
+    font-size:clamp(18px, 4.55vw, 20px);
+    line-height:.96;
+    letter-spacing:-.016em;
   }
   .hero-banner__info{
-    width:min(100%, 392px);
+    width:min(100%, 364px);
     align-items:center;
-    gap:16px;
+    gap:14px;
+    margin-top:auto;
   }
   .hero-banner__intro{
     display:none;
   }
   .hero-banner__logos{
-    width:min(100%, 372px);
+    width:min(100%, 356px);
     padding-bottom:0;
-    margin-top:6px;
+    margin-top:2px;
   }
   .hero-banner__logos-group{
-    gap:22px;
-    padding-right:22px;
+    gap:18px;
+    padding-right:18px;
   }
   .hero-banner__logo{
-    height:clamp(40px, 11vw, 58px);
+    height:clamp(38px, 10.6vw, 52px);
   }
   .hero-banner__brand{
-    width:min(100%, 392px);
-    column-gap:clamp(2px, .4vw, 8px);
-    row-gap:6px;
-    padding-inline:12px;
+    width:min(100%, 364px);
+    column-gap:clamp(2px, .36vw, 6px);
+    row-gap:4px;
+    padding-inline:8px;
   }
   .hero-banner__brand-tag{
-    margin-left:2px;
+    margin-left:4px;
     font-size:10px;
     letter-spacing:.16em;
   }
   .hero-banner__brand-letter{
-    font-size:clamp(98px, 25.5vw, 168px);
-    line-height:.9;
+    font-size:clamp(112px, 30vw, 144px);
+    line-height:.88;
   }
   .hero-banner__cta{
-    min-width:auto;
-    min-height:52px;
-    padding:12px 16px;
+    min-width:min(100%, 314px);
+    min-height:50px;
+    padding:11px 18px;
   }
   .letter-swap__glyph{
-    font-size:clamp(15px, 3.8vw, 17px);
+    font-size:clamp(15px, 4vw, 17px);
+  }
+  .hero-banner__scroll{
+    margin-top:4px;
   }
 }
 
