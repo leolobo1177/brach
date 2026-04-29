@@ -975,6 +975,9 @@ body.is-loading footer{
   color:var(--cream);
   white-space:nowrap;
 }
+.hero-banner__mobile-break{
+  display:none;
+}
 .hero-banner__line--accent{
   color:var(--cream);
   text-shadow:none;
@@ -1200,78 +1203,87 @@ body.is-loading footer{
 
 @media (max-width: 760px){
   .hero-banner{
-    min-height:100svh;
-    padding:94px 0 26px;
+    min-height:100dvh;
+    height:100dvh;
+    padding:86px 0 26px;
+    overflow:hidden;
   }
   .hero-banner__inner{
-    width:min(100%, calc(100% - 24px));
-    gap:18px;
-    min-height:calc(100svh - 120px);
+    width:min(100%, calc(100% - 28px));
+    gap:16px;
+    min-height:calc(100dvh - 112px);
     justify-content:space-between;
   }
   .hero-banner__top{
-    gap:10px;
+    width:100%;
+    align-items:flex-start;
+    gap:0;
   }
   .hero-banner__headline-wrap{
-    width:min(100%, 364px);
+    width:100%;
     display:flex;
-    justify-content:center;
-    padding-inline:8px;
+    justify-content:flex-start;
+    padding-inline:0;
   }
   .hero-banner__title{
-    align-items:center;
+    align-items:flex-start;
+    text-align:left;
+    width:100%;
   }
   .hero-banner__line{
-    font-size:clamp(18px, 4.55vw, 20px);
-    line-height:.96;
-    letter-spacing:-.016em;
+    display:inline-block;
+    width:min(100%, 6.4ch);
+    font-size:clamp(58px, 15.8vw, 76px);
+    line-height:.93;
+    letter-spacing:-.03em;
+    white-space:normal;
+    text-wrap:balance;
+  }
+  .hero-banner__mobile-break{
+    display:block;
   }
   .hero-banner__info{
-    width:min(100%, 364px);
+    width:100%;
     align-items:center;
-    gap:14px;
+    gap:18px;
     margin-top:auto;
   }
   .hero-banner__intro{
     display:none;
   }
   .hero-banner__logos{
-    width:min(100%, 356px);
+    width:min(100%, 100vw);
     padding-bottom:0;
-    margin-top:2px;
+    margin-top:4px;
   }
   .hero-banner__logos-group{
-    gap:18px;
-    padding-right:18px;
+    gap:26px;
+    padding-right:26px;
   }
   .hero-banner__logo{
-    height:clamp(38px, 10.6vw, 52px);
+    height:clamp(46px, 11vw, 60px);
   }
   .hero-banner__brand{
-    width:min(100%, 364px);
-    column-gap:clamp(2px, .36vw, 6px);
-    row-gap:4px;
-    padding-inline:8px;
-  }
-  .hero-banner__brand-tag{
-    margin-left:4px;
-    font-size:10px;
-    letter-spacing:.16em;
-  }
-  .hero-banner__brand-letter{
-    font-size:clamp(112px, 30vw, 144px);
-    line-height:.88;
+    display:none;
   }
   .hero-banner__cta{
-    min-width:min(100%, 314px);
-    min-height:50px;
+    min-width:min(100%, 316px);
+    min-height:52px;
     padding:11px 18px;
   }
   .letter-swap__glyph{
     font-size:clamp(15px, 4vw, 17px);
   }
   .hero-banner__scroll{
-    margin-top:4px;
+    margin-top:0;
+  }
+  .brand__mark{
+    width:48px;
+    height:48px;
+  }
+  .brand__logo{
+    width:38px;
+    transform:none;
   }
 }
 
