@@ -1646,6 +1646,75 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const revealItems = Array.from(hero.querySelectorAll('.hero-reveal'));
   const brandLetters = Array.from(hero.querySelectorAll('.hero-banner__brand-letter'));
+  const mobileScramble = hero.querySelector('[data-hero-scramble]');
+  const mobileWords = (mobileScramble?.dataset.heroScramble || '')
+    .split('|')
+    .map((word) => word.trim())
+    .filter(Boolean);
+  const scrambleAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  const startMobileWordCycle = (animate) => {
+    if(!mobileScramble || mobileWords.length < 2) return;
+
+    let currentIndex = 0;
+    let cycleTimer = null;
+
+    const setWord = (value) => {
+      mobileScramble.textContent = value;
+    };
+
+    const scrambleTo = (nextWord) => {
+      if(!animate || !window.gsap){
+        setWord(nextWord);
+        return;
+      }
+
+      const state = { frame: 0 };
+      const currentWord = mobileScramble.textContent || mobileWords[currentIndex] || '';
+      const maxLength = Math.max(currentWord.length, nextWord.length);
+
+      gsap.killTweensOf(state);
+      gsap.to(state, {
+        frame: maxLength + 5,
+        duration: 1.08,
+        ease: 'power2.out',
+        onUpdate: () => {
+          const revealCount = Math.floor(state.frame);
+          let output = '';
+
+          for(let index = 0; index < maxLength; index += 1){
+            const currentChar = currentWord[index] || '';
+            const nextChar = nextWord[index] || '';
+            const isSpace = nextChar === ' ' || currentChar === ' ';
+
+            if(index < revealCount){
+              output += nextChar;
+            }else if(isSpace){
+              output += ' ';
+            }else{
+              output += scrambleAlphabet[Math.floor(Math.random() * scrambleAlphabet.length)];
+            }
+          }
+
+          setWord(output.trimEnd());
+        },
+        onComplete: () => {
+          setWord(nextWord);
+        }
+      });
+    };
+
+    const queueNext = () => {
+      cycleTimer = window.setTimeout(() => {
+        currentIndex = (currentIndex + 1) % mobileWords.length;
+        scrambleTo(mobileWords[currentIndex]);
+        queueNext();
+      }, animate ? 2600 : 2200);
+    };
+
+    setWord(mobileWords[0]);
+    queueNext();
+  };
 
   if(reduceMotion || !window.gsap){
     [...revealItems, ...brandLetters].forEach((el) => {
@@ -1653,6 +1722,7 @@
       el.style.transform = 'none';
       el.style.filter = 'none';
     });
+    startMobileWordCycle(false);
     return;
   }
 
@@ -1685,6 +1755,8 @@
       duration: 1,
       stagger: 0.08
     }, 0.24);
+
+  startMobileWordCycle(true);
 
   if(window.ScrollTrigger && brandLetters.length){
     gsap.registerPlugin(ScrollTrigger);
