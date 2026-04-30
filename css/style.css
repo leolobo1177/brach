@@ -1305,10 +1305,10 @@ body.is-loading footer{
   .hero-banner__info{
     width:100%;
     align-items:center;
-    gap:26px;
+    gap:22px;
     flex:1 1 auto;
-    margin-top:38px;
-    padding-bottom:12px;
+    margin-top:28px;
+    padding-bottom:8px;
   }
   .hero-banner__intro{
     display:none;
@@ -1319,7 +1319,7 @@ body.is-loading footer{
     width:calc(100% + 28px);
     max-width:none;
     margin-top:auto;
-    margin-bottom:0;
+    margin-bottom:16px;
     margin-inline:-14px;
     padding:0 8px 4px;
     -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
