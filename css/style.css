@@ -1232,6 +1232,8 @@ body.is-loading footer{
   .hero-banner__headline-wrap{
     width:100%;
     display:flex;
+    flex-direction:column;
+    align-items:center;
     justify-content:center;
     padding-inline:0;
   }
