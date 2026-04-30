@@ -1237,18 +1237,21 @@ body.is-loading footer{
   }
   .hero-banner__title-mobile{
     width:min(100%, 100%);
-    display:block;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    gap:0;
     text-align:center;
     margin:0 auto;
-    position:relative;
   }
   .hero-banner__title-mobile > *{
-    display:none;
+    display:block;
   }
   .hero-banner__title-mobile::before{
     content:"CRIANDO\A MARCAS COM\A PRESENÇA";
     white-space:pre-line;
-    display:block;
+    display:none;
     width:min(100%, 8.8ch);
     margin:0 auto;
     font-family:var(--font-kicker);
@@ -1263,11 +1266,11 @@ body.is-loading footer{
   }
   .hero-banner__mobile-line{
     display:block;
-    width:100%;
+    width:min(100%, 8.8ch);
     font-family:var(--font-kicker);
-    font-size:clamp(58px, 15vw, 76px);
-    line-height:.88;
-    letter-spacing:-.034em;
+    font-size:clamp(64px, 17.2vw, 92px);
+    line-height:.9;
+    letter-spacing:-.036em;
     text-transform:uppercase;
     white-space:nowrap;
   }
