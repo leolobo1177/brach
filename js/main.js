@@ -1758,6 +1758,10 @@
   const heroStyles = getComputedStyle(hero);
   const topExtend = parseFloat(heroStyles.getPropertyValue('--heroGridTopExtend')) || 112;
   const bottomExtend = parseFloat(heroStyles.getPropertyValue('--heroGridBottomExtend')) || 56;
+  const autoPulse = {
+    step: 0,
+    timer: null,
+  };
 
   let cols = 0;
   let rows = 0;
@@ -1772,6 +1776,12 @@
     if(typeof timer === 'number'){
       window.clearTimeout(timer);
       cellFadeTimers.delete(cell);
+    }
+  };
+  const clearAutoTimer = () => {
+    if(typeof autoPulse.timer === 'number'){
+      window.clearTimeout(autoPulse.timer);
+      autoPulse.timer = null;
     }
   };
 
@@ -1826,8 +1836,8 @@
     activeCells = [];
   };
 
-  const getHoverCells = (row, col) => {
-    const span = Math.min(3, cols);
+  const getHoverCells = (row, col, spanOverride) => {
+    const span = Math.min(spanOverride || 3, cols);
     const startCol = clamp(col - 1, 0, Math.max(cols - span, 0));
     const nextCells = [];
 
@@ -1856,8 +1866,36 @@
     activeCells = [];
   };
 
+  const runAutoPulse = () => {
+    clearAutoTimer();
+    if(reduceMotion || finePointer.matches || !cols || !rows) return;
+
+    const span = Math.min(4, cols);
+    const pathRows = [
+      clamp(Math.floor(rows * 0.18), 0, Math.max(rows - 1, 0)),
+      clamp(Math.floor(rows * 0.36), 0, Math.max(rows - 1, 0)),
+      clamp(Math.floor(rows * 0.56), 0, Math.max(rows - 1, 0)),
+      clamp(Math.floor(rows * 0.76), 0, Math.max(rows - 1, 0)),
+    ].filter((row, index, list) => list.indexOf(row) === index);
+
+    const travelCols = Math.max(1, cols - span + 1);
+    const cycle = autoPulse.step;
+    const row = pathRows[cycle % pathRows.length] ?? 0;
+    const colStep = Math.floor(cycle / Math.max(pathRows.length, 1));
+    const lap = Math.floor(colStep / travelCols);
+    const colOffset = colStep % travelCols;
+    const col = lap % 2 === 0
+      ? colOffset
+      : Math.max(0, travelCols - 1 - colOffset);
+
+    setActiveCells(getHoverCells(row, col, span));
+    autoPulse.step += 1;
+    autoPulse.timer = window.setTimeout(runAutoPulse, 240);
+  };
+
   const onPointerMove = (event) => {
     if(!finePointer.matches) return;
+    clearAutoTimer();
     const rect = hero.getBoundingClientRect();
     const boundsTop = rect.top - topExtend;
     const boundsBottom = rect.bottom + bottomExtend;
@@ -1879,6 +1917,14 @@
 
   const onResize = () => {
     buildGrid();
+    clearActiveCells(true);
+    runAutoPulse();
+  };
+
+  const onPointerModeChange = () => {
+    clearActiveCells(true);
+    autoPulse.step = 0;
+    runAutoPulse();
   };
 
   buildGrid();
@@ -1892,6 +1938,14 @@
   window.addEventListener('resize', onResize, { passive: true });
   hero.addEventListener('pointerleave', clearActiveCells, { passive: true });
   hero.addEventListener('pointercancel', clearActiveCells, { passive: true });
+
+  if(typeof finePointer.addEventListener === 'function'){
+    finePointer.addEventListener('change', onPointerModeChange);
+  }else if(typeof finePointer.addListener === 'function'){
+    finePointer.addListener(onPointerModeChange);
+  }
+
+  runAutoPulse();
 })();
 
 
