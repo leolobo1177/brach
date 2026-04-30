@@ -1249,12 +1249,12 @@ body.is-loading footer{
     content:"CRIANDO\A MARCAS COM\A PRESENÇA";
     white-space:pre-line;
     display:block;
-    width:min(100%, 7.9ch);
+    width:min(100%, 8.8ch);
     margin:0 auto;
     font-family:var(--font-kicker);
-    font-size:clamp(62px, 16.6vw, 88px);
-    line-height:.87;
-    letter-spacing:-.04em;
+    font-size:clamp(64px, 17.2vw, 92px);
+    line-height:.9;
+    letter-spacing:-.036em;
     text-transform:uppercase;
     color:var(--cream);
   }
@@ -1281,8 +1281,8 @@ body.is-loading footer{
     width:100%;
     align-items:center;
     gap:0;
-    margin-top:0;
-    padding-bottom:64px;
+    margin-top:10px;
+    padding-bottom:72px;
   }
   .hero-banner__intro{
     display:none;
