@@ -1236,13 +1236,13 @@ body.is-loading footer{
     display:none;
   }
   .hero-banner__title-mobile{
-    width:min(100%, 404px);
+    width:min(100%, 420px);
     display:flex;
     flex-direction:column;
-    align-items:center;
+    align-items:flex-start;
     justify-content:flex-start;
     gap:0;
-    text-align:center;
+    text-align:left;
     margin:42px auto 0;
   }
   .hero-banner__title-mobile > *{
@@ -1266,9 +1266,9 @@ body.is-loading footer{
   }
   .hero-banner__mobile-line{
     display:block;
-    width:min(100%, 13.2ch);
+    width:100%;
     font-family:var(--font-kicker);
-    font-size:clamp(72px, 18.2vw, 112px);
+    font-size:clamp(76px, 18.8vw, 118px);
     line-height:.9;
     letter-spacing:-.036em;
     text-transform:uppercase;
@@ -1288,9 +1288,9 @@ body.is-loading footer{
   .hero-banner__info{
     width:100%;
     align-items:center;
-    gap:22px;
+    gap:26px;
     flex:1 1 auto;
-    margin-top:34px;
+    margin-top:38px;
     padding-bottom:12px;
   }
   .hero-banner__intro{
@@ -1323,7 +1323,7 @@ body.is-loading footer{
     order:1;
     min-height:52px;
     padding:12px 22px;
-    margin:8px auto 0;
+    margin:18px auto 0;
   }
   .letter-swap__glyph{
     font-size:clamp(15px, 4vw, 17px);

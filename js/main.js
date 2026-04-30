@@ -1675,9 +1675,9 @@
 
       gsap.killTweensOf(state);
       gsap.to(state, {
-        frame: maxLength + 5,
-        duration: 1.08,
-        ease: 'power2.out',
+        frame: maxLength + 6,
+        duration: 1.42,
+        ease: 'power1.inOut',
         onUpdate: () => {
           const revealCount = Math.floor(state.frame);
           let output = '';
@@ -1709,7 +1709,7 @@
         currentIndex = (currentIndex + 1) % mobileWords.length;
         scrambleTo(mobileWords[currentIndex]);
         queueNext();
-      }, animate ? 2600 : 2200);
+      }, animate ? 3600 : 3000);
     };
 
     setWord(mobileWords[0]);
