@@ -968,6 +968,9 @@ body.is-loading footer{
 .hero-banner__title-mobile{
   display:none;
 }
+.hero-banner__mobile-copy{
+  display:none;
+}
 .hero-banner__line{
   display:block;
   font-family:var(--font-kicker);
@@ -1278,6 +1281,18 @@ body.is-loading footer{
     display:inline-block;
     min-width:1ch;
     white-space:nowrap;
+  }
+  .hero-banner__mobile-copy{
+    display:block;
+    width:min(100%, 420px);
+    margin:18px auto 0;
+    font-family:"Poppins", var(--font-ui);
+    font-size:clamp(14px, 4vw, 18px);
+    font-weight:400;
+    line-height:1.5;
+    letter-spacing:0;
+    text-align:left;
+    color:rgba(255,255,255,.82);
   }
   .hero-banner__mobile-line--cream{
     color:var(--cream);
