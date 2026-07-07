@@ -153,6 +153,24 @@
 <img alt="" class="brand__logo" src="./assets/brand-mark.png"/>
 </div>
 </a>
+<div class="lang-switcher" id="langSwitcher">
+<div class="lang-switcher__surface">
+<div aria-label="Selecionar idioma" class="lang-switcher__options" id="languageOptions" role="listbox">
+<button aria-selected="true" class="lang-switcher__option is-active" data-lang="pt-BR" role="option" type="button">
+<span class="hover-gsap">BR</span>
+</button>
+<button aria-selected="false" class="lang-switcher__option" data-lang="en" role="option" type="button">
+<span class="hover-gsap">EN</span>
+</button>
+<button aria-selected="false" class="lang-switcher__option" data-lang="es" role="option" type="button">
+<span class="hover-gsap">ES</span>
+</button>
+</div>
+<button aria-controls="languageOptions" aria-expanded="false" aria-label="Selecionar idioma" class="lang-switcher__toggle" id="languageToggle" type="button">
+<img alt="" aria-hidden="true" class="lang-switcher__icon" src="./assets/globo.png"/>
+</button>
+</div>
+</div>
 <!-- BOTÃO MENU (slot único) -->
 <button aria-controls="menuPanel" aria-expanded="false" aria-label="Abrir menu" class="menu-slot menu-open" id="openMenu" type="button">
 <span class="hover-gsap" id="menuLabel">MENU</span>
@@ -538,9 +556,9 @@
 
         <div class="contact-meta">
           <p class="contact-terms">
-            Ao enviar, você concorda com nossos
+            <span class="contact-terms__lead">Ao enviar, você concorda com nossos</span>
             <button type="button" class="policy-link" data-modal="terms">Termos de uso</button>
-            e
+            <span class="contact-terms__connector">e</span>
             <button type="button" class="policy-link" data-modal="privacy">Políticas de Privacidade</button>
           </p>
 

@@ -136,6 +136,101 @@
       transform: translateX(6px);
     }
 
+    .lang-switcher{
+      position: fixed;
+      top: 10px;
+      right: 118px;
+      z-index: 9998;
+      pointer-events: auto;
+      opacity: 1;
+      transition: opacity .24s var(--ease);
+    }
+    body.menu-opened .lang-switcher{
+      opacity: 0;
+      pointer-events: none;
+    }
+    .lang-switcher__surface{
+      position: relative;
+      width: 78px;
+      height: 78px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(7,16,79,.98);
+      border: 1px solid rgba(255,246,214,.14);
+      box-shadow: 0 20px 46px rgba(0,0,0,.22);
+      transform-origin: center bottom;
+      will-change: height, border-radius;
+    }
+    .lang-switcher__options{
+      position: absolute;
+      inset: 18px 0 86px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 16px;
+      pointer-events: none;
+    }
+    .lang-switcher.is-open .lang-switcher__options{
+      pointer-events: auto;
+    }
+    .lang-switcher__option{
+      appearance: none;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      min-width: 40px;
+      color: var(--cream);
+      cursor: pointer;
+      position: relative;
+      opacity: 0;
+      transform: translateY(16px);
+      pointer-events: auto;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .lang-switcher__option .hover-gsap{
+      display: inline-block;
+      font-family: var(--font-fk);
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: .06em;
+    }
+    .lang-switcher__option.is-active::after{
+      content: "";
+      position: absolute;
+      left: 4px;
+      right: 4px;
+      bottom: -5px;
+      height: 3px;
+      border-radius: 999px;
+      background: #8fb6ff;
+      box-shadow: 0 0 14px rgba(143,182,255,.5);
+    }
+    .lang-switcher__toggle{
+      appearance: none;
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      width: calc(100% - 16px);
+      height: 62px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .lang-switcher__icon{
+      width: 46px;
+      height: 46px;
+      display: block;
+      object-fit: contain;
+      filter: brightness(0) saturate(100%) invert(96%) sepia(19%) saturate(242%) hue-rotate(339deg) brightness(103%) contrast(95%);
+    }
+
     /* Mascara de contraste: deixa logo/menu legiveis ao passar por faixas claras */
     .brand__logo,
     .menu-slot{
@@ -174,6 +269,8 @@
     .copy-btn:focus-visible,
     .social:focus-visible,
     .icon-link:focus-visible,
+    .lang-switcher__toggle:focus-visible,
+    .lang-switcher__option:focus-visible,
     .brand:focus-visible,
     .email:focus-visible{
       outline: 3px solid rgba(7,16,79,.75);
@@ -209,6 +306,31 @@
     body.menu-opened .menu-close{
       opacity:.42;
       pointer-events:auto;
+    }
+
+    @media (max-width: 920px){
+      .lang-switcher{
+        top: 8px;
+        right: 102px;
+      }
+      .lang-switcher__surface{
+        width: 72px;
+        height: 72px;
+      }
+      .lang-switcher__options{
+        inset: 16px 0 80px;
+        gap: 14px;
+      }
+      .lang-switcher__option .hover-gsap{
+        font-size: 25px;
+      }
+      .lang-switcher__toggle{
+        height: 56px;
+      }
+      .lang-switcher__icon{
+        width: 42px;
+        height: 42px;
+      }
     }
 
     /* ================= OVERLAY ================= */

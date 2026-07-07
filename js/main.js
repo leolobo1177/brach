@@ -1,3 +1,1128 @@
+const BRACH_DEFAULT_LANGUAGE = 'pt-BR';
+const BRACH_EMAIL = 'agenciabrach@gmail.com';
+const BRACH_FORM_LINK = 'https://docs.google.com/forms/d/1Pix3kfzHybrRiMCyaRCO4wTU7XBI_g4xaynCdtazOis/edit?pli=1';
+
+const BRACH_POLICY_CONTENT = {
+  terms: "<p>Termos de Serviço</p>\n<p>Termos de Serviço<br>(última atualização)</p>\n<p>07 de abril de 2026</p>\n<p>1. Uso dos Serviços</p>\n<p>Para utilizar os serviços da Brach, você deve ter pelo menos 18 anos. Ao acessar e utilizar nossos serviços, você concorda em fazê-lo de forma legal e em conformidade com estes Termos.</p>\n<p>2. Propriedade Intelectual</p>\n<p>Todo o conteúdo presente neste site, incluindo logotipos, textos, elementos visuais, layouts e materiais digitais, é de propriedade da Brach ou de seus parceiros e está protegido por leis de direitos autorais e propriedade intelectual.</p>\n<p>Não é permitido copiar, reproduzir, distribuir ou modificar qualquer conteúdo sem autorização prévia.</p>\n<p>3. Conteúdo do Usuário</p>\n<p>Ao enviar qualquer conteúdo para a Brach (como mensagens, feedbacks ou materiais), você nos concede uma licença não exclusiva, gratuita e válida para uso, exibição e distribuição desse conteúdo, quando necessário para a prestação dos nossos serviços.</p>\n<p>Você é responsável por garantir que o conteúdo enviado não viole leis ou direitos de terceiros.</p>\n<p>4. Limitação de Responsabilidade</p>\n<p>A Brach não se responsabiliza por quaisquer danos diretos ou indiretos decorrentes do uso dos serviços ou do site.</p>\n<p>Não garantimos que o funcionamento será contínuo, livre de erros ou totalmente seguro, embora busquemos sempre a melhor performance e estabilidade.</p>\n<p>5. Encerramento de Acesso</p>\n<p>Podemos suspender ou encerrar o acesso aos nossos serviços a qualquer momento, sem aviso prévio, caso haja violação destes Termos.</p>\n<p>6. Atualizações dos Termos</p>\n<p>Estes Termos podem ser atualizados a qualquer momento. O uso contínuo dos serviços após alterações significa que você concorda com a versão mais recente.</p>\n<p>7. Contato</p>\n<p>Em caso de dúvidas, entre em contato com a gente:<br>📩 agenciabrach@gmail.com</p>",
+  privacy: "<p>Politica de privacidade</p>\n<p>Política de Privacidade<br>(última atualização)</p>\n<p>07 de abril de 2026</p>\n<p>1. Informações que Coletamos</p>\n<p>Informações pessoais:<br>Nome, e-mail, telefone e outros dados que você fornece ao entrar em contato ou utilizar nossos serviços.</p>\n<p>Dados de uso:<br>Endereço IP, tipo de navegador, páginas acessadas e outras informações coletadas por meio de cookies e ferramentas de análise.</p>\n<p>2. Como Utilizamos suas Informações</p>\n<p>Utilizamos seus dados para:</p>\n<p>Oferecer e melhorar nossos serviços<br>Responder solicitações e prestar suporte<br>Enviar comunicações de marketing (você pode cancelar a qualquer momento)<br>Analisar o comportamento dos usuários e o desempenho do site</p>\n<p>3. Compartilhamento de Informações</p>\n<p>A Brach não vende suas informações pessoais.</p>\n<p>Seus dados podem ser compartilhados apenas com serviços de terceiros que auxiliam na operação do site e na prestação dos nossos serviços, sempre de forma limitada ao necessário.</p>\n<p>4. Cookies e Rastreamento</p>\n<p>Utilizamos cookies para melhorar sua experiência e coletar dados de navegação.</p>\n<p>Você pode desativar os cookies nas configurações do seu navegador, mas isso pode impactar o funcionamento de algumas funcionalidades do site.</p>\n<p>5. Segurança</p>\n<p>Adotamos medidas razoáveis para proteger suas informações. Ainda assim, nenhum sistema é totalmente seguro.</p>\n<p>Ao utilizar nossos serviços, você reconhece e aceita esse risco.</p>\n<p>6. Seus Direitos</p>\n<p>Você pode solicitar acesso, correção ou exclusão dos seus dados pessoais a qualquer momento.</p>\n<p>Para isso, entre em contato:<br>📩 agenciabrach@gmail.com</p>\n<p>7. Alterações nesta Política</p>\n<p>Esta Política pode ser atualizada periodicamente. A versão mais recente estará sempre disponível em nosso site.</p>"
+};
+
+const BRACH_I18N = {
+  'pt-BR': {
+    htmlLang: 'pt-BR',
+    pageTitle: 'Agência Brach',
+    description: 'Da identidade visual ao site, desenvolvemos presença digital com propósito, personalidade e resultado.',
+    loader: {
+      loading: 'CARREGANDO',
+      wait: 'AGUARDE',
+      preparing: 'PREPARANDO A EXPERIÊNCIA',
+      ready: 'PRONTO'
+    },
+    topbar: {
+      homeAria: 'Início',
+      languageAria: 'Selecionar idioma',
+      menuOpenAria: 'Abrir menu',
+      menuCloseAria: 'Fechar menu',
+      menuOpen: 'MENU',
+      menuClose: 'FECHAR'
+    },
+    overlay: {
+      title: 'Menu principal',
+      navAria: 'Menu',
+      nav: ['SOBRE', 'SERVIÇOS', 'CASOS', 'CONTATO'],
+      emailKicker: '(E-MAIL)',
+      socialKicker: '(REDES SOCIAIS)',
+      copyAria: 'Copiar e-mail',
+      copyOnly: 'Copiar',
+      copySuccess: 'Copiado!',
+      copyError: 'Não foi possível copiar.',
+      emailCopied: 'E-mail copiado!'
+    },
+    hero: {
+      brandTag: 'agência',
+      desktopTitle: 'CONSTRUINDO MARCAS COM PRESENÇA',
+      mobileKicker: 'AGÊNCIA BRACH',
+      mobileLineTop: 'CONSTRUINDO',
+      mobileWords: ['MARCAS', 'SITES', 'REDES SOCIAIS'],
+      mobileLineMiddle: 'COM',
+      mobileLineBottom: 'PRESENÇA',
+      mobileCopy: 'Da identidade visual ao site, desenvolvemos presença digital com propósito, personalidade e resultado.',
+      intro: 'Criamos presença digital para marcas que precisam ser vistas, lembradas e escolhidas. Menos excesso. Mais direção, clareza e força visual para crescer.',
+      cta: 'QUERO FALAR COM A BRACH',
+      logosAria: 'Marcas atendidas pela Brach',
+      scrollAria: 'Ir para a seção sobre'
+    },
+    about: {
+      kicker: 'SOBRE NÓS',
+      title: ['QUEM ESTÁ POR', 'TRÁS DA BRACH'],
+      copy: 'A Brach existe para dar visibilidade a marcas que querem crescer no digital com mais clareza, presença e direção. Unimos <strong>branding</strong>, <strong>design</strong> e <strong>performance</strong> para transformar ideias em marcas mais percebidas, mais lembradas e mais preparadas para vender.',
+      teamAria: 'Membros da equipe',
+      people: [
+        {
+          role: 'Fundador | Designer',
+          bio: 'Designer com olhar estratégico e repertório técnico para transformar ideias em experiências visuais consistentes, funcionais e relevantes para o crescimento da marca.'
+        },
+        {
+          role: 'Fundadora | Marketing',
+          bio: 'Profissional voltada para posicionamento, estratégia e comunicação, conectando análise e sensibilidade criativa para gerar presença digital com propósito e resultado.'
+        }
+      ],
+      linkedin: 'Linkedin'
+    },
+    services: {
+      kicker: 'O QUE ENTREGAMOS',
+      title: 'SERVIÇOS',
+      subtitle: 'Marcas com presença,<br>consistência e conversão.',
+      copy: 'Escolha a categoria e veja duas formas de entrega: um pacote Básico para estruturar a marca e um pacote Full para escalar com mais profundidade criativa e comercial.',
+      tabsAria: 'Categorias de serviço',
+      tabs: {
+        branding: 'Branding Marca',
+        social: 'Social Mídia',
+        web: 'Web'
+      },
+      tiers: {
+        basic: 'Serviço Básico',
+        full: 'Serviço Full'
+      },
+      cards: {
+        branding: {
+          basic: {
+            order: '01',
+            category: 'Branding Marca',
+            title: 'Essencial',
+            copy: 'Base visual para organizar a marca, alinhar a presença e transmitir mais profissionalismo desde o primeiro contato.',
+            items: [
+              'Logo principal e variações para diferentes usos',
+              'Paleta, tipografia base e direção visual inicial',
+              'Elementos de apoio para redes e materiais digitais',
+              'Arquivos organizados para aplicação do dia a dia'
+            ],
+            foot: 'Uma estrutura enxuta para tirar a marca do improviso.'
+          },
+          full: {
+            order: '02',
+            category: 'Branding Marca',
+            title: 'Completo',
+            copy: 'Sistema visual mais robusto para marcas que precisam crescer com unidade, memorabilidade e consistência em todos os pontos.',
+            items: [
+              'Logo, símbolo e assinaturas complementares',
+              'Paleta, tipografia e sistema gráfico mais profundo',
+              'Manual base com orientações de aplicação da marca',
+              'Templates iniciais para social media e peças de apoio'
+            ],
+            foot: 'Pensado para consolidar presença e sustentar expansão.'
+          }
+        },
+        social: {
+          basic: {
+            order: '01',
+            category: 'Social Mídia',
+            title: 'Essencial',
+            copy: 'Pacote base para manter a marca ativa com frequência, identidade visual alinhada e uma comunicação mais clara no dia a dia.',
+            items: [
+              'Calendário editorial base para organizar os temas',
+              'Direção visual para feed, stories e peças recorrentes',
+              'Conteúdos pensados para constância e reconhecimento',
+              'Linha de publicação mais coerente com o posicionamento'
+            ],
+            foot: 'Ideal para fortalecer a rotina de conteúdo com clareza.'
+          },
+          full: {
+            order: '02',
+            category: 'Social Mídia',
+            title: 'Completo',
+            copy: 'Entrega mais completa para marcas que querem unir frequência, criação estratégica e conteúdo com foco mais forte em relacionamento e conversão.',
+            items: [
+              'Planejamento estratégico de conteúdo e campanhas',
+              'Direção criativa para formatos, quadros e lançamentos',
+              'Calendário aprofundado com narrativa mais inteligente',
+              'Peças voltadas para alcance, autoridade e vendas'
+            ],
+            foot: 'Para ganhar intensidade, consistência e mais impacto comercial.'
+          }
+        },
+        web: {
+          basic: {
+            order: '01',
+            category: 'Web',
+            title: 'Essencial',
+            copy: 'Landing page objetiva para apresentar a oferta com clareza, leitura fluida e base pronta para campanhas mais diretas.',
+            items: [
+              'Estrutura estratégica e objetiva da página',
+              'Design responsivo com hierarquia clara de leitura',
+              'Blocos essenciais para oferta, prova e CTA',
+              'Base pronta para validar campanhas com rapidez'
+            ],
+            foot: 'Boa para lançar ofertas e testar conversão com agilidade.'
+          },
+          full: {
+            order: '02',
+            category: 'Web',
+            title: 'Completo',
+            copy: 'Página mais completa, com ritmo visual, narrativa de venda e estrutura pensada para sustentar campanhas com mais ambição.',
+            items: [
+              'Arquitetura completa da oferta com argumentos de venda',
+              'Blocos de prova, objeções, CTA e apoio comercial',
+              'Direção visual polida para fortalecer a percepção de valor',
+              'Experiência desenhada para campanha, captura e vendas'
+            ],
+            foot: 'Feita para campanhas mais fortes e com uma percepção mais premium.'
+          }
+        }
+      }
+    },
+    bridgeTop: {
+      kicker: 'ENTRE PRESENÇA E RESULTADO',
+      lines: ['DO CORRE A CONQUISTA', 'FAZEMOS SUA MARCA CRESCER ONLINE'],
+      copy: 'Acreditamos que branding vai muito além do visual: é construir relevância duradoura, criar conexão real e transformar presença em crescimento consistente.'
+    },
+    cases: {
+      title: 'Cases de sucesso',
+      hint: 'Passe o mouse ou use Tab para ver uma prévia do projeto. Pressione Enter para abrir quando a página do trabalho estiver disponível.',
+      items: [
+        { title: 'Studio de Beleza Giovana Fortunato', name: 'Studio de Beleza Giovana Fortunato', meta: 'Identidade • Conteúdo' },
+        { title: 'MiláMi musicalização infantil', name: 'MiláMi musicalização infantil', meta: 'Brand Marca • Educação' },
+        { title: 'Ensinarte', name: 'Ensinarte', meta: 'Brand Marca • Educação' },
+        { title: 'Landing Page Musicalização infantil', name: 'Landing Page Musicalização infantil', meta: 'Web • Educação' }
+      ]
+    },
+    bridgeBottom: {
+      lines: ['CADA PROJETO QUE REALIZAMOS', 'É UMA OPORTUNIDADE ÚNICA'],
+      copy: 'Pronto para dar o próximo passo? Junte-se a nós agora e comece a transformar sua visão em realidade com suporte especializado.'
+    },
+    contact: {
+      kicker: 'Fale conosco',
+      title: ['BORA CRIAR', 'SUA MARCA'],
+      lead: `Conte sua ideia no <a class="contact-email-link" href="${BRACH_FORM_LINK}" rel="noopener noreferrer" target="_blank">formulário</a> ou envie um e-mail para <a class="contact-email-link" href="mailto:${BRACH_EMAIL}">${BRACH_EMAIL}</a>.`,
+      success: 'Mensagem enviada. Em breve retornamos.',
+      error: 'Não foi possível enviar agora. Tente novamente em alguns instantes ou use o e-mail acima.',
+      invalid: 'Revise nome, e-mail e mensagem antes de enviar.',
+      fields: {
+        website: 'Website',
+        honey: 'Não preencha este campo',
+        name: 'Nome',
+        email: 'E-mail',
+        message: 'Mensagem'
+      },
+      placeholders: {
+        name: 'Deixe seu nome',
+        email: 'Deixe seu e-mail',
+        message: 'Deixe sua mensagem'
+      },
+      termsLead: 'Ao enviar, você concorda com nossos',
+      termsLink: 'Termos de uso',
+      termsConnector: 'e',
+      privacyLink: 'Políticas de Privacidade',
+      submit: 'Enviar Mensagem',
+      sending: 'Enviando...',
+      modalTitles: {
+        terms: 'Termos de uso',
+        privacy: 'Políticas de Privacidade'
+      },
+      modalCloseAria: 'Fechar'
+    },
+    footer: {
+      title: 'Rodapé',
+      tickerAria: 'Web design, branding, marketing, design',
+      ticker: 'WEB DESIGN • BRANDING • MARKETING • DESIGN • WEB DESIGN • BRANDING • MARKETING • DESIGN •',
+      tagline: 'Dando visibilidade<br>ao seu sonho no digital',
+      navTitle: 'Navegação',
+      socialTitle: 'Redes Sociais',
+      contactTitle: 'Fale conosco',
+      nav: ['Home', 'Sobre', 'Serviços', 'Casos'],
+      form: 'Formulário'
+    }
+  },
+  en: {
+    htmlLang: 'en',
+    pageTitle: 'Brach Agency',
+    description: 'From brand identity to websites, we build digital presence with purpose, personality, and results.',
+    loader: {
+      loading: 'LOADING',
+      wait: 'PLEASE WAIT',
+      preparing: 'PREPARING THE EXPERIENCE',
+      ready: 'READY'
+    },
+    topbar: {
+      homeAria: 'Home',
+      languageAria: 'Select language',
+      menuOpenAria: 'Open menu',
+      menuCloseAria: 'Close menu',
+      menuOpen: 'MENU',
+      menuClose: 'CLOSE'
+    },
+    overlay: {
+      title: 'Main menu',
+      navAria: 'Menu',
+      nav: ['ABOUT', 'SERVICES', 'CASES', 'CONTACT'],
+      emailKicker: '(EMAIL)',
+      socialKicker: '(SOCIAL MEDIA)',
+      copyAria: 'Copy email',
+      copyOnly: 'Copy',
+      copySuccess: 'Copied!',
+      copyError: 'Could not copy.',
+      emailCopied: 'Email copied!'
+    },
+    hero: {
+      brandTag: 'agency',
+      desktopTitle: 'BUILDING BRANDS WITH PRESENCE',
+      mobileKicker: 'BRACH AGENCY',
+      mobileLineTop: 'BUILDING',
+      mobileWords: ['BRANDS', 'WEBSITES', 'SOCIAL MEDIA'],
+      mobileLineMiddle: 'WITH',
+      mobileLineBottom: 'PRESENCE',
+      mobileCopy: 'From brand identity to websites, we build digital presence with purpose, personality, and results.',
+      intro: 'We create digital presence for brands that need to be seen, remembered, and chosen. Less excess. More direction, clarity, and visual strength to grow.',
+      cta: 'LET\'S TALK TO BRACH',
+      logosAria: 'Brands served by Brach',
+      scrollAria: 'Go to the about section'
+    },
+    about: {
+      kicker: 'ABOUT US',
+      title: ['WHO IS BEHIND', 'BRACH'],
+      copy: 'Brach exists to give visibility to brands that want to grow online with more clarity, presence, and direction. We combine <strong>branding</strong>, <strong>design</strong>, and <strong>performance</strong> to turn ideas into brands that are more visible, more memorable, and better prepared to sell.',
+      teamAria: 'Team members',
+      people: [
+        {
+          role: 'Founder | Designer',
+          bio: 'A designer with a strategic eye and technical range to transform ideas into visual experiences that are consistent, functional, and relevant to brand growth.'
+        },
+        {
+          role: 'Founder | Marketing',
+          bio: 'A professional focused on positioning, strategy, and communication, combining analysis and creative sensitivity to build digital presence with purpose and results.'
+        }
+      ],
+      linkedin: 'Linkedin'
+    },
+    services: {
+      kicker: 'WHAT WE DELIVER',
+      title: 'SERVICES',
+      subtitle: 'Brands with presence,<br>consistency and conversion.',
+      copy: 'Choose the category and explore two delivery formats: a Basic package to structure the brand and a Full package to scale with greater creative and commercial depth.',
+      tabsAria: 'Service categories',
+      tabs: {
+        branding: 'Brand Identity',
+        social: 'Social Media',
+        web: 'Web'
+      },
+      tiers: {
+        basic: 'Basic Service',
+        full: 'Full Service'
+      },
+      cards: {
+        branding: {
+          basic: {
+            order: '01',
+            category: 'Brand Identity',
+            title: 'Essential',
+            copy: 'A visual foundation to organize the brand, align its presence, and communicate more professionalism from the very first touchpoint.',
+            items: [
+              'Primary logo and variations for different uses',
+              'Palette, base typography, and initial visual direction',
+              'Support elements for social media and digital materials',
+              'Organized files for day-to-day application'
+            ],
+            foot: 'A lean structure to take the brand out of improvisation.'
+          },
+          full: {
+            order: '02',
+            category: 'Brand Identity',
+            title: 'Complete',
+            copy: 'A more robust visual system for brands that need to grow with unity, memorability, and consistency across every touchpoint.',
+            items: [
+              'Logo, symbol, and complementary signature variations',
+              'Palette, typography, and a deeper graphic system',
+              'A base guide with brand application directions',
+              'Starter templates for social media and support materials'
+            ],
+            foot: 'Built to consolidate presence and support expansion.'
+          }
+        },
+        social: {
+          basic: {
+            order: '01',
+            category: 'Social Media',
+            title: 'Essential',
+            copy: 'A core package to keep the brand active with frequency, aligned visuals, and clearer day-to-day communication.',
+            items: [
+              'A base editorial calendar to organize themes',
+              'Visual direction for feed, stories, and recurring assets',
+              'Content planned for consistency and recognition',
+              'A publishing line that better matches the positioning'
+            ],
+            foot: 'Ideal for strengthening the content routine with clarity.'
+          },
+          full: {
+            order: '02',
+            category: 'Social Media',
+            title: 'Complete',
+            copy: 'A more complete delivery for brands that want to combine frequency, strategic creation, and content with a stronger focus on relationships and conversion.',
+            items: [
+              'Strategic planning for content and campaigns',
+              'Creative direction for formats, series, and launches',
+              'A deeper calendar with a smarter narrative',
+              'Assets aimed at reach, authority, and sales'
+            ],
+            foot: 'To gain intensity, consistency, and stronger commercial impact.'
+          }
+        },
+        web: {
+          basic: {
+            order: '01',
+            category: 'Web',
+            title: 'Essential',
+            copy: 'An objective landing page to present the offer clearly, with smooth reading and a ready base for more direct campaigns.',
+            items: [
+              'Strategic and objective page structure',
+              'Responsive design with clear reading hierarchy',
+              'Essential blocks for offer, proof, and CTA',
+              'A ready base to validate campaigns quickly'
+            ],
+            foot: 'Great for launching offers and testing conversion fast.'
+          },
+          full: {
+            order: '02',
+            category: 'Web',
+            title: 'Complete',
+            copy: 'A fuller page with visual rhythm, sales narrative, and a structure designed to support more ambitious campaigns.',
+            items: [
+              'Complete offer architecture with sales arguments',
+              'Proof, objection-handling, CTA, and commercial support blocks',
+              'Polished visual direction to strengthen perceived value',
+              'An experience designed for campaigns, capture, and sales'
+            ],
+            foot: 'Made for stronger campaigns and a more premium perception.'
+          }
+        }
+      }
+    },
+    bridgeTop: {
+      kicker: 'BETWEEN PRESENCE AND RESULTS',
+      lines: ['FROM THE HUSTLE TO THE WIN', 'WE HELP YOUR BRAND GROW ONLINE'],
+      copy: 'We believe branding goes far beyond visuals: it is about building lasting relevance, creating real connection, and turning presence into consistent growth.'
+    },
+    cases: {
+      title: 'Success cases',
+      hint: 'Hover or use Tab to preview the project. Press Enter to open it when the project page is available.',
+      items: [
+        { title: 'Studio de Beleza Giovana Fortunato', name: 'Studio de Beleza Giovana Fortunato', meta: 'Identity • Content' },
+        { title: 'MiláMi children music education', name: 'MiláMi children music education', meta: 'Brand Identity • Education' },
+        { title: 'Ensinarte', name: 'Ensinarte', meta: 'Brand Identity • Education' },
+        { title: 'Children Music Education Landing Page', name: 'Children Music Education Landing Page', meta: 'Web • Education' }
+      ]
+    },
+    bridgeBottom: {
+      lines: ['EVERY PROJECT WE DELIVER', 'IS A UNIQUE OPPORTUNITY'],
+      copy: 'Ready for the next step? Join us now and start turning your vision into reality with specialized support.'
+    },
+    contact: {
+      kicker: 'Contact us',
+      title: ['LET\'S BUILD', 'YOUR BRAND'],
+      lead: `Share your idea in the <a class="contact-email-link" href="${BRACH_FORM_LINK}" rel="noopener noreferrer" target="_blank">form</a> or send us an email at <a class="contact-email-link" href="mailto:${BRACH_EMAIL}">${BRACH_EMAIL}</a>.`,
+      success: 'Message sent. We will get back to you soon.',
+      error: 'We could not send it right now. Please try again in a moment or use the email above.',
+      invalid: 'Please review your name, email, and message before sending.',
+      fields: {
+        website: 'Website',
+        honey: 'Do not fill in this field',
+        name: 'Name',
+        email: 'Email',
+        message: 'Message'
+      },
+      placeholders: {
+        name: 'Leave your name',
+        email: 'Leave your email',
+        message: 'Leave your message'
+      },
+      termsLead: 'By sending, you agree to our',
+      termsLink: 'Terms of Use',
+      termsConnector: 'and',
+      privacyLink: 'Privacy Policy',
+      submit: 'Send Message',
+      sending: 'Sending...',
+      modalTitles: {
+        terms: 'Terms of Use',
+        privacy: 'Privacy Policy'
+      },
+      modalCloseAria: 'Close'
+    },
+    footer: {
+      title: 'Footer',
+      tickerAria: 'Web design, branding, marketing, design',
+      ticker: 'WEB DESIGN • BRANDING • MARKETING • DESIGN • WEB DESIGN • BRANDING • MARKETING • DESIGN •',
+      tagline: 'Giving visibility<br>to your digital dream',
+      navTitle: 'Navigation',
+      socialTitle: 'Social Media',
+      contactTitle: 'Contact',
+      nav: ['Home', 'About', 'Services', 'Cases'],
+      form: 'Form'
+    }
+  },
+  es: {
+    htmlLang: 'es',
+    pageTitle: 'Agencia Brach',
+    description: 'Desde la identidad visual hasta el sitio web, desarrollamos presencia digital con propósito, personalidad y resultados.',
+    loader: {
+      loading: 'CARGANDO',
+      wait: 'AGUARDE',
+      preparing: 'PREPARANDO LA EXPERIENCIA',
+      ready: 'LISTO'
+    },
+    topbar: {
+      homeAria: 'Inicio',
+      languageAria: 'Seleccionar idioma',
+      menuOpenAria: 'Abrir menú',
+      menuCloseAria: 'Cerrar menú',
+      menuOpen: 'MENÚ',
+      menuClose: 'CERRAR'
+    },
+    overlay: {
+      title: 'Menú principal',
+      navAria: 'Menú',
+      nav: ['SOBRE', 'SERVICIOS', 'CASOS', 'CONTACTO'],
+      emailKicker: '(EMAIL)',
+      socialKicker: '(REDES SOCIALES)',
+      copyAria: 'Copiar correo',
+      copyOnly: 'Copiar',
+      copySuccess: '¡Copiado!',
+      copyError: 'No se pudo copiar.',
+      emailCopied: '¡Correo copiado!'
+    },
+    hero: {
+      brandTag: 'agencia',
+      desktopTitle: 'CREANDO MARCAS CON PRESENCIA',
+      mobileKicker: 'AGENCIA BRACH',
+      mobileLineTop: 'CREANDO',
+      mobileWords: ['MARCAS', 'SITIOS', 'REDES SOCIALES'],
+      mobileLineMiddle: 'CON',
+      mobileLineBottom: 'PRESENCIA',
+      mobileCopy: 'Desde la identidad visual hasta el sitio web, desarrollamos presencia digital con propósito, personalidad y resultados.',
+      intro: 'Creamos presencia digital para marcas que necesitan ser vistas, recordadas y elegidas. Menos exceso. Más dirección, claridad y fuerza visual para crecer.',
+      cta: 'QUIERO HABLAR CON BRACH',
+      logosAria: 'Marcas atendidas por Brach',
+      scrollAria: 'Ir a la sección sobre'
+    },
+    about: {
+      kicker: 'SOBRE NOSOTROS',
+      title: ['QUIÉN ESTÁ DETRÁS', 'DE BRACH'],
+      copy: 'Brach existe para dar visibilidad a marcas que quieren crecer en digital con más claridad, presencia y dirección. Unimos <strong>branding</strong>, <strong>diseño</strong> y <strong>performance</strong> para transformar ideas en marcas más visibles, más recordadas y mejor preparadas para vender.',
+      teamAria: 'Miembros del equipo',
+      people: [
+        {
+          role: 'Fundador | Diseñador',
+          bio: 'Diseñador con mirada estratégica y repertorio técnico para transformar ideas en experiencias visuales consistentes, funcionales y relevantes para el crecimiento de la marca.'
+        },
+        {
+          role: 'Fundadora | Marketing',
+          bio: 'Profesional enfocada en posicionamiento, estrategia y comunicación, conectando análisis y sensibilidad creativa para generar presencia digital con propósito y resultados.'
+        }
+      ],
+      linkedin: 'Linkedin'
+    },
+    services: {
+      kicker: 'LO QUE ENTREGAMOS',
+      title: 'SERVICIOS',
+      subtitle: 'Marcas con presencia,<br>consistencia y conversión.',
+      copy: 'Elige la categoría y conoce dos formatos de entrega: un paquete Básico para estructurar la marca y un paquete Full para escalar con más profundidad creativa y comercial.',
+      tabsAria: 'Categorías de servicio',
+      tabs: {
+        branding: 'Identidad de Marca',
+        social: 'Social Media',
+        web: 'Web'
+      },
+      tiers: {
+        basic: 'Servicio Básico',
+        full: 'Servicio Full'
+      },
+      cards: {
+        branding: {
+          basic: {
+            order: '01',
+            category: 'Identidad de Marca',
+            title: 'Esencial',
+            copy: 'Una base visual para organizar la marca, alinear su presencia y transmitir más profesionalismo desde el primer contacto.',
+            items: [
+              'Logo principal y variaciones para diferentes usos',
+              'Paleta, tipografía base y dirección visual inicial',
+              'Elementos de apoyo para redes y materiales digitales',
+              'Archivos organizados para la aplicación diaria'
+            ],
+            foot: 'Una estructura ligera para sacar a la marca de la improvisación.'
+          },
+          full: {
+            order: '02',
+            category: 'Identidad de Marca',
+            title: 'Completo',
+            copy: 'Un sistema visual más robusto para marcas que necesitan crecer con unidad, memorabilidad y consistencia en todos los puntos de contacto.',
+            items: [
+              'Logo, símbolo y firmas complementarias',
+              'Paleta, tipografía y sistema gráfico más profundo',
+              'Manual base con orientaciones de aplicación de la marca',
+              'Templates iniciales para social media y piezas de apoyo'
+            ],
+            foot: 'Pensado para consolidar presencia y sostener la expansión.'
+          }
+        },
+        social: {
+          basic: {
+            order: '01',
+            category: 'Social Media',
+            title: 'Esencial',
+            copy: 'Un paquete base para mantener la marca activa con frecuencia, visual alineado y una comunicación más clara en el día a día.',
+            items: [
+              'Calendario editorial base para organizar los temas',
+              'Dirección visual para feed, stories y piezas recurrentes',
+              'Contenidos pensados para constancia y reconocimiento',
+              'Una línea de publicación más coherente con el posicionamiento'
+            ],
+            foot: 'Ideal para fortalecer la rutina de contenido con claridad.'
+          },
+          full: {
+            order: '02',
+            category: 'Social Media',
+            title: 'Completo',
+            copy: 'Una entrega más completa para marcas que quieren unir frecuencia, creación estratégica y contenido con un foco más fuerte en relación y conversión.',
+            items: [
+              'Planificación estratégica de contenido y campañas',
+              'Dirección creativa para formatos, series y lanzamientos',
+              'Calendario más profundo con una narrativa más inteligente',
+              'Piezas orientadas a alcance, autoridad y ventas'
+            ],
+            foot: 'Para ganar intensidad, consistencia y más impacto comercial.'
+          }
+        },
+        web: {
+          basic: {
+            order: '01',
+            category: 'Web',
+            title: 'Esencial',
+            copy: 'Una landing page objetiva para presentar la oferta con claridad, lectura fluida y una base lista para campañas más directas.',
+            items: [
+              'Estructura estratégica y objetiva de la página',
+              'Diseño responsivo con jerarquía clara de lectura',
+              'Bloques esenciales para oferta, prueba y CTA',
+              'Base lista para validar campañas con rapidez'
+            ],
+            foot: 'Buena para lanzar ofertas y probar conversión con agilidad.'
+          },
+          full: {
+            order: '02',
+            category: 'Web',
+            title: 'Completo',
+            copy: 'Una página más completa, con ritmo visual, narrativa de venta y estructura pensada para sostener campañas más ambiciosas.',
+            items: [
+              'Arquitectura completa de la oferta con argumentos de venta',
+              'Bloques de prueba, objeciones, CTA y apoyo comercial',
+              'Dirección visual pulida para fortalecer la percepción de valor',
+              'Experiencia diseñada para campañas, captación y ventas'
+            ],
+            foot: 'Hecha para campañas más fuertes y una percepción más premium.'
+          }
+        }
+      }
+    },
+    bridgeTop: {
+      kicker: 'ENTRE PRESENCIA Y RESULTADOS',
+      lines: ['DEL ESFUERZO A LA CONQUISTA', 'HACEMOS CRECER TU MARCA ONLINE'],
+      copy: 'Creemos que el branding va mucho más allá de lo visual: se trata de construir relevancia duradera, crear conexión real y transformar presencia en crecimiento consistente.'
+    },
+    cases: {
+      title: 'Casos de éxito',
+      hint: 'Pasa el cursor o usa Tab para ver una vista previa del proyecto. Presiona Enter para abrirlo cuando la página esté disponible.',
+      items: [
+        { title: 'Studio de Beleza Giovana Fortunato', name: 'Studio de Beleza Giovana Fortunato', meta: 'Identidad • Contenido' },
+        { title: 'MiláMi musicalización infantil', name: 'MiláMi musicalización infantil', meta: 'Identidad de Marca • Educación' },
+        { title: 'Ensinarte', name: 'Ensinarte', meta: 'Identidad de Marca • Educación' },
+        { title: 'Landing Page de musicalización infantil', name: 'Landing Page de musicalización infantil', meta: 'Web • Educación' }
+      ]
+    },
+    bridgeBottom: {
+      lines: ['CADA PROYECTO QUE REALIZAMOS', 'ES UNA OPORTUNIDAD ÚNICA'],
+      copy: '¿Listo para dar el siguiente paso? Únete a nosotros ahora y empieza a transformar tu visión en realidad con apoyo especializado.'
+    },
+    contact: {
+      kicker: 'Hablemos',
+      title: ['VAMOS A CREAR', 'TU MARCA'],
+      lead: `Cuéntanos tu idea en el <a class="contact-email-link" href="${BRACH_FORM_LINK}" rel="noopener noreferrer" target="_blank">formulario</a> o envíanos un correo a <a class="contact-email-link" href="mailto:${BRACH_EMAIL}">${BRACH_EMAIL}</a>.`,
+      success: 'Mensaje enviado. Te responderemos pronto.',
+      error: 'No fue posible enviarlo ahora. Inténtalo de nuevo en unos momentos o usa el correo de arriba.',
+      invalid: 'Revisa tu nombre, correo y mensaje antes de enviar.',
+      fields: {
+        website: 'Website',
+        honey: 'No completes este campo',
+        name: 'Nombre',
+        email: 'Correo',
+        message: 'Mensaje'
+      },
+      placeholders: {
+        name: 'Deja tu nombre',
+        email: 'Deja tu correo',
+        message: 'Deja tu mensaje'
+      },
+      termsLead: 'Al enviar, aceptas nuestros',
+      termsLink: 'Términos de uso',
+      termsConnector: 'y',
+      privacyLink: 'Políticas de privacidad',
+      submit: 'Enviar mensaje',
+      sending: 'Enviando...',
+      modalTitles: {
+        terms: 'Términos de uso',
+        privacy: 'Políticas de privacidad'
+      },
+      modalCloseAria: 'Cerrar'
+    },
+    footer: {
+      title: 'Pie de página',
+      tickerAria: 'Diseño web, branding, marketing, diseño',
+      ticker: 'DISEÑO WEB • BRANDING • MARKETING • DISEÑO • DISEÑO WEB • BRANDING • MARKETING • DISEÑO •',
+      tagline: 'Dando visibilidad<br>a tu sueño digital',
+      navTitle: 'Navegación',
+      socialTitle: 'Redes Sociales',
+      contactTitle: 'Contacto',
+      nav: ['Home', 'Sobre', 'Servicios', 'Casos'],
+      form: 'Formulario'
+    }
+  }
+};
+
+function getBrachLanguage(){
+  const stored = window.localStorage?.getItem('brach-language');
+  return BRACH_I18N[stored] ? stored : BRACH_DEFAULT_LANGUAGE;
+}
+
+function getBrachLocale(lang = getBrachLanguage()){
+  return BRACH_I18N[lang] || BRACH_I18N[BRACH_DEFAULT_LANGUAGE];
+}
+
+function setBrachLanguage(lang){
+  const nextLanguage = BRACH_I18N[lang] ? lang : BRACH_DEFAULT_LANGUAGE;
+  try{
+    window.localStorage?.setItem('brach-language', nextLanguage);
+  }catch{
+    // noop
+  }
+
+  document.dispatchEvent(new CustomEvent('brach:languagechange', {
+    detail: {
+      lang: nextLanguage,
+      locale: getBrachLocale(nextLanguage)
+    }
+  }));
+}
+
+window.getBrachLanguage = getBrachLanguage;
+window.getBrachLocale = getBrachLocale;
+window.setBrachLanguage = setBrachLanguage;
+window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
+
+(() => {
+  const root = document.documentElement;
+  const titleTag = document.querySelector('title');
+  const descriptionTags = document.querySelectorAll('meta[name="description"], meta[property="og:description"], meta[name="twitter:description"]');
+  const titleMetaTags = document.querySelectorAll('meta[name="application-name"], meta[name="apple-mobile-web-app-title"], meta[property="og:site_name"], meta[property="og:title"], meta[name="twitter:title"]');
+  const menuLabel = document.getElementById('menuLabel');
+  const closeLabel = document.getElementById('closeLabel');
+  const openMenu = document.getElementById('openMenu');
+  const closeMenu = document.getElementById('closeMenu');
+  const menuTitle = document.getElementById('menuTitle');
+  const copyBtn = document.getElementById('copyEmailBtn');
+  const copyBtnSr = copyBtn?.querySelector('.sr-only');
+  const copyToast = document.getElementById('copyToast');
+  const footerEmailToast = document.getElementById('footerEmailToast');
+  const overlayNav = document.querySelector('.overlay__nav');
+  const brandLink = document.querySelector('.brand');
+  const languageToggle = document.getElementById('languageToggle');
+  const languageSwitcher = document.getElementById('langSwitcher');
+  const languageOptionsList = document.getElementById('languageOptions');
+  const languageSurface = languageSwitcher?.querySelector('.lang-switcher__surface');
+  const languageOptions = Array.from(languageSwitcher?.querySelectorAll('.lang-switcher__option') || []);
+  const loaderLoading = document.querySelector('.page-loader__eyebrow');
+  const loaderWait = document.querySelector('.page-loader__wait');
+  const loaderMeta = document.querySelectorAll('.page-loader__meta-copy');
+  const skipLink = document.querySelector('.skip-link');
+  const navLinks = Array.from(document.querySelectorAll('.overlay__nav .navlink'));
+  const navTexts = Array.from(document.querySelectorAll('.overlay__nav .navtext'));
+  const overlayKickers = Array.from(document.querySelectorAll('.overlay__contact .kicker'));
+  const socialGridLinks = Array.from(document.querySelectorAll('.social-grid .social'));
+  const socialIconLinks = Array.from(document.querySelectorAll('.social-icons .icon-link'));
+  const heroBrandTag = document.querySelector('.hero-banner__brand-tag');
+  const heroDesktopLine = document.querySelector('.hero-banner__title--desktop .hero-banner__line');
+  const heroMobileKicker = document.querySelector('.hero-banner__mobile-kicker');
+  const heroMobileLines = Array.from(document.querySelectorAll('.hero-banner__title-mobile .hero-banner__mobile-line'));
+  const heroMobileWord = document.querySelector('.hero-banner__mobile-word');
+  const heroMobileCopy = document.querySelector('.hero-banner__mobile-copy');
+  const heroIntro = document.getElementById('heroIntro');
+  const heroCta = document.querySelector('.hero-banner__cta');
+  const heroLogos = document.querySelector('.hero-banner__logos');
+  const heroScroll = document.querySelector('.hero-banner__scroll');
+  const aboutKicker = document.querySelector('.about-team__kicker');
+  const aboutTitleLines = Array.from(document.querySelectorAll('.about-team__title span'));
+  const aboutCopy = document.querySelector('.about-team__copy p');
+  const aboutPeople = Array.from(document.querySelectorAll('.about-person'));
+  const servicesKicker = document.querySelector('.services-kicker');
+  const servicesTitle = document.getElementById('servicesTitle');
+  const servicesSubtitle = document.querySelector('.services-subtitle');
+  const servicesCopy = document.querySelector('.services-copy');
+  const servicesTabs = Array.from(document.querySelectorAll('.services-tab'));
+  const servicesStage = document.getElementById('servicesPanel');
+  const servicesTierLabels = Array.from(document.querySelectorAll('.service-package__tier'));
+  const topBridgeKicker = document.querySelector('.brand-bridge:not(.brand-bridge--postcases) .brand-bridge__kicker');
+  const topBridgeLines = Array.from(document.querySelectorAll('.brand-bridge:not(.brand-bridge--postcases) .brand-bridge__line'));
+  const topBridgeCopy = document.querySelector('.brand-bridge:not(.brand-bridge--postcases) .brand-bridge__copy');
+  const casesTitle = document.getElementById('trabalhosTitle');
+  const caseHint = document.getElementById('caseHint');
+  const caseLinks = Array.from(document.querySelectorAll('.case-link'));
+  const bottomBridgeLines = Array.from(document.querySelectorAll('.brand-bridge--postcases .brand-bridge__line'));
+  const bottomBridgeCopy = document.querySelector('.brand-bridge--postcases .brand-bridge__copy');
+  const contactKicker = document.querySelector('.contact-kicker');
+  const contactTitleLines = Array.from(document.querySelectorAll('.contact-title span'));
+  const contactLead = document.querySelector('.contact-lead');
+  const contactFeedbacks = {
+    success: document.getElementById('contato-enviado'),
+    error: document.getElementById('contato-erro'),
+    invalid: document.getElementById('contato-invalido')
+  };
+  const contactFields = {
+    websiteLabel: document.querySelector('label[for="contato-website"]'),
+    honeyLabel: document.querySelector('label[for="contato-honey"]'),
+    nameLabel: document.querySelector('label[for="contato-nome"]'),
+    emailLabel: document.querySelector('label[for="contato-email"]'),
+    messageLabel: document.querySelector('label[for="contato-mensagem"]'),
+    name: document.getElementById('contato-nome'),
+    email: document.getElementById('contato-email'),
+    message: document.getElementById('contato-mensagem')
+  };
+  const contactTermsLead = document.querySelector('.contact-terms__lead');
+  const contactTermsConnector = document.querySelector('.contact-terms__connector');
+  const contactTermsButtons = {
+    terms: document.querySelector('.policy-link[data-modal="terms"]'),
+    privacy: document.querySelector('.policy-link[data-modal="privacy"]')
+  };
+  const contactSubmitLabel = document.querySelector('.contact-submit__label');
+  const policyModalClose = document.querySelector('.policy-modal__close');
+  const footerTitle = document.getElementById('footerTitle');
+  const footerTicker = document.querySelector('.footer-ticker');
+  const footerTickerTexts = Array.from(document.querySelectorAll('.ticker__text'));
+  const footerTagline = document.querySelector('.footer-tagline');
+  const footerColTitles = Array.from(document.querySelectorAll('.footer-col__title'));
+  const footerNavLinks = Array.from(document.querySelectorAll('.footer-nav .footer-link .u'));
+  const footerForm = document.querySelector('.footer-contactlist a[href="#contato"] .u');
+
+  const labelSets = {
+    socialNames: ['Instagram', 'LinkedIn', 'Behance', 'Pinterest']
+  };
+
+  const motionAvailable = Boolean(window.gsap);
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const closedHeight = languageSurface ? parseFloat(window.getComputedStyle(languageSurface).height) || 78 : 78;
+  const getOpenHeight = () => (window.innerWidth <= 920 ? 216 : 232);
+  let activeLanguage = getBrachLanguage();
+  let switcherTl = null;
+
+  function setLinkLabel(target, text){
+    if(!target) return;
+    target.textContent = text;
+    target.dataset.text = text;
+  }
+
+  function updateLanguageButtons(lang){
+    languageOptions.forEach((button) => {
+      const isActive = button.dataset.lang === lang;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-selected', String(isActive));
+    });
+  }
+
+  function ensureSwitcherTimeline(){
+    if(!languageSurface || !motionAvailable || switcherTl) return;
+
+    switcherTl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+    gsap.set(languageOptions, { autoAlpha: 0, y: 16 });
+
+    switcherTl
+      .to(languageSurface, {
+        height: getOpenHeight(),
+        borderRadius: 34,
+        duration: reduceMotion ? 0.12 : 0.38
+      }, 0)
+      .to(languageOptions, {
+        autoAlpha: 1,
+        y: 0,
+        duration: reduceMotion ? 0.12 : 0.32,
+        stagger: reduceMotion ? 0 : 0.08
+      }, reduceMotion ? 0 : 0.5);
+  }
+
+  function openLanguageSwitcher(){
+    if(!languageSwitcher || languageSwitcher.classList.contains('is-open')) return;
+    languageSwitcher.classList.add('is-open');
+    languageToggle?.setAttribute('aria-expanded', 'true');
+
+    if(!motionAvailable){
+      if(languageSurface){
+        languageSurface.style.height = `${getOpenHeight()}px`;
+        languageSurface.style.borderRadius = '34px';
+      }
+      languageOptions.forEach((button) => {
+        button.style.opacity = '1';
+        button.style.transform = 'translateY(0)';
+      });
+      return;
+    }
+
+    ensureSwitcherTimeline();
+    switcherTl?.play(0);
+  }
+
+  function closeLanguageSwitcher(){
+    if(!languageSwitcher || !languageSwitcher.classList.contains('is-open')) return;
+    languageSwitcher.classList.remove('is-open');
+    languageToggle?.setAttribute('aria-expanded', 'false');
+
+    if(!motionAvailable){
+      if(languageSurface){
+        languageSurface.style.height = `${closedHeight}px`;
+        languageSurface.style.borderRadius = '999px';
+      }
+      languageOptions.forEach((button) => {
+        button.style.opacity = '0';
+        button.style.transform = 'translateY(16px)';
+      });
+      return;
+    }
+
+    ensureSwitcherTimeline();
+    switcherTl?.reverse();
+  }
+
+  function applyLanguage(lang){
+    const locale = getBrachLocale(lang);
+    activeLanguage = lang;
+
+    root.lang = locale.htmlLang;
+    document.body.dataset.language = lang;
+
+    if(titleTag) titleTag.textContent = locale.pageTitle;
+    document.title = locale.pageTitle;
+    descriptionTags.forEach((tag) => tag.setAttribute('content', locale.description));
+    titleMetaTags.forEach((tag) => tag.setAttribute('content', locale.pageTitle));
+
+    if(loaderLoading) loaderLoading.textContent = locale.loader.loading;
+    if(loaderWait) loaderWait.textContent = locale.loader.wait;
+    if(loaderMeta[0]) loaderMeta[0].textContent = locale.loader.preparing;
+    if(loaderMeta[1]) loaderMeta[1].textContent = locale.loader.ready;
+
+    if(skipLink) skipLink.textContent = lang === 'en' ? 'Skip to content' : lang === 'es' ? 'Saltar al contenido' : 'Pular para o conteúdo';
+
+    if(brandLink) brandLink.setAttribute('aria-label', locale.topbar.homeAria);
+    if(languageToggle) languageToggle.setAttribute('aria-label', locale.topbar.languageAria);
+    if(languageOptionsList) languageOptionsList.setAttribute('aria-label', locale.topbar.languageAria);
+    if(openMenu) openMenu.setAttribute('aria-label', locale.topbar.menuOpenAria);
+    if(closeMenu) closeMenu.setAttribute('aria-label', locale.topbar.menuCloseAria);
+    if(menuLabel) menuLabel.textContent = locale.topbar.menuOpen;
+    if(closeLabel) closeLabel.textContent = locale.topbar.menuClose;
+    if(menuTitle) menuTitle.textContent = locale.overlay.title;
+
+    if(copyBtn) copyBtn.setAttribute('aria-label', locale.overlay.copyAria);
+    if(copyBtnSr) copyBtnSr.textContent = locale.overlay.copyOnly;
+    if(copyToast) copyToast.textContent = locale.overlay.copySuccess;
+    if(footerEmailToast) footerEmailToast.textContent = '';
+    if(overlayNav) overlayNav.setAttribute('aria-label', locale.overlay.navAria);
+
+    navLinks.forEach((link, index) => {
+      const text = locale.overlay.nav[index] || '';
+      link.dataset.text = text;
+      link.setAttribute('aria-label', text);
+    });
+    navTexts.forEach((textEl, index) => {
+      textEl.textContent = locale.overlay.nav[index] || '';
+    });
+
+    if(overlayKickers[0]) overlayKickers[0].textContent = locale.overlay.emailKicker;
+    if(overlayKickers[1]) overlayKickers[1].textContent = locale.overlay.socialKicker;
+
+    socialGridLinks.forEach((link, index) => {
+      const text = labelSets.socialNames[index];
+      const label = index === 0 ? text : index === 1 ? text : index === 2 ? text : text;
+      const span = link.querySelector('.u');
+      if(span){
+        span.textContent = label;
+        span.dataset.text = label;
+      }
+    });
+    socialIconLinks.forEach((link, index) => {
+      const label = labelSets.socialNames[index];
+      link.setAttribute('aria-label', label);
+    });
+
+    if(heroBrandTag) heroBrandTag.textContent = locale.hero.brandTag;
+    if(heroDesktopLine) heroDesktopLine.textContent = locale.hero.desktopTitle;
+    if(heroMobileKicker) heroMobileKicker.textContent = locale.hero.mobileKicker;
+    if(heroMobileLines[0]) heroMobileLines[0].textContent = locale.hero.mobileLineTop;
+    if(heroMobileWord){
+      heroMobileWord.dataset.heroScramble = locale.hero.mobileWords.join('|');
+      heroMobileWord.textContent = locale.hero.mobileWords[0];
+    }
+    if(heroMobileLines[2]) heroMobileLines[2].textContent = locale.hero.mobileLineMiddle;
+    if(heroMobileLines[3]) heroMobileLines[3].textContent = locale.hero.mobileLineBottom;
+    if(heroMobileCopy) heroMobileCopy.textContent = locale.hero.mobileCopy;
+    if(heroIntro) heroIntro.textContent = locale.hero.intro;
+    if(heroCta){
+      heroCta.dataset.text = locale.hero.cta;
+      heroCta.setAttribute('aria-label', locale.hero.cta);
+    }
+    if(heroLogos) heroLogos.setAttribute('aria-label', locale.hero.logosAria);
+    if(heroScroll) heroScroll.setAttribute('aria-label', locale.hero.scrollAria);
+
+    if(aboutKicker) aboutKicker.textContent = locale.about.kicker;
+    aboutTitleLines.forEach((line, index) => {
+      line.textContent = locale.about.title[index] || '';
+    });
+    if(aboutCopy) aboutCopy.innerHTML = locale.about.copy;
+    const peopleList = document.querySelector('.about-team__people');
+    if(peopleList) peopleList.setAttribute('aria-label', locale.about.teamAria);
+    aboutPeople.forEach((person, index) => {
+      const role = person.querySelector('.about-person__role');
+      const bio = person.querySelector('.about-person__bio');
+      const linkedin = person.querySelector('.about-person__link .u');
+      if(role) role.textContent = locale.about.people[index]?.role || '';
+      if(bio) bio.textContent = locale.about.people[index]?.bio || '';
+      if(linkedin) setLinkLabel(linkedin, locale.about.linkedin);
+    });
+
+    if(servicesKicker) servicesKicker.textContent = locale.services.kicker;
+    if(servicesTitle) servicesTitle.textContent = locale.services.title;
+    if(servicesSubtitle) servicesSubtitle.innerHTML = locale.services.subtitle;
+    if(servicesCopy) servicesCopy.textContent = locale.services.copy;
+    if(servicesStage) servicesStage.setAttribute('aria-label', locale.services.title);
+    servicesTabs.forEach((tab) => {
+      const key = tab.dataset.serviceTab;
+      const label = locale.services.tabs[key] || key;
+      tab.textContent = label;
+    });
+    const tabsContainer = document.querySelector('.services-tabs');
+    if(tabsContainer) tabsContainer.setAttribute('aria-label', locale.services.tabsAria);
+    if(servicesTierLabels[0]) servicesTierLabels[0].textContent = locale.services.tiers.basic;
+    if(servicesTierLabels[1]) servicesTierLabels[1].textContent = locale.services.tiers.full;
+
+    if(topBridgeKicker) topBridgeKicker.textContent = locale.bridgeTop.kicker;
+    topBridgeLines.forEach((line, index) => {
+      line.textContent = locale.bridgeTop.lines[index] || '';
+    });
+    if(topBridgeCopy) topBridgeCopy.textContent = locale.bridgeTop.copy;
+
+    if(casesTitle) casesTitle.textContent = locale.cases.title;
+    if(caseHint) caseHint.textContent = locale.cases.hint;
+    caseLinks.forEach((link, index) => {
+      const caseData = locale.cases.items[index];
+      if(!caseData) return;
+      link.dataset.title = caseData.title;
+      const name = link.querySelector('.case-name');
+      const meta = link.querySelector('.case-meta');
+      if(name) name.textContent = caseData.name;
+      if(meta) meta.textContent = caseData.meta;
+    });
+
+    bottomBridgeLines.forEach((line, index) => {
+      line.textContent = locale.bridgeBottom.lines[index] || '';
+    });
+    if(bottomBridgeCopy) bottomBridgeCopy.textContent = locale.bridgeBottom.copy;
+
+    if(contactKicker) contactKicker.textContent = locale.contact.kicker;
+    contactTitleLines.forEach((line, index) => {
+      line.textContent = locale.contact.title[index] || '';
+    });
+    if(contactLead) contactLead.innerHTML = locale.contact.lead;
+    if(contactFeedbacks.success) contactFeedbacks.success.textContent = locale.contact.success;
+    if(contactFeedbacks.error) contactFeedbacks.error.textContent = locale.contact.error;
+    if(contactFeedbacks.invalid) contactFeedbacks.invalid.textContent = locale.contact.invalid;
+    if(contactFields.websiteLabel) contactFields.websiteLabel.textContent = locale.contact.fields.website;
+    if(contactFields.honeyLabel) contactFields.honeyLabel.textContent = locale.contact.fields.honey;
+    if(contactFields.nameLabel) contactFields.nameLabel.textContent = locale.contact.fields.name;
+    if(contactFields.emailLabel) contactFields.emailLabel.textContent = locale.contact.fields.email;
+    if(contactFields.messageLabel) contactFields.messageLabel.textContent = locale.contact.fields.message;
+    if(contactFields.name) contactFields.name.placeholder = locale.contact.placeholders.name;
+    if(contactFields.email) contactFields.email.placeholder = locale.contact.placeholders.email;
+    if(contactFields.message) contactFields.message.placeholder = locale.contact.placeholders.message;
+    if(contactTermsLead) contactTermsLead.textContent = locale.contact.termsLead;
+    if(contactTermsConnector) contactTermsConnector.textContent = locale.contact.termsConnector;
+    if(contactTermsButtons.terms) contactTermsButtons.terms.textContent = locale.contact.termsLink;
+    if(contactTermsButtons.privacy) contactTermsButtons.privacy.textContent = locale.contact.privacyLink;
+    if(contactSubmitLabel) contactSubmitLabel.textContent = locale.contact.submit;
+    if(policyModalClose) policyModalClose.setAttribute('aria-label', locale.contact.modalCloseAria);
+
+    if(footerTitle) footerTitle.textContent = locale.footer.title;
+    if(footerTicker) footerTicker.setAttribute('aria-label', locale.footer.tickerAria);
+    footerTickerTexts.forEach((text) => {
+      text.textContent = locale.footer.ticker;
+    });
+    if(footerTagline) footerTagline.innerHTML = locale.footer.tagline;
+    footerColTitles.forEach((title, index) => {
+      const labels = [locale.footer.navTitle, locale.footer.socialTitle, locale.footer.contactTitle];
+      title.textContent = labels[index] || '';
+    });
+    footerNavLinks.forEach((link, index) => {
+      setLinkLabel(link, locale.footer.nav[index] || '');
+    });
+    if(footerForm) setLinkLabel(footerForm, locale.footer.form);
+
+    updateLanguageButtons(lang);
+    languageOptions.forEach((button) => {
+      const buttonLang = button.dataset.lang || '';
+      const labels = {
+        'pt-BR': 'Português do Brasil',
+        en: 'English',
+        es: 'Español'
+      };
+      button.setAttribute('aria-label', labels[buttonLang] || buttonLang);
+    });
+
+    if(typeof window.refreshLetterSwap === 'function' && heroCta){
+      window.refreshLetterSwap(heroCta);
+    }
+  }
+
+  languageToggle?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    if(languageSwitcher?.classList.contains('is-open')){
+      closeLanguageSwitcher();
+      return;
+    }
+    openLanguageSwitcher();
+  });
+
+  languageOptions.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const nextLang = button.dataset.lang;
+      if(!nextLang || nextLang === activeLanguage){
+        closeLanguageSwitcher();
+        return;
+      }
+      setBrachLanguage(nextLang);
+      closeLanguageSwitcher();
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if(!languageSwitcher?.contains(event.target)){
+      closeLanguageSwitcher();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if(event.key === 'Escape'){
+      closeLanguageSwitcher();
+    }
+  });
+
+  document.addEventListener('brach:languagechange', (event) => {
+    applyLanguage(event.detail?.lang || BRACH_DEFAULT_LANGUAGE);
+  });
+
+  applyLanguage(activeLanguage);
+})();
+
 // Page loader
 (() => {
   const loader = document.getElementById('pageLoader');
@@ -495,7 +1620,8 @@
       const emailText = (emailLink?.innerText || "").trim();
       if(!emailText) return;
       const copied = await writeToClipboard(emailText);
-      showCopyToast(copied ? "Copiado!" : "Não foi possível copiar.");
+      const locale = getBrachLocale();
+      showCopyToast(copied ? locale.overlay.copySuccess : locale.overlay.copyError);
       return;
 
       try{
@@ -529,7 +1655,8 @@
         e.preventDefault();
         const copied = await writeToClipboard(email);
         if(footerEmailToast){
-          footerEmailToast.textContent = copied ? 'E-mail copiado!' : 'Não foi possível copiar.';
+          const locale = getBrachLocale();
+          footerEmailToast.textContent = copied ? locale.overlay.emailCopied : locale.overlay.copyError;
           window.clearTimeout(footerToastTimer);
           footerToastTimer = window.setTimeout(() => {
             footerEmailToast.textContent = '';
@@ -583,7 +1710,12 @@
   const isCoarse = () => window.matchMedia && window.matchMedia('(hover:none), (pointer:coarse)').matches;
 
   function setAlt(img, title){
-    img.alt = title ? `Prévia do trabalho: ${title}` : 'Prévia do trabalho';
+    const prefix = getBrachLanguage() === 'en'
+      ? 'Project preview'
+      : getBrachLanguage() === 'es'
+        ? 'Vista previa del proyecto'
+        : 'Prévia do trabalho';
+    img.alt = title ? `${prefix}: ${title}` : prefix;
   }
 
   function swapTo(src, title){
@@ -904,179 +2036,7 @@
   const hasGsap = Boolean(window.gsap);
   const hasScrollTrigger = Boolean(window.ScrollTrigger);
 
-  const servicesData = {
-    branding: {
-      basic: {
-        order: '01',
-        category: 'Branding Marca',
-        title: 'Essencial',
-        copy: 'Base visual para organizar a marca, alinhar a presença e transmitir mais profissionalismo desde o primeiro contato.',
-        items: [
-          'Logo principal e variações para diferentes usos',
-          'Paleta, tipografia base e direção visual inicial',
-          'Elementos de apoio para redes e materiais digitais',
-          'Arquivos organizados para aplicação do dia a dia'
-        ],
-        foot: 'Uma estrutura enxuta para tirar a marca do improviso.'
-      },
-      full: {
-        order: '02',
-        category: 'Branding Marca',
-        title: 'Completo',
-        copy: 'Sistema visual mais robusto para marcas que precisam crescer com unidade, memorabilidade e consistência em todos os pontos.',
-        items: [
-          'Logo, símbolo e assinaturas complementares',
-          'Paleta, tipografia e sistema gráfico mais profundo',
-          'Manual base com orientações de aplicação da marca',
-          'Templates iniciais para social media e peças de apoio'
-        ],
-        foot: 'Pensado para consolidar presença e sustentar expansão.'
-      }
-    },
-    social: {
-      basic: {
-        order: '01',
-        category: 'Social Mídia',
-        title: 'Essencial',
-        copy: 'Pacote base para manter a marca ativa com frequência, identidade visual alinhada e uma comunicação mais clara no dia a dia.',
-        items: [
-          'Calendário editorial base para organizar os temas',
-          'Direção visual para feed, stories e peças recorrentes',
-          'Conteúdos pensados para constância e reconhecimento',
-          'Linha de publicação mais coerente com o posicionamento'
-        ],
-        foot: 'Ideal para fortalecer a rotina de conteúdo com clareza.'
-      },
-      full: {
-        order: '02',
-        category: 'Social Mídia',
-        title: 'Completo',
-        copy: 'Entrega mais completa para marcas que querem unir frequência, criação estratégica e conteúdo com foco mais forte em relacionamento e conversão.',
-        items: [
-          'Planejamento estratégico de conteúdo e campanhas',
-          'Direção criativa para formatos, quadros e lançamentos',
-          'Calendário aprofundado com narrativa mais inteligente',
-          'Peças voltadas para alcance, autoridade e vendas'
-        ],
-        foot: 'Para ganhar intensidade, consistência e mais impacto comercial.'
-      }
-    },
-    web: {
-      basic: {
-        order: '01',
-        category: 'Web',
-        title: 'Essencial',
-        copy: 'Landing page objetiva para apresentar a oferta com clareza, leitura fluida e base pronta para campanhas mais diretas.',
-        items: [
-          'Estrutura estratégica e objetiva da página',
-          'Design responsivo com hierarquia clara de leitura',
-          'Blocos essenciais para oferta, prova e CTA',
-          'Base pronta para validar campanhas com rapidez'
-        ],
-        foot: 'Boa para lançar ofertas e testar conversão com agilidade.'
-      },
-      full: {
-        order: '02',
-        category: 'Web',
-        title: 'Completo',
-        copy: 'Página mais completa, com ritmo visual, narrativa de venda e construção pensada para sustentar campanhas com mais ambição.',
-        items: [
-          'Arquitetura completa da oferta com argumentos de venda',
-          'Blocos de prova, objeções, CTA e apoio comercial',
-          'Direção visual polida para fortalecer a percepção de valor',
-          'Experiência desenhada para campanha, captura e vendas'
-        ],
-        foot: 'Feita para campanhas mais fortes e uma percepção mais premium.'
-      }
-    }
-  };
-
-  const normalizedServicesData = {
-    branding: {
-      basic: {
-        order: '01',
-        category: 'Branding Marca',
-        title: 'Essencial',
-        copy: 'Base visual para organizar a marca, alinhar a presença e transmitir mais profissionalismo desde o primeiro contato.',
-        items: [
-          'Logo principal e variações para diferentes usos',
-          'Paleta, tipografia base e direção visual inicial',
-          'Elementos de apoio para redes e materiais digitais',
-          'Arquivos organizados para aplicação do dia a dia'
-        ],
-        foot: 'Uma estrutura enxuta para tirar a marca do improviso.'
-      },
-      full: {
-        order: '02',
-        category: 'Branding Marca',
-        title: 'Completo',
-        copy: 'Sistema visual mais robusto para marcas que precisam crescer com unidade, memorabilidade e consistência em todos os pontos.',
-        items: [
-          'Logo, símbolo e assinaturas complementares',
-          'Paleta, tipografia e sistema gráfico mais profundo',
-          'Manual base com orientações de aplicação da marca',
-          'Templates iniciais para social media e peças de apoio'
-        ],
-        foot: 'Pensado para consolidar presença e sustentar expansão.'
-      }
-    },
-    social: {
-      basic: {
-        order: '01',
-        category: 'Social Mídia',
-        title: 'Essencial',
-        copy: 'Pacote base para manter a marca ativa com frequência, identidade visual alinhada e uma comunicação mais clara no dia a dia.',
-        items: [
-          'Calendário editorial base para organizar os temas',
-          'Direção visual para feed, stories e peças recorrentes',
-          'Conteúdos pensados para constância e reconhecimento',
-          'Linha de publicação mais coerente com o posicionamento'
-        ],
-        foot: 'Ideal para fortalecer a rotina de conteúdo com clareza.'
-      },
-      full: {
-        order: '02',
-        category: 'Social Mídia',
-        title: 'Completo',
-        copy: 'Entrega mais completa para marcas que querem unir frequência, criação estratégica e conteúdo com foco mais forte em relacionamento e conversão.',
-        items: [
-          'Planejamento estratégico de conteúdo e campanhas',
-          'Direção criativa para formatos, quadros e lançamentos',
-          'Calendário aprofundado com narrativa mais inteligente',
-          'Peças voltadas para alcance, autoridade e vendas'
-        ],
-        foot: 'Para ganhar intensidade, consistência e mais impacto comercial.'
-      }
-    },
-    web: {
-      basic: {
-        order: '01',
-        category: 'Web',
-        title: 'Essencial',
-        copy: 'Landing page objetiva para apresentar a oferta com clareza, leitura fluida e base pronta para campanhas mais diretas.',
-        items: [
-          'Estrutura estratégica e objetiva da página',
-          'Design responsivo com hierarquia clara de leitura',
-          'Blocos essenciais para oferta, prova e CTA',
-          'Base pronta para validar campanhas com rapidez'
-        ],
-        foot: 'Boa para lançar ofertas e testar conversão com agilidade.'
-      },
-      full: {
-        order: '02',
-        category: 'Web',
-        title: 'Completo',
-        copy: 'Página mais completa, com ritmo visual, narrativa de venda e estrutura pensada para sustentar campanhas com mais ambição.',
-        items: [
-          'Arquitetura completa da oferta com argumentos de venda',
-          'Blocos de prova, objeções, CTA e apoio comercial',
-          'Direção visual polida para fortalecer a percepção de valor',
-          'Experiência desenhada para campanha, captura e vendas'
-        ],
-        foot: 'Feita para campanhas mais fortes e com uma percepção mais premium.'
-      }
-    }
-  };
+  let normalizedServicesData = getBrachLocale().services.cards;
 
   function createListItems(list, items){
     list.innerHTML = '';
@@ -1269,6 +2229,11 @@
 
   applyCategory(activeKey, true);
 
+  document.addEventListener('brach:languagechange', (event) => {
+    normalizedServicesData = event.detail?.locale?.services?.cards || getBrachLocale().services.cards;
+    applyCategory(activeKey, true);
+  });
+
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => {
       const nextKey = tab.dataset.serviceTab;
@@ -1450,11 +2415,10 @@
 
   const submit = form.querySelector('.contact-submit');
   const label = submit?.querySelector('.contact-submit__label');
-  const defaultLabel = label?.textContent || '';
+  let defaultLabel = label?.textContent || '';
   const loadedAt = Date.now();
   const cooldownKey = 'brach:lastContactSubmit';
   const cooldownMs = 45000;
-  const sheetsEndpoint = 'https://script.google.com/macros/s/AKfycbxS-HtifhNRfGosDLfDxLY0TT3c_ErZFztb6qyhPnSC3gSNYfZRKBgfy10GsdUl3wkq/exec';
 
   const suspiciousTerms = [
     'crypto',
@@ -1530,45 +2494,12 @@
     return false;
   }
 
-  function buildLeadPayload(formData){
-    return {
-      nome: getFieldValue(formData, 'nome'),
-      email: getFieldValue(formData, 'email'),
-      mensagem: getFieldValue(formData, 'mensagem'),
-      website: getFieldValue(formData, 'website'),
-      honey: getFieldValue(formData, '_honey'),
-      landing_path: window.location.pathname,
-      referrer_host: document.referrer || 'direct',
-      user_agent: navigator.userAgent || '',
-      submitted_at: new Date().toISOString()
-    };
-  }
-
-  function sendLeadToSheets(formData){
-    if(!sheetsEndpoint) return Promise.resolve();
-
-    const payload = buildLeadPayload(formData);
-    const body = new URLSearchParams(payload);
-
-    try{
-      if(navigator.sendBeacon){
-        const sent = navigator.sendBeacon(sheetsEndpoint, body);
-        if(sent) return Promise.resolve();
-      }
-    }catch{
-      // Fallback to fetch below.
+  document.addEventListener('brach:languagechange', (event) => {
+    defaultLabel = event.detail?.locale?.contact?.submit || label?.textContent || defaultLabel;
+    if(label && !submit?.disabled){
+      label.textContent = defaultLabel;
     }
-
-    return fetch(sheetsEndpoint, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-      },
-      body,
-      keepalive: true
-    }).catch(() => undefined);
-  }
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -1583,7 +2514,7 @@
       submit.disabled = true;
       submit.setAttribute('aria-busy', 'true');
     }
-    if(label) label.textContent = 'Enviando...';
+    if(label) label.textContent = getBrachLocale().contact.sending;
 
     try{
       const formData = new FormData(form);
@@ -1609,7 +2540,6 @@
 
       if(!response.ok) throw new Error('Form submission failed');
 
-      await sendLeadToSheets(formData);
       form.reset();
       markSubmitted();
       showFormFeedback('contato-enviado');
@@ -1631,17 +2561,15 @@
 // LETTER SWAP
 // ===============================
 (() => {
-  const swapEls = document.querySelectorAll('.letter-swap[data-text]');
-  if(!swapEls.length) return;
+  function buildLetterSwap(el){
+    if(!el || !el.matches('.letter-swap[data-text]')) return;
 
-  swapEls.forEach((el) => {
     const text = (el.dataset.text || '').trim();
-    if(!text || el.dataset.swapReady === 'true') return;
+    if(!text) return;
 
     el.dataset.swapReady = 'true';
-    if(!el.getAttribute('aria-label')){
-      el.setAttribute('aria-label', text);
-    }
+    el.dataset.swapText = text;
+    el.setAttribute('aria-label', text);
 
     const sr = document.createElement('span');
     sr.className = 'sr-only';
@@ -1672,9 +2600,24 @@
       visual.appendChild(wrapper);
     });
 
-    el.textContent = '';
-    el.append(sr, visual);
-  });
+    el.replaceChildren(sr, visual);
+  }
+
+  window.refreshLetterSwap = (target) => {
+    if(!target){
+      document.querySelectorAll('.letter-swap[data-text]').forEach(buildLetterSwap);
+      return;
+    }
+
+    if(target instanceof Element){
+      buildLetterSwap(target);
+      return;
+    }
+
+    document.querySelectorAll(target).forEach(buildLetterSwap);
+  };
+
+  window.refreshLetterSwap();
 })();
 
 
@@ -1689,73 +2632,93 @@
   const revealItems = Array.from(hero.querySelectorAll('.hero-reveal'));
   const brandLetters = Array.from(hero.querySelectorAll('.hero-banner__brand-letter'));
   const mobileScramble = hero.querySelector('[data-hero-scramble]');
-  const mobileWords = (mobileScramble?.dataset.heroScramble || '')
+  const scrambleAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let mobileWords = [];
+  let currentIndex = 0;
+  let cycleTimer = null;
+  let scrambleState = null;
+
+  const getMobileWords = () => (mobileScramble?.dataset.heroScramble || '')
     .split('|')
     .map((word) => word.trim())
     .filter(Boolean);
-  const scrambleAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  const setWord = (value) => {
+    if(mobileScramble) mobileScramble.textContent = value;
+  };
+
+  const stopMobileWordCycle = () => {
+    if(cycleTimer){
+      window.clearTimeout(cycleTimer);
+      cycleTimer = null;
+    }
+    if(scrambleState && window.gsap){
+      gsap.killTweensOf(scrambleState);
+      scrambleState = null;
+    }
+  };
+
+  const scrambleTo = (nextWord, animate) => {
+    if(!animate || !window.gsap){
+      setWord(nextWord);
+      return;
+    }
+
+    scrambleState = { frame: 0 };
+    const currentWord = mobileScramble?.textContent || mobileWords[currentIndex] || '';
+    const maxLength = Math.max(currentWord.length, nextWord.length);
+
+    gsap.to(scrambleState, {
+      frame: maxLength + 6,
+      duration: 1.42,
+      ease: 'power1.inOut',
+      onUpdate: () => {
+        const revealCount = Math.floor(scrambleState.frame);
+        let output = '';
+
+        for(let index = 0; index < maxLength; index += 1){
+          const currentChar = currentWord[index] || '';
+          const nextChar = nextWord[index] || '';
+          const isSpace = nextChar === ' ' || currentChar === ' ';
+
+          if(index < revealCount){
+            output += nextChar;
+          }else if(isSpace){
+            output += ' ';
+          }else{
+            output += scrambleAlphabet[Math.floor(Math.random() * scrambleAlphabet.length)];
+          }
+        }
+
+        setWord(output.trimEnd());
+      },
+      onComplete: () => {
+        setWord(nextWord);
+        scrambleState = null;
+      }
+    });
+  };
+
+  const queueNext = (animate) => {
+    if(mobileWords.length < 2) return;
+    cycleTimer = window.setTimeout(() => {
+      currentIndex = (currentIndex + 1) % mobileWords.length;
+      scrambleTo(mobileWords[currentIndex], animate);
+      queueNext(animate);
+    }, animate ? 3600 : 3000);
+  };
 
   const startMobileWordCycle = (animate) => {
-    if(!mobileScramble || mobileWords.length < 2) return;
+    if(!mobileScramble) return;
 
-    let currentIndex = 0;
-    let cycleTimer = null;
+    stopMobileWordCycle();
+    mobileWords = getMobileWords();
+    currentIndex = 0;
 
-    const setWord = (value) => {
-      mobileScramble.textContent = value;
-    };
-
-    const scrambleTo = (nextWord) => {
-      if(!animate || !window.gsap){
-        setWord(nextWord);
-        return;
-      }
-
-      const state = { frame: 0 };
-      const currentWord = mobileScramble.textContent || mobileWords[currentIndex] || '';
-      const maxLength = Math.max(currentWord.length, nextWord.length);
-
-      gsap.killTweensOf(state);
-      gsap.to(state, {
-        frame: maxLength + 6,
-        duration: 1.42,
-        ease: 'power1.inOut',
-        onUpdate: () => {
-          const revealCount = Math.floor(state.frame);
-          let output = '';
-
-          for(let index = 0; index < maxLength; index += 1){
-            const currentChar = currentWord[index] || '';
-            const nextChar = nextWord[index] || '';
-            const isSpace = nextChar === ' ' || currentChar === ' ';
-
-            if(index < revealCount){
-              output += nextChar;
-            }else if(isSpace){
-              output += ' ';
-            }else{
-              output += scrambleAlphabet[Math.floor(Math.random() * scrambleAlphabet.length)];
-            }
-          }
-
-          setWord(output.trimEnd());
-        },
-        onComplete: () => {
-          setWord(nextWord);
-        }
-      });
-    };
-
-    const queueNext = () => {
-      cycleTimer = window.setTimeout(() => {
-        currentIndex = (currentIndex + 1) % mobileWords.length;
-        scrambleTo(mobileWords[currentIndex]);
-        queueNext();
-      }, animate ? 3600 : 3000);
-    };
+    if(!mobileWords.length) return;
 
     setWord(mobileWords[0]);
-    queueNext();
+    queueNext(animate);
   };
 
   if(reduceMotion || !window.gsap){
@@ -1765,6 +2728,7 @@
       el.style.filter = 'none';
     });
     startMobileWordCycle(false);
+    document.addEventListener('brach:languagechange', () => startMobileWordCycle(false));
     return;
   }
 
@@ -1799,6 +2763,7 @@
     }, 0.24);
 
   startMobileWordCycle(true);
+  document.addEventListener('brach:languagechange', () => startMobileWordCycle(true));
 
   if(window.ScrollTrigger && brandLetters.length){
     gsap.registerPlugin(ScrollTrigger);
@@ -2252,13 +3217,13 @@
   if(!modal) return;
   const body = document.getElementById('policyModalBody');
   const title = document.getElementById('policyModalTitle');
-  const content = {
-    terms: "<p>Termos de Servi\u00e7o</p>\n<p>Termos de Servi\u00e7o<br>(\u00faltima atualiza\u00e7\u00e3o)</p>\n<p>07 de abril de 2026</p>\n<p>1. Uso dos Servi\u00e7os</p>\n<p>Para utilizar os servi\u00e7os da Brach, voc\u00ea deve ter pelo menos 18 anos. Ao acessar e utilizar nossos servi\u00e7os, voc\u00ea concorda em faz\u00ea-lo de forma legal e em conformidade com estes Termos.</p>\n<p>2. Propriedade Intelectual</p>\n<p>Todo o conte\u00fado presente neste site, incluindo logotipos, textos, elementos visuais, layouts e materiais digitais, \u00e9 de propriedade da Brach ou de seus parceiros e est\u00e1 protegido por leis de direitos autorais e propriedade intelectual.</p>\n<p>N\u00e3o \u00e9 permitido copiar, reproduzir, distribuir ou modificar qualquer conte\u00fado sem autoriza\u00e7\u00e3o pr\u00e9via.</p>\n<p>3. Conte\u00fado do Usu\u00e1rio</p>\n<p>Ao enviar qualquer conte\u00fado para a Brach (como mensagens, feedbacks ou materiais), voc\u00ea nos concede uma licen\u00e7a n\u00e3o exclusiva, gratuita e v\u00e1lida para uso, exibi\u00e7\u00e3o e distribui\u00e7\u00e3o desse conte\u00fado, quando necess\u00e1rio para a presta\u00e7\u00e3o dos nossos servi\u00e7os.</p>\n<p>Voc\u00ea \u00e9 respons\u00e1vel por garantir que o conte\u00fado enviado n\u00e3o viole leis ou direitos de terceiros.</p>\n<p>4. Limita\u00e7\u00e3o de Responsabilidade</p>\n<p>A Brach n\u00e3o se responsabiliza por quaisquer danos diretos ou indiretos decorrentes do uso dos servi\u00e7os ou do site.</p>\n<p>N\u00e3o garantimos que o funcionamento ser\u00e1 cont\u00ednuo, livre de erros ou totalmente seguro, embora busquemos sempre a melhor performance e estabilidade.</p>\n<p>5. Encerramento de Acesso</p>\n<p>Podemos suspender ou encerrar o acesso aos nossos servi\u00e7os a qualquer momento, sem aviso pr\u00e9vio, caso haja viola\u00e7\u00e3o destes Termos.</p>\n<p>6. Atualiza\u00e7\u00f5es dos Termos</p>\n<p>Estes Termos podem ser atualizados a qualquer momento. O uso cont\u00ednuo dos servi\u00e7os ap\u00f3s altera\u00e7\u00f5es significa que voc\u00ea concorda com a vers\u00e3o mais recente.</p>\n<p>7. Contato</p>\n<p>Em caso de d\u00favidas, entre em contato com a gente:<br>\ud83d\udce9 agenciabrach@gmail.com</p>",
-    privacy: "<p>Politica de privacidade</p>\n<p>Pol\u00edtica de Privacidade<br>(\u00faltima atualiza\u00e7\u00e3o)</p>\n<p>07 de abril de 2026</p>\n<p>1. Informa\u00e7\u00f5es que Coletamos</p>\n<p>Informa\u00e7\u00f5es pessoais:<br>Nome, e-mail, telefone e outros dados que voc\u00ea fornece ao entrar em contato ou utilizar nossos servi\u00e7os.</p>\n<p>Dados de uso:<br>Endere\u00e7o IP, tipo de navegador, p\u00e1ginas acessadas e outras informa\u00e7\u00f5es coletadas por meio de cookies e ferramentas de an\u00e1lise.</p>\n<p>2. Como Utilizamos suas Informa\u00e7\u00f5es</p>\n<p>Utilizamos seus dados para:</p>\n<p>Oferecer e melhorar nossos servi\u00e7os<br>Responder solicita\u00e7\u00f5es e prestar suporte<br>Enviar comunica\u00e7\u00f5es de marketing (voc\u00ea pode cancelar a qualquer momento)<br>Analisar o comportamento dos usu\u00e1rios e o desempenho do site</p>\n<p>3. Compartilhamento de Informa\u00e7\u00f5es</p>\n<p>A Brach n\u00e3o vende suas informa\u00e7\u00f5es pessoais.</p>\n<p>Seus dados podem ser compartilhados apenas com servi\u00e7os de terceiros que auxiliam na opera\u00e7\u00e3o do site e na presta\u00e7\u00e3o dos nossos servi\u00e7os, sempre de forma limitada ao necess\u00e1rio.</p>\n<p>4. Cookies e Rastreamento</p>\n<p>Utilizamos cookies para melhorar sua experi\u00eancia e coletar dados de navega\u00e7\u00e3o.</p>\n<p>Voc\u00ea pode desativar os cookies nas configura\u00e7\u00f5es do seu navegador, mas isso pode impactar o funcionamento de algumas funcionalidades do site.</p>\n<p>5. Seguran\u00e7a</p>\n<p>Adotamos medidas razo\u00e1veis para proteger suas informa\u00e7\u00f5es. Ainda assim, nenhum sistema \u00e9 totalmente seguro.</p>\n<p>Ao utilizar nossos servi\u00e7os, voc\u00ea reconhece e aceita esse risco.</p>\n<p>6. Seus Direitos</p>\n<p>Voc\u00ea pode solicitar acesso, corre\u00e7\u00e3o ou exclus\u00e3o dos seus dados pessoais a qualquer momento.</p>\n<p>Para isso, entre em contato:<br>\ud83d\udce9 agenciabrach@gmail.com</p>\n<p>7. Altera\u00e7\u00f5es nesta Pol\u00edtica</p>\n<p>Esta Pol\u00edtica pode ser atualizada periodicamente. A vers\u00e3o mais recente estar\u00e1 sempre dispon\u00edvel em nosso site.</p>"
-  };
+  const content = window.BRACH_POLICY_CONTENT || {};
 
   function openPolicy(kind){
-    title.textContent = kind === 'terms' ? 'Termos de uso' : 'Políticas de Privacidade';
+    const locale = getBrachLocale();
+    title.textContent = kind === 'terms'
+      ? locale.contact.modalTitles.terms
+      : locale.contact.modalTitles.privacy;
     body.innerHTML = content[kind];
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
