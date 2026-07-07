@@ -138,8 +138,8 @@
 
     .lang-switcher{
       position: fixed;
-      top: 10px;
-      right: 118px;
+      right: 24px;
+      bottom: 28px;
       z-index: 9998;
       pointer-events: auto;
       opacity: 1;
@@ -151,24 +151,24 @@
     }
     .lang-switcher__surface{
       position: relative;
-      width: 78px;
-      height: 78px;
+      width: 64px;
+      height: 64px;
       border-radius: 999px;
       overflow: hidden;
       background: rgba(7,16,79,.98);
       border: 1px solid rgba(255,246,214,.14);
-      box-shadow: 0 20px 46px rgba(0,0,0,.22);
-      transform-origin: center bottom;
+      box-shadow: 0 16px 34px rgba(0,0,0,.22);
+      transform-origin: right bottom;
       will-change: height, border-radius;
     }
     .lang-switcher__options{
       position: absolute;
-      inset: 18px 0 86px;
+      inset: 14px 0 68px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      gap: 16px;
+      gap: 12px;
       pointer-events: none;
     }
     .lang-switcher.is-open .lang-switcher__options{
@@ -191,7 +191,7 @@
     .lang-switcher__option .hover-gsap{
       display: inline-block;
       font-family: var(--font-fk);
-      font-size: 28px;
+      font-size: 24px;
       line-height: 1;
       letter-spacing: .06em;
     }
@@ -209,11 +209,11 @@
     .lang-switcher__toggle{
       appearance: none;
       position: absolute;
-      left: 8px;
-      right: 8px;
-      bottom: 8px;
-      width: calc(100% - 16px);
-      height: 62px;
+      left: 7px;
+      right: 7px;
+      bottom: 7px;
+      width: calc(100% - 14px);
+      height: 50px;
       border: 0;
       border-radius: 999px;
       background: transparent;
@@ -224,8 +224,8 @@
       -webkit-tap-highlight-color: transparent;
     }
     .lang-switcher__icon{
-      width: 46px;
-      height: 46px;
+      width: 34px;
+      height: 34px;
       display: block;
       object-fit: contain;
       filter: brightness(0) saturate(100%) invert(96%) sepia(19%) saturate(242%) hue-rotate(339deg) brightness(103%) contrast(95%);
@@ -310,26 +310,30 @@
 
     @media (max-width: 920px){
       .lang-switcher{
-        top: 8px;
-        right: 102px;
+        right: 16px;
+        bottom: 20px;
       }
       .lang-switcher__surface{
-        width: 72px;
-        height: 72px;
+        width: 58px;
+        height: 58px;
       }
       .lang-switcher__options{
-        inset: 16px 0 80px;
-        gap: 14px;
+        inset: 12px 0 62px;
+        gap: 10px;
       }
       .lang-switcher__option .hover-gsap{
-        font-size: 25px;
+        font-size: 21px;
       }
       .lang-switcher__toggle{
-        height: 56px;
+        left: 6px;
+        right: 6px;
+        bottom: 6px;
+        width: calc(100% - 12px);
+        height: 46px;
       }
       .lang-switcher__icon{
-        width: 42px;
-        height: 42px;
+        width: 30px;
+        height: 30px;
       }
     }
 

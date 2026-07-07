@@ -814,8 +814,8 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 
   const motionAvailable = Boolean(window.gsap);
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const closedHeight = languageSurface ? parseFloat(window.getComputedStyle(languageSurface).height) || 78 : 78;
-  const getOpenHeight = () => (window.innerWidth <= 920 ? 216 : 232);
+  const getClosedHeight = () => (window.innerWidth <= 920 ? 58 : 64);
+  const getOpenHeight = () => (window.innerWidth <= 920 ? 174 : 188);
   let activeLanguage = getBrachLanguage();
   let switcherTl = null;
 
@@ -837,20 +837,20 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     if(!languageSurface || !motionAvailable || switcherTl) return;
 
     switcherTl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
-    gsap.set(languageOptions, { autoAlpha: 0, y: 16 });
+    gsap.set(languageOptions, { autoAlpha: 0, y: 14 });
 
     switcherTl
       .to(languageSurface, {
         height: getOpenHeight(),
         borderRadius: 34,
-        duration: reduceMotion ? 0.12 : 0.38
+        duration: reduceMotion ? 0.12 : 0.34
       }, 0)
       .to(languageOptions, {
         autoAlpha: 1,
         y: 0,
-        duration: reduceMotion ? 0.12 : 0.32,
-        stagger: reduceMotion ? 0 : 0.08
-      }, reduceMotion ? 0 : 0.5);
+        duration: reduceMotion ? 0.12 : 0.28,
+        stagger: reduceMotion ? 0 : { each: 0.08, from: 'end' }
+      }, reduceMotion ? 0 : 0.08);
   }
 
   function openLanguageSwitcher(){
@@ -881,7 +881,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 
     if(!motionAvailable){
       if(languageSurface){
-        languageSurface.style.height = `${closedHeight}px`;
+        languageSurface.style.height = `${getClosedHeight()}px`;
         languageSurface.style.borderRadius = '999px';
       }
       languageOptions.forEach((button) => {
