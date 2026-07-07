@@ -814,8 +814,8 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 
   const motionAvailable = Boolean(window.gsap);
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const getClosedHeight = () => (window.innerWidth <= 920 ? 58 : 64);
-  const getOpenHeight = () => (window.innerWidth <= 920 ? 182 : 196);
+  const getClosedHeight = () => (window.innerWidth <= 920 ? 54 : 64);
+  const getOpenHeight = () => (window.innerWidth <= 920 ? 164 : 196);
   let activeLanguage = getBrachLanguage();
   let switcherTl = null;
 
