@@ -160,10 +160,11 @@
       box-shadow: 0 16px 34px rgba(0,0,0,.22);
       transform-origin: right bottom;
       will-change: height, border-radius;
+      transition: box-shadow .28s var(--ease), border-color .28s var(--ease), background .28s var(--ease);
     }
     .lang-switcher__options{
       position: absolute;
-      inset: 14px 0 68px;
+      inset: 18px 0 68px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -222,6 +223,7 @@
       cursor: pointer;
       padding: 0;
       -webkit-tap-highlight-color: transparent;
+      transition: transform .28s var(--ease);
     }
     .lang-switcher__icon{
       width: 34px;
@@ -229,6 +231,21 @@
       display: block;
       object-fit: contain;
       filter: brightness(0) saturate(100%) invert(96%) sepia(19%) saturate(242%) hue-rotate(339deg) brightness(103%) contrast(95%);
+      transition: transform .28s var(--ease), filter .28s var(--ease), opacity .28s var(--ease);
+    }
+    .lang-switcher__toggle:hover .lang-switcher__icon,
+    .lang-switcher__toggle:focus-visible .lang-switcher__icon{
+      transform: scale(1.08);
+      filter: brightness(0) saturate(100%) invert(96%) sepia(19%) saturate(242%) hue-rotate(339deg) brightness(110%) contrast(100%) drop-shadow(0 0 10px rgba(255,246,214,.26));
+    }
+    .lang-switcher__toggle:hover,
+    .lang-switcher__toggle:focus-visible{
+      transform: translateY(-1px);
+    }
+    .lang-switcher:hover .lang-switcher__surface,
+    .lang-switcher:focus-within .lang-switcher__surface{
+      border-color: rgba(255,246,214,.28);
+      box-shadow: 0 18px 40px rgba(0,0,0,.26);
     }
 
     /* Mascara de contraste: deixa logo/menu legiveis ao passar por faixas claras */
@@ -318,7 +335,7 @@
         height: 58px;
       }
       .lang-switcher__options{
-        inset: 12px 0 62px;
+        inset: 16px 0 62px;
         gap: 10px;
       }
       .lang-switcher__option .hover-gsap{
