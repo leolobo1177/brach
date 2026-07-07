@@ -1454,6 +1454,7 @@
   const loadedAt = Date.now();
   const cooldownKey = 'brach:lastContactSubmit';
   const cooldownMs = 45000;
+  const sheetsEndpoint = 'https://script.google.com/macros/s/AKfycbxS-HtifhNRfGosDLfDxLY0TT3c_ErZFztb6qyhPnSC3gSNYfZRKBgfy10GsdUl3wkq/exec';
 
   const suspiciousTerms = [
     'crypto',
@@ -1529,6 +1530,46 @@
     return false;
   }
 
+  function buildLeadPayload(formData){
+    return {
+      nome: getFieldValue(formData, 'nome'),
+      email: getFieldValue(formData, 'email'),
+      mensagem: getFieldValue(formData, 'mensagem'),
+      website: getFieldValue(formData, 'website'),
+      honey: getFieldValue(formData, '_honey'),
+      landing_path: window.location.pathname,
+      referrer_host: document.referrer || 'direct',
+      user_agent: navigator.userAgent || '',
+      submitted_at: new Date().toISOString()
+    };
+  }
+
+  function sendLeadToSheets(formData){
+    if(!sheetsEndpoint) return Promise.resolve();
+
+    const payload = buildLeadPayload(formData);
+    const body = new URLSearchParams(payload);
+
+    try{
+      if(navigator.sendBeacon){
+        const sent = navigator.sendBeacon(sheetsEndpoint, body);
+        if(sent) return Promise.resolve();
+      }
+    }catch{
+      // Fallback to fetch below.
+    }
+
+    return fetch(sheetsEndpoint, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      },
+      body,
+      keepalive: true
+    }).catch(() => undefined);
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -1568,6 +1609,7 @@
 
       if(!response.ok) throw new Error('Form submission failed');
 
+      await sendLeadToSheets(formData);
       form.reset();
       markSubmitted();
       showFormFeedback('contato-enviado');
