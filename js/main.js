@@ -1136,8 +1136,15 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   const bars = Array.from(loader.querySelectorAll('.page-loader__bar'));
   const hasGsap = typeof window.gsap !== 'undefined';
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasSeenLoader = (() => {
+    try {
+      return window.sessionStorage.getItem('brach-loader-seen') === '1';
+    } catch {
+      return false;
+    }
+  })();
   const state = { value: 0 };
-  const minDuration = reduceMotion ? 260 : 980;
+  const minDuration = reduceMotion ? 120 : (hasSeenLoader ? 180 : 320);
   const startTime = performance.now();
   let finished = false;
   let preloadTl = null;
@@ -1154,6 +1161,11 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       cancelAnimationFrame(fallbackRaf);
       fallbackRaf = 0;
     }
+    try {
+      window.sessionStorage.setItem('brach-loader-seen', '1');
+    } catch {
+      // noop
+    }
     loader.classList.add('is-done');
     body.classList.remove('is-loading');
     window.setTimeout(() => loader.remove(), 60);
@@ -1169,7 +1181,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
         state.value = 100;
         render();
         loader.classList.add('is-exiting');
-        window.setTimeout(teardown, reduceMotion ? 180 : 560);
+        window.setTimeout(teardown, reduceMotion ? 110 : 240);
         return;
       }
 
@@ -1183,7 +1195,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 
       tl.to(state, {
         value: 100,
-        duration: reduceMotion ? 0.14 : 0.28,
+        duration: reduceMotion ? 0.1 : 0.2,
         ease: 'power2.out',
         onUpdate: render
       });
@@ -1191,7 +1203,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       if (content) {
         tl.to(content, {
           opacity: 0,
-          duration: reduceMotion ? 0.14 : 0.22,
+          duration: reduceMotion ? 0.1 : 0.16,
           ease: 'power2.inOut'
         }, reduceMotion ? '-=0.04' : '-=0.08');
       }
@@ -1199,15 +1211,15 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       tl.to(textTargets, {
         yPercent: -118,
         opacity: 0,
-        duration: reduceMotion ? 0.14 : 0.3,
+        duration: reduceMotion ? 0.1 : 0.18,
         stagger: reduceMotion ? 0 : 0.03,
         ease: 'power3.in'
       }, reduceMotion ? '-=0.1' : '-=0.16');
 
       tl.to(bars, {
         yPercent: -104,
-        duration: reduceMotion ? 0.18 : 0.52,
-        stagger: reduceMotion ? 0 : { each: 0.035, from: 'center' },
+        duration: reduceMotion ? 0.12 : 0.24,
+        stagger: reduceMotion ? 0 : { each: 0.02, from: 'center' },
         ease: 'power4.inOut'
       }, reduceMotion ? '-=0.08' : '-=0.1');
     }, remainingDelay);
@@ -1221,7 +1233,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     const fallbackStart = performance.now();
     const fallbackStep = (now) => {
       if (finished) return;
-      const progress = Math.min((now - fallbackStart) / (reduceMotion ? 420 : 1400), 1);
+      const progress = Math.min((now - fallbackStart) / (reduceMotion ? 180 : 420), 1);
       const eased = progress < 0.8
         ? (progress / 0.8) * 90
         : 90 + ((progress - 0.8) / 0.2) * 7;
@@ -1235,12 +1247,12 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     fallbackRaf = requestAnimationFrame(fallbackStep);
 
     if (document.readyState !== 'loading') {
-      window.setTimeout(requestFinish, reduceMotion ? 180 : 320);
+      window.setTimeout(requestFinish, reduceMotion ? 40 : 80);
     } else {
       document.addEventListener('DOMContentLoaded', requestFinish, { once: true });
     }
     window.addEventListener('load', requestFinish, { once: true });
-    window.setTimeout(requestFinish, reduceMotion ? 560 : 1800);
+    window.setTimeout(requestFinish, reduceMotion ? 220 : 640);
     return;
   }
 
@@ -1248,30 +1260,30 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   preloadTl
     .to(state, {
       value: 76,
-      duration: reduceMotion ? 0.22 : 0.68,
+      duration: reduceMotion ? 0.12 : 0.22,
       ease: 'power2.out',
       onUpdate: render
     })
     .to(state, {
       value: 92,
-      duration: reduceMotion ? 0.14 : 0.42,
+      duration: reduceMotion ? 0.1 : 0.14,
       ease: 'power1.out',
       onUpdate: render
     })
     .to(state, {
       value: 97,
-      duration: reduceMotion ? 0.1 : 0.72,
+      duration: reduceMotion ? 0.08 : 0.18,
       ease: 'none',
       onUpdate: render
     });
 
   if (document.readyState !== 'loading') {
-    window.setTimeout(requestFinish, 180);
+    window.setTimeout(requestFinish, reduceMotion ? 30 : 70);
   } else {
     document.addEventListener('DOMContentLoaded', requestFinish, { once: true });
   }
   window.addEventListener('load', requestFinish, { once: true });
-  window.setTimeout(requestFinish, reduceMotion ? 720 : 1900);
+  window.setTimeout(requestFinish, reduceMotion ? 220 : 720);
 })();
 
 (() => {

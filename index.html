@@ -16,92 +16,11 @@
 <meta content="summary" name="twitter:card"/>
 <meta content="Agência Brach" name="twitter:title"/>
 <meta content="Da identidade visual ao site, desenvolvemos presença digital com propósito, personalidade e resultado." name="twitter:description"/>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZS1MQJ3685"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-
-  gtag('js', new Date());
-  gtag('config', 'G-ZS1MQJ3685');
-
-  (function () {
-    const params = new URLSearchParams(window.location.search);
-    const referrer = document.referrer || '';
-
-    let referrerHost = '';
-
-    try {
-      referrerHost = referrer ? new URL(referrer).hostname.replace(/^www\./, '').toLowerCase() : '';
-    } catch (e) {
-      referrerHost = '';
-    }
-
-    const utmSource = params.get('utm_source');
-    const utmMedium = params.get('utm_medium');
-    const utmCampaign = params.get('utm_campaign');
-    const utmContent = params.get('utm_content');
-    const utmTerm = params.get('utm_term');
-
-    let detectedSource = 'direct';
-    let detectedMedium = 'none';
-
-    if (utmSource) {
-      detectedSource = utmSource.toLowerCase();
-      detectedMedium = utmMedium ? utmMedium.toLowerCase() : 'not_set';
-    } else if (referrerHost) {
-      if (referrerHost.includes('instagram')) {
-        detectedSource = 'instagram';
-        detectedMedium = 'social';
-      } else if (referrerHost.includes('pinterest')) {
-        detectedSource = 'pinterest';
-        detectedMedium = 'social';
-      } else if (referrerHost.includes('linkedin')) {
-        detectedSource = 'linkedin';
-        detectedMedium = 'social';
-      } else if (referrerHost.includes('linktr.ee') || referrerHost.includes('linktree')) {
-        detectedSource = 'linktree';
-        detectedMedium = 'bio_link';
-      } else if (referrerHost.includes('facebook') || referrerHost.includes('fb.com')) {
-        detectedSource = 'facebook';
-        detectedMedium = 'social';
-      } else if (referrerHost.includes('tiktok')) {
-        detectedSource = 'tiktok';
-        detectedMedium = 'social';
-      } else if (referrerHost.includes('google')) {
-        detectedSource = 'google';
-        detectedMedium = 'organic';
-      } else {
-        detectedSource = referrerHost;
-        detectedMedium = 'referral';
-      }
-    }
-
-    const trafficPayload = {
-      detected_source: detectedSource,
-      detected_medium: detectedMedium,
-      detected_campaign: utmCampaign || 'not_set',
-      detected_content: utmContent || 'not_set',
-      detected_term: utmTerm || 'not_set',
-      referrer_host: referrerHost || 'direct',
-      landing_path: window.location.pathname
-    };
-
-    if (!sessionStorage.getItem('traffic_source_detected_sent')) {
-      gtag('event', 'traffic_source_detected', trafficPayload);
-      sessionStorage.setItem('traffic_source_detected_sent', 'true');
-    }
-  })();
-</script>
-<!-- GSAP -->
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<!-- Anton (kickers pequenos) -->
-<link href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap" rel="stylesheet"/>
-<!-- Archivo (variable, wght 100..900) -->
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,100..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo:wdth,wght@62.5..125,100..900&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
 <link href="./css/style.css" rel="stylesheet"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo:wdth,wght@62.5..125,100..900&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/></noscript>
 <noscript><style>.page-loader{display:none !important;} body{overflow:auto !important;}</style></noscript>
 </head>
 <body class="is-loading">
@@ -150,7 +69,7 @@
 <div class="topbar__inner">
 <a aria-label="Início" class="brand" href="#topo">
 <div aria-hidden="true" class="brand__mark">
-<img alt="" class="brand__logo" src="./assets/brand-mark.png"/>
+<img alt="" class="brand__logo" decoding="async" fetchpriority="high" height="457" src="./assets/brand-mark-512.png" width="512"/>
 </div>
 </a>
 <div class="lang-switcher" id="langSwitcher">
@@ -167,7 +86,7 @@
 </button>
 </div>
 <button aria-controls="languageOptions" aria-expanded="false" aria-label="Selecionar idioma" class="lang-switcher__toggle" id="languageToggle" type="button">
-<img alt="" aria-hidden="true" class="lang-switcher__icon" src="./assets/globo.png"/>
+<img alt="" aria-hidden="true" class="lang-switcher__icon" decoding="async" height="128" src="./assets/globo-128.png" width="128"/>
 </button>
 </div>
 </div>
@@ -225,33 +144,33 @@
 <div class="social-grid">
 <a class="social underline" href="https://www.instagram.com/agenciabrach/" rel="noopener" target="_blank">
 <span class="u">Instagram</span>
-<img alt="" aria-hidden="true" class="social-ico" src="./assets/instagram.svg"/>
+<img alt="" aria-hidden="true" class="social-ico" decoding="async" height="24" loading="lazy" src="./assets/instagram.svg" width="24"/>
 </a>
 <a class="social underline" href="https://www.linkedin.com/in/ag%C3%AAncia-brach-undefined-a35317325/" rel="noopener" target="_blank">
 <span class="u">LinkedIn</span>
-<img alt="" aria-hidden="true" class="social-ico" src="./assets/linkedin.svg"/>
+<img alt="" aria-hidden="true" class="social-ico" decoding="async" height="24" loading="lazy" src="./assets/linkedin.svg" width="24"/>
 </a>
 <a class="social underline" href="https://www.behance.net/agenciabrach" rel="noopener" target="_blank">
 <span class="u">Behance</span>
-<img alt="" aria-hidden="true" class="social-ico" src="./assets/behance.svg"/>
+<img alt="" aria-hidden="true" class="social-ico" decoding="async" height="24" loading="lazy" src="./assets/behance.svg" width="24"/>
 </a>
 <a class="social underline" href="https://br.pinterest.com/agenciabrach/" rel="noopener" target="_blank">
 <span class="u">Pinterest</span>
-<img alt="" aria-hidden="true" class="social-ico" src="./assets/pinterest.png"/>
+<img alt="" aria-hidden="true" class="social-ico" decoding="async" height="128" loading="lazy" src="./assets/pinterest-128.png" width="128"/>
 </a>
 </div>
 <div aria-label="Redes sociais (ícones)" class="social-icons">
 <a aria-label="Instagram" class="icon-link" href="https://www.instagram.com/agenciabrach/" rel="noopener" target="_blank">
-<img alt="" aria-hidden="true" src="./assets/instagram.svg"/>
+<img alt="" aria-hidden="true" decoding="async" height="20" loading="lazy" src="./assets/instagram.svg" width="20"/>
 </a>
 <a aria-label="LinkedIn" class="icon-link" href="https://www.linkedin.com/in/ag%C3%AAncia-brach-undefined-a35317325/" rel="noopener" target="_blank">
-<img alt="" aria-hidden="true" src="./assets/linkedin.svg"/>
+<img alt="" aria-hidden="true" decoding="async" height="20" loading="lazy" src="./assets/linkedin.svg" width="20"/>
 </a>
 <a aria-label="Behance" class="icon-link" href="https://www.behance.net/agenciabrach" rel="noopener" target="_blank">
-<img alt="" aria-hidden="true" src="./assets/behance.svg"/>
+<img alt="" aria-hidden="true" decoding="async" height="20" loading="lazy" src="./assets/behance.svg" width="20"/>
 </a>
 <a aria-label="Pinterest" class="icon-link" href="https://br.pinterest.com/agenciabrach/" rel="noopener" target="_blank">
-<img alt="" aria-hidden="true" src="./assets/pinterest.png"/>
+<img alt="" aria-hidden="true" decoding="async" height="128" loading="lazy" src="./assets/pinterest-128.png" width="128"/>
 </a>
 </div>
 </div>
@@ -300,14 +219,14 @@
       <div aria-label="Marcas atendidas pela Brach" class="hero-banner__logos hero-reveal">
         <div class="hero-banner__logos-track">
           <div class="hero-banner__logos-group">
-            <img alt="MiláMi Musicalização Infantil" class="hero-banner__logo" src="./assets/hero-logos/frente.png"/>
-            <img alt="Studio de Beleza Giovana Fortunato" class="hero-banner__logo" src="./assets/hero-logos/gi.png"/>
-            <img alt="Ensinarte" class="hero-banner__logo" src="./assets/hero-logos/ensi.png"/>
+            <img alt="MiláMi Musicalização Infantil" class="hero-banner__logo" decoding="async" fetchpriority="low" height="220" src="./assets/hero-logos/frente-553.png" width="553"/>
+            <img alt="Studio de Beleza Giovana Fortunato" class="hero-banner__logo" decoding="async" fetchpriority="low" height="220" src="./assets/hero-logos/gi-541.png" width="541"/>
+            <img alt="Ensinarte" class="hero-banner__logo" decoding="async" fetchpriority="low" height="220" src="./assets/hero-logos/ensi-309.png" width="309"/>
           </div>
           <div aria-hidden="true" class="hero-banner__logos-group">
-            <img alt="" class="hero-banner__logo" src="./assets/hero-logos/frente.png"/>
-            <img alt="" class="hero-banner__logo" src="./assets/hero-logos/gi.png"/>
-            <img alt="" class="hero-banner__logo" src="./assets/hero-logos/ensi.png"/>
+            <img alt="" class="hero-banner__logo" decoding="async" fetchpriority="low" height="220" loading="lazy" src="./assets/hero-logos/frente-553.png" width="553"/>
+            <img alt="" class="hero-banner__logo" decoding="async" fetchpriority="low" height="220" loading="lazy" src="./assets/hero-logos/gi-541.png" width="541"/>
+            <img alt="" class="hero-banner__logo" decoding="async" fetchpriority="low" height="220" loading="lazy" src="./assets/hero-logos/ensi-309.png" width="309"/>
           </div>
         </div>
       </div>
@@ -334,7 +253,7 @@
     <div class="about-team__people" role="list" aria-label="Membros da equipe">
       <article class="about-person about-reveal" role="listitem">
         <div class="about-person__media">
-          <img src="assets/leo.png" alt="Leonardo Lobo, fundador e designer" loading="lazy" decoding="async">
+          <img alt="Leonardo Lobo, fundador e designer" decoding="async" fetchpriority="low" height="403" loading="lazy" src="assets/leo.jpg" width="343">
         </div>
         <div class="about-person__content">
           <h3 class="about-person__name">LEONARDO LOBO</h3>
@@ -346,7 +265,7 @@
 
       <article class="about-person about-reveal" role="listitem">
         <div class="about-person__media">
-          <img src="assets/amanda.png" alt="Amanda Fortunato, fundadora e responsável por marketing" loading="lazy" decoding="async">
+          <img alt="Amanda Fortunato, fundadora e responsável por marketing" decoding="async" fetchpriority="low" height="403" loading="lazy" src="assets/amanda.jpg" width="349">
         </div>
         <div class="about-person__content">
           <h3 class="about-person__name">AMANDA FORTUNATO</h3>
@@ -595,7 +514,7 @@
 </div>
 <div class="footer-inner">
 <div class="footer-brand">
-<img alt="Brach" class="footer-logo" src="./assets/brand-mark.png"/>
+<img alt="Brach" class="footer-logo" decoding="async" fetchpriority="low" height="457" loading="lazy" src="./assets/brand-mark-512.png" width="512"/>
 <p class="footer-tagline">Dando visibilidade<br/>ao seu sonho no digital</p>
 </div>
 <div class="footer-cols">
@@ -618,10 +537,10 @@
 <a class="footer-link underline" href="https://www.behance.net/agenciabrach" rel="noopener" target="_blank"><span class="u hover-gsap" data-text="Behance">Behance</span></a>
 </div>
 <div aria-label="Redes sociais (ícones)" class="footer-social-icons">
-<a aria-label="Instagram" class="icon-link" href="https://www.instagram.com/agenciabrach/" rel="noopener" target="_blank"><img alt="" aria-hidden="true" src="./assets/instagram.svg"/></a>
-<a aria-label="LinkedIn" class="icon-link" href="https://www.linkedin.com/in/ag%C3%AAncia-brach-undefined-a35317325/" rel="noopener" target="_blank"><img alt="" aria-hidden="true" src="./assets/linkedin.svg"/></a>
-<a aria-label="Pinterest" class="icon-link" href="https://br.pinterest.com/agenciabrach/" rel="noopener" target="_blank"><img alt="" aria-hidden="true" src="./assets/pinterest.png"/></a>
-<a aria-label="Behance" class="icon-link" href="https://www.behance.net/agenciabrach" rel="noopener" target="_blank"><img alt="" aria-hidden="true" src="./assets/behance.svg"/></a>
+<a aria-label="Instagram" class="icon-link" href="https://www.instagram.com/agenciabrach/" rel="noopener" target="_blank"><img alt="" aria-hidden="true" decoding="async" height="22" loading="lazy" src="./assets/instagram.svg" width="22"/></a>
+<a aria-label="LinkedIn" class="icon-link" href="https://www.linkedin.com/in/ag%C3%AAncia-brach-undefined-a35317325/" rel="noopener" target="_blank"><img alt="" aria-hidden="true" decoding="async" height="22" loading="lazy" src="./assets/linkedin.svg" width="22"/></a>
+<a aria-label="Pinterest" class="icon-link" href="https://br.pinterest.com/agenciabrach/" rel="noopener" target="_blank"><img alt="" aria-hidden="true" decoding="async" height="128" loading="lazy" src="./assets/pinterest-128.png" width="128"/></a>
+<a aria-label="Behance" class="icon-link" href="https://www.behance.net/agenciabrach" rel="noopener" target="_blank"><img alt="" aria-hidden="true" decoding="async" height="22" loading="lazy" src="./assets/behance.svg" width="22"/></a>
 </div>
 </div>
 <div class="footer-col">
@@ -639,7 +558,85 @@
 </div>
 </div>
 </footer>
-<script src="./js/main.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script defer src="./js/main.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZS1MQJ3685"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  gtag('js', new Date());
+  gtag('config', 'G-ZS1MQJ3685');
+
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const referrer = document.referrer || '';
+
+    let referrerHost = '';
+
+    try {
+      referrerHost = referrer ? new URL(referrer).hostname.replace(/^www\./, '').toLowerCase() : '';
+    } catch (e) {
+      referrerHost = '';
+    }
+
+    const utmSource = params.get('utm_source');
+    const utmMedium = params.get('utm_medium');
+    const utmCampaign = params.get('utm_campaign');
+    const utmContent = params.get('utm_content');
+    const utmTerm = params.get('utm_term');
+
+    let detectedSource = 'direct';
+    let detectedMedium = 'none';
+
+    if (utmSource) {
+      detectedSource = utmSource.toLowerCase();
+      detectedMedium = utmMedium ? utmMedium.toLowerCase() : 'not_set';
+    } else if (referrerHost) {
+      if (referrerHost.includes('instagram')) {
+        detectedSource = 'instagram';
+        detectedMedium = 'social';
+      } else if (referrerHost.includes('pinterest')) {
+        detectedSource = 'pinterest';
+        detectedMedium = 'social';
+      } else if (referrerHost.includes('linkedin')) {
+        detectedSource = 'linkedin';
+        detectedMedium = 'social';
+      } else if (referrerHost.includes('linktr.ee') || referrerHost.includes('linktree')) {
+        detectedSource = 'linktree';
+        detectedMedium = 'bio_link';
+      } else if (referrerHost.includes('facebook') || referrerHost.includes('fb.com')) {
+        detectedSource = 'facebook';
+        detectedMedium = 'social';
+      } else if (referrerHost.includes('tiktok')) {
+        detectedSource = 'tiktok';
+        detectedMedium = 'social';
+      } else if (referrerHost.includes('google')) {
+        detectedSource = 'google';
+        detectedMedium = 'organic';
+      } else {
+        detectedSource = referrerHost;
+        detectedMedium = 'referral';
+      }
+    }
+
+    const trafficPayload = {
+      detected_source: detectedSource,
+      detected_medium: detectedMedium,
+      detected_campaign: utmCampaign || 'not_set',
+      detected_content: utmContent || 'not_set',
+      detected_term: utmTerm || 'not_set',
+      referrer_host: referrerHost || 'direct',
+      landing_path: window.location.pathname
+    };
+
+    if (!sessionStorage.getItem('traffic_source_detected_sent')) {
+      gtag('event', 'traffic_source_detected', trafficPayload);
+      sessionStorage.setItem('traffic_source_detected_sent', 'true');
+    }
+  })();
+</script>
 </body>
 </html>
 
