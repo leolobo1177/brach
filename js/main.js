@@ -1144,7 +1144,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     }
   })();
   const state = { value: 0 };
-  const minDuration = reduceMotion ? 120 : (hasSeenLoader ? 180 : 320);
+  const minDuration = reduceMotion ? 180 : (hasSeenLoader ? 520 : 860);
   const startTime = performance.now();
   let finished = false;
   let preloadTl = null;
@@ -1168,7 +1168,10 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     }
     loader.classList.add('is-done');
     body.classList.remove('is-loading');
-    window.setTimeout(() => loader.remove(), 60);
+    window.setTimeout(() => {
+      loader.remove();
+      document.dispatchEvent(new CustomEvent('brach:loadercomplete'));
+    }, 80);
   };
 
   const finishLoader = () => {
@@ -1181,7 +1184,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
         state.value = 100;
         render();
         loader.classList.add('is-exiting');
-        window.setTimeout(teardown, reduceMotion ? 110 : 240);
+        window.setTimeout(teardown, reduceMotion ? 180 : 360);
         return;
       }
 
@@ -1195,7 +1198,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 
       tl.to(state, {
         value: 100,
-        duration: reduceMotion ? 0.1 : 0.2,
+        duration: reduceMotion ? 0.18 : 0.34,
         ease: 'power2.out',
         onUpdate: render
       });
@@ -1203,7 +1206,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       if (content) {
         tl.to(content, {
           opacity: 0,
-          duration: reduceMotion ? 0.1 : 0.16,
+          duration: reduceMotion ? 0.16 : 0.24,
           ease: 'power2.inOut'
         }, reduceMotion ? '-=0.04' : '-=0.08');
       }
@@ -1211,15 +1214,15 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       tl.to(textTargets, {
         yPercent: -118,
         opacity: 0,
-        duration: reduceMotion ? 0.1 : 0.18,
-        stagger: reduceMotion ? 0 : 0.03,
+        duration: reduceMotion ? 0.18 : 0.34,
+        stagger: reduceMotion ? 0 : 0.04,
         ease: 'power3.in'
       }, reduceMotion ? '-=0.1' : '-=0.16');
 
       tl.to(bars, {
         yPercent: -104,
-        duration: reduceMotion ? 0.12 : 0.24,
-        stagger: reduceMotion ? 0 : { each: 0.02, from: 'center' },
+        duration: reduceMotion ? 0.2 : 0.58,
+        stagger: reduceMotion ? 0 : { each: 0.04, from: 'center' },
         ease: 'power4.inOut'
       }, reduceMotion ? '-=0.08' : '-=0.1');
     }, remainingDelay);
@@ -1233,7 +1236,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     const fallbackStart = performance.now();
     const fallbackStep = (now) => {
       if (finished) return;
-      const progress = Math.min((now - fallbackStart) / (reduceMotion ? 180 : 420), 1);
+      const progress = Math.min((now - fallbackStart) / (reduceMotion ? 280 : 760), 1);
       const eased = progress < 0.8
         ? (progress / 0.8) * 90
         : 90 + ((progress - 0.8) / 0.2) * 7;
@@ -1247,12 +1250,12 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     fallbackRaf = requestAnimationFrame(fallbackStep);
 
     if (document.readyState !== 'loading') {
-      window.setTimeout(requestFinish, reduceMotion ? 40 : 80);
+      window.setTimeout(requestFinish, reduceMotion ? 120 : 180);
     } else {
       document.addEventListener('DOMContentLoaded', requestFinish, { once: true });
     }
     window.addEventListener('load', requestFinish, { once: true });
-    window.setTimeout(requestFinish, reduceMotion ? 220 : 640);
+    window.setTimeout(requestFinish, reduceMotion ? 420 : 1400);
     return;
   }
 
@@ -1260,30 +1263,30 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   preloadTl
     .to(state, {
       value: 76,
-      duration: reduceMotion ? 0.12 : 0.22,
+      duration: reduceMotion ? 0.24 : 0.62,
       ease: 'power2.out',
       onUpdate: render
     })
     .to(state, {
       value: 92,
-      duration: reduceMotion ? 0.1 : 0.14,
+      duration: reduceMotion ? 0.16 : 0.28,
       ease: 'power1.out',
       onUpdate: render
     })
     .to(state, {
       value: 97,
-      duration: reduceMotion ? 0.08 : 0.18,
+      duration: reduceMotion ? 0.14 : 0.44,
       ease: 'none',
       onUpdate: render
     });
 
   if (document.readyState !== 'loading') {
-    window.setTimeout(requestFinish, reduceMotion ? 30 : 70);
+    window.setTimeout(requestFinish, reduceMotion ? 100 : 160);
   } else {
     document.addEventListener('DOMContentLoaded', requestFinish, { once: true });
   }
   window.addEventListener('load', requestFinish, { once: true });
-  window.setTimeout(requestFinish, reduceMotion ? 220 : 720);
+  window.setTimeout(requestFinish, reduceMotion ? 420 : 1500);
 })();
 
 (() => {
@@ -2649,6 +2652,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   let currentIndex = 0;
   let cycleTimer = null;
   let scrambleState = null;
+  let heroIntroStarted = false;
 
   const getMobileWords = () => (mobileScramble?.dataset.heroScramble || '')
     .split('|')
@@ -2733,14 +2737,32 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     queueNext(animate);
   };
 
+  const whenLoaderDone = (callback) => {
+    if(!document.body.classList.contains('is-loading') && !document.getElementById('pageLoader')){
+      callback();
+      return;
+    }
+
+    document.addEventListener('brach:loadercomplete', callback, { once: true });
+  };
+
   if(reduceMotion || !window.gsap){
-    [...revealItems, ...brandLetters].forEach((el) => {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-      el.style.filter = 'none';
+    const revealStaticHero = () => {
+      if(heroIntroStarted) return;
+      heroIntroStarted = true;
+
+      [...revealItems, ...brandLetters].forEach((el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.filter = 'none';
+      });
+      startMobileWordCycle(false);
+    };
+
+    whenLoaderDone(revealStaticHero);
+    document.addEventListener('brach:languagechange', () => {
+      if(heroIntroStarted) startMobileWordCycle(false);
     });
-    startMobileWordCycle(false);
-    document.addEventListener('brach:languagechange', () => startMobileWordCycle(false));
     return;
   }
 
@@ -2756,26 +2778,35 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     transformOrigin: 'center top'
   });
 
-  gsap.timeline({
-    defaults: { ease: 'power3.out' }
-  })
-    .to(revealItems, {
-      y: 0,
-      autoAlpha: 1,
-      filter: 'blur(0px)',
-      duration: 0.74,
-      stagger: 0.08
-    }, 0.08)
-    .to(brandLetters, {
-      yPercent: 0,
-      autoAlpha: 1,
-      filter: 'blur(0px)',
-      duration: 1,
-      stagger: 0.08
-    }, 0.24);
+  const playHeroIntro = () => {
+    if(heroIntroStarted) return;
+    heroIntroStarted = true;
 
-  startMobileWordCycle(true);
-  document.addEventListener('brach:languagechange', () => startMobileWordCycle(true));
+    gsap.timeline({
+      defaults: { ease: 'power3.out' }
+    })
+      .to(revealItems, {
+        y: 0,
+        autoAlpha: 1,
+        filter: 'blur(0px)',
+        duration: 0.92,
+        stagger: 0.1
+      }, 0.12)
+      .to(brandLetters, {
+        yPercent: 0,
+        autoAlpha: 1,
+        filter: 'blur(0px)',
+        duration: 1.18,
+        stagger: 0.1
+      }, 0.34);
+
+    startMobileWordCycle(true);
+  };
+
+  whenLoaderDone(playHeroIntro);
+  document.addEventListener('brach:languagechange', () => {
+    if(heroIntroStarted) startMobileWordCycle(true);
+  });
 
   if(window.ScrollTrigger && brandLetters.length){
     gsap.registerPlugin(ScrollTrigger);
