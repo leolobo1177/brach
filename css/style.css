@@ -2855,12 +2855,26 @@ section.cases-section{
     width: calc(100% - clamp(24px, 5vw, 48px));
   }
 
+  .cases-section .case-link{
+    display: block;
+    grid-template-columns: none;
+    align-items: initial;
+    gap: 0;
+    padding: 0;
+  }
+
+  .cases-section .case-thumb{
+    display: none !important;
+  }
+
   .cases-list{
     grid-template-columns: 1fr;
     gap: 32px;
   }
 
   .case-card__media{
+    display: block;
+    width: 100%;
     aspect-ratio: 1.68;
   }
 
@@ -2890,6 +2904,13 @@ section.cases-section{
     gap: 20px;
   }
 
+  .cases-section .case-link{
+    display: block;
+    grid-template-columns: none;
+    gap: 0;
+    padding: 0;
+  }
+
   .case-card__media{
     aspect-ratio: 1.72;
     border-radius: 18px;
@@ -2906,17 +2927,21 @@ section.cases-section{
   }
 
   .case-title-row{
-    gap: 8px;
+    gap: 6px;
+    align-items: center;
   }
 
   .case-arrow{
-    width: 30px;
-    transform: translateY(1px);
+    width: 28px;
+    transform: translateY(0);
   }
 
   .case-name{
-    font-size: clamp(18px, 5.7vw, 24px);
+    font-size: clamp(14px, 4.35vw, 17px);
     line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 /* ================= FOOTER (inspiracao) ================= */
