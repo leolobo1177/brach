@@ -2619,6 +2619,306 @@ main > section > h2:not(.cases-title){
 }
 
 
+/* ===============================
+   CASES: editorial grid inspired by Lusion
+================================ */
+section.cases-section{
+  position: relative;
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: clamp(44px, 5vw, 68px) 0 clamp(72px, 8vw, 108px);
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  min-height: auto;
+  overflow: clip;
+}
+
+.cases-wrap{
+  width: calc(100% - clamp(32px, 4.8vw, 96px));
+  max-width: none;
+  margin: 0 auto;
+}
+
+.cases-head{
+  margin-bottom: clamp(28px, 2.4vw, 40px);
+}
+
+.cases-title{
+  margin: 0;
+  font-family: var(--font-fk);
+  font-variation-settings: "wght" 760;
+  font-size: clamp(28px, 3vw, 48px);
+  line-height: .95;
+  letter-spacing: -.03em;
+  color: rgba(255,246,214,.98);
+}
+
+.cases-list{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 2vw, 42px) clamp(26px, 1.9vw, 34px);
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+}
+
+.cases-list::before,
+.case-row::after{
+  display: none;
+}
+
+.case-row{
+  position: relative;
+  min-width: 0;
+}
+
+.case-link{
+  --case-tilt-x: 0deg;
+  --case-tilt-y: 0deg;
+  --case-shift-x: 0px;
+  --case-shift-y: 0px;
+  --case-glow-x: 50%;
+  --case-glow-y: 50%;
+  display: block;
+  opacity: 1;
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.case-card__media{
+  position: relative;
+  display: block;
+  aspect-ratio: 1.6;
+  border-radius: clamp(22px, 2vw, 34px);
+  overflow: hidden;
+  background: transparent;
+  box-shadow: none;
+  isolation: isolate;
+}
+
+.case-card__media::before{
+  display: none;
+}
+
+.case-card__media::after{
+  content: "";
+  position: absolute;
+  inset: 12%;
+  background:
+    radial-gradient(circle at var(--case-glow-x) var(--case-glow-y), rgba(92,145,255,.26), transparent 34%),
+    radial-gradient(circle at 50% 50%, rgba(255,246,214,.1), transparent 58%);
+  opacity: 0;
+  filter: blur(18px);
+  mix-blend-mode: screen;
+  transition: opacity .68s var(--ease);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.case-card__media-inner{
+  width: 100%;
+  height: 100%;
+  transform: perspective(1400px) rotateX(var(--case-tilt-x)) rotateY(var(--case-tilt-y));
+  transform-style: preserve-3d;
+  transition: transform .72s cubic-bezier(.22, 1, .36, 1);
+  will-change: transform;
+}
+
+.case-card__image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  padding: 0;
+  transform: translate3d(var(--case-shift-x), var(--case-shift-y), 0) scale(1.01);
+  transition: transform .9s cubic-bezier(.22,1,.36,1), filter .72s var(--ease);
+  filter: saturate(1) contrast(1.02);
+  will-change: transform;
+}
+
+.case-text{
+  display: block;
+  min-width: 0;
+  margin-top: clamp(16px, 1.4vw, 20px);
+}
+
+.case-meta{
+  display: block;
+  margin: 0 0 clamp(10px, .9vw, 14px);
+  font-family: var(--font-ui);
+  font-size: clamp(11px, .74vw, 13px);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: rgba(255,246,214,.7);
+  white-space: normal;
+}
+
+.case-title-row{
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: end;
+  gap: clamp(12px, 1vw, 18px);
+}
+
+.case-arrow{
+  display: grid;
+  place-items: center;
+  width: clamp(40px, 2.5vw, 52px);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  border: 1px solid rgba(255,246,214,.22);
+  color: rgba(255,246,214,.94);
+  transform: translateY(-1px);
+  transition:
+    transform .58s var(--ease),
+    background-color .58s var(--ease),
+    border-color .58s var(--ease),
+    box-shadow .58s var(--ease),
+    color .58s var(--ease);
+}
+
+.case-arrow svg{
+  width: 58%;
+  height: 58%;
+}
+
+.case-name{
+  font-family: var(--font-sans);
+  font-variation-settings: "wght" 760;
+  font-size: clamp(24px, 2.15vw, 40px);
+  line-height: .95;
+  letter-spacing: -.045em;
+  color: rgba(255,246,214,.98);
+  transition: transform .62s var(--ease), color .48s ease;
+}
+
+.case-name--nowrap{
+  white-space: normal;
+}
+
+.case-link:hover,
+.case-link:focus-visible,
+.case-link.is-active{
+  opacity: 1;
+  color: var(--cream);
+}
+
+.case-link:hover .case-card__media::after,
+.case-link:focus-visible .case-card__media::after,
+.case-link.is-active .case-card__media::after{
+  opacity: 1;
+}
+
+.case-link:hover .case-card__image,
+.case-link:focus-visible .case-card__image,
+.case-link.is-active .case-card__image{
+  filter: saturate(1.03) contrast(1.05) brightness(1.03);
+}
+
+.case-link:hover .case-meta,
+.case-link:focus-visible .case-meta,
+.case-link.is-active .case-meta{
+  transform: none;
+  opacity: 1;
+}
+
+.case-link:hover .case-name,
+.case-link:focus-visible .case-name,
+.case-link.is-active .case-name{
+  transform: translateX(6px);
+}
+
+.case-link:hover .case-arrow,
+.case-link:focus-visible .case-arrow,
+.case-link.is-active .case-arrow{
+  transform: translate(4px, -4px);
+  background: rgba(255,246,214,.07);
+  border-color: rgba(255,246,214,.48);
+  box-shadow: 0 14px 30px rgba(0,0,0,.14);
+}
+
+.case-link:focus-visible{
+  outline: 3px solid rgba(255,246,214,.74);
+  outline-offset: 10px;
+  border-radius: 24px;
+}
+
+@media (max-width: 1100px){
+  .cases-wrap{
+    width: calc(100% - clamp(24px, 5vw, 48px));
+  }
+
+  .cases-list{
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .case-card__media{
+    aspect-ratio: 1.68;
+  }
+
+  .case-name{
+    font-size: clamp(22px, 3.6vw, 32px);
+  }
+}
+
+@media (max-width: 700px){
+  section.cases-section{
+    padding: clamp(40px, 10vw, 56px) 0 clamp(56px, 12vw, 76px);
+  }
+
+  .cases-wrap{
+    width: min(100%, calc(100% - 24px));
+  }
+
+  .cases-head{
+    margin-bottom: 18px;
+  }
+
+  .cases-title{
+    font-size: clamp(24px, 7.4vw, 34px);
+  }
+
+  .cases-list{
+    gap: 20px;
+  }
+
+  .case-card__media{
+    aspect-ratio: 1.72;
+    border-radius: 18px;
+  }
+
+  .case-text{
+    margin-top: 10px;
+  }
+
+  .case-meta{
+    font-size: 9px;
+    margin-bottom: 8px;
+    letter-spacing: .1em;
+  }
+
+  .case-title-row{
+    gap: 8px;
+  }
+
+  .case-arrow{
+    width: 30px;
+    transform: translateY(1px);
+  }
+
+  .case-name{
+    font-size: clamp(18px, 5.7vw, 24px);
+    line-height: 1;
+  }
+}
 /* ================= FOOTER (inspiracao) ================= */
 .site-footer{
   background: #06070b;

@@ -178,7 +178,7 @@ const BRACH_I18N = {
     },
     cases: {
       title: 'Cases de sucesso',
-      hint: 'Passe o mouse ou use Tab para ver uma prévia do projeto. Pressione Enter para abrir quando a página do trabalho estiver disponível.',
+      hint: 'Passe o mouse ou use Tab para destacar o projeto. Pressione Enter para abrir em uma nova guia.',
       items: [
         { title: 'Studio de Beleza Giovana Fortunato', name: 'Studio de Beleza Giovana Fortunato', meta: 'Identidade • Conteúdo' },
         { title: 'MiláMi musicalização infantil', name: 'MiláMi musicalização infantil', meta: 'Brand Marca • Educação' },
@@ -403,7 +403,7 @@ const BRACH_I18N = {
     },
     cases: {
       title: 'Success cases',
-      hint: 'Hover or use Tab to preview the project. Press Enter to open it when the project page is available.',
+      hint: 'Hover or use Tab to highlight the project. Press Enter to open it in a new tab.',
       items: [
         { title: 'Studio de Beleza Giovana Fortunato', name: 'Studio de Beleza Giovana Fortunato', meta: 'Identity • Content' },
         { title: 'MiláMi children music education', name: 'MiláMi children music education', meta: 'Brand Identity • Education' },
@@ -628,7 +628,7 @@ const BRACH_I18N = {
     },
     cases: {
       title: 'Casos de éxito',
-      hint: 'Pasa el cursor o usa Tab para ver una vista previa del proyecto. Presiona Enter para abrirlo cuando la página esté disponible.',
+      hint: 'Pasa el cursor o usa Tab para destacar el proyecto. Presiona Enter para abrirlo en una nueva pestaña.',
       items: [
         { title: 'Studio de Beleza Giovana Fortunato', name: 'Studio de Beleza Giovana Fortunato', meta: 'Identidad • Contenido' },
         { title: 'MiláMi musicalización infantil', name: 'MiláMi musicalización infantil', meta: 'Identidad de Marca • Educación' },
@@ -2034,6 +2034,126 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   });
 })();
 
+// ===============================
+// TRABALHOS: editorial hover cards
+// ===============================
+(() => {
+  const caseCards = Array.from(document.querySelectorAll('.cases-section .case-link'));
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasGsap = Boolean(window.gsap);
+  const canHover = () => window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  if(!caseCards.length) return;
+
+  function createSetters(card){
+    if(!hasGsap || reduceMotion){
+      return null;
+    }
+
+    return {
+      tiltX: gsap.quickTo(card, '--case-tilt-x', { duration: 0.82, ease: 'power3.out' }),
+      tiltY: gsap.quickTo(card, '--case-tilt-y', { duration: 0.82, ease: 'power3.out' }),
+      shiftX: gsap.quickTo(card, '--case-shift-x', { duration: 0.94, ease: 'power3.out' }),
+      shiftY: gsap.quickTo(card, '--case-shift-y', { duration: 0.94, ease: 'power3.out' }),
+      glowX: gsap.quickTo(card, '--case-glow-x', { duration: 0.78, ease: 'power2.out' }),
+      glowY: gsap.quickTo(card, '--case-glow-y', { duration: 0.78, ease: 'power2.out' })
+    };
+  }
+
+  function applyState(card, setters, values, immediate = false){
+    if(setters && !immediate){
+      setters.tiltX(values.tiltX);
+      setters.tiltY(values.tiltY);
+      setters.shiftX(values.shiftX);
+      setters.shiftY(values.shiftY);
+      setters.glowX(values.glowX);
+      setters.glowY(values.glowY);
+      return;
+    }
+
+    card.style.setProperty('--case-tilt-x', values.tiltX);
+    card.style.setProperty('--case-tilt-y', values.tiltY);
+    card.style.setProperty('--case-shift-x', values.shiftX);
+    card.style.setProperty('--case-shift-y', values.shiftY);
+    card.style.setProperty('--case-glow-x', values.glowX);
+    card.style.setProperty('--case-glow-y', values.glowY);
+  }
+
+  function resetCard(card, setters, immediate = false){
+    card.classList.remove('is-active');
+    applyState(card, setters, {
+      tiltX: '0deg',
+      tiltY: '0deg',
+      shiftX: '0px',
+      shiftY: '0px',
+      glowX: '50%',
+      glowY: '50%'
+    }, immediate);
+  }
+
+  function updateCard(card, setters, event){
+    if(!canHover()) return;
+
+    const rect = card.getBoundingClientRect();
+    const x = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1);
+    const y = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1);
+    const tiltX = ((0.5 - y) * 4.3).toFixed(2) + 'deg';
+    const tiltY = ((x - 0.5) * 4.3).toFixed(2) + 'deg';
+    const shiftX = ((x - 0.5) * 8.5).toFixed(2) + 'px';
+    const shiftY = ((y - 0.5) * 8.5).toFixed(2) + 'px';
+
+    card.classList.add('is-active');
+    applyState(card, setters, {
+      tiltX,
+      tiltY,
+      shiftX,
+      shiftY,
+      glowX: (x * 100).toFixed(1) + '%',
+      glowY: (y * 100).toFixed(1) + '%'
+    });
+  }
+
+  caseCards.forEach((card) => {
+    const setters = createSetters(card);
+
+    card.addEventListener('pointerenter', (event) => {
+      if(!canHover()) return;
+      updateCard(card, setters, event);
+    });
+
+    card.addEventListener('pointermove', (event) => {
+      updateCard(card, setters, event);
+    });
+
+    card.addEventListener('pointerleave', () => {
+      resetCard(card, setters);
+    });
+
+    card.addEventListener('focus', () => {
+      card.classList.add('is-active');
+      applyState(card, setters, {
+        tiltX: '-0.8deg',
+        tiltY: '0.8deg',
+        shiftX: '3px',
+        shiftY: '-3px',
+        glowX: '58%',
+        glowY: '42%'
+      });
+    });
+
+    card.addEventListener('blur', () => {
+      resetCard(card, setters);
+    });
+  });
+
+  const syncCasesState = () => {
+    if(canHover()) return;
+    caseCards.forEach((card) => resetCard(card, null, true));
+  };
+
+  syncCasesState();
+  window.addEventListener('resize', syncCasesState, { passive: true });
+})();
 /* ===== Services reveal ===== */
 (() => {
   const section = document.querySelector('.services-section');
