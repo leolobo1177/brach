@@ -330,18 +330,19 @@
     body.menu-opened .menu-close{
       opacity:1;
       pointer-events:auto;
-      background: rgba(7,16,79,.08);
-      border-color: rgba(7,16,79,.18);
-      border-radius: 999px;
-      box-shadow: 0 12px 32px rgba(7,16,79,.12);
+      background: transparent;
+      border-color: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      color: rgba(7,16,79,.92);
     }
     body.menu-opened .menu-close:hover,
     body.menu-opened .menu-close:focus-visible{
-      background: var(--blue);
-      color: var(--cream);
-      border-color: var(--blue);
-      box-shadow: 0 16px 34px rgba(7,16,79,.18);
-      transform: translateY(2px);
+      background: transparent;
+      color: rgb(4, 10, 54);
+      border-color: transparent;
+      box-shadow: none;
+      transform: translateY(1px);
     }
 
     @media (max-width: 920px){
@@ -1237,10 +1238,7 @@ body.is-loading footer{
 }
 .hero-banner__cta .letter-swap__glyph--base{
   opacity:1;
-}
-.hero-banner__cta:hover .letter-swap__glyph--hover,
-.hero-banner__cta:focus-visible .letter-swap__glyph--hover{
-  opacity:1;
+  color:inherit;
 }
 .letter-swap{
   --letter-stagger: 18ms;
@@ -1293,6 +1291,15 @@ body.is-loading footer{
 .letter-swap:focus-visible .letter-swap__glyph--hover{
   transform:translateY(0%);
   opacity:.56;
+}
+.hero-banner__cta:hover .letter-swap__glyph--base,
+.hero-banner__cta:focus-visible .letter-swap__glyph--base{
+  opacity:0;
+}
+.hero-banner__cta:hover .letter-swap__glyph--hover,
+.hero-banner__cta:focus-visible .letter-swap__glyph--hover{
+  opacity:1;
+  color:var(--blue);
 }
 .hero-banner__scroll{
   display:inline-flex;
