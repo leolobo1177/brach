@@ -178,7 +178,7 @@ const BRACH_I18N = {
     },
     cases: {
       title: 'Cases de sucesso',
-      hint: 'Passe o mouse ou use Tab para destacar o projeto. Pressione Enter para abrir em uma nova guia.',
+      hint: 'Passe o mouse ou use Tab para destacar o projeto. Pressione Enter para abrir o projeto.',
       items: [
         { title: 'Studio de Beleza Giovana Fortunato', name: 'Studio de Beleza Giovana Fortunato', meta: 'Identidade • Conteúdo' },
         { title: 'MiláMi musicalização infantil', name: 'MiláMi musicalização infantil', meta: 'Brand Marca • Educação' },
@@ -403,7 +403,7 @@ const BRACH_I18N = {
     },
     cases: {
       title: 'Success cases',
-      hint: 'Hover or use Tab to highlight the project. Press Enter to open it in a new tab.',
+      hint: 'Hover or use Tab to highlight the project. Press Enter to open the project.',
       items: [
         { title: 'Studio de Beleza Giovana Fortunato', name: 'Studio de Beleza Giovana Fortunato', meta: 'Identity • Content' },
         { title: 'MiláMi children music education', name: 'MiláMi children music education', meta: 'Brand Identity • Education' },
@@ -628,7 +628,7 @@ const BRACH_I18N = {
     },
     cases: {
       title: 'Casos de éxito',
-      hint: 'Pasa el cursor o usa Tab para destacar el proyecto. Presiona Enter para abrirlo en una nueva pestaña.',
+      hint: 'Pasa el cursor o usa Tab para destacar el proyecto. Presiona Enter para abrir el proyecto.',
       items: [
         { title: 'Studio de Beleza Giovana Fortunato', name: 'Studio de Beleza Giovana Fortunato', meta: 'Identidad • Contenido' },
         { title: 'MiláMi musicalización infantil', name: 'MiláMi musicalización infantil', meta: 'Identidad de Marca • Educación' },
