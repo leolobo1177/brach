@@ -183,112 +183,25 @@
   </div>
 
   <main id="topo">
-    <section class="project-hero">
-      <div class="project-hero__copy">
-        <p class="project-hero__kicker" data-reveal-left>Projeto de branding para educacao inclusiva</p>
-        <h1 class="project-hero__title" data-reveal-left>ENSINARTE</h1>
-        <p class="project-hero__subtitle" data-reveal-left>Aprendizagem Criativa</p>
-        <p class="project-hero__lead" data-reveal-left>
-          Uma identidade pensada para acolher, ensinar e encantar. A Ensinarte ganhou um
-          universo visual proprio para aproximar a marca das criancas e das familias com afeto,
-          imaginacao e clareza.
-        </p>
-
-        <dl class="project-hero__meta" data-reveal-left>
-          <div>
-            <dt>Desafio</dt>
-            <dd>Identidade Visual</dd>
-          </div>
-          <div>
-            <dt>Servico</dt>
-            <dd>Branding Marca</dd>
-          </div>
-          <div>
-            <dt>Ano</dt>
-            <dd>2026</dd>
-          </div>
-        </dl>
+    <section class="project-desktop" id="projectDesktop" aria-labelledby="projectDesktopTitle">
+      <h1 class="sr-only" id="projectDesktopTitle">Apresentacao do projeto Ensinarte</h1>
+      <div class="project-desktop__sticky" id="projectDesktopSticky">
+        <div class="project-desktop__copy" id="projectDesktopCopy" aria-live="polite"></div>
+        <div class="project-desktop__media" id="projectDesktopMedia" aria-live="polite"></div>
       </div>
-
-      <div class="project-hero__visual" data-reveal-right>
-        <img
-          class="project-hero__image"
-          src="./assets/01.png"
-          alt="Logo da Ensinarte com os personagens Celina e Axol sobre fundo lilas"
-          width="681"
-          height="482"
-        />
-      </div>
-    </section>
-
-    <section class="project-overview">
-      <div class="project-overview__intro">
-        <p class="project-overview__eyebrow" data-reveal-left>Resumo do projeto</p>
-        <h2 class="project-overview__title" data-reveal-left>Uma marca criada para acolher, ensinar e encantar.</h2>
-      </div>
-      <p class="project-overview__copy" data-reveal-right>
-        A Ensinarte e uma marca criada para uma professora que trabalha com criancas especiais
-        e precisava de uma identidade visual acolhedora, ludica e memoravel.
-      </p>
-      <p class="project-overview__copy" data-reveal-right>
-        O projeto desenvolveu um universo proprio para a marca, com a criacao de Celina, alter
-        ego inspirado na professora quando crianca, e Axol, um mascote de apoio pensado para
-        transmitir companhia, cuidado e imaginacao.
-      </p>
-      <p class="project-overview__copy" data-reveal-right>
-        Cada elemento foi criado para aproximar a marca das criancas e das familias,
-        transformando a aprendizagem em uma experiencia mais afetiva, criativa e encantadora.
-      </p>
-    </section>
-
-    <section class="project-story" id="narrativa" aria-labelledby="storyTitle">
-      <div class="project-story__sticky">
-        <div class="project-story__panel">
-          <div class="project-story__copy">
-            <div class="project-story__header">
-              <p class="project-story__eyebrow" id="storyLabel">Objetivo da marca</p>
-              <p class="project-story__counter" id="storyCounter">01</p>
-            </div>
-
-            <h2 class="project-story__title" id="storyTitle">
-              Uma marca criada para acolher, ensinar e encantar
-            </h2>
-
-            <div class="project-story__body" id="storyBody">
-              <p>
-                A Ensinarte nasceu com o objetivo de transformar o processo de aprendizagem em
-                uma experiencia mais leve, afetiva e criativa.
-              </p>
-              <p>
-                A marca foi desenvolvida para uma professora que trabalha com criancas especiais
-                e precisava de uma identidade que transmitisse acolhimento, confianca e
-                imaginacao.
-              </p>
-              <p>
-                Por isso, a identidade combina cores suaves, formas arredondadas, personagens
-                carismaticos e uma linguagem visual ludica.
-              </p>
-            </div>
-
-            <div class="project-story__nav" id="storyToc" aria-label="Sequencia visual do projeto"></div>
-          </div>
-
-          <div class="project-story__stage">
-            <div class="project-story__frame" id="storyMedia" aria-live="polite"></div>
-          </div>
-        </div>
-      </div>
+      <div class="project-desktop__steps" id="projectDesktopSteps" aria-hidden="true"></div>
     </section>
 
     <section class="project-mobile" aria-labelledby="mobileGalleryTitle">
       <div class="project-mobile__intro">
-        <p class="project-mobile__eyebrow">Resumo mobile</p>
-        <h2 class="project-mobile__title" id="mobileGalleryTitle">A historia visual da Ensinarte</h2>
-        <p class="project-mobile__summary">
-          No mobile, a narrativa fica mais direta: primeiro um resumo do projeto e depois uma
-          sequencia de imagens com textos curtos para acompanhar o raciocinio da marca sem
-          perder o encanto.
-        </p>
+        <p class="project-mobile__eyebrow">Projeto de branding para educacao inclusiva</p>
+        <h2 class="project-mobile__title" id="mobileGalleryTitle">ENSINARTE</h2>
+        <p class="project-mobile__subtitle" id="mobileGallerySubtitle">Aprendizagem criativa</p>
+        <div class="project-mobile__summary" id="mobileSummary">Uma identidade pensada para acolher, ensinar e encantar.</div>
+        <dl class="project-mobile__meta" id="mobileProjectMeta"></dl>
+        <a class="project-mobile__cta" href="https://www.behance.net/gallery/247117435/Ensinarte-Aprendizagem-Criativa" id="mobileBehanceButton">
+          Behance
+        </a>
       </div>
 
       <div class="project-mobile__list" id="mobileStoryList"></div>
