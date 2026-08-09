@@ -2072,7 +2072,7 @@ section.parallax-section#servicos > p{
   background: transparent;
   padding: 0 0 2px;
   min-height: 74vh;
-  overflow: visible;
+  overflow: clip;
 }
 .brand-bridge__inner{
   width: min(1360px, calc(100% - 28px));
@@ -2102,30 +2102,18 @@ section.parallax-section#servicos > p{
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(6px, .5vw, 10px);
+  gap: clamp(2px, .35vw, 6px);
   align-items: center;
-  overflow: visible;
-  padding: clamp(14px, 1vw, 20px) clamp(6px, .6vw, 12px) clamp(18px, 1.3vw, 24px);
+  overflow: clip;
 }
 .brand-bridge__line{
   display: block;
-  padding: .14em .06em .1em;
   font-family: var(--font-kicker);
   font-size: clamp(60px, 6.7vw, 112px);
-  line-height: 1.03;
+  line-height: .9;
   letter-spacing: .01em;
   text-transform: uppercase;
   will-change: transform, opacity, filter;
-}
-.brand-bridge__accent-letter{
-  display: inline-block;
-  padding-top: .04em;
-}
-.brand-bridge:not(.brand-bridge--postcases) .brand-bridge__line{
-  white-space: nowrap;
-}
-.brand-bridge:not(.brand-bridge--postcases) .brand-bridge__line--light{
-  font-size: clamp(46px, 5.25vw, 88px);
 }
 .brand-bridge__line--cream{
   color: var(--cream);
@@ -2194,19 +2182,11 @@ section.parallax-section#servicos > p{
     max-width: none;
   }
   .brand-bridge__title{
-    gap: 8px;
-    padding: 8px 0 10px;
+    gap: 6px;
   }
   .brand-bridge__line{
-    padding: .05em .03em .04em;
     font-size: clamp(38px, 11vw, 60px);
-    line-height: .98;
-  }
-  .brand-bridge:not(.brand-bridge--postcases) .brand-bridge__line{
-    white-space: normal;
-  }
-  .brand-bridge:not(.brand-bridge--postcases) .brand-bridge__line--light{
-    font-size: clamp(38px, 11vw, 60px);
+    line-height: .94;
   }
   .brand-bridge__copy{
     margin-top: 12px;
