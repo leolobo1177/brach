@@ -173,7 +173,7 @@ const BRACH_I18N = {
     },
     bridgeTop: {
       kicker: 'ENTRE PRESENÇA E RESULTADO',
-      lines: ['DO CORRE A CONQUISTA', 'FAZEMOS SUA MARCA CRESCER ONLINE'],
+      lines: ['DO CORRE \u00C0 CONQUISTA'],
       copy: 'Acreditamos que branding vai muito além do visual: é construir relevância duradoura, criar conexão real e transformar presença em crescimento consistente.'
     },
     cases: {
@@ -398,7 +398,7 @@ const BRACH_I18N = {
     },
     bridgeTop: {
       kicker: 'BETWEEN PRESENCE AND RESULTS',
-      lines: ['FROM THE HUSTLE TO THE WIN', 'WE HELP YOUR BRAND GROW ONLINE'],
+      lines: ['FROM THE HUSTLE TO THE WIN'],
       copy: 'We believe branding goes far beyond visuals: it is about building lasting relevance, creating real connection, and turning presence into consistent growth.'
     },
     cases: {
@@ -623,7 +623,7 @@ const BRACH_I18N = {
     },
     bridgeTop: {
       kicker: 'ENTRE PRESENCIA Y RESULTADOS',
-      lines: ['DEL ESFUERZO A LA CONQUISTA', 'HACEMOS CRECER TU MARCA ONLINE'],
+      lines: ['DEL ESFUERZO A LA CONQUISTA'],
       copy: 'Creemos que el branding va mucho más allá de lo visual: se trata de construir relevancia duradera, crear conexión real y transformar presencia en crecimiento consistente.'
     },
     cases: {
@@ -1007,7 +1007,12 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 
     if(topBridgeKicker) topBridgeKicker.textContent = locale.bridgeTop.kicker;
     topBridgeLines.forEach((line, index) => {
-      line.textContent = locale.bridgeTop.lines[index] || '';
+      const value = locale.bridgeTop.lines[index] || '';
+      if(currentLanguage === 'pt-BR' && index === 0){
+        line.innerHTML = 'DO CORRE <span class="brand-bridge__accent-letter">À</span> CONQUISTA';
+        return;
+      }
+      line.textContent = value;
     });
     if(topBridgeCopy) topBridgeCopy.textContent = locale.bridgeTop.copy;
 
@@ -2311,7 +2316,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       swapTimeline.to(outgoingTargets, {
         autoAlpha: 0,
         y: 16,
-        filter: 'blur(8px)',
+        filter: 'blur(6px)',
         duration: 0.24,
         stagger: 0.014,
         ease: 'power2.out',
@@ -2487,15 +2492,15 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       const titleTargets = [...lines, copy];
 
       gsap.set(lines, {
-        yPercent: 118,
+        yPercent: 92,
         autoAlpha: 0,
-        filter: 'blur(16px)',
-        scale: 0.985
+        filter: 'blur(12px)',
+        scale: 0.992
       });
       gsap.set(copy, {
-        y: 30,
+        y: 24,
         autoAlpha: 0,
-        filter: 'blur(16px)'
+        filter: 'blur(12px)'
       });
 
       const tl = gsap.timeline({
@@ -2514,8 +2519,8 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
         autoAlpha: 1,
         filter: 'blur(0px)',
         scale: 1,
-        duration: 0.34,
-        stagger: 0.08
+        duration: 0.4,
+        stagger: 0.1
       }, 0.04);
 
       tl.to(copy, {
@@ -2526,17 +2531,17 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       }, 0.16);
 
       tl.to(titleTargets, {
-        y: -28,
+        y: -10,
         autoAlpha: 0,
-        filter: 'blur(10px)',
-        duration: 0.28,
-        stagger: 0.02,
+        filter: 'blur(6px)',
+        duration: 0.34,
+        stagger: 0.03,
         ease: 'power2.inOut'
       }, 0.68);
 
       tl.to(sticky, {
-        scale: 0.992,
-        duration: 0.28,
+        scale: 0.996,
+        duration: 0.32,
         ease: 'power2.inOut'
       }, 0.68);
     });
