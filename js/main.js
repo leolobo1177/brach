@@ -686,8 +686,12 @@ const BRACH_I18N = {
 };
 
 function getBrachLanguage(){
-  const stored = window.localStorage?.getItem('brach-language');
-  return BRACH_I18N[stored] ? stored : BRACH_DEFAULT_LANGUAGE;
+  try{
+    const stored = window.localStorage ? window.localStorage.getItem('brach-language') : null;
+    return BRACH_I18N[stored] ? stored : BRACH_DEFAULT_LANGUAGE;
+  }catch{
+    return BRACH_DEFAULT_LANGUAGE;
+  }
 }
 
 function getBrachLocale(lang = getBrachLanguage()){
@@ -1129,6 +1133,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   if (!loader) return;
 
   const body = document.body;
+  window.__brachLoaderCompleted = false;
   const counter = loader.querySelector('#pageLoaderCounter');
   const progressFill = loader.querySelector('#pageLoaderBar');
   const content = loader.querySelector('.page-loader__content');
@@ -1166,6 +1171,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     } catch {
       // noop
     }
+    window.__brachLoaderCompleted = true;
     loader.classList.add('is-done');
     body.classList.remove('is-loading');
     window.setTimeout(() => {

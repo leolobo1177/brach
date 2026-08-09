@@ -601,6 +601,47 @@
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script defer src="./js/main.js"></script>
 <script defer src="./js/brach-cases.js"></script>
+<script>
+  (function () {
+    function releaseStuckLoader() {
+      var body = document.body;
+      var loader = document.getElementById('pageLoader');
+      if (!body || !loader || !body.classList.contains('is-loading')) return;
+
+      loader.classList.add('is-exiting');
+      loader.classList.add('is-done');
+      body.classList.remove('is-loading');
+
+      window.setTimeout(function () {
+        var activeLoader = document.getElementById('pageLoader');
+        if (activeLoader && activeLoader.parentNode) {
+          activeLoader.parentNode.removeChild(activeLoader);
+        }
+
+        try {
+          document.dispatchEvent(new CustomEvent('brach:loadercomplete'));
+        } catch (error) {
+          // noop
+        }
+      }, 120);
+    }
+
+    window.setTimeout(function () {
+      if (window.__brachLoaderCompleted) return;
+      releaseStuckLoader();
+    }, 3200);
+
+    window.addEventListener('error', function () {
+      if (window.__brachLoaderCompleted) return;
+      window.setTimeout(releaseStuckLoader, 0);
+    });
+
+    window.addEventListener('unhandledrejection', function () {
+      if (window.__brachLoaderCompleted) return;
+      window.setTimeout(releaseStuckLoader, 0);
+    });
+  })();
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZS1MQJ3685"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -671,9 +712,13 @@
       landing_path: window.location.pathname
     };
 
-    if (!sessionStorage.getItem('traffic_source_detected_sent')) {
+    try {
+      if (!sessionStorage.getItem('traffic_source_detected_sent')) {
+        gtag('event', 'traffic_source_detected', trafficPayload);
+        sessionStorage.setItem('traffic_source_detected_sent', 'true');
+      }
+    } catch (error) {
       gtag('event', 'traffic_source_detected', trafficPayload);
-      sessionStorage.setItem('traffic_source_detected_sent', 'true');
     }
   })();
 </script>
