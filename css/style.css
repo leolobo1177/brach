@@ -2214,7 +2214,7 @@ section.cases-section{
   border: none;
   border-radius: 0;
   background: transparent;
-  padding: clamp(42px, 5vw, 64px) 0 clamp(68px, 7vw, 92px);
+  padding: clamp(20px, 3vw, 34px) 0 clamp(68px, 7vw, 92px);
   margin: 0;
   min-height: auto;
 }

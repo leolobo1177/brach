@@ -770,9 +770,6 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   const servicesTabs = Array.from(document.querySelectorAll('.services-tab'));
   const servicesStage = document.getElementById('servicesPanel');
   const servicesTierLabels = Array.from(document.querySelectorAll('.service-package__tier'));
-  const topBridgeKicker = document.querySelector('.brand-bridge:not(.brand-bridge--postcases) .brand-bridge__kicker');
-  const topBridgeLines = Array.from(document.querySelectorAll('.brand-bridge:not(.brand-bridge--postcases) .brand-bridge__line'));
-  const topBridgeCopy = document.querySelector('.brand-bridge:not(.brand-bridge--postcases) .brand-bridge__copy');
   const casesTitle = document.getElementById('trabalhosTitle');
   const caseHint = document.getElementById('caseHint');
   const caseLinks = Array.from(document.querySelectorAll('.case-link'));
@@ -1008,12 +1005,6 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     if(tabsContainer) tabsContainer.setAttribute('aria-label', locale.services.tabsAria);
     if(servicesTierLabels[0]) servicesTierLabels[0].textContent = locale.services.tiers.basic;
     if(servicesTierLabels[1]) servicesTierLabels[1].textContent = locale.services.tiers.full;
-
-    if(topBridgeKicker) topBridgeKicker.textContent = locale.bridgeTop.kicker;
-    topBridgeLines.forEach((line, index) => {
-      line.textContent = locale.bridgeTop.lines[index] || '';
-    });
-    if(topBridgeCopy) topBridgeCopy.textContent = locale.bridgeTop.copy;
 
     if(casesTitle) casesTitle.textContent = locale.cases.title;
     if(caseHint) caseHint.textContent = locale.cases.hint;
