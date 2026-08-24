@@ -7,6 +7,45 @@ const BRACH_POLICY_CONTENT = {
   privacy: "<p>Politica de privacidade</p>\n<p>Política de Privacidade<br>(última atualização)</p>\n<p>07 de abril de 2026</p>\n<p>1. Informações que Coletamos</p>\n<p>Informações pessoais:<br>Nome, e-mail, telefone e outros dados que você fornece ao entrar em contato ou utilizar nossos serviços.</p>\n<p>Dados de uso:<br>Endereço IP, tipo de navegador, páginas acessadas e outras informações coletadas por meio de cookies e ferramentas de análise.</p>\n<p>2. Como Utilizamos suas Informações</p>\n<p>Utilizamos seus dados para:</p>\n<p>Oferecer e melhorar nossos serviços<br>Responder solicitações e prestar suporte<br>Enviar comunicações de marketing (você pode cancelar a qualquer momento)<br>Analisar o comportamento dos usuários e o desempenho do site</p>\n<p>3. Compartilhamento de Informações</p>\n<p>A Brach não vende suas informações pessoais.</p>\n<p>Seus dados podem ser compartilhados apenas com serviços de terceiros que auxiliam na operação do site e na prestação dos nossos serviços, sempre de forma limitada ao necessário.</p>\n<p>4. Cookies e Rastreamento</p>\n<p>Utilizamos cookies para melhorar sua experiência e coletar dados de navegação.</p>\n<p>Você pode desativar os cookies nas configurações do seu navegador, mas isso pode impactar o funcionamento de algumas funcionalidades do site.</p>\n<p>5. Segurança</p>\n<p>Adotamos medidas razoáveis para proteger suas informações. Ainda assim, nenhum sistema é totalmente seguro.</p>\n<p>Ao utilizar nossos serviços, você reconhece e aceita esse risco.</p>\n<p>6. Seus Direitos</p>\n<p>Você pode solicitar acesso, correção ou exclusão dos seus dados pessoais a qualquer momento.</p>\n<p>Para isso, entre em contato:<br>📩 agenciabrach@gmail.com</p>\n<p>7. Alterações nesta Política</p>\n<p>Esta Política pode ser atualizada periodicamente. A versão mais recente estará sempre disponível em nosso site.</p>"
 };
 
+const BRACH_BRAND_MEDIA = [
+  {
+    logo: './assets/hero-logos/gi.png',
+    alt: 'Studio de Beleza Giovana Fortunato',
+    cardStart: '#6f37e3',
+    cardEnd: '#2f146c',
+    sectionStart: 'rgba(82, 39, 170, 0.34)',
+    sectionEnd: 'rgba(47, 20, 108, 0.12)',
+    glow: 'rgba(142, 108, 255, 0.36)'
+  },
+  {
+    logo: './assets/hero-logos/frente.png',
+    alt: 'MiláMi Musicalização Infantil',
+    cardStart: '#fff2cf',
+    cardEnd: '#f6ddb0',
+    sectionStart: 'rgba(159, 98, 33, 0.24)',
+    sectionEnd: 'rgba(15, 93, 119, 0.14)',
+    glow: 'rgba(255, 188, 105, 0.34)'
+  },
+  {
+    logo: './assets/hero-logos/ensi.png',
+    alt: 'Ensinarte',
+    cardStart: '#bb17d0',
+    cardEnd: '#6b28c5',
+    sectionStart: 'rgba(103, 66, 177, 0.3)',
+    sectionEnd: 'rgba(80, 28, 145, 0.14)',
+    glow: 'rgba(210, 145, 255, 0.38)'
+  },
+  {
+    logo: './assets/hero-logos/fabiane-costa-848.png',
+    alt: 'Fabiane Costa Mentoria & Estratégia',
+    cardStart: '#b5520d',
+    cardEnd: '#7a3300',
+    sectionStart: 'rgba(159, 98, 33, 0.28)',
+    sectionEnd: 'rgba(78, 34, 8, 0.14)',
+    glow: 'rgba(255, 174, 94, 0.36)'
+  }
+];
+
 const BRACH_I18N = {
   'pt-BR': {
     htmlLang: 'pt-BR',
@@ -68,6 +107,35 @@ const BRACH_I18N = {
         }
       ],
       linkedin: 'Linkedin'
+    },
+    brands: {
+      kicker: 'QUEM JÁ CONSTRÓI COM A GENTE',
+      title: 'Marcas que já fazem parte da Brach',
+      lead: 'Cada projeto tem uma energia, um público e um ritmo próprios. A Brach entra para traduzir tudo isso em presença visual com estratégia, personalidade e clareza.',
+      cta: 'QUERO FAZER PARTE DISSO',
+      aria: 'Marcas que fazem parte da Brach',
+      items: [
+        {
+          tag: 'Identidade • Conteúdo',
+          name: 'Studio de Beleza Giovana Fortunato',
+          copy: 'Marca criada para sustentar posicionamento, autoridade e uma presença digital mais sofisticada, sem perder proximidade.'
+        },
+        {
+          tag: 'Brand Marca • Educação',
+          name: 'MiláMi Musicalização Infantil',
+          copy: 'Universo visual leve e afetivo para uma marca infantil que precisava unir acolhimento, musicalidade e clareza comercial.'
+        },
+        {
+          tag: 'Brand Marca • Educação',
+          name: 'Ensinarte',
+          copy: 'Projeto pensado para transformar educação inclusiva em uma identidade memorável, lúdica e cheia de presença.'
+        },
+        {
+          tag: 'Mentoria • Estratégia',
+          name: 'Fabiane Costa',
+          copy: 'Identidade desenhada para comunicar direção, experiência e consistência em uma marca guiada por conhecimento e posicionamento.'
+        }
+      ]
     },
     services: {
       kicker: 'O QUE ENTREGAMOS',
@@ -294,6 +362,35 @@ const BRACH_I18N = {
       ],
       linkedin: 'Linkedin'
     },
+    brands: {
+      kicker: 'WHO IS ALREADY BUILDING WITH US',
+      title: 'Brands that are already part of Brach',
+      lead: 'Every project has its own energy, audience, and rhythm. Brach steps in to translate all of that into visual presence with strategy, personality, and clarity.',
+      cta: 'I WANT TO BE PART OF THIS',
+      aria: 'Brands that are part of Brach',
+      items: [
+        {
+          tag: 'Identity • Content',
+          name: 'Studio de Beleza Giovana Fortunato',
+          copy: 'A brand shaped to support positioning, authority, and a more refined digital presence without losing warmth.'
+        },
+        {
+          tag: 'Brand Identity • Education',
+          name: 'MiláMi Children Music Education',
+          copy: 'A light and affectionate visual universe for a children’s brand that needed to combine warmth, musicality, and commercial clarity.'
+        },
+        {
+          tag: 'Brand Identity • Education',
+          name: 'Ensinarte',
+          copy: 'A project designed to turn inclusive education into a memorable, playful identity full of presence.'
+        },
+        {
+          tag: 'Mentorship • Strategy',
+          name: 'Fabiane Costa',
+          copy: 'An identity built to communicate direction, experience, and consistency in a brand guided by knowledge and positioning.'
+        }
+      ]
+    },
     services: {
       kicker: 'WHAT WE DELIVER',
       title: 'SERVICES',
@@ -518,6 +615,35 @@ const BRACH_I18N = {
         }
       ],
       linkedin: 'Linkedin'
+    },
+    brands: {
+      kicker: 'QUIENES YA CONSTRUYEN CON NOSOTROS',
+      title: 'Marcas que ya forman parte de Brach',
+      lead: 'Cada proyecto tiene su propia energía, público y ritmo. Brach entra para traducir todo eso en presencia visual con estrategia, personalidad y claridad.',
+      cta: 'QUIERO FORMAR PARTE DE ESTO',
+      aria: 'Marcas que forman parte de Brach',
+      items: [
+        {
+          tag: 'Identidad • Contenido',
+          name: 'Studio de Beleza Giovana Fortunato',
+          copy: 'Una marca creada para sostener posicionamiento, autoridad y una presencia digital más sofisticada sin perder cercanía.'
+        },
+        {
+          tag: 'Identidad de Marca • Educación',
+          name: 'MiláMi Musicalización Infantil',
+          copy: 'Un universo visual ligero y afectivo para una marca infantil que necesitaba unir acogida, musicalidad y claridad comercial.'
+        },
+        {
+          tag: 'Identidad de Marca • Educación',
+          name: 'Ensinarte',
+          copy: 'Un proyecto pensado para transformar la educación inclusiva en una identidad memorable, lúdica y llena de presencia.'
+        },
+        {
+          tag: 'Mentoría • Estrategia',
+          name: 'Fabiane Costa',
+          copy: 'Una identidad diseñada para comunicar dirección, experiencia y consistencia en una marca guiada por conocimiento y posicionamiento.'
+        }
+      ]
     },
     services: {
       kicker: 'LO QUE ENTREGAMOS',
@@ -763,6 +889,12 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   const aboutTitleLines = Array.from(document.querySelectorAll('.about-team__title span'));
   const aboutCopy = document.querySelector('.about-team__copy p');
   const aboutPeople = Array.from(document.querySelectorAll('.about-person'));
+  const brandRoster = document.querySelector('.brand-roster');
+  const brandRosterStage = document.querySelector('.brand-roster__stage');
+  const brandRosterKicker = document.querySelector('.brand-roster__kicker');
+  const brandRosterTitle = document.getElementById('brandsTitle');
+  const brandRosterLead = document.querySelector('.brand-roster__lead');
+  const brandRosterCta = document.querySelector('.brand-roster__cta');
   const servicesKicker = document.querySelector('.services-kicker');
   const servicesTitle = document.getElementById('servicesTitle');
   const servicesSubtitle = document.querySelector('.services-subtitle');
@@ -991,6 +1123,16 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       if(linkedin) setLinkLabel(linkedin, locale.about.linkedin);
     });
 
+    if(brandRosterKicker) brandRosterKicker.textContent = locale.brands.kicker;
+    if(brandRosterTitle) brandRosterTitle.textContent = locale.brands.title;
+    if(brandRosterLead) brandRosterLead.textContent = locale.brands.lead;
+    if(brandRoster) brandRoster.setAttribute('aria-label', locale.brands.aria);
+    if(brandRosterStage) brandRosterStage.setAttribute('aria-label', locale.brands.aria);
+    if(brandRosterCta){
+      brandRosterCta.dataset.text = locale.brands.cta;
+      brandRosterCta.setAttribute('aria-label', locale.brands.cta);
+    }
+
     if(servicesKicker) servicesKicker.textContent = locale.services.kicker;
     if(servicesTitle) servicesTitle.textContent = locale.services.title;
     if(servicesSubtitle) servicesSubtitle.innerHTML = locale.services.subtitle;
@@ -1072,8 +1214,9 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       button.setAttribute('aria-label', labels[buttonLang] || buttonLang);
     });
 
-    if(typeof window.refreshLetterSwap === 'function' && heroCta){
-      window.refreshLetterSwap(heroCta);
+    if(typeof window.refreshLetterSwap === 'function'){
+      if(heroCta) window.refreshLetterSwap(heroCta);
+      if(brandRosterCta) window.refreshLetterSwap(brandRosterCta);
     }
   }
 
@@ -1420,6 +1563,44 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       _scrollLock.onScroll = null;
     }
 
+    function smoothScrollToHash(hash, offset = 90){
+      if(typeof hash !== 'string' || !hash.startsWith('#')) return;
+      const target = document.querySelector(hash);
+      if(!target) return;
+
+      const destination = Math.max(
+        0,
+        target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0) - offset
+      );
+
+      if(reduceMotion){
+        window.scrollTo({ top: destination, behavior: 'auto' });
+        return;
+      }
+
+      const start = window.scrollY || window.pageYOffset || 0;
+      const distance = destination - start;
+      const duration = 980;
+      const startTime = performance.now();
+      const easeInOutCubic = (progress) => (
+        progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2
+      );
+
+      const step = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeInOutCubic(progress);
+        window.scrollTo(0, start + distance * eased);
+        if(progress < 1){
+          window.requestAnimationFrame(step);
+        }
+      };
+
+      window.requestAnimationFrame(step);
+    }
+
     function openOverlay(){
       if(overlay.classList.contains('is-open')) return;
       lastFocus = document.activeElement;
@@ -1505,11 +1686,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
         const id = href;
 
         const go = () => {
-          const el = document.querySelector(id);
-          if(!el) return;
-          const topbarOffset = 90; // espaço para header fixo
-          const y = el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0) - topbarOffset;
-          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+          smoothScrollToHash(id, 90);
         };
 
         // Se o menu estiver aberto, fecha primeiro (isso também libera o scroll)
@@ -1530,12 +1707,8 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       a.addEventListener('click', (e) => {
         const href = a.getAttribute('href') || '';
         if(!href.startsWith('#')) return;
-        const el = document.querySelector(href);
-        if(!el) return;
         e.preventDefault();
-        const topbarOffset = 90;
-        const y = el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0) - topbarOffset;
-        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+        smoothScrollToHash(href, 90);
       });
     });
 
@@ -1544,12 +1717,17 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       a.addEventListener('click', (e) => {
         const href = a.getAttribute('href') || '';
         if(!href.startsWith('#')) return;
-        const el = document.querySelector(href);
-        if(!el) return;
         e.preventDefault();
-        const topbarOffset = 90;
-        const y = el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0) - topbarOffset;
-        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+        smoothScrollToHash(href, 90);
+      });
+    });
+
+    document.querySelectorAll('.brand-roster a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href') || '';
+        if(!href.startsWith('#')) return;
+        e.preventDefault();
+        smoothScrollToHash(href, 90);
       });
     });
 
@@ -2538,6 +2716,207 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       }, 0.68);
     });
   }
+})();
+
+/* ===== Brand roster ===== */
+(() => {
+  const section = document.querySelector('.brand-roster');
+  if(!section) return;
+
+  const stage = section.querySelector('[data-brand-roster-stage]');
+  const cards = Array.from(section.querySelectorAll('.brand-roster__card'));
+  const revealItems = Array.from(section.querySelectorAll('.brand-reveal'));
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasGsap = Boolean(window.gsap);
+  const hasScrollTrigger = Boolean(window.ScrollTrigger);
+  const autoplayDelay = 4200;
+
+  let activeIndex = Math.min(2, Math.max(cards.length - 1, 0));
+  let items = [];
+  let autoplayTimer = null;
+  let isVisible = reduceMotion;
+  let resizeTimer = null;
+
+  function buildItems(locale){
+    const localeItems = locale?.brands?.items || [];
+    return BRACH_BRAND_MEDIA.map((media, index) => ({
+      ...media,
+      ...(localeItems[index] || {})
+    }));
+  }
+
+  function getViewportCardStates(){
+    const isMobile = window.matchMedia('(max-width: 640px)').matches;
+    const isTablet = window.matchMedia('(max-width: 900px)').matches;
+    const sideOffset = isMobile ? 42 : isTablet ? 48 : 54;
+    const sideScale = isMobile ? 0.84 : isTablet ? 0.87 : 0.9;
+    const hiddenScale = isMobile ? 0.72 : 0.76;
+    const sideOpacity = isMobile ? 0.34 : 0.42;
+    const sideBlur = isMobile ? 8 : 6;
+
+    return {
+      prev: { xPercent: -50 - sideOffset, yPercent: -50, scale: sideScale, opacity: sideOpacity, blur: sideBlur, rotation: 0, zIndex: 2 },
+      active: { xPercent: -50, yPercent: -50, scale: 1, opacity: 1, blur: 0, rotation: 0, zIndex: 4 },
+      next: { xPercent: -50 + sideOffset, yPercent: -50, scale: sideScale, opacity: sideOpacity, blur: sideBlur, rotation: 0, zIndex: 2 },
+      hidden: { xPercent: -50, yPercent: -50, scale: hiddenScale, opacity: 0, blur: 16, rotation: 0, zIndex: 1 }
+    };
+  }
+
+  function getCardSlot(index){
+    if(!items.length) return 'hidden';
+
+    const previousIndex = (activeIndex - 1 + items.length) % items.length;
+    const nextIndex = (activeIndex + 1) % items.length;
+
+    if(index === activeIndex) return 'active';
+    if(index === previousIndex) return 'prev';
+    if(index === nextIndex) return 'next';
+    return 'hidden';
+  }
+
+  function syncCardAssets(){
+    cards.forEach((card, index) => {
+      const item = items[index];
+      const image = card.querySelector('[data-brand-card-image]');
+      if(!item || !image) return;
+
+      image.src = item.logo;
+      image.alt = item.alt || item.name || '';
+      card.setAttribute('aria-label', item.name || item.alt || `Marca ${index + 1}`);
+      card.style.setProperty('--card-start', item.cardStart);
+      card.style.setProperty('--card-end', item.cardEnd);
+    });
+  }
+
+  function renderCards(immediate = false){
+    const cardStates = getViewportCardStates();
+
+    cards.forEach((card, index) => {
+      const slot = getCardSlot(index);
+      const state = cardStates[slot] || cardStates.hidden;
+
+      card.classList.toggle('is-active', slot === 'active');
+      card.tabIndex = slot === 'hidden' ? -1 : 0;
+      card.style.zIndex = String(state.zIndex);
+
+      if(!hasGsap || reduceMotion){
+        card.style.opacity = String(state.opacity);
+        card.style.filter = `blur(${state.blur}px)`;
+        card.style.transform = `translate(${state.xPercent}%, ${state.yPercent}%) scale(${state.scale}) rotate(${state.rotation}deg)`;
+        return;
+      }
+
+      gsap.killTweensOf(card);
+      const method = immediate ? 'set' : 'to';
+      gsap[method](card, {
+        xPercent: state.xPercent,
+        yPercent: state.yPercent,
+        rotation: state.rotation,
+        scale: state.scale,
+        autoAlpha: state.opacity,
+        filter: `blur(${state.blur}px)`,
+        ...(immediate ? {} : {
+          duration: 0.92,
+          ease: 'power3.inOut',
+          overwrite: 'auto'
+        })
+      });
+    });
+  }
+
+  function stopAutoplay(){
+    if(typeof autoplayTimer === 'number'){
+      window.clearTimeout(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function scheduleAutoplay(){
+    stopAutoplay();
+    if(reduceMotion || items.length < 2 || !isVisible) return;
+
+    autoplayTimer = window.setTimeout(() => {
+      setActiveIndex((activeIndex + 1) % items.length);
+    }, autoplayDelay);
+  }
+
+  function setActiveIndex(nextIndex, immediate = false){
+    if(!items.length) return;
+
+    activeIndex = ((nextIndex % items.length) + items.length) % items.length;
+    renderCards(immediate);
+    scheduleAutoplay();
+  }
+
+  function syncLocale(locale, immediate = false){
+    items = buildItems(locale);
+    syncCardAssets();
+    setActiveIndex(activeIndex, immediate);
+  }
+
+  cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      if(index === activeIndex) return;
+      setActiveIndex(index);
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    if(typeof resizeTimer === 'number'){
+      window.clearTimeout(resizeTimer);
+    }
+    resizeTimer = window.setTimeout(() => {
+      renderCards(true);
+    }, 120);
+  });
+
+  document.addEventListener('brach:languagechange', (event) => {
+    syncLocale(event.detail?.locale || getBrachLocale(), true);
+  });
+
+  syncLocale(getBrachLocale(), true);
+
+  if(reduceMotion){
+    return;
+  }
+
+  if(hasGsap && hasScrollTrigger && revealItems.length){
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.set(revealItems, {
+      autoAlpha: 0,
+      y: 34,
+      filter: 'blur(12px)'
+    });
+
+    gsap.to(revealItems, {
+      autoAlpha: 1,
+      y: 0,
+      filter: 'blur(0px)',
+      duration: 0.92,
+      stagger: 0.12,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 76%',
+        once: true
+      }
+    });
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    const visibleEntry = entries[0];
+    isVisible = Boolean(visibleEntry?.isIntersecting);
+
+    if(isVisible){
+      scheduleAutoplay();
+    }else{
+      stopAutoplay();
+    }
+  }, {
+    threshold: 0.36
+  });
+
+  io.observe(section);
 })();
 
 /* ===== Static contact form via FormSubmit ===== */

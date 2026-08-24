@@ -4566,6 +4566,199 @@ section.team .team__link::after{
   }
 }
 
+/* ===== Brand roster ===== */
+.brand-roster{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  padding:clamp(64px, 8vw, 104px) 0;
+  border:none;
+  background:transparent;
+  overflow:clip;
+}
+.brand-roster__inner{
+  width:min(1480px, calc(100% - 48px));
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+.brand-roster__kicker{
+  margin:0 0 16px;
+  font-family:var(--font-ui);
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.74);
+}
+.brand-roster__title{
+  margin:0;
+  font-family:var(--font-kicker);
+  font-size:clamp(40px, 4.2vw, 68px);
+  line-height:.92;
+  letter-spacing:.01em;
+  text-transform:uppercase;
+  color:var(--cream);
+  max-width:none;
+  white-space:nowrap;
+  text-wrap:balance;
+}
+.brand-roster__lead{
+  margin:12px auto 0;
+  max-width:46ch;
+  font-family:var(--font-ui);
+  font-size:clamp(18px, 1.18vw, 21px);
+  line-height:1.62;
+  color:rgba(255,255,255,.82);
+}
+.brand-roster__cta{
+  margin-top:22px;
+}
+.brand-roster__stage{
+  position:relative;
+  width:min(100%, 1260px);
+  min-height:clamp(380px, 35vw, 520px);
+  margin-top:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.brand-roster__cards{
+  position:relative;
+  width:100%;
+  height:clamp(340px, 32vw, 470px);
+}
+.brand-roster__card{
+  --card-start: #6e28d3;
+  --card-end: #351170;
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:clamp(290px, 29vw, 500px);
+  aspect-ratio:1.34 / 1;
+  padding:0;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  transform:translate(-50%, -50%);
+  will-change:transform, opacity, filter;
+}
+.brand-roster__card-shell{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(18px, 2vw, 28px);
+  border-radius:32px;
+  background:linear-gradient(135deg, var(--card-start), var(--card-end));
+  box-shadow:0 18px 42px rgba(0,0,0,.24);
+  transition:box-shadow .46s var(--ease), transform .46s var(--ease);
+}
+.brand-roster__card:hover .brand-roster__card-shell,
+.brand-roster__card:focus-visible .brand-roster__card-shell{
+  box-shadow:0 22px 56px rgba(0,0,0,.3);
+}
+.brand-roster__card:focus-visible{
+  outline:none;
+}
+.brand-roster__card.is-active{
+  cursor:default;
+}
+.brand-roster__card-image{
+  display:block;
+  width:100%;
+  max-width:88%;
+  max-height:78%;
+  object-fit:contain;
+  pointer-events:none;
+  user-select:none;
+}
+.brand-roster__card[data-brand-card="3"] .brand-roster__card-image{
+  max-width:84%;
+}
+.brand-reveal{
+  will-change:transform, opacity, filter;
+}
+
+@media (max-width:1100px){
+  .brand-roster__title{
+    font-size:clamp(36px, 4.8vw, 58px);
+  }
+  .brand-roster__stage{
+    width:min(100%, 980px);
+    min-height:400px;
+  }
+}
+
+@media (max-width:900px){
+  .brand-roster{
+    padding:clamp(56px, 12vw, 84px) 0;
+  }
+  .brand-roster__inner{
+    width:min(100%, calc(100% - 32px));
+  }
+  .brand-roster__title{
+    white-space:normal;
+  }
+  .brand-roster__stage{
+    min-height:360px;
+    margin-top:0;
+  }
+  .brand-roster__cards{
+    height:320px;
+  }
+  .brand-roster__card{
+    width:min(70vw, 360px);
+  }
+  .brand-roster__cta{
+    margin-top:24px;
+  }
+}
+
+@media (max-width:640px){
+  .brand-roster__inner{
+    width:min(100%, calc(100% - 24px));
+  }
+  .brand-roster__kicker{
+    font-size:12px;
+  }
+  .brand-roster__title{
+    width:100%;
+    font-size:clamp(24px, 6.7vw, 34px);
+    max-width:18ch;
+    white-space:normal;
+    line-height:.96;
+  }
+  .brand-roster__stage{
+    min-height:320px;
+    margin-top:0;
+  }
+  .brand-roster__lead{
+    margin-top:14px;
+    font-size:17px;
+    line-height:1.62;
+  }
+  .brand-roster__cards{
+    height:280px;
+  }
+  .brand-roster__card{
+    width:min(82vw, 320px);
+  }
+  .brand-roster__card-shell{
+    border-radius:24px;
+    padding:16px;
+  }
+  .brand-roster__cta{
+    width:100%;
+    max-width:320px;
+    margin-top:20px;
+    margin-inline:auto;
+  }
+}
+
 /* ===== Contact ===== */
 .contact-section{
   width:100vw;
