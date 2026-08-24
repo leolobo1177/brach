@@ -258,6 +258,28 @@ const BRACH_I18N = {
       lines: ['CADA PROJETO QUE REALIZAMOS', 'É UMA OPORTUNIDADE ÚNICA'],
       copy: 'Pronto para dar o próximo passo? Junte-se a nós agora e comece a transformar sua visão em realidade com suporte especializado.'
     },
+    feedbacks: {
+      title: 'Depoimentos',
+      aria: 'Carrossel de feedbacks de clientes',
+      items: [
+        {
+          quote: 'O processo trouxe clareza para a marca e deixou tudo mais profissional sem perder nossa essência.',
+          meta: 'Studio de Beleza Giovana Fortunato'
+        },
+        {
+          quote: 'A identidade ficou leve, memorável e muito mais alinhada com o público que a gente queria alcançar.',
+          meta: 'Ensinarte'
+        },
+        {
+          quote: 'A página ajudou a apresentar a oferta com mais ritmo, objetividade e confiança para vender.',
+          meta: 'MiláMi musicalização infantil'
+        },
+        {
+          quote: 'Tudo ficou mais organizado, bonito e fácil de aplicar no dia a dia da comunicação da marca.',
+          meta: 'Fabiane Costa'
+        }
+      ]
+    },
     contact: {
       kicker: 'Fale conosco',
       title: ['BORA CRIAR', 'SUA MARCA'],
@@ -511,6 +533,28 @@ const BRACH_I18N = {
     bridgeBottom: {
       lines: ['EVERY PROJECT WE DELIVER', 'IS A UNIQUE OPPORTUNITY'],
       copy: 'Ready for the next step? Join us now and start turning your vision into reality with specialized support.'
+    },
+    feedbacks: {
+      title: 'Testimonials',
+      aria: 'Client feedback carousel',
+      items: [
+        {
+          quote: 'The process brought clarity to the brand and made everything feel more professional without losing our essence.',
+          meta: 'Studio de Beleza Giovana Fortunato'
+        },
+        {
+          quote: 'The identity felt light, memorable, and much more aligned with the audience we wanted to reach.',
+          meta: 'Ensinarte'
+        },
+        {
+          quote: 'The page helped present the offer with better rhythm, objectivity, and confidence to sell.',
+          meta: 'MiláMi children music education'
+        },
+        {
+          quote: 'Everything became more organized, beautiful, and easier to apply in the brand’s day-to-day communication.',
+          meta: 'Fabiane Costa'
+        }
+      ]
     },
     contact: {
       kicker: 'Contact us',
@@ -766,6 +810,28 @@ const BRACH_I18N = {
       lines: ['CADA PROYECTO QUE REALIZAMOS', 'ES UNA OPORTUNIDAD ÚNICA'],
       copy: '¿Listo para dar el siguiente paso? Únete a nosotros ahora y empieza a transformar tu visión en realidad con apoyo especializado.'
     },
+    feedbacks: {
+      title: 'Testimonios',
+      aria: 'Carrusel de feedbacks de clientes',
+      items: [
+        {
+          quote: 'El proceso aportó claridad a la marca y dejó todo más profesional sin perder nuestra esencia.',
+          meta: 'Studio de Beleza Giovana Fortunato'
+        },
+        {
+          quote: 'La identidad quedó ligera, memorable y mucho más alineada con el público que queríamos alcanzar.',
+          meta: 'Ensinarte'
+        },
+        {
+          quote: 'La página ayudó a presentar la oferta con más ritmo, objetividad y confianza para vender.',
+          meta: 'MiláMi musicalización infantil'
+        },
+        {
+          quote: 'Todo quedó más organizado, bonito y fácil de aplicar en la comunicación diaria de la marca.',
+          meta: 'Fabiane Costa'
+        }
+      ]
+    },
     contact: {
       kicker: 'Hablemos',
       title: ['VAMOS A CREAR', 'TU MARCA'],
@@ -905,8 +971,11 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   const casesTitle = document.getElementById('trabalhosTitle');
   const caseHint = document.getElementById('caseHint');
   const caseLinks = Array.from(document.querySelectorAll('.case-link'));
+  const feedbackSection = document.querySelector('.feedback-slider-section');
+  const feedbackCards = Array.from(document.querySelectorAll('[data-feedback-card]'));
   const bottomBridgeLines = Array.from(document.querySelectorAll('.brand-bridge--postcases .brand-bridge__line'));
   const bottomBridgeCopy = document.querySelector('.brand-bridge--postcases .brand-bridge__copy');
+  const feedbackTitle = document.querySelector('.feedback-title');
   const contactKicker = document.querySelector('.contact-kicker');
   const contactTitleLines = Array.from(document.querySelectorAll('.contact-title span'));
   const contactLead = document.querySelector('.contact-lead');
@@ -956,6 +1025,26 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     if(!target) return;
     target.textContent = text;
     target.dataset.text = text;
+  }
+
+  function renderFeedbackCards(locale){
+    const items = locale.feedbacks && Array.isArray(locale.feedbacks.items) ? locale.feedbacks.items : [];
+    const cards = Array.from(document.querySelectorAll('[data-feedback-card]'));
+    if(!items.length || !cards.length) return;
+    if(feedbackTitle && locale.feedbacks?.title){
+      feedbackTitle.textContent = locale.feedbacks.title;
+    }
+    if(feedbackSection && locale.feedbacks.aria){
+      feedbackSection.setAttribute('aria-label', locale.feedbacks.aria);
+    }
+    cards.forEach((card, index) => {
+      const item = items[index % items.length];
+      if(!item) return;
+      const quote = card.querySelector('[data-feedback-quote]');
+      const meta = card.querySelector('[data-feedback-meta]');
+      if(quote) quote.textContent = item.quote;
+      if(meta) meta.textContent = item.meta;
+    });
   }
 
   function updateLanguageButtons(lang){
@@ -1159,6 +1248,8 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       if(name) name.textContent = caseData.name;
       if(meta) meta.textContent = caseData.meta;
     });
+
+    renderFeedbackCards(locale);
 
     bottomBridgeLines.forEach((line, index) => {
       line.textContent = locale.bridgeBottom.lines[index] || '';
@@ -3747,6 +3838,412 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     items.forEach(el => io.observe(el));
   }
+})();
+
+// Feedback wall before contact
+(() => {
+  const section = document.querySelector('.feedback-slider-section');
+  const showcase = section?.querySelector('.feedback-showcase');
+  const seedCards = Array.from(section?.querySelectorAll('.feedback-card') || []);
+  if(!section || !showcase || !seedCards.length) return;
+
+  const desiredCardCount = 8;
+  let nextCardIndex = seedCards.length;
+
+  while(showcase.querySelectorAll('.feedback-card').length < desiredCardCount){
+    const template = seedCards[nextCardIndex % seedCards.length];
+    const clone = template.cloneNode(true);
+    clone.dataset.feedbackCard = String(nextCardIndex);
+    clone.dataset.feedbackRotation = template.dataset.feedbackRotation || '-4';
+    clone.removeAttribute('aria-hidden');
+    showcase.appendChild(clone);
+    nextCardIndex += 1;
+  }
+
+  const cards = Array.from(showcase.querySelectorAll('.feedback-card'));
+
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasGsap = Boolean(window.gsap);
+  const hasScrollTrigger = Boolean(window.ScrollTrigger);
+  const finePointer = window.matchMedia('(hover:hover) and (pointer:fine)');
+  const baseRotations = cards.map((card) => parseFloat(card.dataset.feedbackRotation || '0'));
+  const motion = {
+    revealed: false,
+    pointerActive: false,
+    velocityX: 0,
+    lastX: 0,
+    lastTime: 0,
+    tickerActive: false,
+    positions: [],
+    tilt: 0,
+    tiltTarget: 0
+  };
+
+  const getDriftSpeed = () => {
+    if(window.innerWidth <= 560) return -0.18;
+    if(window.innerWidth <= 900) return -0.22;
+    if(window.innerWidth <= 1180) return -0.26;
+    return -0.3;
+  };
+
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+  const getLayout = () => {
+    const width = showcase.clientWidth || window.innerWidth;
+    const height = showcase.clientHeight || 560;
+
+    if(window.innerWidth <= 560){
+      return {
+        start: width * -0.3,
+        step: width * 0.39,
+        y: [height * 0.2, height * 0.48, height * 0.24, height * 0.52, height * 0.22, height * 0.46, height * 0.26, height * 0.5],
+        xShift: [-12, 10, -8, 12, -10, 8, -6, 10],
+        scale: [0.9, 0.84, 1, 0.88, 0.92, 0.86, 0.94, 0.88],
+        z: [3, 2, 5, 2, 4, 2, 3, 2],
+        fadeBuffer: width * 0.22
+      };
+    }
+
+    if(window.innerWidth <= 900){
+      return {
+        start: width * -0.24,
+        step: width * 0.345,
+        y: [height * 0.16, height * 0.42, height * 0.2, height * 0.48, height * 0.18, height * 0.4, height * 0.22, height * 0.46],
+        xShift: [-14, 12, -10, 14, -12, 10, -8, 12],
+        scale: [0.9, 0.86, 1, 0.9, 0.92, 0.88, 0.94, 0.9],
+        z: [3, 2, 5, 2, 4, 2, 3, 2],
+        fadeBuffer: width * 0.2
+      };
+    }
+
+    if(window.innerWidth <= 1180){
+      return {
+        start: width * -0.2,
+        step: width * 0.25,
+        y: [height * 0.12, height * 0.35, height * 0.16, height * 0.4, height * 0.14, height * 0.33, height * 0.19, height * 0.37],
+        xShift: [-26, 18, -12, 24, -8, 20, -4, 16],
+        scale: [0.88, 0.96, 1, 0.93, 0.9, 0.95, 0.89, 0.91],
+        z: [2, 4, 5, 2, 3, 4, 2, 1],
+        fadeBuffer: width * 0.18
+      };
+    }
+
+    return {
+      start: width * -0.18,
+      step: width * 0.232,
+      y: [height * 0.08, height * 0.4, height * 0.12, height * 0.44, height * 0.1, height * 0.37, height * 0.15, height * 0.41],
+      xShift: [-26, 18, -10, 22, -8, 16, -4, 12],
+      scale: [0.9, 0.97, 1, 0.94, 0.91, 0.95, 0.89, 0.92],
+      z: [2, 4, 5, 2, 3, 4, 2, 1],
+      fadeBuffer: width * 0.17
+    };
+  };
+
+  const ensurePositions = (forceReset = false) => {
+    const layout = getLayout();
+
+    if(forceReset || motion.positions.length !== cards.length){
+      motion.positions = cards.map((_, index) => layout.start + (layout.step * index));
+      motion.velocityX = 0;
+      motion.tilt = 0;
+      motion.tiltTarget = 0;
+    }
+
+    return layout;
+  };
+
+  const getEdgeOpacity = (x, cardWidth, viewportWidth, fadeBuffer) => {
+    const fadeDistance = Math.max(fadeBuffer * 0.9, cardWidth * 0.22);
+    const leftEdge = x;
+    const rightEdge = x + cardWidth;
+
+    let opacity = 1;
+
+    if(rightEdge <= fadeDistance){
+      opacity = Math.min(opacity, clamp(rightEdge / fadeDistance, 0, 1));
+    }
+
+    if(leftEdge >= viewportWidth - fadeDistance){
+      opacity = Math.min(
+        opacity,
+        clamp((viewportWidth + fadeDistance - leftEdge) / (fadeDistance * 2), 0, 1)
+      );
+    }
+
+    return opacity;
+  };
+
+  const getShiftForIndex = (layout, index) => {
+    const variantIndex = index % layout.y.length;
+    return layout.xShift?.[variantIndex] || 0;
+  };
+
+  const recyclePositions = (layout, direction) => {
+    const viewportWidth = showcase.clientWidth || window.innerWidth;
+    const overscanBase = layout.fadeBuffer * 1.4;
+    let guard = 0;
+
+    while(guard < cards.length * 4){
+      let candidateIndex = -1;
+
+      if(direction <= 0){
+        let candidateRight = Infinity;
+
+        motion.positions.forEach((position, index) => {
+          const cardWidth = cards[index]?.offsetWidth || 320;
+          const overscan = Math.max(overscanBase, cardWidth * 0.52);
+          const shiftedX = position + getShiftForIndex(layout, index);
+          const rightEdge = shiftedX + cardWidth;
+
+          if(rightEdge < -overscan && rightEdge < candidateRight){
+            candidateRight = rightEdge;
+            candidateIndex = index;
+          }
+        });
+
+        if(candidateIndex === -1) break;
+
+        const maxShiftedX = Math.max(...motion.positions.map((position, index) => position + getShiftForIndex(layout, index)));
+        motion.positions[candidateIndex] = maxShiftedX + layout.step - getShiftForIndex(layout, candidateIndex);
+        guard += 1;
+        continue;
+      }
+
+      let candidateLeft = -Infinity;
+
+      motion.positions.forEach((position, index) => {
+        const cardWidth = cards[index]?.offsetWidth || 320;
+        const overscan = Math.max(overscanBase, cardWidth * 0.52);
+        const shiftedX = position + getShiftForIndex(layout, index);
+
+        if(shiftedX > viewportWidth + overscan && shiftedX > candidateLeft){
+          candidateLeft = shiftedX;
+          candidateIndex = index;
+        }
+      });
+
+      if(candidateIndex === -1) break;
+
+      const minShiftedX = Math.min(...motion.positions.map((position, index) => position + getShiftForIndex(layout, index)));
+      motion.positions[candidateIndex] = minShiftedX - layout.step - getShiftForIndex(layout, candidateIndex);
+      guard += 1;
+    }
+  };
+
+  const advancePositions = (deltaX) => {
+    const layout = ensurePositions();
+    motion.positions = motion.positions.map((position) => position + deltaX);
+    recyclePositions(layout, deltaX);
+    return layout;
+  };
+
+  const getCardState = (index, layout = ensurePositions()) => {
+    const variantIndex = index % layout.y.length;
+    const scale = layout.scale[variantIndex] || 1;
+    const cardWidth = cards[index]?.offsetWidth || 320;
+    const viewportWidth = showcase.clientWidth || window.innerWidth;
+    const shiftedX = (motion.positions[index] || 0) + getShiftForIndex(layout, index);
+
+    return {
+      x: shiftedX,
+      y: layout.y[variantIndex] || 0,
+      scale,
+      opacity: getEdgeOpacity(shiftedX, cardWidth, viewportWidth, layout.fadeBuffer),
+      zIndex: layout.z[variantIndex] || 1,
+      rotation: (baseRotations[index] || 0) + (motion.tilt * (0.55 + (scale * 0.45)))
+    };
+  };
+
+  const applyCardState = (card, state) => {
+    if(hasGsap){
+      gsap.set(card, {
+        x: state.x,
+        y: state.y,
+        scale: state.scale,
+        rotation: state.rotation,
+        zIndex: state.zIndex,
+        autoAlpha: state.opacity
+      });
+      return;
+    }
+
+    card.style.opacity = String(state.opacity);
+    card.style.zIndex = String(state.zIndex);
+    card.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) rotate(${state.rotation}deg) scale(${state.scale})`;
+  };
+
+  const renderCarousel = () => {
+    const layout = ensurePositions();
+    motion.tilt += (motion.tiltTarget - motion.tilt) * (motion.pointerActive ? 0.22 : 0.12);
+
+    cards.forEach((card, index) => {
+      const state = getCardState(index, layout);
+      applyCardState(card, {
+        ...state,
+        opacity: motion.revealed ? state.opacity : 0
+      });
+    });
+  };
+
+  const stopTicker = () => {
+    if(!motion.tickerActive || !hasGsap) return;
+    gsap.ticker.remove(runInertia);
+    motion.tickerActive = false;
+  };
+
+  const runInertia = () => {
+    if(!motion.revealed){
+      return;
+    }
+
+    if(motion.pointerActive){
+      renderCarousel();
+      return;
+    }
+
+    advancePositions(getDriftSpeed() + motion.velocityX);
+    motion.velocityX *= 0.94;
+    renderCarousel();
+
+    if(Math.abs(motion.velocityX) < 0.02){
+      motion.velocityX = 0;
+    }
+  };
+
+  const startTicker = () => {
+    if(!hasGsap || motion.tickerActive) return;
+    motion.tickerActive = true;
+    gsap.ticker.add(runInertia);
+  };
+
+  const reveal = () => {
+    if(motion.revealed) return;
+    motion.revealed = true;
+
+    if(!hasGsap){
+      ensurePositions();
+      renderCarousel();
+      return;
+    }
+
+    cards.forEach((card, index) => {
+      const state = getCardState(index, ensurePositions());
+      gsap.fromTo(card, {
+        autoAlpha: 0,
+        x: state.x - 36,
+        y: state.y + 28,
+        scale: state.scale * 0.92,
+        rotation: state.rotation,
+        zIndex: state.zIndex
+      }, {
+        autoAlpha: state.opacity,
+        x: state.x,
+        y: state.y,
+        scale: state.scale,
+        rotation: state.rotation,
+        zIndex: state.zIndex,
+        duration: 0.95,
+        ease: 'power3.out',
+        delay: index * 0.08
+      });
+    });
+
+    gsap.delayedCall(1.18, startTicker);
+  };
+
+  if(!hasGsap){
+    renderCarousel();
+    return;
+  }
+
+  gsap.set(cards, {
+    autoAlpha: 0,
+    x: 0,
+    y: 0,
+    scale: 1,
+    rotation: (index) => baseRotations[index] || 0,
+    transformOrigin: '50% 50%'
+  });
+
+  if(reduceMotion){
+    motion.revealed = true;
+    ensurePositions();
+    cards.forEach((card, index) => {
+      const state = getCardState(index);
+      applyCardState(card, { ...state, opacity: 1 });
+    });
+    return;
+  }
+
+  const onPointerDown = (event) => {
+    if(!finePointer.matches && event.pointerType === 'mouse') return;
+    motion.pointerActive = true;
+    motion.lastX = event.clientX;
+    motion.lastTime = performance.now();
+    showcase.classList.add('is-dragging');
+    showcase.setPointerCapture?.(event.pointerId);
+  };
+
+  const onPointerMove = (event) => {
+    if(!motion.pointerActive) return;
+    const now = performance.now();
+    const dt = Math.max(now - motion.lastTime, 16);
+    const dx = event.clientX - motion.lastX;
+    const factor = 16 / dt;
+
+    advancePositions(dx);
+    motion.velocityX = dx * factor * 0.85;
+    motion.tiltTarget = clamp(dx * factor * 0.42, -5.5, 5.5);
+    motion.lastX = event.clientX;
+    motion.lastTime = now;
+    renderCarousel();
+  };
+
+  const releasePointer = (event) => {
+    if(!motion.pointerActive) return;
+    motion.pointerActive = false;
+    showcase.classList.remove('is-dragging');
+    if(typeof event?.pointerId === 'number'){
+      showcase.releasePointerCapture?.(event.pointerId);
+    }
+    motion.tiltTarget = 0;
+    startTicker();
+  };
+
+  showcase.addEventListener('pointerdown', onPointerDown);
+  showcase.addEventListener('pointermove', onPointerMove);
+  showcase.addEventListener('pointerup', releasePointer);
+  showcase.addEventListener('pointercancel', releasePointer);
+  showcase.addEventListener('lostpointercapture', releasePointer);
+  window.addEventListener('resize', () => {
+    ensurePositions(true);
+    renderCarousel();
+  }, { passive: true });
+
+  if(hasScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top 76%',
+      once: true,
+      onEnter: reveal
+    });
+    ensurePositions();
+    renderCarousel();
+    return;
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if(!entry.isIntersecting) return;
+      io.disconnect();
+      reveal();
+    });
+  }, { threshold: 0.18 });
+
+  ensurePositions();
+  renderCarousel();
+  io.observe(section);
 })();
 
 
