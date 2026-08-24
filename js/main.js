@@ -259,6 +259,7 @@ const BRACH_I18N = {
       copy: 'Pronto para dar o próximo passo? Junte-se a nós agora e comece a transformar sua visão em realidade com suporte especializado.'
     },
     feedbacks: {
+      kicker: 'O que nossos clientes dizem',
       title: 'Depoimentos',
       aria: 'Carrossel de feedbacks de clientes',
       items: [
@@ -535,6 +536,7 @@ const BRACH_I18N = {
       copy: 'Ready for the next step? Join us now and start turning your vision into reality with specialized support.'
     },
     feedbacks: {
+      kicker: 'What our clients say',
       title: 'Testimonials',
       aria: 'Client feedback carousel',
       items: [
@@ -811,6 +813,7 @@ const BRACH_I18N = {
       copy: '¿Listo para dar el siguiente paso? Únete a nosotros ahora y empieza a transformar tu visión en realidad con apoyo especializado.'
     },
     feedbacks: {
+      kicker: 'Lo que dicen nuestros clientes',
       title: 'Testimonios',
       aria: 'Carrusel de feedbacks de clientes',
       items: [
@@ -975,6 +978,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   const feedbackCards = Array.from(document.querySelectorAll('[data-feedback-card]'));
   const bottomBridgeLines = Array.from(document.querySelectorAll('.brand-bridge--postcases .brand-bridge__line'));
   const bottomBridgeCopy = document.querySelector('.brand-bridge--postcases .brand-bridge__copy');
+  const feedbackKicker = document.getElementById('feedbackKicker');
   const feedbackTitle = document.querySelector('.feedback-title');
   const contactKicker = document.querySelector('.contact-kicker');
   const contactTitleLines = Array.from(document.querySelectorAll('.contact-title span'));
@@ -1031,6 +1035,9 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     const items = locale.feedbacks && Array.isArray(locale.feedbacks.items) ? locale.feedbacks.items : [];
     const cards = Array.from(document.querySelectorAll('[data-feedback-card]'));
     if(!items.length || !cards.length) return;
+    if(feedbackKicker && locale.feedbacks?.kicker){
+      feedbackKicker.textContent = locale.feedbacks.kicker;
+    }
     if(feedbackTitle && locale.feedbacks?.title){
       feedbackTitle.textContent = locale.feedbacks.title;
     }
@@ -3866,7 +3873,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   const hasGsap = Boolean(window.gsap);
   const hasScrollTrigger = Boolean(window.ScrollTrigger);
   const finePointer = window.matchMedia('(hover:hover) and (pointer:fine)');
-  const baseRotations = cards.map((card) => parseFloat(card.dataset.feedbackRotation || '0'));
+  const baseRotations = cards.map(() => 0);
   const motion = {
     revealed: false,
     pointerActive: false,
@@ -3894,47 +3901,47 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 
     if(window.innerWidth <= 560){
       return {
-        start: width * -0.3,
-        step: width * 0.39,
-        y: [height * 0.2, height * 0.48, height * 0.24, height * 0.52, height * 0.22, height * 0.46, height * 0.26, height * 0.5],
-        xShift: [-12, 10, -8, 12, -10, 8, -6, 10],
-        scale: [0.9, 0.84, 1, 0.88, 0.92, 0.86, 0.94, 0.88],
-        z: [3, 2, 5, 2, 4, 2, 3, 2],
+        start: width * -0.34,
+        step: width * 0.46,
+        y: Array(8).fill(height * 0.31),
+        xShift: Array(8).fill(0),
+        scale: Array(8).fill(0.96),
+        z: Array(8).fill(3),
         fadeBuffer: width * 0.22
       };
     }
 
     if(window.innerWidth <= 900){
       return {
-        start: width * -0.24,
-        step: width * 0.345,
-        y: [height * 0.16, height * 0.42, height * 0.2, height * 0.48, height * 0.18, height * 0.4, height * 0.22, height * 0.46],
-        xShift: [-14, 12, -10, 14, -12, 10, -8, 12],
-        scale: [0.9, 0.86, 1, 0.9, 0.92, 0.88, 0.94, 0.9],
-        z: [3, 2, 5, 2, 4, 2, 3, 2],
+        start: width * -0.28,
+        step: width * 0.38,
+        y: Array(8).fill(height * 0.28),
+        xShift: Array(8).fill(0),
+        scale: Array(8).fill(0.98),
+        z: Array(8).fill(3),
         fadeBuffer: width * 0.2
       };
     }
 
     if(window.innerWidth <= 1180){
       return {
-        start: width * -0.2,
-        step: width * 0.25,
-        y: [height * 0.12, height * 0.35, height * 0.16, height * 0.4, height * 0.14, height * 0.33, height * 0.19, height * 0.37],
-        xShift: [-26, 18, -12, 24, -8, 20, -4, 16],
-        scale: [0.88, 0.96, 1, 0.93, 0.9, 0.95, 0.89, 0.91],
-        z: [2, 4, 5, 2, 3, 4, 2, 1],
+        start: width * -0.24,
+        step: width * 0.31,
+        y: Array(8).fill(height * 0.24),
+        xShift: Array(8).fill(0),
+        scale: Array(8).fill(1),
+        z: Array(8).fill(3),
         fadeBuffer: width * 0.18
       };
     }
 
     return {
-      start: width * -0.18,
-      step: width * 0.232,
-      y: [height * 0.08, height * 0.4, height * 0.12, height * 0.44, height * 0.1, height * 0.37, height * 0.15, height * 0.41],
-      xShift: [-26, 18, -10, 22, -8, 16, -4, 12],
-      scale: [0.9, 0.97, 1, 0.94, 0.91, 0.95, 0.89, 0.92],
-      z: [2, 4, 5, 2, 3, 4, 2, 1],
+      start: width * -0.22,
+      step: width * 0.27,
+      y: Array(8).fill(height * 0.22),
+      xShift: Array(8).fill(0),
+      scale: Array(8).fill(1),
+      z: Array(8).fill(3),
       fadeBuffer: width * 0.17
     };
   };
@@ -4043,6 +4050,11 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     const cardWidth = cards[index]?.offsetWidth || 320;
     const viewportWidth = showcase.clientWidth || window.innerWidth;
     const shiftedX = (motion.positions[index] || 0) + getShiftForIndex(layout, index);
+    const staggerMap = [-0.9, -0.35, 0.15, 0.7, -0.6, -0.08, 0.3, 0.82];
+    const stagger = staggerMap[index % staggerMap.length];
+    const tiltAmount = Math.abs(motion.tilt);
+    const direction = Math.sign(motion.tilt || motion.tiltTarget || 0);
+    const directionalTilt = direction === 0 ? 0 : (motion.tilt * 0.92) + (stagger * tiltAmount * 0.52);
 
     return {
       x: shiftedX,
@@ -4050,7 +4062,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       scale,
       opacity: getEdgeOpacity(shiftedX, cardWidth, viewportWidth, layout.fadeBuffer),
       zIndex: layout.z[variantIndex] || 1,
-      rotation: (baseRotations[index] || 0) + (motion.tilt * (0.55 + (scale * 0.45)))
+      rotation: (baseRotations[index] || 0) + directionalTilt
     };
   };
 
@@ -4074,7 +4086,9 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 
   const renderCarousel = () => {
     const layout = ensurePositions();
-    motion.tilt += (motion.tiltTarget - motion.tilt) * (motion.pointerActive ? 0.22 : 0.12);
+    const tiltDivisor = window.innerWidth <= 560 ? 7.2 : window.innerWidth <= 900 ? 8.2 : 9.8;
+    motion.tiltTarget = motion.pointerActive ? clamp(motion.velocityX / tiltDivisor, -8.2, 8.2) : 0;
+    motion.tilt += (motion.tiltTarget - motion.tilt) * (motion.pointerActive ? 0.2 : 0.12);
 
     cards.forEach((card, index) => {
       const state = getCardState(index, layout);
@@ -4193,7 +4207,6 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 
     advancePositions(dx);
     motion.velocityX = dx * factor * 0.85;
-    motion.tiltTarget = clamp(dx * factor * 0.42, -5.5, 5.5);
     motion.lastX = event.clientX;
     motion.lastTime = now;
     renderCarousel();
@@ -4206,7 +4219,6 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     if(typeof event?.pointerId === 'number'){
       showcase.releasePointerCapture?.(event.pointerId);
     }
-    motion.tiltTarget = 0;
     startTicker();
   };
 
