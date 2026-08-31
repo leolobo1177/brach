@@ -158,7 +158,7 @@ const BRACH_I18N = {
             order: '01',
             tier: 'Serviço Total',
             category: 'Branding Marca',
-            title: 'Branding Total',
+            title: 'Branding de Marca',
             copy: 'Sistema visual completo para marcas que precisam crescer com memorabilidade, consistência e presença em todos os pontos.',
             items: [
               'Logo principal e variações para diferentes usos',
@@ -440,7 +440,7 @@ const BRACH_I18N = {
             order: '01',
             tier: 'Complete Service',
             category: 'Brand Identity',
-            title: 'Complete Branding',
+            title: 'Brand Identity',
             copy: 'A complete visual system for brands that need to grow with memorability, consistency, and presence across every touchpoint.',
             items: [
               'Primary logo and variations for different uses',
@@ -722,7 +722,7 @@ const BRACH_I18N = {
             order: '01',
             tier: 'Servicio Completo',
             category: 'Identidad de Marca',
-            title: 'Branding Completo',
+            title: 'Identidad de Marca',
             copy: 'Un sistema visual completo para marcas que necesitan crecer con memorabilidad, consistencia y presencia en todos los puntos de contacto.',
             items: [
               'Logo principal y variaciones para diferentes usos',
