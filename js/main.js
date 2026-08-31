@@ -43,6 +43,24 @@ const BRACH_BRAND_MEDIA = [
     sectionStart: 'rgba(159, 98, 33, 0.28)',
     sectionEnd: 'rgba(78, 34, 8, 0.14)',
     glow: 'rgba(255, 174, 94, 0.36)'
+  },
+  {
+    logo: './assets/hero-logos/morfira.png',
+    alt: 'Morfira Tatto',
+    cardStart: '#b90101',
+    cardEnd: '#b90101',
+    sectionStart: 'rgba(185, 1, 1, 0.28)',
+    sectionEnd: 'rgba(96, 0, 0, 0.14)',
+    glow: 'rgba(255, 88, 88, 0.32)'
+  },
+  {
+    logo: './assets/hero-logos/ainda-assim.png',
+    alt: 'Ainda Assim, Aqui Podcast',
+    cardStart: '#FDE5B9',
+    cardEnd: '#FDE5B9',
+    sectionStart: 'rgba(253, 229, 185, 0.26)',
+    sectionEnd: 'rgba(126, 69, 5, 0.14)',
+    glow: 'rgba(253, 229, 185, 0.38)'
   }
 ];
 
@@ -134,6 +152,16 @@ const BRACH_I18N = {
           tag: 'Mentoria • Estratégia',
           name: 'Fabiane Costa',
           copy: 'Identidade desenhada para comunicar direção, experiência e consistência em uma marca guiada por conhecimento e posicionamento.'
+        },
+        {
+          tag: 'Tatuagem • Identidade',
+          name: 'Morfira Tatto',
+          copy: 'Marca criada para transmitir presença forte, atmosfera autoral e uma identidade visual de impacto.'
+        },
+        {
+          tag: 'Podcast • Identidade',
+          name: 'Ainda Assim, Aqui',
+          copy: 'Identidade desenvolvida para um podcast que une escuta, repertório e conversas que permanecem.'
         }
       ]
     },
@@ -416,6 +444,16 @@ const BRACH_I18N = {
           tag: 'Mentorship • Strategy',
           name: 'Fabiane Costa',
           copy: 'An identity built to communicate direction, experience, and consistency in a brand guided by knowledge and positioning.'
+        },
+        {
+          tag: 'Tattoo • Identity',
+          name: 'Morfira Tatto',
+          copy: 'A brand created to express strong presence, an authorial atmosphere, and a high-impact visual identity.'
+        },
+        {
+          tag: 'Podcast • Identity',
+          name: 'Ainda Assim, Aqui',
+          copy: 'An identity created for a podcast that brings together listening, repertoire, and conversations that stay with you.'
         }
       ]
     },
@@ -698,6 +736,16 @@ const BRACH_I18N = {
           tag: 'Mentoría • Estrategia',
           name: 'Fabiane Costa',
           copy: 'Una identidad diseñada para comunicar dirección, experiencia y consistencia en una marca guiada por conocimiento y posicionamiento.'
+        },
+        {
+          tag: 'Tatuaje • Identidad',
+          name: 'Morfira Tatto',
+          copy: 'Marca creada para transmitir presencia fuerte, una atmósfera autoral y una identidad visual de alto impacto.'
+        },
+        {
+          tag: 'Podcast • Identidad',
+          name: 'Ainda Assim, Aqui',
+          copy: 'Identidad desarrollada para un podcast que une escucha, repertorio y conversaciones que permanecen.'
         }
       ]
     },

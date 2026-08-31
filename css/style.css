@@ -1119,6 +1119,18 @@ body.is-loading footer{
   height:clamp(52px, 4.6vw, 92px);
   object-fit:contain;
 }
+.hero-banner__logo[src*="morfira.png"]{
+  width:clamp(88px, 7vw, 128px);
+  height:clamp(52px, 4.6vw, 92px);
+  object-fit:cover;
+  object-position:center;
+}
+.hero-banner__logo[src*="ainda-assim-carousel.png"]{
+  width:clamp(116px, 8.4vw, 154px);
+  height:clamp(56px, 5.1vw, 98px);
+  object-fit:cover;
+  object-position:center;
+}
 .hero-banner__title{
   margin:0;
   display:flex;
@@ -1784,11 +1796,15 @@ section.parallax-section#servicos > p{
 .service-package.is-hidden{
   display: none;
 }
+.services-packages.is-single .service-package.is-hidden{
+  display: none;
+}
 .services-packages.is-single .service-package{
   min-height: 0;
 }
 .services-packages.is-single .service-package__body{
-  max-width: 920px;
+  width: 100%;
+  max-width: none;
 }
 .services-packages.is-single .service-package__list{
   display: grid;
@@ -1800,10 +1816,24 @@ section.parallax-section#servicos > p{
   display: none;
 }
 @media (min-width: 901px){
+  .services-packages.is-single .service-package{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .services-packages.is-single .service-package__toggle{
+    width: fit-content;
+    margin-bottom: 16px;
+  }
+  .services-packages.is-single .service-package__meta{
+    justify-content: flex-start;
+  }
   .services-packages.is-single .service-package__tier{
-    position: absolute;
-    top: 46px;
-    right: clamp(24px, 1.8vw, 34px);
+    position: static;
+  }
+  .services-packages.is-single .service-package__title,
+  .services-packages.is-single .service-package__copy{
+    max-width: min(100%, 760px);
   }
 }
 .service-package__meta{
@@ -4943,6 +4973,20 @@ section.team .team__link::after{
 }
 .brand-roster__card[data-brand-card="3"] .brand-roster__card-image{
   max-width:84%;
+}
+.brand-roster__card[data-brand-card="4"] .brand-roster__card-image{
+  width:74%;
+  max-width:74%;
+  max-height:82%;
+  aspect-ratio:1 / 1;
+  object-fit:cover;
+  object-position:center;
+}
+.brand-roster__card[data-brand-card="5"] .brand-roster__card-image{
+  width:82%;
+  max-width:82%;
+  max-height:82%;
+  object-fit:contain;
 }
 .brand-reveal{
   will-change:transform, opacity, filter;
