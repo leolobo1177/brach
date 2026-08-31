@@ -141,7 +141,7 @@ const BRACH_I18N = {
       kicker: 'O QUE ENTREGAMOS',
       title: 'SERVIÇOS',
       subtitle: 'Marcas com presença,<br>consistência e conversão.',
-      copy: 'Escolha a categoria e veja duas formas de entrega: um pacote Básico para estruturar a marca e um pacote Full para escalar com mais profundidade criativa e comercial.',
+      copy: 'Escolha a categoria e conheça as entregas pensadas para estruturar, fortalecer e fazer sua marca crescer.',
       tabsAria: 'Categorias de serviço',
       tabs: {
         branding: 'Branding Marca',
@@ -156,16 +156,21 @@ const BRACH_I18N = {
         branding: {
           basic: {
             order: '01',
+            tier: 'Serviço Total',
             category: 'Branding Marca',
-            title: 'Essencial',
-            copy: 'Base visual para organizar a marca, alinhar a presença e transmitir mais profissionalismo desde o primeiro contato.',
+            title: 'Branding Total',
+            copy: 'Sistema visual completo para marcas que precisam crescer com memorabilidade, consistência e presença em todos os pontos.',
             items: [
               'Logo principal e variações para diferentes usos',
               'Paleta, tipografia base e direção visual inicial',
               'Elementos de apoio para redes e materiais digitais',
-              'Arquivos organizados para aplicação do dia a dia'
+              'Arquivos organizados para aplicação do dia a dia',
+              'Logo, símbolo e assinaturas complementares',
+              'Paleta, tipografia e sistema gráfico mais profundo',
+              'Manual base com orientações de aplicação da marca',
+              'Templates iniciais para social media e peças de apoio'
             ],
-            foot: 'Uma estrutura enxuta para tirar a marca do improviso.'
+            foot: 'Uma entrega completa para estruturar a marca, consolidar presença e sustentar expansão.'
           },
           full: {
             order: '02',
@@ -418,7 +423,7 @@ const BRACH_I18N = {
       kicker: 'WHAT WE DELIVER',
       title: 'SERVICES',
       subtitle: 'Brands with presence,<br>consistency and conversion.',
-      copy: 'Choose the category and explore two delivery formats: a Basic package to structure the brand and a Full package to scale with greater creative and commercial depth.',
+      copy: 'Choose a category and explore the deliverables designed to structure, strengthen, and grow your brand.',
       tabsAria: 'Service categories',
       tabs: {
         branding: 'Brand Identity',
@@ -433,16 +438,21 @@ const BRACH_I18N = {
         branding: {
           basic: {
             order: '01',
+            tier: 'Complete Service',
             category: 'Brand Identity',
-            title: 'Essential',
-            copy: 'A visual foundation to organize the brand, align its presence, and communicate more professionalism from the very first touchpoint.',
+            title: 'Complete Branding',
+            copy: 'A complete visual system for brands that need to grow with memorability, consistency, and presence across every touchpoint.',
             items: [
               'Primary logo and variations for different uses',
               'Palette, base typography, and initial visual direction',
               'Support elements for social media and digital materials',
-              'Organized files for day-to-day application'
+              'Organized files for day-to-day application',
+              'Logo, symbol, and complementary signature variations',
+              'Palette, typography, and a deeper graphic system',
+              'A base guide with brand application directions',
+              'Starter templates for social media and support materials'
             ],
-            foot: 'A lean structure to take the brand out of improvisation.'
+            foot: 'A complete delivery to structure the brand, consolidate presence, and support expansion.'
           },
           full: {
             order: '02',
@@ -695,7 +705,7 @@ const BRACH_I18N = {
       kicker: 'LO QUE ENTREGAMOS',
       title: 'SERVICIOS',
       subtitle: 'Marcas con presencia,<br>consistencia y conversión.',
-      copy: 'Elige la categoría y conoce dos formatos de entrega: un paquete Básico para estructurar la marca y un paquete Full para escalar con más profundidad creativa y comercial.',
+      copy: 'Elige una categoría y conoce las entregas pensadas para estructurar, fortalecer y hacer crecer tu marca.',
       tabsAria: 'Categorías de servicio',
       tabs: {
         branding: 'Identidad de Marca',
@@ -710,16 +720,21 @@ const BRACH_I18N = {
         branding: {
           basic: {
             order: '01',
+            tier: 'Servicio Completo',
             category: 'Identidad de Marca',
-            title: 'Esencial',
-            copy: 'Una base visual para organizar la marca, alinear su presencia y transmitir más profesionalismo desde el primer contacto.',
+            title: 'Branding Completo',
+            copy: 'Un sistema visual completo para marcas que necesitan crecer con memorabilidad, consistencia y presencia en todos los puntos de contacto.',
             items: [
               'Logo principal y variaciones para diferentes usos',
               'Paleta, tipografía base y dirección visual inicial',
               'Elementos de apoyo para redes y materiales digitales',
-              'Archivos organizados para la aplicación diaria'
+              'Archivos organizados para la aplicación diaria',
+              'Logo, símbolo y firmas complementarias',
+              'Paleta, tipografía y sistema gráfico más profundo',
+              'Manual base con orientaciones de aplicación de la marca',
+              'Templates iniciales para social media y piezas de apoyo'
             ],
-            foot: 'Una estructura ligera para sacar a la marca de la improvisación.'
+            foot: 'Una entrega completa para estructurar la marca, consolidar presencia y sostener la expansión.'
           },
           full: {
             order: '02',
@@ -2433,6 +2448,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   if(!section) return;
 
   const cards = Array.from(section.querySelectorAll('.service-package[data-service-card]'));
+  const packages = section.querySelector('[data-services-packages]');
   const tabs = Array.from(section.querySelectorAll('.services-tab[data-service-tab]'));
   const revealItems = Array.from(section.querySelectorAll('.service-reveal'));
   const mobileCardsQuery = window.matchMedia ? window.matchMedia('(max-width: 900px)') : { matches: false };
@@ -2464,6 +2480,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     const copy = card.querySelector('[data-service-copy]');
     const list = card.querySelector('[data-service-list]');
     const foot = card.querySelector('[data-service-foot]');
+    const tier = card.querySelector('.service-package__tier');
 
     if(order) order.textContent = data.order;
     if(category) category.textContent = data.category;
@@ -2471,6 +2488,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     if(copy) copy.textContent = data.copy;
     if(list) createListItems(list, data.items);
     if(foot) foot.textContent = data.foot;
+    if(tier) tier.textContent = data.tier || getBrachLocale().services.tiers[card.dataset.serviceCard];
   }
 
   function setActiveTab(key){
@@ -2486,8 +2504,14 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     const current = normalizedServicesData[key];
     if(!current) return;
 
+    const isSingleBranding = key === 'branding';
+    packages?.classList.toggle('is-single', isSingleBranding);
+
     cards.forEach((card) => {
       const cardType = card.dataset.serviceCard;
+      const isHidden = isSingleBranding && cardType === 'full';
+      card.classList.toggle('is-hidden', isHidden);
+      card.setAttribute('aria-hidden', String(isHidden));
       const cardData = current[cardType];
       if(cardData) renderCard(card, cardData);
     });
@@ -2496,7 +2520,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   function syncCardExpansion(){
     const isMobile = mobileCardsQuery.matches;
 
-    cards.forEach((card) => {
+    cards.filter((card) => !card.classList.contains('is-hidden')).forEach((card) => {
       const toggle = card.querySelector('.service-package__toggle');
       if(!toggle) return;
 
@@ -2514,7 +2538,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   }
 
   function getCardMotionTargets(){
-    return cards.flatMap((card) => {
+    return cards.filter((card) => !card.classList.contains('is-hidden')).flatMap((card) => {
       const targets = [
         card.querySelector('.service-package__toggle'),
         card.querySelector('[data-service-category-label]'),

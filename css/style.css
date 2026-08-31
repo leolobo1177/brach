@@ -1713,6 +1713,9 @@ section.parallax-section#servicos > p{
   gap: clamp(18px, 1.5vw, 28px);
   align-items: stretch;
 }
+.services-packages.is-single{
+  grid-template-columns: minmax(0, 1fr);
+}
 
 .service-package{
   --package-accent: rgba(255,246,214,.9);
@@ -1777,6 +1780,20 @@ section.parallax-section#servicos > p{
   --package-bg-start: transparent;
   --package-bg-end: transparent;
   border-color: rgba(110,145,255,.22);
+}
+.service-package.is-hidden{
+  display: none;
+}
+.services-packages.is-single .service-package{
+  min-height: 0;
+}
+.services-packages.is-single .service-package__body{
+  max-width: 920px;
+}
+.services-packages.is-single .service-package__list{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(24px, 4vw, 72px);
 }
 .service-package__meta{
   display: flex;
@@ -5319,5 +5336,22 @@ section.team .team__link::after{
   .contact-card::before,
   .contact-card::after{
     display:none;
+  }
+}
+
+@media (max-width: 900px){
+  .services-packages.is-single .service-package__list{
+    grid-template-columns: 1fr;
+  }
+}
+/* iPad/tablet portrait: keeps the fixed navigation and hero clear of the top edge. */
+@media (min-width: 761px) and (max-width: 1180px) and (orientation: portrait) and (hover: none) and (pointer: coarse){
+  .topbar{
+    height: 104px;
+    padding: 20px 26px 0;
+  }
+  .hero-banner{
+    min-height: calc(100svh - 88px);
+    padding: clamp(82px, 10vh, 128px) 0 32px;
   }
 }
