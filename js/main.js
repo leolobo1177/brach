@@ -2512,6 +2512,16 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       const isHidden = isSingleBranding && cardType === 'full';
       card.classList.toggle('is-hidden', isHidden);
       card.setAttribute('aria-hidden', String(isHidden));
+
+      if(!isHidden){
+        card.querySelectorAll('.service-package__toggle, [data-service-category-label], [data-service-title], [data-service-copy], [data-service-list], [data-service-foot]').forEach((target) => {
+          target.style.removeProperty('opacity');
+          target.style.removeProperty('visibility');
+          target.style.removeProperty('transform');
+          target.style.removeProperty('filter');
+        });
+      }
+
       const cardData = current[cardType];
       if(cardData) renderCard(card, cardData);
     });
