@@ -149,8 +149,8 @@ const BRACH_I18N = {
         web: 'Web'
       },
       tiers: {
-        basic: 'Serviço Básico',
-        full: 'Serviço Full'
+        basic: 'Plano Essencial',
+        full: 'Plano Completo'
       },
       cards: {
         branding: {
@@ -191,27 +191,27 @@ const BRACH_I18N = {
             order: '01',
             category: 'Social Mídia',
             title: 'Essencial',
-            copy: 'Pacote base para manter a marca ativa com frequência, identidade visual alinhada e uma comunicação mais clara no dia a dia.',
+            copy: 'Para marcas que precisam manter uma presença profissional, organizada e consistente nas redes sociais.',
             items: [
-              'Calendário editorial base para organizar os temas',
-              'Direção visual para feed, stories e peças recorrentes',
-              'Conteúdos pensados para constância e reconhecimento',
-              'Linha de publicação mais coerente com o posicionamento'
+              'Planejamento mensal de conteúdos alinhado aos objetivos da marca',
+              'Direção visual para manter o perfil reconhecível e coerente',
+              'Criação de peças para feed, stories e formatos recorrentes',
+              'Calendário editorial para garantir frequência nas publicações'
             ],
-            foot: 'Ideal para fortalecer a rotina de conteúdo com clareza.'
+            foot: 'Ideal para estruturar a presença digital e manter a marca ativa com consistência.'
           },
           full: {
             order: '02',
             category: 'Social Mídia',
             title: 'Completo',
-            copy: 'Entrega mais completa para marcas que querem unir frequência, criação estratégica e conteúdo com foco mais forte em relacionamento e conversão.',
+            copy: 'Para marcas que querem transformar as redes sociais em um canal estratégico de relacionamento, autoridade e vendas.',
             items: [
-              'Planejamento estratégico de conteúdo e campanhas',
-              'Direção criativa para formatos, quadros e lançamentos',
-              'Calendário aprofundado com narrativa mais inteligente',
-              'Peças voltadas para alcance, autoridade e vendas'
+              'Estratégia de conteúdo alinhada ao público e aos objetivos comerciais',
+              'Direção criativa para campanhas, quadros e lançamentos',
+              'Planejamento editorial com temas, formatos e narrativas integradas',
+              'Conteúdos pensados para ampliar alcance, conexão e conversão'
             ],
-            foot: 'Para ganhar intensidade, consistência e mais impacto comercial.'
+            foot: 'Ideal para marcas que buscam crescer com estratégia, personalidade e maior impacto comercial.'
           }
         },
         web: {
@@ -219,27 +219,27 @@ const BRACH_I18N = {
             order: '01',
             category: 'Web',
             title: 'Essencial',
-            copy: 'Landing page objetiva para apresentar a oferta com clareza, leitura fluida e base pronta para campanhas mais diretas.',
+            copy: 'Uma landing page estratégica para apresentar sua oferta com clareza, gerar interesse e conduzir o visitante até o contato.',
             items: [
-              'Estrutura estratégica e objetiva da página',
-              'Design responsivo com hierarquia clara de leitura',
-              'Blocos essenciais para oferta, prova e CTA',
-              'Base pronta para validar campanhas com rapidez'
+              'Estrutura objetiva com as seções essenciais da oferta',
+              'Design personalizado e responsivo para todos os dispositivos',
+              'Organização de benefícios, diferenciais, provas e chamadas para ação',
+              'Integração com formulário ou WhatsApp e otimização inicial para buscas'
             ],
-            foot: 'Boa para lançar ofertas e testar conversão com agilidade.'
+            foot: 'Ideal para divulgar serviços, validar ofertas e iniciar campanhas com agilidade.'
           },
           full: {
             order: '02',
             category: 'Web',
             title: 'Completo',
-            copy: 'Página mais completa, com ritmo visual, narrativa de venda e estrutura pensada para sustentar campanhas com mais ambição.',
+            copy: 'Uma experiência digital mais robusta, criada para valorizar a marca, sustentar campanhas e aumentar as oportunidades de conversão.',
             items: [
-              'Arquitetura completa da oferta com argumentos de venda',
-              'Blocos de prova, objeções, CTA e apoio comercial',
-              'Direção visual polida para fortalecer a percepção de valor',
-              'Experiência desenhada para campanha, captura e vendas'
+              'Arquitetura completa da página com uma jornada de navegação estratégica',
+              'Design exclusivo com animações e recursos visuais personalizados',
+              'Formulários, integrações, monitoramento e pontos de conversão',
+              'Otimização de SEO, AEO, desempenho e responsividade'
             ],
-            foot: 'Feita para campanhas mais fortes e com uma percepção mais premium.'
+            foot: 'Ideal para campanhas mais ambiciosas e marcas que buscam uma presença digital de alto nível.'
           }
         }
       }
@@ -431,8 +431,8 @@ const BRACH_I18N = {
         web: 'Web'
       },
       tiers: {
-        basic: 'Basic Service',
-        full: 'Full Service'
+        basic: 'Essential Plan',
+        full: 'Complete Plan'
       },
       cards: {
         branding: {
@@ -473,27 +473,27 @@ const BRACH_I18N = {
             order: '01',
             category: 'Social Media',
             title: 'Essential',
-            copy: 'A core package to keep the brand active with frequency, aligned visuals, and clearer day-to-day communication.',
+            copy: 'For brands that need to maintain a professional, organized, and consistent presence on social media.',
             items: [
-              'A base editorial calendar to organize themes',
-              'Visual direction for feed, stories, and recurring assets',
-              'Content planned for consistency and recognition',
-              'A publishing line that better matches the positioning'
+              'Monthly content planning aligned with the brand goals',
+              'Visual direction to keep the profile recognizable and consistent',
+              'Creation of assets for feed, stories, and recurring formats',
+              'Editorial calendar to ensure publishing consistency'
             ],
-            foot: 'Ideal for strengthening the content routine with clarity.'
+            foot: 'Ideal for structuring the digital presence and keeping the brand active with consistency.'
           },
           full: {
             order: '02',
             category: 'Social Media',
             title: 'Complete',
-            copy: 'A more complete delivery for brands that want to combine frequency, strategic creation, and content with a stronger focus on relationships and conversion.',
+            copy: 'For brands that want to turn social media into a strategic channel for relationships, authority, and sales.',
             items: [
-              'Strategic planning for content and campaigns',
-              'Creative direction for formats, series, and launches',
-              'A deeper calendar with a smarter narrative',
-              'Assets aimed at reach, authority, and sales'
+              'Content strategy aligned with the audience and commercial goals',
+              'Creative direction for campaigns, content series, and launches',
+              'Editorial planning with integrated themes, formats, and narratives',
+              'Content designed to expand reach, connection, and conversion'
             ],
-            foot: 'To gain intensity, consistency, and stronger commercial impact.'
+            foot: 'Ideal for brands looking to grow with strategy, personality, and stronger commercial impact.'
           }
         },
         web: {
@@ -501,27 +501,27 @@ const BRACH_I18N = {
             order: '01',
             category: 'Web',
             title: 'Essential',
-            copy: 'An objective landing page to present the offer clearly, with smooth reading and a ready base for more direct campaigns.',
+            copy: 'A strategic landing page to present your offer clearly, generate interest, and guide the visitor toward contact.',
             items: [
-              'Strategic and objective page structure',
-              'Responsive design with clear reading hierarchy',
-              'Essential blocks for offer, proof, and CTA',
-              'A ready base to validate campaigns quickly'
+              'Objective structure with the essential sections of the offer',
+              'Custom responsive design for all devices',
+              'Organization of benefits, differentiators, proof points, and calls to action',
+              'Integration with form or WhatsApp and initial search optimization'
             ],
-            foot: 'Great for launching offers and testing conversion fast.'
+            foot: 'Ideal for promoting services, validating offers, and launching campaigns quickly.'
           },
           full: {
             order: '02',
             category: 'Web',
             title: 'Complete',
-            copy: 'A fuller page with visual rhythm, sales narrative, and a structure designed to support more ambitious campaigns.',
+            copy: 'A more robust digital experience created to elevate the brand, support campaigns, and increase conversion opportunities.',
             items: [
-              'Complete offer architecture with sales arguments',
-              'Proof, objection-handling, CTA, and commercial support blocks',
-              'Polished visual direction to strengthen perceived value',
-              'An experience designed for campaigns, capture, and sales'
+              'Complete page architecture with a strategic navigation journey',
+              'Exclusive design with custom animations and visual features',
+              'Forms, integrations, monitoring, and conversion points',
+              'SEO, AEO, performance, and responsiveness optimization'
             ],
-            foot: 'Made for stronger campaigns and a more premium perception.'
+            foot: 'Ideal for more ambitious campaigns and brands seeking a high-level digital presence.'
           }
         }
       }
@@ -713,8 +713,8 @@ const BRACH_I18N = {
         web: 'Web'
       },
       tiers: {
-        basic: 'Servicio Básico',
-        full: 'Servicio Full'
+        basic: 'Plan Esencial',
+        full: 'Plan Completo'
       },
       cards: {
         branding: {
@@ -755,27 +755,27 @@ const BRACH_I18N = {
             order: '01',
             category: 'Social Media',
             title: 'Esencial',
-            copy: 'Un paquete base para mantener la marca activa con frecuencia, visual alineado y una comunicación más clara en el día a día.',
+            copy: 'Para marcas que necesitan mantener una presencia profesional, organizada y consistente en las redes sociales.',
             items: [
-              'Calendario editorial base para organizar los temas',
-              'Dirección visual para feed, stories y piezas recurrentes',
-              'Contenidos pensados para constancia y reconocimiento',
-              'Una línea de publicación más coherente con el posicionamiento'
+              'Planificación mensual de contenidos alineada con los objetivos de la marca',
+              'Dirección visual para mantener el perfil reconocible y coherente',
+              'Creación de piezas para feed, stories y formatos recurrentes',
+              'Calendario editorial para garantizar frecuencia en las publicaciones'
             ],
-            foot: 'Ideal para fortalecer la rutina de contenido con claridad.'
+            foot: 'Ideal para estructurar la presencia digital y mantener la marca activa con consistencia.'
           },
           full: {
             order: '02',
             category: 'Social Media',
             title: 'Completo',
-            copy: 'Una entrega más completa para marcas que quieren unir frecuencia, creación estratégica y contenido con un foco más fuerte en relación y conversión.',
+            copy: 'Para marcas que quieren transformar las redes sociales en un canal estratégico de relación, autoridad y ventas.',
             items: [
-              'Planificación estratégica de contenido y campañas',
-              'Dirección creativa para formatos, series y lanzamientos',
-              'Calendario más profundo con una narrativa más inteligente',
-              'Piezas orientadas a alcance, autoridad y ventas'
+              'Estrategia de contenido alineada con el público y los objetivos comerciales',
+              'Dirección creativa para campañas, secciones y lanzamientos',
+              'Planificación editorial con temas, formatos y narrativas integradas',
+              'Contenidos pensados para ampliar alcance, conexión y conversión'
             ],
-            foot: 'Para ganar intensidad, consistencia y más impacto comercial.'
+            foot: 'Ideal para marcas que buscan crecer con estrategia, personalidad y mayor impacto comercial.'
           }
         },
         web: {
@@ -783,27 +783,27 @@ const BRACH_I18N = {
             order: '01',
             category: 'Web',
             title: 'Esencial',
-            copy: 'Una landing page objetiva para presentar la oferta con claridad, lectura fluida y una base lista para campañas más directas.',
+            copy: 'Una landing page estratégica para presentar tu oferta con claridad, generar interés y conducir al visitante hasta el contacto.',
             items: [
-              'Estructura estratégica y objetiva de la página',
-              'Diseño responsivo con jerarquía clara de lectura',
-              'Bloques esenciales para oferta, prueba y CTA',
-              'Base lista para validar campañas con rapidez'
+              'Estructura objetiva con las secciones esenciales de la oferta',
+              'Diseño personalizado y responsive para todos los dispositivos',
+              'Organización de beneficios, diferenciales, pruebas y llamadas a la acción',
+              'Integración con formulario o WhatsApp y optimización inicial para búsquedas'
             ],
-            foot: 'Buena para lanzar ofertas y probar conversión con agilidad.'
+            foot: 'Ideal para divulgar servicios, validar ofertas e iniciar campañas con agilidad.'
           },
           full: {
             order: '02',
             category: 'Web',
             title: 'Completo',
-            copy: 'Una página más completa, con ritmo visual, narrativa de venta y estructura pensada para sostener campañas más ambiciosas.',
+            copy: 'Una experiencia digital más robusta, creada para valorizar la marca, sostener campañas y aumentar las oportunidades de conversión.',
             items: [
-              'Arquitectura completa de la oferta con argumentos de venta',
-              'Bloques de prueba, objeciones, CTA y apoyo comercial',
-              'Dirección visual pulida para fortalecer la percepción de valor',
-              'Experiencia diseñada para campañas, captación y ventas'
+              'Arquitectura completa de la página con una jornada de navegación estratégica',
+              'Diseño exclusivo con animaciones y recursos visuales personalizados',
+              'Formularios, integraciones, monitoreo y puntos de conversión',
+              'Optimización de SEO, AEO, rendimiento y responsividad'
             ],
-            foot: 'Hecha para campañas más fuertes y una percepción más premium.'
+            foot: 'Ideal para campañas más ambiciosas y marcas que buscan una presencia digital de alto nivel.'
           }
         }
       }
@@ -2609,6 +2609,13 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       return;
     }
 
+    cards.forEach((card) => {
+      card.querySelectorAll('.service-package__toggle, [data-service-category-label], [data-service-title], [data-service-copy], [data-service-list], [data-service-foot]').forEach((target) => {
+        gsap.killTweensOf(target);
+      });
+    });
+    if(glow) gsap.killTweensOf(glow);
+
     swapTimeline?.kill();
     swapTimeline = gsap.timeline({ defaults: { ease: 'power2.out' } });
 
@@ -2642,31 +2649,34 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
         card.dataset.expanded = mobileCardsQuery.matches ? 'false' : 'true';
       });
       syncCardExpansion();
-      gsap.set(getCardMotionTargets(), {
+      const incomingTargets = getCardMotionTargets();
+      gsap.set(incomingTargets, {
         autoAlpha: 0,
         y: -16,
         filter: 'blur(8px)'
       });
       animateHeadShift(headTopBeforeSwap);
+      if(incomingTargets.length){
+        gsap.to(incomingTargets, {
+          autoAlpha: 1,
+          y: 0,
+          filter: 'blur(0px)',
+          duration: 0.58,
+          stagger: 0.016,
+          ease: 'power3.out',
+          overwrite: 'auto'
+        });
+      }
+      if(glow){
+        gsap.to(glow, {
+          autoAlpha: 1,
+          scale: 1,
+          duration: 0.64,
+          ease: 'power3.out',
+          overwrite: 'auto'
+        });
+      }
     });
-
-    swapTimeline.to(getCardMotionTargets(), {
-      autoAlpha: 1,
-      y: 0,
-      filter: 'blur(0px)',
-      duration: 0.58,
-      stagger: 0.016,
-      ease: 'power3.out'
-    }, '+=0.02');
-
-    if(glow){
-      swapTimeline.to(glow, {
-        autoAlpha: 1,
-        scale: 1,
-        duration: 0.64,
-        ease: 'power3.out'
-      }, '<');
-    }
   }
 
   applyCategory(activeKey, true);
