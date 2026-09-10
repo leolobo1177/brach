@@ -5035,11 +5035,7 @@ section.team .team__link::after{
     font-size:12px;
   }
   .brand-roster__title{
-    width:100%;
-    font-size:clamp(24px, 6.7vw, 34px);
-    max-width:18ch;
-    white-space:normal;
-    line-height:.96;
+    display:none;
   }
   .brand-roster__stage{
     min-height:320px;
