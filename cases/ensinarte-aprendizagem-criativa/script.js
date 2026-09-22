@@ -97,6 +97,71 @@
     ]
   }
 };
+  const talk = document.querySelector('.project-talk');
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let revealObserver;
+  let revealTween;
+  let revealNow = () => {};
+
+  function prepareTalkReveal() {
+    if (!talk) return;
+    revealObserver?.disconnect();
+    revealTween?.kill();
+    const label = talk.querySelector('[data-case-text="cta"]');
+    const text = label.textContent;
+    talk.setAttribute('aria-label', text);
+    label.setAttribute('aria-hidden', 'true');
+    label.replaceChildren();
+    let letterIndex = 0;
+    text.split(' ').forEach((word, index) => {
+      if (index) label.append(document.createTextNode(' '));
+      const wordNode = document.createElement('span');
+      wordNode.className = 'project-talk__word';
+      Array.from(word).forEach(character => {
+        const letter = document.createElement('span');
+        letter.className = 'project-talk__letter';
+        letter.style.setProperty('--i', letterIndex++);
+        const glyph = document.createElement('span');
+        glyph.className = 'project-talk__glyph';
+        glyph.textContent = character;
+        letter.append(glyph);
+        wordNode.append(letter);
+      });
+      label.append(wordNode);
+    });
+    const letters = label.querySelectorAll('.project-talk__letter');
+    if (motionPreference.matches || !window.gsap || !('IntersectionObserver' in window)) {
+      revealNow = () => {};
+      return;
+    }
+    // Match the home hero's blur, timing and stagger, entering from below.
+    window.gsap.set(letters, {
+      yPercent: 112, autoAlpha: 0, filter: 'blur(14px)', transformOrigin: 'center bottom'
+    });
+    let revealed = false;
+    revealNow = (immediate = false) => {
+      if (revealed) return;
+      revealed = true;
+      revealObserver?.disconnect();
+      revealTween = window.gsap.to(letters, {
+        yPercent: 0, autoAlpha: 1, filter: 'blur(0px)',
+        duration: immediate ? 0 : 1.18, stagger: immediate ? 0 : 0.1,
+        ease: 'power3.out'
+      });
+    };
+    revealObserver = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) revealNow();
+    }, { threshold: 0.2 });
+    revealObserver.observe(talk);
+    if (document.activeElement === talk) revealNow(true);
+  }
+  talk?.addEventListener('focus', () => revealNow(true));
+  motionPreference.addEventListener('change', () => {
+    const label = talk?.querySelector('[data-case-text="cta"]');
+    if (label) label.textContent = talk.getAttribute('aria-label');
+    prepareTalkReveal();
+  });
+
   function render(language) {
     const text = translations[language] || translations['pt-BR'];
     document.querySelectorAll('[data-case-text]').forEach(node => {
@@ -106,6 +171,7 @@
     document.querySelectorAll('.project-gallery img').forEach((node, i) => { node.alt = text.alts[i]; });
     document.querySelector('.project-gallery').setAttribute('aria-label', text.gallery);
     document.querySelector('.project-tags').setAttribute('aria-label', language === 'en' ? 'Services' : language === 'es' ? 'Servicios' : 'Serviços');
+    prepareTalkReveal();
   }
   render(window.getBrachLanguage ? window.getBrachLanguage() : 'pt-BR');
   document.addEventListener('brach:languagechange', event => render(event.detail?.language));
