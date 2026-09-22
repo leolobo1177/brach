@@ -63,3 +63,39 @@ body.project-case-page section.project-story { background:none; border:0; box-sh
  .project-back { margin-bottom:24px; }
  .project-gallery { gap:12px; }
 }
+
+/* Reveal the project on entry without hiding content behind a JS dependency. */
+@media (prefers-reduced-motion: no-preference) {
+ .project-back,
+ .project-eyebrow,
+ .project-copy h1,
+ .project-subtitle,
+ .project-story,
+ .project-narrative > small,
+ .project-tags {
+  animation: project-info-enter 1.15s cubic-bezier(.16,1,.3,1) backwards;
+  animation-delay: var(--project-enter-delay, 0s);
+ }
+ .project-back { --project-enter-delay: .04s; }
+ .project-eyebrow { --project-enter-delay: .1s; }
+ .project-copy h1 { --project-enter-delay: .18s; }
+ .project-subtitle { --project-enter-delay: .26s; }
+ .project-story:nth-child(1) { --project-enter-delay: .34s; }
+ .project-story:nth-child(2) { --project-enter-delay: .44s; }
+ .project-story:nth-child(3) { --project-enter-delay: .54s; }
+ .project-narrative > small { --project-enter-delay: .6s; }
+ .project-tags { --project-enter-delay: .66s; }
+ .project-gallery {
+  animation: project-image-enter 1.4s cubic-bezier(.16,1,.3,1) .18s backwards;
+ }
+ /* Keyboard navigation should never focus an invisible link. */
+ .project-back:focus-visible { animation: none; }
+}
+@keyframes project-info-enter {
+ from { opacity:0; transform:translate3d(0,22px,0); filter:blur(3px); }
+ to { transform:translate3d(0,0,0); filter:blur(0); }
+}
+@keyframes project-image-enter {
+ from { opacity:0; transform:translate3d(0,28px,0) scale(.985); }
+ to { opacity:1; transform:translate3d(0,0,0) scale(1); }
+}
