@@ -1422,6 +1422,32 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   applyLanguage(activeLanguage);
 })();
 
+// Restore incoming project links after the loader releases the page layout.
+(() => {
+  const hash = window.location.hash;
+  if (!['#trabalhos', '#contato'].includes(hash)) return;
+  let cancelled = false;
+  let queued = false;
+  const cancel = () => { cancelled = true; };
+  window.addEventListener('wheel', cancel, { once: true, passive: true });
+  window.addEventListener('touchstart', cancel, { once: true, passive: true });
+  window.addEventListener('keydown', cancel, { once: true });
+  function restore() {
+    if (queued || cancelled || document.readyState !== 'complete' ||
+        document.body.classList.contains('is-loading')) return;
+    queued = true;
+    Promise.resolve(document.fonts?.ready).then(() => {
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        if (cancelled || window.location.hash !== hash) return;
+        document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'instant', block: 'start' });
+      }));
+    });
+  }
+  window.addEventListener('load', restore, { once: true });
+  document.addEventListener('brach:loadercomplete', restore, { once: true });
+  restore();
+})();
+
 // Page loader
 (() => {
   const loader = document.getElementById('pageLoader');

@@ -21,15 +21,18 @@
     "gallery": "Galeria do projeto Ensinarte",
     "next": "Sua marca pode ser a próxima.",
     "alts": [
-      "Identidade Ensinarte com Celina e Axol",
-      "Personagem Celina",
-      "Mascote Axol",
-      "Assinatura completa da marca",
-      "Logo principal Ensinarte",
-      "Variações do logo",
-      "Identidade aplicada ao Instagram",
-      "Aplicação da identidade em ecobag",
-      "Sistema visual e aplicações"
+      "Identidade principal Ensinarte com Celina e Axol",
+      "Conceito da marca Ensinarte",
+      "Paleta de cores da identidade Ensinarte",
+      "Tipografia e desenvolvimento dos personagens Ensinarte",
+      "Construção da personagem Celina",
+      "Construção do mascote Axol",
+      "Elementos e significados da marca Ensinarte",
+      "Variações da assinatura Ensinarte",
+      "Identidade Ensinarte aplicada ao Instagram",
+      "Sistema visual da Ensinarte aplicado a conteúdos",
+      "Cartões de visita da Ensinarte",
+      "Ecobag com grafismos da identidade Ensinarte"
     ]
   },
   "en": {
@@ -53,15 +56,18 @@
     "gallery": "Ensinarte project gallery",
     "next": "Your brand could be next.",
     "alts": [
-      "Ensinarte identity with Celina and Axol",
-      "Celina character",
-      "Axol mascot",
-      "Complete brand signature",
-      "Ensinarte primary logo",
-      "Logo variations",
-      "Instagram brand application",
-      "Tote bag brand application",
-      "Visual system and applications"
+      "Primary Ensinarte identity with Celina and Axol",
+      "Ensinarte brand concept",
+      "Ensinarte identity color palette",
+      "Typography and Ensinarte character development",
+      "Celina character construction",
+      "Axol mascot construction",
+      "Ensinarte brand elements and meanings",
+      "Ensinarte signature variations",
+      "Ensinarte identity applied to Instagram",
+      "Ensinarte visual system applied to content",
+      "Ensinarte business cards",
+      "Tote bag with Ensinarte identity graphics"
     ]
   },
   "es": {
@@ -85,15 +91,18 @@
     "gallery": "Galería del proyecto Ensinarte",
     "next": "Tu marca puede ser la próxima.",
     "alts": [
-      "Identidad Ensinarte con Celina y Axol",
-      "Personaje Celina",
-      "Mascota Axol",
-      "Firma completa de la marca",
-      "Logo principal Ensinarte",
-      "Variaciones del logo",
-      "Identidad aplicada a Instagram",
-      "Identidad aplicada a una bolsa",
-      "Sistema visual y aplicaciones"
+      "Identidad principal Ensinarte con Celina y Axol",
+      "Concepto de la marca Ensinarte",
+      "Paleta de colores de la identidad Ensinarte",
+      "Tipografía y desarrollo de los personajes Ensinarte",
+      "Construcción del personaje Celina",
+      "Construcción de la mascota Axol",
+      "Elementos y significados de la marca Ensinarte",
+      "Variaciones de la firma Ensinarte",
+      "Identidad Ensinarte aplicada a Instagram",
+      "Sistema visual de Ensinarte aplicado a contenidos",
+      "Tarjetas de presentación de Ensinarte",
+      "Bolsa con gráficos de la identidad Ensinarte"
     ]
   }
 };

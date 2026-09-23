@@ -1,0 +1,4 @@
+@import url("../ensinarte-aprendizagem-criativa/style.css");
+
+.project-dot, .project-story h2 { color:#f3d2ce; }
+.project-copy h1 { font-size:clamp(44px,5vw,92px); }

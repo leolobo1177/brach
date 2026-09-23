@@ -40,7 +40,8 @@ body.project-case-page section.project-story { background:none; border:0; box-sh
 .project-talk:focus-visible,.project-back:focus-visible { outline:2px solid #c6a2f5; outline-offset:6px; }
 .project-gallery { min-width:0; display:grid; gap:16px; }
 .project-gallery__item { margin:0; width:100%; }
-.project-gallery__item img { display:block; width:100%; height:auto; border-radius:2px; }
+.project-gallery__item img,
+.project-gallery__item video { display:block; width:100%; height:auto; border-radius:2px; }
 .project-gallery__closing { padding:56px 24px 20px; text-align:center; }
 .project-gallery__closing p { font-size:18px; opacity:.65; }
 @media(min-width:961px) and (max-height:850px) {
