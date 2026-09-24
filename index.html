@@ -22,7 +22,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link as="style" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo:wdth,wght@62.5..125,100..900&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
-<link href="./css/style.css" rel="stylesheet"/>
+<link href="./css/style.css?v=20260923-services-full" rel="stylesheet"/>
 <link href="./css/brach-cases.css" rel="stylesheet"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo:wdth,wght@62.5..125,100..900&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/></noscript>
 <noscript><style>.page-loader{display:none !important;} body{overflow:auto !important;}</style></noscript>
@@ -122,7 +122,7 @@
 <a class="navlink" data-text="CASOS" href="#trabalhos">
 <span class="navtext hover-gsap">CASOS</span>
 </a>
-<a class="navlink" data-text="CONTATO" href="#contato">
+<a class="navlink" data-text="CONTATO" href="./contato/">
 <span class="navtext hover-gsap">CONTATO</span>
 </a>
 </nav>
@@ -218,7 +218,7 @@
     </p>
 
     <div class="hero-banner__info">
-      <a aria-label="Quero falar com a Brach" class="hero-banner__cta hero-reveal letter-swap" data-text="QUERO FALAR COM A BRACH" href="#contato"></a>
+      <a aria-label="Quero falar com a Brach" class="hero-banner__cta hero-reveal letter-swap" data-text="QUERO FALAR COM A BRACH" href="./contato/"></a>
 
       <div aria-label="Marcas atendidas pela Brach" class="hero-banner__logos hero-reveal">
         <div class="hero-banner__logos-track">
@@ -329,67 +329,74 @@
     <p class="brand-roster__lead brand-reveal">
       Cada projeto tem uma energia, um público e um ritmo próprios. A Brach entra para traduzir tudo isso em presença visual com estratégia, personalidade e clareza.
     </p>
-    <a class="hero-banner__cta brand-roster__cta letter-swap brand-reveal" data-text="QUERO FAZER PARTE DISSO" href="#contato">QUERO FAZER PARTE DISSO</a>
+    <a class="hero-banner__cta brand-roster__cta letter-swap brand-reveal" data-text="QUERO FAZER PARTE DISSO" href="./contato/">QUERO FAZER PARTE DISSO</a>
   </div>
 </section>
 <section aria-labelledby="servicesTitle" class="services-section" id="servicos">
   <div class="services-shell">
-    <div class="services-head service-reveal">
-      <p class="services-kicker">O QUE ENTREGAMOS</p>
-      <div class="services-heading">
-        <h2 class="services-title" id="servicesTitle">SERVI&Ccedil;OS</h2>
-        <div class="services-copyblock">
-          <p class="services-subtitle">Marcas com presença,<br>consistência e conversão.</p>
-          <p class="services-copy">
-            Escolha a categoria e conheça as entregas pensadas para estruturar, fortalecer e fazer sua marca crescer.
-          </p>
+    <h2 class="sr-only" id="servicesTitle">SERVIÇOS</h2>
+    <ol class="services-list" role="list">
+      <li class="services-row" data-service-row="0">
+        <div class="services-row__clip">
+          <div class="services-row__front">
+            <h3 class="services-row__name" data-service-name>Branding</h3>
+          </div>
+          <div class="services-row__back" aria-hidden="true">
+            <span class="services-row__keyword" data-service-keyword="0">Estratégia</span>
+            <span class="services-row__name" data-service-name>Branding</span>
+            <span class="services-row__keyword" data-service-keyword="1">Identidade</span>
+          </div>
         </div>
-      </div>
-      <div aria-label="Categorias de serviço" class="services-tabs" role="tablist">
-        <button aria-controls="servicesPanel" aria-selected="true" class="services-tab is-active" data-service-tab="branding" id="serviceTab-branding" role="tab" type="button">Branding Marca</button>
-        <button aria-controls="servicesPanel" aria-selected="false" class="services-tab" data-service-tab="social" id="serviceTab-social" role="tab" type="button">Social Mídia</button>
-        <button aria-controls="servicesPanel" aria-selected="false" class="services-tab" data-service-tab="web" id="serviceTab-web" role="tab" type="button">Web</button>
-      </div>
-    </div>
-
-    <div aria-labelledby="servicesTitle" class="services-stage" id="servicesPanel" role="tabpanel">
-      <div class="services-stage__glow" aria-hidden="true"></div>
-      <div class="services-packages" data-services-packages>
-        <article class="service-package service-package--basic service-reveal" data-service-card="basic">
-          <button class="service-package__toggle" type="button" aria-expanded="true" aria-controls="service-package-basic-body">
-            <div class="service-package__meta">
-              <span class="service-package__index" data-service-order>01</span>
-              <span class="service-package__tier">Serviço Básico</span>
-            </div>
-            <span class="service-package__toggle-icon" aria-hidden="true"></span>
-          </button>
-          <div class="service-package__body" id="service-package-basic-body">
-            <span class="service-package__category" data-service-category-label>Branding Marca</span>
-            <h3 class="service-package__title" data-service-title>Essencial</h3>
-            <p class="service-package__copy" data-service-copy>Base visual para organizar a marca, alinhar a presença e transmitir mais profissionalismo desde o primeiro contato.</p>
-            <ul class="service-package__list" data-service-list></ul>
-            <p class="service-package__foot" data-service-foot></p>
+      </li>
+      <li class="services-row" data-service-row="1">
+        <div class="services-row__clip">
+          <div class="services-row__front">
+            <h3 class="services-row__name" data-service-name>UX/UI Design</h3>
           </div>
-        </article>
-
-        <article class="service-package service-package--full service-reveal" data-service-card="full">
-          <button class="service-package__toggle" type="button" aria-expanded="true" aria-controls="service-package-full-body">
-            <div class="service-package__meta">
-              <span class="service-package__index" data-service-order>02</span>
-              <span class="service-package__tier">Serviço Full</span>
-            </div>
-            <span class="service-package__toggle-icon" aria-hidden="true"></span>
-          </button>
-          <div class="service-package__body" id="service-package-full-body">
-            <span class="service-package__category" data-service-category-label>Branding Marca</span>
-            <h3 class="service-package__title" data-service-title>Completo</h3>
-            <p class="service-package__copy" data-service-copy>Sistema visual mais robusto para marcas que precisam crescer com unidade, memorabilidade e consistência em todos os pontos.</p>
-            <ul class="service-package__list" data-service-list></ul>
-            <p class="service-package__foot" data-service-foot></p>
+          <div class="services-row__back" aria-hidden="true">
+            <span class="services-row__keyword" data-service-keyword="0">Experiência</span>
+            <span class="services-row__name" data-service-name>UX/UI Design</span>
+            <span class="services-row__keyword" data-service-keyword="1">Interface</span>
           </div>
-        </article>
-      </div>
-    </div>
+        </div>
+      </li>
+      <li class="services-row" data-service-row="2">
+        <div class="services-row__clip">
+          <div class="services-row__front">
+            <h3 class="services-row__name" data-service-name>Web & Desenvolvimento</h3>
+          </div>
+          <div class="services-row__back" aria-hidden="true">
+            <span class="services-row__keyword" data-service-keyword="0">Presença</span>
+            <span class="services-row__name" data-service-name>Web & Desenvolvimento</span>
+            <span class="services-row__keyword" data-service-keyword="1">Performance</span>
+          </div>
+        </div>
+      </li>
+      <li class="services-row" data-service-row="3">
+        <div class="services-row__clip">
+          <div class="services-row__front">
+            <h3 class="services-row__name" data-service-name>3D / Motion</h3>
+          </div>
+          <div class="services-row__back" aria-hidden="true">
+            <span class="services-row__keyword" data-service-keyword="0">Movimento</span>
+            <span class="services-row__name" data-service-name>3D / Motion</span>
+            <span class="services-row__keyword" data-service-keyword="1">Expressão</span>
+          </div>
+        </div>
+      </li>
+      <li class="services-row" data-service-row="4">
+        <div class="services-row__clip">
+          <div class="services-row__front">
+            <h3 class="services-row__name" data-service-name>Gestão de mídias sociais</h3>
+          </div>
+          <div class="services-row__back" aria-hidden="true">
+            <span class="services-row__keyword" data-service-keyword="0">Conteúdo</span>
+            <span class="services-row__name" data-service-name>Gestão de mídias sociais</span>
+            <span class="services-row__keyword" data-service-keyword="1">Conexão</span>
+          </div>
+        </div>
+      </li>
+    </ol>
   </div>
 </section>
 <section aria-labelledby="trabalhosTitle" class="cases-section" id="trabalhos">
@@ -606,7 +613,7 @@
 <div class="footer-col">
 <div class="footer-col__title">Fale conosco</div>
 <div aria-label="Contato" class="footer-contactlist">
-<a class="footer-link underline" href="#contato">
+<a class="footer-link underline" href="./contato/">
 <span class="u hover-gsap" data-text="Formulário">Formulário</span>
 </a>
 <a class="footer-link underline footer-email" data-copy-email="" href="mailto:agenciabrach@gmail.com">
@@ -620,7 +627,7 @@
 </footer>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script defer src="./js/main.js"></script>
+<script defer src="./js/main.js?v=20260923-services2"></script>
 <script defer src="./js/brach-cases.js"></script>
 <script>
   (function () {

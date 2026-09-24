@@ -194,7 +194,7 @@
   const footerTickerTexts = Array.from(document.querySelectorAll(".ticker__text"));
   const footerColTitles = Array.from(document.querySelectorAll(".footer-col__title"));
   const footerNavLinks = Array.from(document.querySelectorAll(".footer-nav .footer-link .u"));
-  const footerForm = document.querySelector('.footer-contactlist a[href*="#contato"] .u');
+  const footerForm = document.querySelector('.footer-contactlist a[href*="contato"] .u');
   const main = document.querySelector("main");
   const hasGsap = Boolean(window.gsap);
   const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;

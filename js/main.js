@@ -166,111 +166,36 @@ const BRACH_I18N = {
       ]
     },
     services: {
-      kicker: 'O QUE ENTREGAMOS',
-      title: 'SERVIÇOS',
-      subtitle: 'Marcas com presença,<br>consistência e conversão.',
-      copy: 'Escolha a categoria e conheça as entregas pensadas para estruturar, fortalecer e fazer sua marca crescer.',
-      tabsAria: 'Categorias de serviço',
-      tabs: {
-        branding: 'Branding Marca',
-        social: 'Social Mídia',
-        web: 'Web'
-      },
-      tiers: {
-        basic: 'Plano Essencial',
-        full: 'Plano Completo'
-      },
-      cards: {
-        branding: {
-          basic: {
-            order: '01',
-            tier: 'Serviço Total',
-            category: 'Branding Marca',
-            title: 'Branding de Marca',
-            copy: 'Sistema visual completo para marcas que precisam crescer com memorabilidade, consistência e presença em todos os pontos.',
-            items: [
-              'Logo principal e variações para diferentes usos',
-              'Paleta, tipografia base e direção visual inicial',
-              'Elementos de apoio para redes e materiais digitais',
-              'Arquivos organizados para aplicação do dia a dia',
-              'Logo, símbolo e assinaturas complementares',
-              'Paleta, tipografia e sistema gráfico mais profundo',
-              'Manual base com orientações de aplicação da marca',
-              'Templates iniciais para social media e peças de apoio'
-            ],
-            foot: 'Uma entrega completa para estruturar a marca, consolidar presença e sustentar expansão.'
-          },
-          full: {
-            order: '02',
-            category: 'Branding Marca',
-            title: 'Completo',
-            copy: 'Sistema visual mais robusto para marcas que precisam crescer com unidade, memorabilidade e consistência em todos os pontos.',
-            items: [
-              'Logo, símbolo e assinaturas complementares',
-              'Paleta, tipografia e sistema gráfico mais profundo',
-              'Manual base com orientações de aplicação da marca',
-              'Templates iniciais para social media e peças de apoio'
-            ],
-            foot: 'Pensado para consolidar presença e sustentar expansão.'
-          }
-        },
-        social: {
-          basic: {
-            order: '01',
-            category: 'Social Mídia',
-            title: 'Essencial',
-            copy: 'Para marcas que precisam manter uma presença profissional, organizada e consistente nas redes sociais.',
-            items: [
-              'Planejamento mensal de conteúdos alinhado aos objetivos da marca',
-              'Direção visual para manter o perfil reconhecível e coerente',
-              'Criação de peças para feed, stories e formatos recorrentes',
-              'Calendário editorial para garantir frequência nas publicações'
-            ],
-            foot: 'Ideal para estruturar a presença digital e manter a marca ativa com consistência.'
-          },
-          full: {
-            order: '02',
-            category: 'Social Mídia',
-            title: 'Completo',
-            copy: 'Para marcas que querem transformar as redes sociais em um canal estratégico de relacionamento, autoridade e vendas.',
-            items: [
-              'Estratégia de conteúdo alinhada ao público e aos objetivos comerciais',
-              'Direção criativa para campanhas, quadros e lançamentos',
-              'Planejamento editorial com temas, formatos e narrativas integradas',
-              'Conteúdos pensados para ampliar alcance, conexão e conversão'
-            ],
-            foot: 'Ideal para marcas que buscam crescer com estratégia, personalidade e maior impacto comercial.'
-          }
-        },
-        web: {
-          basic: {
-            order: '01',
-            category: 'Web',
-            title: 'Essencial',
-            copy: 'Uma landing page estratégica para apresentar sua oferta com clareza, gerar interesse e conduzir o visitante até o contato.',
-            items: [
-              'Estrutura objetiva com as seções essenciais da oferta',
-              'Design personalizado e responsivo para todos os dispositivos',
-              'Organização de benefícios, diferenciais, provas e chamadas para ação',
-              'Integração com formulário ou WhatsApp e otimização inicial para buscas'
-            ],
-            foot: 'Ideal para divulgar serviços, validar ofertas e iniciar campanhas com agilidade.'
-          },
-          full: {
-            order: '02',
-            category: 'Web',
-            title: 'Completo',
-            copy: 'Uma experiência digital mais robusta, criada para valorizar a marca, sustentar campanhas e aumentar as oportunidades de conversão.',
-            items: [
-              'Arquitetura completa da página com uma jornada de navegação estratégica',
-              'Design exclusivo com animações e recursos visuais personalizados',
-              'Formulários, integrações, monitoramento e pontos de conversão',
-              'Otimização de SEO, AEO, desempenho e responsividade'
-            ],
-            foot: 'Ideal para campanhas mais ambiciosas e marcas que buscam uma presença digital de alto nível.'
-          }
-        }
-      }
+      "kicker": "O QUE ENTREGAMOS",
+      "title": "SERVIÇOS",
+      "subtitle": "Estratégia, design e presença digital.<br>Da primeira ideia ao próximo passo.",
+      "items": [
+        [
+          "Branding",
+          "Estratégia",
+          "Identidade"
+        ],
+        [
+          "UX/UI Design",
+          "Experiência",
+          "Interface"
+        ],
+        [
+          "Web & Desenvolvimento",
+          "Presença",
+          "Performance"
+        ],
+        [
+          "3D / Motion",
+          "Movimento",
+          "Expressão"
+        ],
+        [
+          "Gestão de mídias sociais",
+          "Conteúdo",
+          "Conexão"
+        ]
+      ]
     },
     bridgeTop: {
       kicker: 'ENTRE PRESENÇA E RESULTADO',
@@ -458,111 +383,36 @@ const BRACH_I18N = {
       ]
     },
     services: {
-      kicker: 'WHAT WE DELIVER',
-      title: 'SERVICES',
-      subtitle: 'Brands with presence,<br>consistency and conversion.',
-      copy: 'Choose a category and explore the deliverables designed to structure, strengthen, and grow your brand.',
-      tabsAria: 'Service categories',
-      tabs: {
-        branding: 'Brand Identity',
-        social: 'Social Media',
-        web: 'Web'
-      },
-      tiers: {
-        basic: 'Essential Plan',
-        full: 'Complete Plan'
-      },
-      cards: {
-        branding: {
-          basic: {
-            order: '01',
-            tier: 'Complete Service',
-            category: 'Brand Identity',
-            title: 'Brand Identity',
-            copy: 'A complete visual system for brands that need to grow with memorability, consistency, and presence across every touchpoint.',
-            items: [
-              'Primary logo and variations for different uses',
-              'Palette, base typography, and initial visual direction',
-              'Support elements for social media and digital materials',
-              'Organized files for day-to-day application',
-              'Logo, symbol, and complementary signature variations',
-              'Palette, typography, and a deeper graphic system',
-              'A base guide with brand application directions',
-              'Starter templates for social media and support materials'
-            ],
-            foot: 'A complete delivery to structure the brand, consolidate presence, and support expansion.'
-          },
-          full: {
-            order: '02',
-            category: 'Brand Identity',
-            title: 'Complete',
-            copy: 'A more robust visual system for brands that need to grow with unity, memorability, and consistency across every touchpoint.',
-            items: [
-              'Logo, symbol, and complementary signature variations',
-              'Palette, typography, and a deeper graphic system',
-              'A base guide with brand application directions',
-              'Starter templates for social media and support materials'
-            ],
-            foot: 'Built to consolidate presence and support expansion.'
-          }
-        },
-        social: {
-          basic: {
-            order: '01',
-            category: 'Social Media',
-            title: 'Essential',
-            copy: 'For brands that need to maintain a professional, organized, and consistent presence on social media.',
-            items: [
-              'Monthly content planning aligned with the brand goals',
-              'Visual direction to keep the profile recognizable and consistent',
-              'Creation of assets for feed, stories, and recurring formats',
-              'Editorial calendar to ensure publishing consistency'
-            ],
-            foot: 'Ideal for structuring the digital presence and keeping the brand active with consistency.'
-          },
-          full: {
-            order: '02',
-            category: 'Social Media',
-            title: 'Complete',
-            copy: 'For brands that want to turn social media into a strategic channel for relationships, authority, and sales.',
-            items: [
-              'Content strategy aligned with the audience and commercial goals',
-              'Creative direction for campaigns, content series, and launches',
-              'Editorial planning with integrated themes, formats, and narratives',
-              'Content designed to expand reach, connection, and conversion'
-            ],
-            foot: 'Ideal for brands looking to grow with strategy, personality, and stronger commercial impact.'
-          }
-        },
-        web: {
-          basic: {
-            order: '01',
-            category: 'Web',
-            title: 'Essential',
-            copy: 'A strategic landing page to present your offer clearly, generate interest, and guide the visitor toward contact.',
-            items: [
-              'Objective structure with the essential sections of the offer',
-              'Custom responsive design for all devices',
-              'Organization of benefits, differentiators, proof points, and calls to action',
-              'Integration with form or WhatsApp and initial search optimization'
-            ],
-            foot: 'Ideal for promoting services, validating offers, and launching campaigns quickly.'
-          },
-          full: {
-            order: '02',
-            category: 'Web',
-            title: 'Complete',
-            copy: 'A more robust digital experience created to elevate the brand, support campaigns, and increase conversion opportunities.',
-            items: [
-              'Complete page architecture with a strategic navigation journey',
-              'Exclusive design with custom animations and visual features',
-              'Forms, integrations, monitoring, and conversion points',
-              'SEO, AEO, performance, and responsiveness optimization'
-            ],
-            foot: 'Ideal for more ambitious campaigns and brands seeking a high-level digital presence.'
-          }
-        }
-      }
+      "kicker": "WHAT WE DELIVER",
+      "title": "SERVICES",
+      "subtitle": "Strategy, design and digital presence.<br>From the first idea to the next step.",
+      "items": [
+        [
+          "Branding",
+          "Strategy",
+          "Identity"
+        ],
+        [
+          "UX/UI Design",
+          "Experience",
+          "Interface"
+        ],
+        [
+          "Web & Development",
+          "Presence",
+          "Performance"
+        ],
+        [
+          "3D / Motion",
+          "Movement",
+          "Expression"
+        ],
+        [
+          "Social media management",
+          "Content",
+          "Connection"
+        ]
+      ]
     },
     bridgeTop: {
       kicker: 'BETWEEN PRESENCE AND RESULTS',
@@ -750,111 +600,36 @@ const BRACH_I18N = {
       ]
     },
     services: {
-      kicker: 'LO QUE ENTREGAMOS',
-      title: 'SERVICIOS',
-      subtitle: 'Marcas con presencia,<br>consistencia y conversión.',
-      copy: 'Elige una categoría y conoce las entregas pensadas para estructurar, fortalecer y hacer crecer tu marca.',
-      tabsAria: 'Categorías de servicio',
-      tabs: {
-        branding: 'Identidad de Marca',
-        social: 'Social Media',
-        web: 'Web'
-      },
-      tiers: {
-        basic: 'Plan Esencial',
-        full: 'Plan Completo'
-      },
-      cards: {
-        branding: {
-          basic: {
-            order: '01',
-            tier: 'Servicio Completo',
-            category: 'Identidad de Marca',
-            title: 'Identidad de Marca',
-            copy: 'Un sistema visual completo para marcas que necesitan crecer con memorabilidad, consistencia y presencia en todos los puntos de contacto.',
-            items: [
-              'Logo principal y variaciones para diferentes usos',
-              'Paleta, tipografía base y dirección visual inicial',
-              'Elementos de apoyo para redes y materiales digitales',
-              'Archivos organizados para la aplicación diaria',
-              'Logo, símbolo y firmas complementarias',
-              'Paleta, tipografía y sistema gráfico más profundo',
-              'Manual base con orientaciones de aplicación de la marca',
-              'Templates iniciales para social media y piezas de apoyo'
-            ],
-            foot: 'Una entrega completa para estructurar la marca, consolidar presencia y sostener la expansión.'
-          },
-          full: {
-            order: '02',
-            category: 'Identidad de Marca',
-            title: 'Completo',
-            copy: 'Un sistema visual más robusto para marcas que necesitan crecer con unidad, memorabilidad y consistencia en todos los puntos de contacto.',
-            items: [
-              'Logo, símbolo y firmas complementarias',
-              'Paleta, tipografía y sistema gráfico más profundo',
-              'Manual base con orientaciones de aplicación de la marca',
-              'Templates iniciales para social media y piezas de apoyo'
-            ],
-            foot: 'Pensado para consolidar presencia y sostener la expansión.'
-          }
-        },
-        social: {
-          basic: {
-            order: '01',
-            category: 'Social Media',
-            title: 'Esencial',
-            copy: 'Para marcas que necesitan mantener una presencia profesional, organizada y consistente en las redes sociales.',
-            items: [
-              'Planificación mensual de contenidos alineada con los objetivos de la marca',
-              'Dirección visual para mantener el perfil reconocible y coherente',
-              'Creación de piezas para feed, stories y formatos recurrentes',
-              'Calendario editorial para garantizar frecuencia en las publicaciones'
-            ],
-            foot: 'Ideal para estructurar la presencia digital y mantener la marca activa con consistencia.'
-          },
-          full: {
-            order: '02',
-            category: 'Social Media',
-            title: 'Completo',
-            copy: 'Para marcas que quieren transformar las redes sociales en un canal estratégico de relación, autoridad y ventas.',
-            items: [
-              'Estrategia de contenido alineada con el público y los objetivos comerciales',
-              'Dirección creativa para campañas, secciones y lanzamientos',
-              'Planificación editorial con temas, formatos y narrativas integradas',
-              'Contenidos pensados para ampliar alcance, conexión y conversión'
-            ],
-            foot: 'Ideal para marcas que buscan crecer con estrategia, personalidad y mayor impacto comercial.'
-          }
-        },
-        web: {
-          basic: {
-            order: '01',
-            category: 'Web',
-            title: 'Esencial',
-            copy: 'Una landing page estratégica para presentar tu oferta con claridad, generar interés y conducir al visitante hasta el contacto.',
-            items: [
-              'Estructura objetiva con las secciones esenciales de la oferta',
-              'Diseño personalizado y responsive para todos los dispositivos',
-              'Organización de beneficios, diferenciales, pruebas y llamadas a la acción',
-              'Integración con formulario o WhatsApp y optimización inicial para búsquedas'
-            ],
-            foot: 'Ideal para divulgar servicios, validar ofertas e iniciar campañas con agilidad.'
-          },
-          full: {
-            order: '02',
-            category: 'Web',
-            title: 'Completo',
-            copy: 'Una experiencia digital más robusta, creada para valorizar la marca, sostener campañas y aumentar las oportunidades de conversión.',
-            items: [
-              'Arquitectura completa de la página con una jornada de navegación estratégica',
-              'Diseño exclusivo con animaciones y recursos visuales personalizados',
-              'Formularios, integraciones, monitoreo y puntos de conversión',
-              'Optimización de SEO, AEO, rendimiento y responsividad'
-            ],
-            foot: 'Ideal para campañas más ambiciosas y marcas que buscan una presencia digital de alto nivel.'
-          }
-        }
-      }
+      "kicker": "LO QUE ENTREGAMOS",
+      "title": "SERVICIOS",
+      "subtitle": "Estrategia, diseño y presencia digital.<br>De la primera idea al siguiente paso.",
+      "items": [
+        [
+          "Branding",
+          "Estrategia",
+          "Identidad"
+        ],
+        [
+          "Diseño UX/UI",
+          "Experiencia",
+          "Interfaz"
+        ],
+        [
+          "Web & Desarrollo",
+          "Presencia",
+          "Rendimiento"
+        ],
+        [
+          "3D / Motion",
+          "Movimiento",
+          "Expresión"
+        ],
+        [
+          "Gestión de redes sociales",
+          "Contenido",
+          "Conexión"
+        ]
+      ]
     },
     bridgeTop: {
       kicker: 'ENTRE PRESENCIA Y RESULTADOS',
@@ -1030,10 +805,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   const servicesKicker = document.querySelector('.services-kicker');
   const servicesTitle = document.getElementById('servicesTitle');
   const servicesSubtitle = document.querySelector('.services-subtitle');
-  const servicesCopy = document.querySelector('.services-copy');
-  const servicesTabs = Array.from(document.querySelectorAll('.services-tab'));
-  const servicesStage = document.getElementById('servicesPanel');
-  const servicesTierLabels = Array.from(document.querySelectorAll('.service-package__tier'));
+  const serviceRows = Array.from(document.querySelectorAll('[data-service-row]'));
   const casesTitle = document.getElementById('trabalhosTitle');
   const caseHint = document.getElementById('caseHint');
   const caseLinks = Array.from(document.querySelectorAll('.case-link'));
@@ -1075,7 +847,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   const footerTagline = document.querySelector('.footer-tagline');
   const footerColTitles = Array.from(document.querySelectorAll('.footer-col__title'));
   const footerNavLinks = Array.from(document.querySelectorAll('.footer-nav .footer-link .u'));
-  const footerForm = document.querySelector('.footer-contactlist a[href="#contato"] .u');
+  const footerForm = document.querySelector('.footer-contactlist a[href*="contato"] .u');
 
   const labelSets = {
     socialNames: ['Instagram', 'LinkedIn', 'Behance', 'Pinterest']
@@ -1295,17 +1067,12 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     if(servicesKicker) servicesKicker.textContent = locale.services.kicker;
     if(servicesTitle) servicesTitle.textContent = locale.services.title;
     if(servicesSubtitle) servicesSubtitle.innerHTML = locale.services.subtitle;
-    if(servicesCopy) servicesCopy.textContent = locale.services.copy;
-    if(servicesStage) servicesStage.setAttribute('aria-label', locale.services.title);
-    servicesTabs.forEach((tab) => {
-      const key = tab.dataset.serviceTab;
-      const label = locale.services.tabs[key] || key;
-      tab.textContent = label;
+    serviceRows.forEach((row, index) => {
+      const item = locale.services.items[index];
+      if(!item) return;
+      row.querySelectorAll('[data-service-name]').forEach(node => { node.textContent = item[0]; });
+      row.querySelectorAll('[data-service-keyword]').forEach((node, keywordIndex) => { node.textContent = item[keywordIndex + 1]; });
     });
-    const tabsContainer = document.querySelector('.services-tabs');
-    if(tabsContainer) tabsContainer.setAttribute('aria-label', locale.services.tabsAria);
-    if(servicesTierLabels[0]) servicesTierLabels[0].textContent = locale.services.tiers.basic;
-    if(servicesTierLabels[1]) servicesTierLabels[1].textContent = locale.services.tiers.full;
 
     if(casesTitle) casesTitle.textContent = locale.cases.title;
     if(caseHint) caseHint.textContent = locale.cases.hint;
@@ -2516,345 +2283,29 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   syncCasesState();
   window.addEventListener('resize', syncCasesState, { passive: true });
 })();
-/* ===== Services reveal ===== */
+/* ===== Services: progressive entrance; hover is handled by CSS ===== */
 (() => {
   const section = document.querySelector('.services-section');
   if(!section) return;
-
-  const cards = Array.from(section.querySelectorAll('.service-package[data-service-card]'));
-  const packages = section.querySelector('[data-services-packages]');
-  const tabs = Array.from(section.querySelectorAll('.services-tab[data-service-tab]'));
-  const revealItems = Array.from(section.querySelectorAll('.service-reveal'));
-  const mobileCardsQuery = window.matchMedia ? window.matchMedia('(max-width: 900px)') : { matches: false };
-  const glow = section.querySelector('.services-stage__glow');
-  const head = section.querySelector('.services-head');
-  if(!cards.length || !tabs.length) return;
-
-  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hasGsap = Boolean(window.gsap);
-  const hasScrollTrigger = Boolean(window.ScrollTrigger);
-
-  let normalizedServicesData = getBrachLocale().services.cards;
-
-  function createListItems(list, items){
-    list.innerHTML = '';
-    const fragment = document.createDocumentFragment();
-    items.forEach((item) => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      fragment.appendChild(li);
-    });
-    list.appendChild(fragment);
-  }
-
-  function renderCard(card, data){
-    const order = card.querySelector('[data-service-order]');
-    const category = card.querySelector('[data-service-category-label]');
-    const title = card.querySelector('[data-service-title]');
-    const copy = card.querySelector('[data-service-copy]');
-    const list = card.querySelector('[data-service-list]');
-    const foot = card.querySelector('[data-service-foot]');
-    const tier = card.querySelector('.service-package__tier');
-
-    if(order) order.textContent = data.order;
-    if(category) category.textContent = data.category;
-    if(title) title.textContent = data.title;
-    if(copy) copy.textContent = data.copy;
-    if(list) createListItems(list, data.items);
-    if(foot) foot.textContent = data.foot;
-    if(tier) tier.textContent = data.tier || getBrachLocale().services.tiers[card.dataset.serviceCard];
-  }
-
-  function setActiveTab(key){
-    tabs.forEach((tab) => {
-      const isActive = tab.dataset.serviceTab === key;
-      tab.classList.toggle('is-active', isActive);
-      tab.setAttribute('aria-selected', String(isActive));
-      tab.tabIndex = isActive ? 0 : -1;
-    });
-  }
-
-  function fillCards(key){
-    const current = normalizedServicesData[key];
-    if(!current) return;
-
-    const isSingleBranding = key === 'branding';
-    packages?.classList.toggle('is-single', isSingleBranding);
-
-    cards.forEach((card) => {
-      const cardType = card.dataset.serviceCard;
-      const isHidden = isSingleBranding && cardType === 'full';
-      card.classList.toggle('is-hidden', isHidden);
-      card.setAttribute('aria-hidden', String(isHidden));
-
-      if(!isHidden){
-        card.querySelectorAll('.service-package__toggle, [data-service-category-label], [data-service-title], [data-service-copy], [data-service-list], [data-service-foot]').forEach((target) => {
-          target.style.removeProperty('opacity');
-          target.style.removeProperty('visibility');
-          target.style.removeProperty('transform');
-          target.style.removeProperty('filter');
-        });
-      }
-
-      const cardData = current[cardType];
-      if(cardData) renderCard(card, cardData);
-    });
-  }
-
-  function syncCardExpansion(){
-    const isMobile = mobileCardsQuery.matches;
-
-    cards.filter((card) => !card.classList.contains('is-hidden')).forEach((card) => {
-      const toggle = card.querySelector('.service-package__toggle');
-      if(!toggle) return;
-
-      if(!isMobile){
-        card.dataset.expanded = 'true';
-        card.classList.add('is-expanded');
-        toggle.setAttribute('aria-expanded', 'true');
-        return;
-      }
-
-      const expanded = card.dataset.expanded === 'true';
-      card.classList.toggle('is-expanded', expanded);
-      toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    });
-  }
-
-  function getCardMotionTargets(){
-    return cards.filter((card) => !card.classList.contains('is-hidden')).flatMap((card) => {
-      const targets = [
-        card.querySelector('.service-package__toggle'),
-        card.querySelector('[data-service-category-label]'),
-        card.querySelector('[data-service-title]'),
-        card.querySelector('[data-service-copy]'),
-        card.querySelector('[data-service-list]'),
-        card.querySelector('[data-service-foot]')
-      ];
-      return targets.filter(Boolean);
-    });
-  }
-
-  function animateHeadShift(previousTop){
-    if(!head || !hasGsap || reduceMotion || typeof previousTop !== 'number') return;
-    const nextTop = head.getBoundingClientRect().top;
-    const deltaY = previousTop - nextTop;
-    if(Math.abs(deltaY) < 1) return;
-
-    gsap.killTweensOf(head);
-    gsap.fromTo(head, {
-      y: deltaY
-    }, {
-      y: 0,
-      duration: 0.62,
-      ease: 'power2.out',
-      clearProps: 'transform'
-    });
-  }
-
-  let activeKey = tabs.find((tab) => tab.classList.contains('is-active'))?.dataset.serviceTab || tabs[0].dataset.serviceTab;
-  let swapTimeline = null;
-
-  function applyCategory(key, immediate = false){
-    if(!normalizedServicesData[key]) return;
-    activeKey = key;
-    setActiveTab(key);
-    const headTopBeforeSwap = head ? head.getBoundingClientRect().top : null;
-
-    if(immediate){
-      fillCards(key);
-      cards.forEach((card) => {
-        card.dataset.expanded = mobileCardsQuery.matches ? 'false' : 'true';
-      });
-      syncCardExpansion();
-      if(reduceMotion || !hasGsap || !hasScrollTrigger){
-        cards.forEach((card) => card.classList.add('is-visible'));
-      }
-      return;
-    }
-
-    if(reduceMotion || !hasGsap){
-      fillCards(key);
-      cards.forEach((card) => {
-        card.dataset.expanded = mobileCardsQuery.matches ? 'false' : 'true';
-      });
-      syncCardExpansion();
-      cards.forEach((card) => card.classList.add('is-visible'));
-      return;
-    }
-
-    cards.forEach((card) => {
-      card.querySelectorAll('.service-package__toggle, [data-service-category-label], [data-service-title], [data-service-copy], [data-service-list], [data-service-foot]').forEach((target) => {
-        gsap.killTweensOf(target);
-      });
-    });
-    if(glow) gsap.killTweensOf(glow);
-
-    swapTimeline?.kill();
-    swapTimeline = gsap.timeline({ defaults: { ease: 'power2.out' } });
-
-    const outgoingTargets = getCardMotionTargets();
-
-    if(outgoingTargets.length){
-      swapTimeline.to(outgoingTargets, {
-        autoAlpha: 0,
-        y: 16,
-        filter: 'blur(8px)',
-        duration: 0.24,
-        stagger: 0.014,
-        ease: 'power2.out',
-        overwrite: 'auto'
-      }, 0);
-    }
-
-    if(glow){
-      swapTimeline.to(glow, {
-        autoAlpha: 0.38,
-        scale: 0.92,
-        duration: 0.28,
-        ease: 'power2.inOut',
-        overwrite: 'auto'
-      }, 0);
-    }
-
-    swapTimeline.add(() => {
-      fillCards(key);
-      cards.forEach((card) => {
-        card.dataset.expanded = mobileCardsQuery.matches ? 'false' : 'true';
-      });
-      syncCardExpansion();
-      const incomingTargets = getCardMotionTargets();
-      gsap.set(incomingTargets, {
-        autoAlpha: 0,
-        y: -16,
-        filter: 'blur(8px)'
-      });
-      animateHeadShift(headTopBeforeSwap);
-      if(incomingTargets.length){
-        gsap.to(incomingTargets, {
-          autoAlpha: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          duration: 0.58,
-          stagger: 0.016,
-          ease: 'power3.out',
-          overwrite: 'auto'
-        });
-      }
-      if(glow){
-        gsap.to(glow, {
-          autoAlpha: 1,
-          scale: 1,
-          duration: 0.64,
-          ease: 'power3.out',
-          overwrite: 'auto'
-        });
-      }
-    });
-  }
-
-  applyCategory(activeKey, true);
-
-  document.addEventListener('brach:languagechange', (event) => {
-    normalizedServicesData = event.detail?.locale?.services?.cards || getBrachLocale().services.cards;
-    applyCategory(activeKey, true);
-  });
-
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => {
-      const nextKey = tab.dataset.serviceTab;
-      if(nextKey === activeKey) return;
-      applyCategory(nextKey);
-    });
-
-    tab.addEventListener('keydown', (event) => {
-      if(event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
-      event.preventDefault();
-      const direction = event.key === 'ArrowRight' ? 1 : -1;
-      const nextIndex = (index + direction + tabs.length) % tabs.length;
-      tabs[nextIndex].focus();
-      applyCategory(tabs[nextIndex].dataset.serviceTab);
-    });
-  });
-
-  cards.forEach((card) => {
-    const toggle = card.querySelector('.service-package__toggle');
-    if(!toggle) return;
-
-    card.dataset.expanded = mobileCardsQuery.matches ? 'false' : 'true';
-
-    toggle.addEventListener('click', () => {
-      if(!mobileCardsQuery.matches) return;
-      const expanded = card.dataset.expanded === 'true';
-      card.dataset.expanded = expanded ? 'false' : 'true';
-      syncCardExpansion();
-    });
-  });
-
-  if(typeof mobileCardsQuery.addEventListener === 'function'){
-    mobileCardsQuery.addEventListener('change', syncCardExpansion);
-  }else if(typeof mobileCardsQuery.addListener === 'function'){
-    mobileCardsQuery.addListener(syncCardExpansion);
-  }
-
-  if(reduceMotion){
-    revealItems.forEach((el) => el.classList.add('is-visible'));
-    return;
-  }
-
-  if(hasGsap && hasScrollTrigger){
-    gsap.registerPlugin(ScrollTrigger);
-
-    const head = section.querySelector('.services-head');
-
-    if(head){
-      gsap.fromTo(head, {
-        autoAlpha: 0,
-        y: 40
-      }, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.92,
-        ease: 'power3.out',
-        onStart: () => head.classList.add('is-visible'),
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 76%',
-          once: true
-        }
-      });
-    }
-
-    gsap.fromTo(cards, {
-      autoAlpha: 0,
-      y: 54,
-      scale: 0.97
-    }, {
-      autoAlpha: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.9,
-      stagger: 0.12,
-      ease: 'power3.out',
-      onStart: () => cards.forEach((card) => card.classList.add('is-visible')),
-      scrollTrigger: {
-        trigger: section.querySelector('.services-stage') || section,
-        start: 'top 72%',
-        once: true
-      }
-    });
-    return;
-  }
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(motion.matches || !('IntersectionObserver' in window)) return;
+  const items = Array.from(section.querySelectorAll('.services-head, .services-row'));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
       if(!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      io.unobserve(entry.target);
+      entry.target.classList.remove('is-pending');
+      observer.unobserve(entry.target);
     });
-  }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
-
-  revealItems.forEach((el) => io.observe(el));
+  }, { threshold: 0.12 });
+  items.forEach(item => {
+    item.classList.add('is-pending');
+    observer.observe(item);
+  });
+  motion.addEventListener('change', event => {
+    if(!event.matches) return;
+    observer.disconnect();
+    items.forEach(item => item.classList.remove('is-pending'));
+  });
 })();
 
 /* ===== Brand bridge ===== */
@@ -3392,16 +2843,19 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       return;
     }
 
-    scrambleState = { frame: 0 };
+    if(scrambleState) gsap.killTweensOf(scrambleState);
+    const state = { frame: 0 };
+    scrambleState = state;
     const currentWord = mobileScramble?.textContent || mobileWords[currentIndex] || '';
     const maxLength = Math.max(currentWord.length, nextWord.length);
 
-    gsap.to(scrambleState, {
+    gsap.to(state, {
       frame: maxLength + 6,
       duration: 1.42,
       ease: 'power1.inOut',
       onUpdate: () => {
-        const revealCount = Math.floor(scrambleState.frame);
+        if(scrambleState !== state) return;
+        const revealCount = Math.floor(state.frame);
         let output = '';
 
         for(let index = 0; index < maxLength; index += 1){
@@ -3421,6 +2875,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
         setWord(output.trimEnd());
       },
       onComplete: () => {
+        if(scrambleState !== state) return;
         setWord(nextWord);
         scrambleState = null;
       }
