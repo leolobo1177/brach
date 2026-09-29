@@ -2228,6 +2228,25 @@ section.cases-section{
 .case-thumb{
   display:none;
 }
+.case-link--soon .case-card__image{
+  object-fit:contain;
+  background:#19121e;
+  filter:blur(9px) brightness(.55);
+}
+.case-coming-soon{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  z-index:3;
+  font-family:var(--font-ui);
+  font-size:clamp(20px,3vw,42px);
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
+.case-link--soon .case-title-row{ display:block; }
+
 .case-text{
   display:block;
   min-width:0;

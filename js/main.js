@@ -1836,7 +1836,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 // TRABALHOS: preview box (hover/focus) + animação de troca
 // ===============================
 (() => {
-  const listLinks = document.querySelectorAll('.case-link');
+  const listLinks = document.querySelectorAll('a.case-link');
   const preview = document.querySelector('.case-preview');
   const imgA = document.querySelector('.case-preview__img--a');
   const imgB = document.querySelector('.case-preview__img--b');
@@ -2167,7 +2167,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 // TRABALHOS: editorial hover cards
 // ===============================
 (() => {
-  const caseCards = Array.from(document.querySelectorAll('.cases-section .case-link'));
+  const caseCards = Array.from(document.querySelectorAll('.cases-section a.case-link'));
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hasGsap = Boolean(window.gsap);
   const canHover = () => window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches;
