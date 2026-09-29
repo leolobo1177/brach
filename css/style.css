@@ -2229,7 +2229,7 @@ section.cases-section{
   display:none;
 }
 .case-link--soon .case-card__image{
-  object-fit:contain;
+  object-fit:cover;
   background:#19121e;
   filter:blur(9px) brightness(.55);
 }
