@@ -1119,10 +1119,10 @@ body.is-loading footer{
   height:clamp(52px, 4.6vw, 92px);
   object-fit:contain;
 }
-.hero-banner__logo[src*="morfira.png"]{
+.hero-banner__logo[src*="moreira-tattoo.png"]{
   width:clamp(88px, 7vw, 128px);
   height:clamp(52px, 4.6vw, 92px);
-  object-fit:cover;
+  object-fit:contain;
   object-position:center;
 }
 .hero-banner__logo[src*="ainda-assim-carousel.png"]{
@@ -4583,7 +4583,7 @@ section.team .team__link::after{
   max-width:74%;
   max-height:82%;
   aspect-ratio:1 / 1;
-  object-fit:cover;
+  object-fit:contain;
   object-position:center;
 }
 .brand-roster__card[data-brand-card="5"] .brand-roster__card-image{

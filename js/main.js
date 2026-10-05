@@ -45,8 +45,8 @@ const BRACH_BRAND_MEDIA = [
     glow: 'rgba(255, 174, 94, 0.36)'
   },
   {
-    logo: './assets/hero-logos/morfira.png',
-    alt: 'Morfira Tatto',
+    logo: './assets/hero-logos/moreira-tattoo.png',
+    alt: 'Moreira Tattoo',
     cardStart: '#b90101',
     cardEnd: '#b90101',
     sectionStart: 'rgba(185, 1, 1, 0.28)',
@@ -155,7 +155,7 @@ const BRACH_I18N = {
         },
         {
           tag: 'Tatuagem • Identidade',
-          name: 'Morfira Tatto',
+          name: 'Moreira Tattoo',
           copy: 'Marca criada para transmitir presença forte, atmosfera autoral e uma identidade visual de impacto.'
         },
         {
@@ -372,7 +372,7 @@ const BRACH_I18N = {
         },
         {
           tag: 'Tattoo • Identity',
-          name: 'Morfira Tatto',
+          name: 'Moreira Tattoo',
           copy: 'A brand created to express strong presence, an authorial atmosphere, and a high-impact visual identity.'
         },
         {
@@ -589,7 +589,7 @@ const BRACH_I18N = {
         },
         {
           tag: 'Tatuaje • Identidad',
-          name: 'Morfira Tatto',
+          name: 'Moreira Tattoo',
           copy: 'Marca creada para transmitir presencia fuerte, una atmósfera autoral y una identidad visual de alto impacto.'
         },
         {
