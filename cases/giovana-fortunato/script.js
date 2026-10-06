@@ -8,8 +8,8 @@
     "project": "Uma identidade que traduz a essência de um estúdio profissional: técnica, cuidado e proximidade. O projeto valoriza a história de Giovana Fortunato e sua dedicação à beleza.",
     "solutionLabel": "A solução",
     "solution": "Unimos as iniciais G e F em um símbolo de curvas sutis, acompanhado por roxo profundo e rosé. O sistema visual se estende à papelaria, aos uniformes, à sinalização e à presença digital.",
-    "resultsLabel": "Aplicações",
-    "results": "Uma identidade consistente em cartões, sacolas, fachada, materiais de atendimento e conteúdos para redes sociais.",
+    "resultsLabel": "Resultados ilustrativos",
+    "results": "Uma identidade visual consistente pode fortalecer a confiança no estúdio, atrair mais seguidores para as redes sociais e transformar o interesse pelos serviços em novos clientes e agendamentos.",
     "tags": [
       "Branding",
       "Identidade visual",
@@ -35,7 +35,8 @@
       "Fachada do studio",
       "Placa de identificação",
       "Campanha de beleza"
-    ]
+    ],
+    "note": "Cenário ilustrativo de impacto, sem métricas aferidas."
   },
   "en": {
     "back": "← All projects",
@@ -45,8 +46,8 @@
     "project": "An identity expressing the essence of a professional studio: expertise, care and warmth. The project celebrates Giovana Fortunato's story and dedication to beauty.",
     "solutionLabel": "The solution",
     "solution": "We combined the initials G and F in a gently curved symbol, paired with deep purple and rose. The visual system extends to stationery, uniforms, signage and digital content.",
-    "resultsLabel": "Applications",
-    "results": "A consistent identity across business cards, bags, signage, service materials and social media.",
+    "resultsLabel": "Illustrative outcomes",
+    "results": "A consistent visual identity can build trust in the studio, attract more social media followers and turn interest in its services into new clients and bookings.",
     "tags": [
       "Branding",
       "Visual identity",
@@ -72,7 +73,8 @@
       "Fachada do studio",
       "Placa de identificação",
       "Campanha de beleza"
-    ]
+    ],
+    "note": "Illustrative impact scenario; no measured metrics."
   },
   "es": {
     "back": "← Todos los proyectos",
@@ -82,8 +84,8 @@
     "project": "Una identidad que expresa la esencia de un estudio profesional: técnica, cuidado y cercanía. El proyecto celebra la historia de Giovana Fortunato y su dedicación a la belleza.",
     "solutionLabel": "La solución",
     "solution": "Unimos las iniciales G y F en un símbolo de curvas sutiles, acompañado de morado profundo y rosa. El sistema visual abarca papelería, uniformes, señalización y contenidos digitales.",
-    "resultsLabel": "Aplicaciones",
-    "results": "Una identidad consistente en tarjetas, bolsas, fachada, materiales de atención y redes sociales.",
+    "resultsLabel": "Resultados ilustrativos",
+    "results": "Una identidad visual consistente puede fortalecer la confianza en el estudio, atraer más seguidores en redes sociales y convertir el interés por sus servicios en nuevos clientes y reservas.",
     "tags": [
       "Branding",
       "Identidad visual",
@@ -109,7 +111,8 @@
       "Fachada do studio",
       "Placa de identificação",
       "Campanha de beleza"
-    ]
+    ],
+    "note": "Escenario ilustrativo de impacto, sin métricas medidas."
   }
 };
   const talk = document.querySelector('.project-talk');

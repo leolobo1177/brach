@@ -8,8 +8,8 @@
     "project": "A MiláMi aproxima crianças e famílias da música. A identidade traduz acolhimento, criatividade e leveza, conectando o universo musical ao desenvolvimento infantil.",
     "solutionLabel": "A solução",
     "solution": "Criamos um sistema lúdico com um coala como mascote, notas musicais e uma paleta de laranja, creme e azul-petróleo. O lettering expressivo e a tipografia acolhedora dão ritmo à comunicação.",
-    "resultsLabel": "Aplicações",
-    "results": "O sistema reúne variações da marca, padrões gráficos, cartões e materiais de comunicação que apresentam a musicalização infantil com afeto e clareza.",
+    "resultsLabel": "Resultados ilustrativos",
+    "results": "Uma marca lúdica e reconhecível pode ampliar o alcance nas redes sociais, aproximar mais famílias da musicalização infantil e gerar mais contatos interessados nas aulas e no método MiláMi.",
     "tags": [
       "Branding",
       "Identidade visual",
@@ -28,7 +28,8 @@
       "Musicalização infantil em prática",
       "Padrão gráfico da MiláMi",
       "Cartões e aplicações da marca"
-    ]
+    ],
+    "note": "Cenário ilustrativo de impacto, sem métricas aferidas."
   },
   "en": {
     "back": "← All projects",
@@ -38,8 +39,8 @@
     "project": "A MiláMi aproxima crianças e famílias da música. A identidade traduz acolhimento, criatividade e leveza, conectando o universo musical ao desenvolvimento infantil.",
     "solutionLabel": "The solution",
     "solution": "Criamos um sistema lúdico com um coala como mascote, notas musicais e uma paleta de laranja, creme e azul-petróleo. O lettering expressivo e a tipografia acolhedora dão ritmo à comunicação.",
-    "resultsLabel": "Applications",
-    "results": "O sistema reúne variações da marca, padrões gráficos, cartões e materiais de comunicação que apresentam a musicalização infantil com afeto e clareza.",
+    "resultsLabel": "Illustrative outcomes",
+    "results": "A playful, recognizable brand can expand social media reach, introduce more families to early childhood music and generate more inquiries about MiláMi’s classes and method.",
     "tags": [
       "Branding",
       "Identidade visual",
@@ -58,7 +59,8 @@
       "Musicalização infantil em prática",
       "Padrão gráfico da MiláMi",
       "Cartões e aplicações da marca"
-    ]
+    ],
+    "note": "Illustrative impact scenario; no measured metrics."
   },
   "es": {
     "back": "← Todos los proyectos",
@@ -68,8 +70,8 @@
     "project": "A MiláMi aproxima crianças e famílias da música. A identidade traduz acolhimento, criatividade e leveza, conectando o universo musical ao desenvolvimento infantil.",
     "solutionLabel": "La solución",
     "solution": "Criamos um sistema lúdico com um coala como mascote, notas musicais e uma paleta de laranja, creme e azul-petróleo. O lettering expressivo e a tipografia acolhedora dão ritmo à comunicação.",
-    "resultsLabel": "Aplicaciones",
-    "results": "O sistema reúne variações da marca, padrões gráficos, cartões e materiais de comunicação que apresentam a musicalização infantil com afeto e clareza.",
+    "resultsLabel": "Resultados ilustrativos",
+    "results": "Una marca lúdica y reconocible puede ampliar el alcance en redes sociales, acercar más familias a la musicalización infantil y generar más consultas sobre las clases y el método MiláMi.",
     "tags": [
       "Branding",
       "Identidade visual",
@@ -88,7 +90,8 @@
       "Musicalização infantil em prática",
       "Padrão gráfico da MiláMi",
       "Cartões e aplicações da marca"
-    ]
+    ],
+    "note": "Escenario ilustrativo de impacto, sin métricas medidas."
   }
 };
   const talk = document.querySelector('.project-talk');

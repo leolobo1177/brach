@@ -8,8 +8,8 @@
     "project": "A marca Fabiane Costa traduz presença, propósito e transformação. O rebranding conecta autoridade e proximidade em uma identidade coerente com o posicionamento da mentoria.",
     "solutionLabel": "A solução",
     "solution": "Desenvolvemos um símbolo geométrico inspirado em linguagens visuais africanas, tipografia própria e uma paleta de tons terrosos e creme. O sistema valoriza identidade, sabedoria e ancestralidade.",
-    "resultsLabel": "Aplicações",
-    "results": "A identidade ganha forma na apresentação comercial, nos cartões de visita, na papelaria e nos materiais digitais da mentoria.",
+    "resultsLabel": "Resultados ilustrativos",
+    "results": "Uma identidade alinhada à proposta da mentoria pode fortalecer a percepção de autoridade, atrair um público mais interessado nas redes sociais e gerar mais pedidos de informação e novos clientes para a mentoria.",
     "tags": [
       "Rebranding",
       "Identidade visual",
@@ -31,7 +31,8 @@
       "Cartões de visita",
       "Papelaria institucional",
       "Materiais digitais da mentoria"
-    ]
+    ],
+    "note": "Cenário ilustrativo de impacto, sem métricas aferidas."
   },
   "en": {
     "back": "← All projects",
@@ -41,8 +42,8 @@
     "project": "Fabiane Costa's brand expresses presence, purpose and transformation. The rebranding connects authority and warmth with the mentoring practice.",
     "solutionLabel": "The solution",
     "solution": "We developed a geometric symbol inspired by African visual traditions, custom typography and a palette of earthy tones and cream, celebrating identity, wisdom and ancestry.",
-    "resultsLabel": "Applications",
-    "results": "The identity extends to the commercial presentation, business cards, stationery and digital mentoring materials.",
+    "resultsLabel": "Illustrative outcomes",
+    "results": "An identity aligned with the mentoring offer can strengthen perceived expertise, attract a more engaged social media audience and generate more inquiries and new mentoring clients.",
     "tags": [
       "Rebranding",
       "Visual identity",
@@ -64,7 +65,8 @@
       "Cartões de visita",
       "Papelaria institucional",
       "Materiais digitais da mentoria"
-    ]
+    ],
+    "note": "Illustrative impact scenario; no measured metrics."
   },
   "es": {
     "back": "← Todos los proyectos",
@@ -74,8 +76,8 @@
     "project": "La marca Fabiane Costa expresa presencia, propósito y transformación. El rebranding conecta autoridad y cercanía con el posicionamiento de la mentoría.",
     "solutionLabel": "La solución",
     "solution": "Desarrollamos un símbolo geométrico inspirado en lenguajes visuales africanos, tipografía propia y una paleta de tonos tierra y crema que celebra identidad, sabiduría y ancestralidad.",
-    "resultsLabel": "Aplicaciones",
-    "results": "La identidad se aplica a la presentación comercial, tarjetas, papelería y materiales digitales de la mentoría.",
+    "resultsLabel": "Resultados ilustrativos",
+    "results": "Una identidad alineada con la propuesta de mentoría puede fortalecer la percepción de autoridad, atraer un público más interesado en redes sociales y generar más consultas y nuevos clientes para la mentoría.",
     "tags": [
       "Rebranding",
       "Identidad visual",
@@ -97,7 +99,8 @@
       "Cartões de visita",
       "Papelaria institucional",
       "Materiais digitais da mentoria"
-    ]
+    ],
+    "note": "Escenario ilustrativo de impacto, sin métricas medidas."
   }
 };
   const talk = document.querySelector('.project-talk');

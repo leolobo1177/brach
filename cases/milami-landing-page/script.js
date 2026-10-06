@@ -8,8 +8,8 @@
     "project": "Uma página de vendas para apresentar o Método MiláMi às famílias e conduzir a jornada até a oferta na Hotmart. O desafio foi comunicar o valor da musicalização infantil com clareza, acolhimento e uma identidade lúdica.",
     "solutionLabel": "A solução",
     "solution": "Organizamos benefícios, experiências, apresentação da educadora, depoimentos, oferta e perguntas frequentes em uma narrativa contínua. O design combina as cores da MiláMi, formas orgânicas e uma experiência adaptada ao celular.",
-    "resultsLabel": "A entrega",
-    "results": "Uma apresentação completa do método, com chamadas para ação ao longo da página e informações que ajudam as famílias a conhecer a proposta antes da compra.",
+    "resultsLabel": "Resultados ilustrativos",
+    "results": "Uma LP funcional, interativa e adaptada ao celular pode aumentar o interesse pelo método, gerar mais cliques para a oferta na Hotmart e favorecer o crescimento das vendas ao tornar os benefícios claros e a jornada de compra mais simples.",
     "tags": [
       "Landing page",
       "UX/UI design",
@@ -23,7 +23,8 @@
       "Apresentação completa da landing page MiláMi Do Ventre ao Colo, com versões para computador e celular"
     ],
     "demo": "Ver landing page ↗",
-    "demoNote": "Conheça a demonstração navegável do projeto (abre em uma nova aba)."
+    "demoNote": "Conheça a demonstração navegável do projeto (abre em uma nova aba).",
+    "note": "Cenário ilustrativo de impacto, sem métricas aferidas."
   },
   "en": {
     "back": "← All projects",
@@ -33,8 +34,8 @@
     "project": "A sales page introducing the MiláMi Method to families and guiding their journey to the Hotmart offer. The challenge was to communicate the value of early childhood music through a clear, welcoming and playful identity.",
     "solutionLabel": "The solution",
     "solution": "We arranged benefits, experiences, the educator’s introduction, testimonials, the offer and frequently asked questions into a continuous narrative. The design combines MiláMi’s colors, organic shapes and a mobile-friendly experience.",
-    "resultsLabel": "The delivery",
-    "results": "A complete introduction to the method, with calls to action throughout the page and information that helps families understand the offer before purchasing.",
+    "resultsLabel": "Illustrative outcomes",
+    "results": "A functional, interactive, mobile-friendly landing page can increase interest in the method, drive more clicks to the Hotmart offer and support sales growth by making the benefits clear and the purchase journey simpler.",
     "tags": [
       "Landing page",
       "UX/UI design",
@@ -48,7 +49,8 @@
       "Full presentation of the MiláMi Do Ventre ao Colo landing page, with desktop and mobile layouts"
     ],
     "demo": "View landing page ↗",
-    "demoNote": "Explore the interactive project demo (opens in a new tab)."
+    "demoNote": "Explore the interactive project demo (opens in a new tab).",
+    "note": "Illustrative impact scenario; no measured metrics."
   },
   "es": {
     "back": "← Todos los proyectos",
@@ -58,8 +60,8 @@
     "project": "Una página de ventas para presentar el Método MiláMi a las familias y conducirlas hasta la oferta en Hotmart. El desafío fue comunicar el valor de la musicalización infantil con claridad, cercanía y una identidad lúdica.",
     "solutionLabel": "La solución",
     "solution": "Organizamos beneficios, experiencias, presentación de la educadora, testimonios, oferta y preguntas frecuentes en una narrativa continua. El diseño combina los colores de MiláMi, formas orgánicas y una experiencia adaptada al móvil.",
-    "resultsLabel": "La entrega",
-    "results": "Una presentación completa del método, con llamadas a la acción a lo largo de la página e información que ayuda a las familias a conocer la propuesta antes de comprar.",
+    "resultsLabel": "Resultados ilustrativos",
+    "results": "Una landing page funcional, interactiva y adaptada al móvil puede aumentar el interés por el método, generar más clics hacia la oferta en Hotmart y favorecer el crecimiento de las ventas al aclarar los beneficios y simplificar la compra.",
     "tags": [
       "Landing page",
       "Diseño UX/UI",
@@ -73,7 +75,8 @@
       "Presentación completa de la landing page MiláMi Do Ventre ao Colo, con versiones para ordenador y móvil"
     ],
     "demo": "Ver landing page ↗",
-    "demoNote": "Conoce la demostración navegable del proyecto (se abre en otra pestaña)."
+    "demoNote": "Conoce la demostración navegable del proyecto (se abre en otra pestaña).",
+    "note": "Escenario ilustrativo de impacto, sin métricas medidas."
   }
 };
   const talk = document.querySelector('.project-talk');
