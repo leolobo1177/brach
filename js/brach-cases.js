@@ -5,6 +5,32 @@
 
   if (!caseLinks.length) return;
 
+  const entranceItems = Array.from(document.querySelectorAll('.cases-head, .case-row'));
+  let entranceObserver;
+  let exitTimeline;
+  let exitTargets = [];
+  const whenPageReady = window.whenBrachPageReady || (callback => callback());
+
+  function prepareEntrance() {
+    entranceObserver?.disconnect();
+    if (!hasGsap || reduceMotion || !('IntersectionObserver' in window)) return;
+    window.gsap.killTweensOf(entranceItems);
+    window.gsap.set(entranceItems, { opacity: 0, y: 28 });
+    whenPageReady(() => {
+      entranceObserver = new IntersectionObserver(entries => {
+        const visible = entries.filter(entry => entry.isIntersecting).map(entry => entry.target);
+        if (!visible.length) return;
+        visible.forEach(item => entranceObserver.unobserve(item));
+        window.gsap.to(visible, {
+          opacity: 1, y: 0, duration: 0.8, stagger: 0.08,
+          ease: 'power3.out', clearProps: 'opacity,transform'
+        });
+      }, { threshold: 0.08 });
+      entranceItems.forEach(item => entranceObserver.observe(item));
+    });
+  }
+  prepareEntrance();
+
   const UI = {
     'pt-BR': {
       openingExternal: 'ABRINDO PROJETO'
@@ -33,6 +59,11 @@
   }
 
   function cleanupTransitionArtifacts() {
+    exitTimeline?.kill();
+    if (hasGsap && exitTargets.length) {
+      window.gsap.set(exitTargets, { clearProps: 'opacity,visibility,transform' });
+    }
+    exitTargets = [];
     document.documentElement.classList.remove('brach-case-transitioning');
     document.body.classList.remove('brach-case-transitioning');
     document.querySelectorAll('.brach-cases-transition-layer').forEach((node) => node.remove());
@@ -120,7 +151,10 @@
 
     window.gsap.set(layer, { autoAlpha: 1 });
 
-    const timeline = window.gsap.timeline({
+    entranceObserver?.disconnect();
+    window.gsap.killTweensOf(fadeTargets);
+    exitTargets = fadeTargets;
+    const timeline = exitTimeline = window.gsap.timeline({
       defaults: { ease: 'power3.inOut' },
       onComplete: () => finishCaseNavigation(link)
     });
@@ -174,5 +208,9 @@
     }, true);
   });
 
-  window.addEventListener('pageshow', cleanupTransitionArtifacts);
+  window.addEventListener('pageshow', event => {
+    cleanupTransitionArtifacts();
+    // A cached return keeps the exit styles; restore them before replaying entrances.
+    if (event.persisted) prepareEntrance();
+  });
 })();

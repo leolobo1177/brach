@@ -797,6 +797,17 @@
 /* ===============================
    PAGE LOADER
 ================================ */
+body.is-page-entering main,
+body.is-page-entering footer{
+  opacity:0;
+  pointer-events:none;
+}
+body.is-loading main *,
+body.is-loading footer *,
+body.is-page-entering main *,
+body.is-page-entering footer *{
+  animation-play-state:paused !important;
+}
 body.is-loading{
   overflow:hidden;
   height:100svh;

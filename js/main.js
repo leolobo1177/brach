@@ -245,16 +245,18 @@ const BRACH_I18N = {
       lead: `Conte sua ideia no <a class="contact-email-link" href="${BRACH_FORM_LINK}" rel="noopener noreferrer" target="_blank">formulário</a> ou envie um e-mail para <a class="contact-email-link" href="mailto:${BRACH_EMAIL}">${BRACH_EMAIL}</a>.`,
       success: 'Mensagem enviada. Em breve retornamos.',
       error: 'Não foi possível enviar agora. Tente novamente em alguns instantes ou use o e-mail acima.',
-      invalid: 'Revise nome, e-mail e mensagem antes de enviar.',
+      invalid: 'Revise nome, empresa, e-mail e mensagem antes de enviar.',
       fields: {
         website: 'Website',
         honey: 'Não preencha este campo',
         name: 'Nome',
+        company: 'Nome da empresa',
         email: 'E-mail',
         message: 'Mensagem'
       },
       placeholders: {
         name: 'Deixe seu nome',
+        company: 'Nome da empresa ou do projeto',
         email: 'Deixe seu e-mail',
         message: 'Deixe sua mensagem'
       },
@@ -462,16 +464,18 @@ const BRACH_I18N = {
       lead: `Share your idea in the <a class="contact-email-link" href="${BRACH_FORM_LINK}" rel="noopener noreferrer" target="_blank">form</a> or send us an email at <a class="contact-email-link" href="mailto:${BRACH_EMAIL}">${BRACH_EMAIL}</a>.`,
       success: 'Message sent. We will get back to you soon.',
       error: 'We could not send it right now. Please try again in a moment or use the email above.',
-      invalid: 'Please review your name, email, and message before sending.',
+      invalid: 'Please review your name, company, email, and message before sending.',
       fields: {
         website: 'Website',
         honey: 'Do not fill in this field',
         name: 'Name',
+        company: 'Company name',
         email: 'Email',
         message: 'Message'
       },
       placeholders: {
         name: 'Leave your name',
+        company: 'Company or project name',
         email: 'Leave your email',
         message: 'Leave your message'
       },
@@ -679,16 +683,18 @@ const BRACH_I18N = {
       lead: `Cuéntanos tu idea en el <a class="contact-email-link" href="${BRACH_FORM_LINK}" rel="noopener noreferrer" target="_blank">formulario</a> o envíanos un correo a <a class="contact-email-link" href="mailto:${BRACH_EMAIL}">${BRACH_EMAIL}</a>.`,
       success: 'Mensaje enviado. Te responderemos pronto.',
       error: 'No fue posible enviarlo ahora. Inténtalo de nuevo en unos momentos o usa el correo de arriba.',
-      invalid: 'Revisa tu nombre, correo y mensaje antes de enviar.',
+      invalid: 'Revisa tu nombre, empresa, correo y mensaje antes de enviar.',
       fields: {
         website: 'Website',
         honey: 'No completes este campo',
         name: 'Nombre',
+        company: 'Nombre de la empresa',
         email: 'Correo',
         message: 'Mensaje'
       },
       placeholders: {
         name: 'Deja tu nombre',
+        company: 'Nombre de la empresa o del proyecto',
         email: 'Deja tu correo',
         message: 'Deja tu mensaje'
       },
@@ -827,9 +833,11 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     websiteLabel: document.querySelector('label[for="contato-website"]'),
     honeyLabel: document.querySelector('label[for="contato-honey"]'),
     nameLabel: document.querySelector('label[for="contato-nome"]'),
+    companyLabel: document.querySelector('label[for="contato-empresa"]'),
     emailLabel: document.querySelector('label[for="contato-email"]'),
     messageLabel: document.querySelector('label[for="contato-mensagem"]'),
     name: document.getElementById('contato-nome'),
+    company: document.getElementById('contato-empresa'),
     email: document.getElementById('contato-email'),
     message: document.getElementById('contato-mensagem')
   };
@@ -1104,9 +1112,11 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     if(contactFields.websiteLabel) contactFields.websiteLabel.textContent = locale.contact.fields.website;
     if(contactFields.honeyLabel) contactFields.honeyLabel.textContent = locale.contact.fields.honey;
     if(contactFields.nameLabel) contactFields.nameLabel.textContent = locale.contact.fields.name;
+    if(contactFields.companyLabel) contactFields.companyLabel.textContent = locale.contact.fields.company;
     if(contactFields.emailLabel) contactFields.emailLabel.textContent = locale.contact.fields.email;
     if(contactFields.messageLabel) contactFields.messageLabel.textContent = locale.contact.fields.message;
     if(contactFields.name) contactFields.name.placeholder = locale.contact.placeholders.name;
+    if(contactFields.company) contactFields.company.placeholder = locale.contact.placeholders.company;
     if(contactFields.email) contactFields.email.placeholder = locale.contact.placeholders.email;
     if(contactFields.message) contactFields.message.placeholder = locale.contact.placeholders.message;
     if(contactTermsLead) contactTermsLead.textContent = locale.contact.termsLead;
@@ -1189,30 +1199,46 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   applyLanguage(activeLanguage);
 })();
 
-// Restore incoming project links after the loader releases the page layout.
+// Release page entrances only after the loader, fonts and incoming anchor settle.
 (() => {
   const hash = window.location.hash;
-  if (!['#trabalhos', '#contato'].includes(hash)) return;
+  const incomingSection = ['#topo', '#sobre', '#marcas', '#servicos', '#trabalhos', '#contato'].includes(hash);
   let cancelled = false;
   let queued = false;
+  let loaderDone = !document.getElementById('pageLoader');
+  let resolveReady;
+  const ready = new Promise(resolve => { resolveReady = resolve; });
+  window.whenBrachPageReady = callback => ready.then(callback);
+  document.body.classList.add('is-page-entering');
+
   const cancel = () => { cancelled = true; };
-  window.addEventListener('wheel', cancel, { once: true, passive: true });
-  window.addEventListener('touchstart', cancel, { once: true, passive: true });
-  window.addEventListener('keydown', cancel, { once: true });
-  function restore() {
-    if (queued || cancelled || document.readyState !== 'complete' ||
-        document.body.classList.contains('is-loading')) return;
+  ['wheel', 'touchstart', 'keydown'].forEach(type => {
+    window.addEventListener(type, cancel, { once: true, passive: true });
+  });
+  function release() {
+    if (queued || !loaderDone || document.readyState !== 'complete') return;
     queued = true;
-    Promise.resolve(document.fonts?.ready).then(() => {
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        if (cancelled || window.location.hash !== hash) return;
-        document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'instant', block: 'start' });
-      }));
+    Promise.resolve(document.fonts?.ready).catch(() => {}).then(() => {
+      requestAnimationFrame(() => {
+        window.ScrollTrigger?.refresh();
+        if (incomingSection && !cancelled && window.location.hash === hash) {
+          document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'instant', block: 'start' });
+        }
+        requestAnimationFrame(() => {
+          ['wheel', 'touchstart', 'keydown'].forEach(type => window.removeEventListener(type, cancel));
+          document.body.classList.remove('is-page-entering');
+          resolveReady();
+          document.dispatchEvent(new CustomEvent('brach:pageready'));
+        });
+      });
     });
   }
-  window.addEventListener('load', restore, { once: true });
-  document.addEventListener('brach:loadercomplete', restore, { once: true });
-  restore();
+  window.addEventListener('load', release, { once: true });
+  document.addEventListener('brach:loadercomplete', () => {
+    loaderDone = true;
+    release();
+  }, { once: true });
+  release();
 })();
 
 // Page loader
@@ -2284,7 +2310,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   window.addEventListener('resize', syncCasesState, { passive: true });
 })();
 /* ===== Services: progressive entrance; hover is handled by CSS ===== */
-(() => {
+window.whenBrachPageReady(() => {
   const section = document.querySelector('.services-section');
   if(!section) return;
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -2306,10 +2332,10 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     observer.disconnect();
     items.forEach(item => item.classList.remove('is-pending'));
   });
-})();
+});
 
 /* ===== Brand bridge ===== */
-(() => {
+window.whenBrachPageReady(() => {
   const sections = Array.from(document.querySelectorAll('.brand-bridge'));
   if(!sections.length) return;
 
@@ -2383,10 +2409,10 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       }, 0.68);
     });
   }
-})();
+});
 
 /* ===== Brand roster ===== */
-(() => {
+window.whenBrachPageReady(() => {
   const section = document.querySelector('.brand-roster');
   if(!section) return;
 
@@ -2584,7 +2610,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   });
 
   io.observe(section);
-})();
+});
 
 /* ===== Static contact form via FormSubmit ===== */
 (() => {
@@ -2681,6 +2707,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    form.elements.empresa.value = form.elements.empresa.value.trim();
 
     if(!form.checkValidity()){
       form.reportValidity();
@@ -2904,14 +2931,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     queueNext(animate);
   };
 
-  const whenLoaderDone = (callback) => {
-    if(!document.body.classList.contains('is-loading') && !document.getElementById('pageLoader')){
-      callback();
-      return;
-    }
-
-    document.addEventListener('brach:loadercomplete', callback, { once: true });
-  };
+  const whenLoaderDone = callback => window.whenBrachPageReady(callback);
 
   if(reduceMotion || !window.gsap){
     const revealStaticHero = () => {
@@ -3006,7 +3026,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 // ===============================
 // PARALLAX suave entre seções
 // ===============================
-(() => {
+window.whenBrachPageReady(() => {
   if(!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
@@ -3029,7 +3049,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
       }
     );
   });
-})();
+});
 
 
 // ===============================
@@ -3234,7 +3254,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     finePointer.addListener(onPointerModeChange);
   }
 
-  runAutoPulse();
+  window.whenBrachPageReady(runAutoPulse);
 })();
 
 
@@ -3378,7 +3398,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
 
 
 // About Team reveal (clean)
-(() => {
+window.whenBrachPageReady(() => {
   const section = document.querySelector('section.about-team#sobre');
   if (!section) return;
   const items = section.querySelectorAll('.about-reveal');
@@ -3418,10 +3438,10 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     items.forEach(el => io.observe(el));
   }
-})();
+});
 
 // Feedback wall before contact
-(() => {
+window.whenBrachPageReady(() => {
   const section = document.querySelector('.feedback-slider-section');
   const showcase = section?.querySelector('.feedback-showcase');
   const seedCards = Array.from(section?.querySelectorAll('.feedback-card') || []);
@@ -3829,7 +3849,7 @@ window.BRACH_POLICY_CONTENT = BRACH_POLICY_CONTENT;
   ensurePositions();
   renderCarousel();
   io.observe(section);
-})();
+});
 
 
 /* ===== Contact modal ===== */

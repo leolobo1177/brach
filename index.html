@@ -22,7 +22,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link as="style" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo:wdth,wght@62.5..125,100..900&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
-<link href="./css/style.css?v=20261005-moreira" rel="stylesheet"/>
+<link href="./css/style.css?v=20261008-page-ready" rel="stylesheet"/>
 <link href="./css/brach-cases.css" rel="stylesheet"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo:wdth,wght@62.5..125,100..900&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/></noscript>
 <noscript><style>.page-loader{display:none !important;} body{overflow:auto !important;}</style></noscript>
@@ -526,7 +526,7 @@
         Não foi possível enviar agora. Tente novamente em alguns instantes ou use o e-mail acima.
       </p>
       <p class="contact-feedback contact-feedback--error" id="contato-invalido" tabindex="-1">
-        Revise nome, e-mail e mensagem antes de enviar.
+        Revise nome, empresa, e-mail e mensagem antes de enviar.
       </p>
 
       <form class="contact-form" name="contact" method="POST" action="https://formsubmit.co/2cc44920131dff1d0c41e5de5be987cf" data-form-provider="formsubmit" data-ajax-action="https://formsubmit.co/ajax/2cc44920131dff1d0c41e5de5be987cf" accept-charset="UTF-8">
@@ -548,6 +548,9 @@
           <label class="sr-only" for="contato-email">E-mail</label>
           <input id="contato-email" name="email" type="email" placeholder="Deixe seu e-mail" autocomplete="email" maxlength="160" required>
         </div>
+
+        <label class="sr-only" for="contato-empresa">Nome da empresa</label>
+        <input id="contato-empresa" name="empresa" type="text" placeholder="Nome da empresa ou do projeto" autocomplete="organization" minlength="2" maxlength="160" required>
 
         <label class="sr-only" for="contato-mensagem">Mensagem</label>
         <textarea id="contato-mensagem" name="mensagem" placeholder="Deixe sua mensagem" minlength="10" maxlength="3000" required></textarea>
@@ -639,8 +642,8 @@
 </footer>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script defer src="./js/main.js?v=20261005-moreira"></script>
-<script defer src="./js/brach-cases.js"></script>
+<script defer src="./js/main.js?v=20261008-page-ready"></script>
+<script defer src="./js/brach-cases.js?v=20261008-page-ready"></script>
 <script>
   (function () {
     function releaseStuckLoader() {
