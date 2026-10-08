@@ -2965,12 +2965,60 @@ window.whenBrachPageReady(() => {
     transformOrigin: 'center top'
   });
 
+  const setupHeroScroll = () => {
+    if(!window.ScrollTrigger || !brandLetters.length) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Explicit visible origins prevent an anchor load from caching the intro's
+    // hidden state and restoring it when the visitor scrolls back to the top.
+    gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: {
+        trigger: hero,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 0.85
+      }
+    })
+      .fromTo(revealItems, {
+        y: 0,
+        autoAlpha: 1,
+        filter: 'blur(0px)'
+      }, {
+        y: -26,
+        autoAlpha: 0,
+        filter: 'blur(12px)',
+        stagger: 0.035
+      }, 0)
+      .fromTo(brandLetters, {
+        yPercent: 0,
+        autoAlpha: 1,
+        filter: 'blur(0px)'
+      }, {
+        yPercent: -112,
+        autoAlpha: 0,
+        filter: 'blur(16px)',
+        stagger: 0.055
+      }, 0.08);
+  };
+
   const playHeroIntro = () => {
     if(heroIntroStarted) return;
     heroIntroStarted = true;
+    startMobileWordCycle(true);
+
+    // Incoming section links start below the hero. Prepare its visible state
+    // without playing an off-screen intro that competes with scroll animation.
+    if(hero.getBoundingClientRect().bottom <= 0){
+      gsap.set(revealItems, { y: 0, autoAlpha: 1, filter: 'blur(0px)' });
+      gsap.set(brandLetters, { yPercent: 0, autoAlpha: 1, filter: 'blur(0px)' });
+      setupHeroScroll();
+      return;
+    }
 
     gsap.timeline({
-      defaults: { ease: 'power3.out' }
+      defaults: { ease: 'power3.out' },
+      onComplete: setupHeroScroll
     })
       .to(revealItems, {
         y: 0,
@@ -2986,8 +3034,6 @@ window.whenBrachPageReady(() => {
         duration: 1.18,
         stagger: 0.1
       }, 0.34);
-
-    startMobileWordCycle(true);
   };
 
   whenLoaderDone(playHeroIntro);
@@ -2995,31 +3041,6 @@ window.whenBrachPageReady(() => {
     if(heroIntroStarted) startMobileWordCycle(true);
   });
 
-  if(window.ScrollTrigger && brandLetters.length){
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.timeline({
-      defaults: { ease: 'none' },
-      scrollTrigger: {
-        trigger: hero,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 0.85
-      }
-    })
-      .to(revealItems, {
-        y: -26,
-        autoAlpha: 0,
-        filter: 'blur(12px)',
-        stagger: 0.035
-      }, 0)
-      .to(brandLetters, {
-        yPercent: -112,
-        autoAlpha: 0,
-        filter: 'blur(16px)',
-        stagger: 0.055
-      }, 0.08);
-  }
 })();
 
 
