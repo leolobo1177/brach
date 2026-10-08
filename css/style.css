@@ -1102,8 +1102,9 @@ body.is-loading footer{
   margin:0;
 }
 .hero-banner__logos{
+  --hero-logo-height:clamp(70px, 6.2vw, 124px);
   position:relative;
-  width:min(100%, 720px);
+  width:min(100%, 900px);
   overflow:hidden;
   padding:0;
   margin-top:clamp(6px, .7vw, 12px);
@@ -1127,18 +1128,18 @@ body.is-loading footer{
 .hero-banner__logo{
   display:block;
   width:auto;
-  height:clamp(52px, 4.6vw, 92px);
+  height:var(--hero-logo-height);
   object-fit:contain;
 }
 .hero-banner__logo[src*="moreira-tattoo.png"]{
-  width:clamp(88px, 7vw, 128px);
-  height:clamp(52px, 4.6vw, 92px);
+  width:calc(var(--hero-logo-height) * 1.5);
+  height:var(--hero-logo-height);
   object-fit:contain;
   object-position:center;
 }
 .hero-banner__logo[src*="ainda-assim-carousel.png"]{
-  width:clamp(116px, 8.4vw, 154px);
-  height:clamp(56px, 5.1vw, 98px);
+  width:calc(var(--hero-logo-height) * 1.6);
+  height:calc(var(--hero-logo-height) * 1.08);
   object-fit:cover;
   object-position:center;
 }
@@ -1384,7 +1385,8 @@ body.is-loading footer{
     gap:16px;
   }
   .hero-banner__logos{
-    width:min(100%, 640px);
+    --hero-logo-height:clamp(62px, 6.7vw, 100px);
+    width:min(100%, 760px);
     margin-top:8px;
   }
   .hero-banner__brand-tag{
@@ -1397,7 +1399,7 @@ body.is-loading footer{
     font-size:clamp(24px, 3.15vw, 38px);
   }
   .hero-banner__logo{
-    height:clamp(46px, 5vw, 74px);
+    height:var(--hero-logo-height);
   }
   .hero-banner__cta{
     min-width:auto;
@@ -1513,6 +1515,7 @@ body.is-loading footer{
     display:none;
   }
   .hero-banner__logos{
+    --hero-logo-height:clamp(80px, 24vw, 128px);
     display:block;
     order:2;
     width:calc(100% + 28px);
@@ -1529,7 +1532,7 @@ body.is-loading footer{
     padding-right:30px;
   }
   .hero-banner__logo{
-    height:clamp(70px, 21vw, 118px);
+    height:var(--hero-logo-height);
   }
   .hero-banner__brand{
     display:none;
