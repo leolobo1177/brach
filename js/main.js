@@ -64,6 +64,8 @@ const BRACH_BRAND_MEDIA = [
   }
 ];
 
+window.BRACH_BRAND_MEDIA = BRACH_BRAND_MEDIA;
+
 const BRACH_I18N = {
   'pt-BR': {
     htmlLang: 'pt-BR',
@@ -2411,205 +2413,18 @@ window.whenBrachPageReady(() => {
   }
 });
 
-/* ===== Brand roster ===== */
+/* ===== Brand roster entrance (carousel rendered by React Bits) ===== */
 window.whenBrachPageReady(() => {
   const section = document.querySelector('.brand-roster');
-  if(!section) return;
-
-  const stage = section.querySelector('[data-brand-roster-stage]');
-  const cards = Array.from(section.querySelectorAll('.brand-roster__card'));
-  const revealItems = Array.from(section.querySelectorAll('.brand-reveal'));
-  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hasGsap = Boolean(window.gsap);
-  const hasScrollTrigger = Boolean(window.ScrollTrigger);
-  const autoplayDelay = 4200;
-
-  let activeIndex = Math.min(2, Math.max(cards.length - 1, 0));
-  let items = [];
-  let autoplayTimer = null;
-  let isVisible = reduceMotion;
-  let resizeTimer = null;
-
-  function buildItems(locale){
-    const localeItems = locale?.brands?.items || [];
-    return BRACH_BRAND_MEDIA.map((media, index) => ({
-      ...media,
-      ...(localeItems[index] || {})
-    }));
-  }
-
-  function getViewportCardStates(){
-    const isMobile = window.matchMedia('(max-width: 640px)').matches;
-    const isTablet = window.matchMedia('(max-width: 900px)').matches;
-    const sideOffset = isMobile ? 42 : isTablet ? 48 : 54;
-    const sideScale = isMobile ? 0.84 : isTablet ? 0.87 : 0.9;
-    const hiddenScale = isMobile ? 0.72 : 0.76;
-    const sideOpacity = isMobile ? 0.34 : 0.42;
-    const sideBlur = isMobile ? 8 : 6;
-
-    return {
-      prev: { xPercent: -50 - sideOffset, yPercent: -50, scale: sideScale, opacity: sideOpacity, blur: sideBlur, rotation: 0, zIndex: 2 },
-      active: { xPercent: -50, yPercent: -50, scale: 1, opacity: 1, blur: 0, rotation: 0, zIndex: 4 },
-      next: { xPercent: -50 + sideOffset, yPercent: -50, scale: sideScale, opacity: sideOpacity, blur: sideBlur, rotation: 0, zIndex: 2 },
-      hidden: { xPercent: -50, yPercent: -50, scale: hiddenScale, opacity: 0, blur: 16, rotation: 0, zIndex: 1 }
-    };
-  }
-
-  function getCardSlot(index){
-    if(!items.length) return 'hidden';
-
-    const previousIndex = (activeIndex - 1 + items.length) % items.length;
-    const nextIndex = (activeIndex + 1) % items.length;
-
-    if(index === activeIndex) return 'active';
-    if(index === previousIndex) return 'prev';
-    if(index === nextIndex) return 'next';
-    return 'hidden';
-  }
-
-  function syncCardAssets(){
-    cards.forEach((card, index) => {
-      const item = items[index];
-      const image = card.querySelector('[data-brand-card-image]');
-      if(!item || !image) return;
-
-      image.src = item.logo;
-      image.alt = item.alt || item.name || '';
-      card.setAttribute('aria-label', item.name || item.alt || `Marca ${index + 1}`);
-      card.style.setProperty('--card-start', item.cardStart);
-      card.style.setProperty('--card-end', item.cardEnd);
-    });
-  }
-
-  function renderCards(immediate = false){
-    const cardStates = getViewportCardStates();
-
-    cards.forEach((card, index) => {
-      const slot = getCardSlot(index);
-      const state = cardStates[slot] || cardStates.hidden;
-
-      card.classList.toggle('is-active', slot === 'active');
-      card.tabIndex = slot === 'hidden' ? -1 : 0;
-      card.style.zIndex = String(state.zIndex);
-
-      if(!hasGsap || reduceMotion){
-        card.style.opacity = String(state.opacity);
-        card.style.filter = `blur(${state.blur}px)`;
-        card.style.transform = `translate(${state.xPercent}%, ${state.yPercent}%) scale(${state.scale}) rotate(${state.rotation}deg)`;
-        return;
-      }
-
-      gsap.killTweensOf(card);
-      const method = immediate ? 'set' : 'to';
-      gsap[method](card, {
-        xPercent: state.xPercent,
-        yPercent: state.yPercent,
-        rotation: state.rotation,
-        scale: state.scale,
-        autoAlpha: state.opacity,
-        filter: `blur(${state.blur}px)`,
-        ...(immediate ? {} : {
-          duration: 0.92,
-          ease: 'power3.inOut',
-          overwrite: 'auto'
-        })
-      });
-    });
-  }
-
-  function stopAutoplay(){
-    if(typeof autoplayTimer === 'number'){
-      window.clearTimeout(autoplayTimer);
-      autoplayTimer = null;
-    }
-  }
-
-  function scheduleAutoplay(){
-    stopAutoplay();
-    if(reduceMotion || items.length < 2 || !isVisible) return;
-
-    autoplayTimer = window.setTimeout(() => {
-      setActiveIndex((activeIndex + 1) % items.length);
-    }, autoplayDelay);
-  }
-
-  function setActiveIndex(nextIndex, immediate = false){
-    if(!items.length) return;
-
-    activeIndex = ((nextIndex % items.length) + items.length) % items.length;
-    renderCards(immediate);
-    scheduleAutoplay();
-  }
-
-  function syncLocale(locale, immediate = false){
-    items = buildItems(locale);
-    syncCardAssets();
-    setActiveIndex(activeIndex, immediate);
-  }
-
-  cards.forEach((card, index) => {
-    card.addEventListener('click', () => {
-      if(index === activeIndex) return;
-      setActiveIndex(index);
-    });
-  });
-
-  window.addEventListener('resize', () => {
-    if(typeof resizeTimer === 'number'){
-      window.clearTimeout(resizeTimer);
-    }
-    resizeTimer = window.setTimeout(() => {
-      renderCards(true);
-    }, 120);
-  });
-
-  document.addEventListener('brach:languagechange', (event) => {
-    syncLocale(event.detail?.locale || getBrachLocale(), true);
-  });
-
-  syncLocale(getBrachLocale(), true);
-
-  if(reduceMotion){
-    return;
-  }
-
-  if(hasGsap && hasScrollTrigger && revealItems.length){
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.set(revealItems, {
-      autoAlpha: 0,
-      y: 34,
-      filter: 'blur(12px)'
-    });
-
-    gsap.to(revealItems, {
-      autoAlpha: 1,
-      y: 0,
-      filter: 'blur(0px)',
-      duration: 0.92,
-      stagger: 0.12,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 76%',
-        once: true
-      }
-    });
-  }
-
-  const io = new IntersectionObserver((entries) => {
-    const visibleEntry = entries[0];
-    isVisible = Boolean(visibleEntry?.isIntersecting);
-
-    if(isVisible){
-      scheduleAutoplay();
-    }else{
-      stopAutoplay();
-    }
+  if (!section || !window.gsap || !window.ScrollTrigger ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(section.querySelectorAll('.brand-reveal'), {
+    autoAlpha: 0, y: 34
   }, {
-    threshold: 0.36
+    autoAlpha: 1, y: 0, duration: 0.92, stagger: 0.12, ease: 'power3.out',
+    scrollTrigger: { trigger: section, start: 'top 76%', once: true }
   });
-
-  io.observe(section);
 });
 
 /* ===== Static contact form via FormSubmit ===== */
