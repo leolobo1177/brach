@@ -1,14 +1,10 @@
-import React, { Component, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Component, useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import TechText from './components/TechText/TechText.jsx';
 import CircularCarousel from './components/CircularCarousel/CircularCarousel.jsx';
 import './brach-react-bits.css';
 
-const UI = {
-  'pt-BR': { previous: 'Marca anterior', next: 'Próxima marca', pause: 'Pausar rotação', play: 'Retomar rotação', hint: 'Arraste para explorar', of: 'de' },
-  en: { previous: 'Previous brand', next: 'Next brand', pause: 'Pause rotation', play: 'Resume rotation', hint: 'Drag to explore', of: 'of' },
-  es: { previous: 'Marca anterior', next: 'Siguiente marca', pause: 'Pausar rotación', play: 'Reanudar rotación', hint: 'Arrastra para explorar', of: 'de' }
-};
+const POSITION_WORD = { 'pt-BR': 'de', en: 'of', es: 'de' };
 
 class AnimationBoundary extends Component {
   state = { failed: false };
@@ -47,9 +43,7 @@ function BrandFallback({ items }) {
 
 function BrandsCarousel() {
   const [language, setLanguage] = useState(() => window.getBrachLanguage());
-  const [paused, setPaused] = useState(false);
   const [focused, setFocused] = useState(false);
-  const controls = useRef(null);
   const reduced = useReducedMotion();
   useEffect(() => {
     const update = () => setLanguage(window.getBrachLanguage());
@@ -57,7 +51,6 @@ function BrandsCarousel() {
     return () => document.removeEventListener('brach:languagechange', update);
   }, []);
   const locale = window.getBrachLocale(language);
-  const ui = UI[language] || UI['pt-BR'];
   const items = useMemo(() => window.BRACH_BRAND_MEDIA.map((item, index) => ({
     ...item, src: item.logo, title: locale.brands.items[index]?.name || item.alt,
     alt: item.alt, subtitle: locale.brands.items[index]?.tag || ''
@@ -68,18 +61,12 @@ function BrandsCarousel() {
       <div className="brach-circular-scene">
         <CircularCarousel items={items} preset="cylinder" intro="rise" cardWidth={310}
           aspectRatio={1.24} gap={32} tilt={-12} curve={0.7} perspective={1800}
-          autoplay={paused || focused || reduced ? 'off' : 'drift'} speed={9}
+          autoplay={focused || reduced ? 'off' : 'drift'} speed={9}
           momentum={0.55} depthFade={0.35} fadeColor="#080822" innerShade={0.6}
-          parallax={0.15} stretch={0.15} cornerRadius={20} captions
-          controlsRef={controls} ariaLabel={locale.brands.aria} positionWord={ui.of} />
+          parallax={0.15} stretch={0.15} cornerRadius={20} captions={false}
+          ariaLabel={locale.brands.aria} positionWord={POSITION_WORD[language] || 'de'} />
       </div>
-      <div className="brach-circular-controls">
-        <button type="button" aria-label={ui.previous} onClick={() => controls.current?.previous()}>←</button>
-        <span className="brach-circular-hint">{ui.hint}</span>
-        {!reduced && <button type="button" className="brach-circular-pause" aria-label={paused ? ui.play : ui.pause}
-          aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? '▶' : 'Ⅱ'}</button>}
-        <button type="button" aria-label={ui.next} onClick={() => controls.current?.next()}>→</button>
-      </div>
+
     </div>
   </AnimationBoundary>;
 }

@@ -13,7 +13,7 @@ hero scroll effect controls the outer wordmark; TechText handles the canvas.
 
 Local adaptations in CircularCarousel: localized accessible labels, branded
 card backgrounds, previous/next controls, initial reduced-motion preference,
-and refresh of translated captions. The wrapper adds pause/focus handling and
+and refresh of translated captions. The wrapper hides captions and controls, retains hover/focus pausing, and adds
 static error fallbacks. TechText adds a verticalFill option for the original hero
 height and uses Anton and the site's cream/blue palette. Live announcements are
 paused during automatic rotation.
@@ -24,5 +24,5 @@ along with the source; GitHub Pages serves the generated files without a Node
 server. Dependencies are pinned in package-lock.json.
 
 Manual checks: loader then hero, TechText hover, anchor return to top,
-carousel drag/click/keyboard/buttons, pause, language switching, phone layout,
+carousel drag/click/keyboard, hover/focus pause, language switching, phone layout,
 and reduced-motion mode.
