@@ -45,7 +45,7 @@ const BRACH_BRAND_MEDIA = [
     glow: 'rgba(255, 174, 94, 0.36)'
   },
   {
-    logo: './assets/hero-logos/moreira-tattoo.png',
+    logo: './assets/hero-logos/moreira-tattoo-novo.webp',
     alt: 'Moreira Tattoo',
     cardStart: '#b90101',
     cardEnd: '#b90101',
