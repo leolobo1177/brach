@@ -21,8 +21,8 @@
     "alts": [
       "Fones com a marca do podcast",
       "Apresentação do projeto com microfone",
-      "Composição do símbolo a partir da figura e do microfone",
       "Famílias tipográficas Fraunces e Inter",
+      "Composição do símbolo a partir da figura e do microfone",
       "Paleta em creme, marrom, verde e azul",
       "Aplicações em cartão, caneca e fones",
       "Identidade aplicada à divulgação do podcast",
@@ -53,8 +53,8 @@
     "alts": [
       "Branded headphones",
       "Project introduction with microphone",
-      "Figure and microphone combined into the symbol",
       "Fraunces and Inter typefaces",
+      "Figure and microphone combined into the symbol",
       "Cream, brown, green and blue palette",
       "Card, mug and headphones",
       "Podcast promotional artwork",
@@ -85,8 +85,8 @@
     "alts": [
       "Auriculares con la marca",
       "Presentación del proyecto con micrófono",
-      "Figura y micrófono combinados en el símbolo",
       "Tipografías Fraunces e Inter",
+      "Figura y micrófono combinados en el símbolo",
       "Paleta crema, marrón, verde y azul",
       "Tarjeta, taza y auriculares",
       "Pieza de difusión del podcast",
