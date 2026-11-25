@@ -15,6 +15,15 @@
   height:clamp(200px, 20.4vw, 392px);
   overflow:visible;
 }
+.brach-tech-word { position:relative; }
+.brach-tech-word .tech-text {
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:200vw;
+  height:200vh;
+  transform:translate(-50%, -50%);
+}
 .brach-tech-fallback {
   display:flex;
   height:100%;

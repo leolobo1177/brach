@@ -230,8 +230,8 @@ const TechText = ({
       let m = probe.measureText(s.text);
       const fit = Math.min(
         1,
-        (width * 0.9) / Math.max(m.actualBoundingBoxLeft + m.actualBoundingBoxRight, 1),
-        (height * s.verticalFill) / Math.max(m.actualBoundingBoxAscent + m.actualBoundingBoxDescent, 1)
+        (Math.min(width, container.parentElement.clientWidth) * 0.9) / Math.max(m.actualBoundingBoxLeft + m.actualBoundingBoxRight, 1),
+        (Math.min(height, container.parentElement.clientHeight) * s.verticalFill) / Math.max(m.actualBoundingBoxAscent + m.actualBoundingBoxDescent, 1)
       );
       const size = s.fontSize * fit;
       setFont(probe, s, size);
